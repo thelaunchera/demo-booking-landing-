@@ -1,354 +1,1386 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#FAF8F3">
-<meta name="description" content="A cinematic tour of The Launch Era: from new cleaning requests to an organized business.">
-<title>The Launch Era — A Better Way to Run Your Cleaning Business</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root{--ivory:#FAF8F3;--ink:#191919;--blue:#a9d9eb;--deep:#397b98;--muted:#69777b;--hair:rgba(25,25,25,.12)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--ivory);color:var(--ink);font-family:Futura,"Avenir Next",Arial,sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-button,a{font:inherit}a{color:inherit;text-decoration:none}button{cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #397b98;outline-offset:4px}
-#top-progress{position:fixed;z-index:60;top:0;left:0;height:3px;width:0;background:var(--deep);transition:width .12s linear}
-.topbar{position:fixed;z-index:50;inset:3px 0 auto;display:flex;align-items:center;justify-content:space-between;padding:21px clamp(20px,5vw,82px);pointer-events:none}
-.topbar>*{pointer-events:auto}.brand{display:inline-flex;align-items:center;gap:11px;font-family:Prompt,sans-serif;font-weight:800;font-size:13px;letter-spacing:.005em}.brandmark{height:31px;width:31px;display:grid;place-items:center;border-radius:9px;background:var(--ink);color:var(--ivory);font-size:15px}
-.nav-right{display:flex;gap:12px;align-items:center}.nav-pill{border:1px solid rgba(25,25,25,.12);border-radius:50px;background:rgba(250,248,243,.85);backdrop-filter:blur(12px);padding:10px 16px;font-size:12px;font-weight:650}.nav-pill:hover{background:#fff}.nav-link{background:var(--blue);border:1px solid transparent}
-.chapter{height:205svh;position:relative;isolation:isolate}.chapter-inner{position:sticky;top:0;min-height:100svh;height:100svh;display:flex;align-items:center;padding:120px clamp(22px,9vw,150px) 60px;overflow:hidden}
-#world{position:fixed;inset:0;z-index:1;width:100%;height:100%;pointer-events:none;opacity:1;transition:opacity .65s ease}
-.chapter-inner:before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 74% 42%,rgba(169,217,235,.24),transparent 45%),radial-gradient(ellipse at 25% 95%,rgba(242,216,91,.06),transparent 55%);pointer-events:none}
-.copy{position:relative;z-index:5;width:min(45vw,650px);max-width:100%;pointer-events:none}
-.copy a,.copy button{pointer-events:auto}
-.eyebrow{font-family:Prompt,sans-serif;font-size:12px;font-weight:650;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:13px;color:#446f81;margin-bottom:25px}
-.eyebrow:before{content:"";width:26px;height:2px;background:#7eb5cd}
-h1,h2,h3,p{margin:0}h1,h2{font-family:Prompt,sans-serif;letter-spacing:-.065em;line-height:1.05;font-weight:700}
-h1{font-size:clamp(45px,6.7vw,108px)}h2{font-size:clamp(44px,5.8vw,91px)}.headline em{font-style:normal;color:#4c99b5}
-.lede{font-size:clamp(15px,1.26vw,20px);line-height:1.75;color:#5d676a;max-width:475px;margin-top:26px}
-.kicker{margin-top:30px;display:flex;gap:12px;align-items:center;font-size:12px;color:#617176;letter-spacing:.02em}
-.kicker .line{height:1px;width:33px;background:#84979f}
-.scene-number{position:absolute;bottom:46px;left:clamp(22px,9vw,150px);z-index:6;color:#85949b;font-family:Prompt,sans-serif;font-size:12px;letter-spacing:.2em}
-.scene-progress{position:absolute;bottom:49px;right:clamp(22px,6vw,80px);z-index:6;display:flex;gap:8px}.scene-progress i{width:26px;height:3px;border-radius:8px;background:#cbd8dc}.scene-progress i.on{background:#478ca8}
-.scroll-note{position:absolute;bottom:44px;left:50%;transform:translateX(-50%);z-index:5;letter-spacing:.14em;font-size:10px;text-transform:uppercase;color:#6b8086;white-space:nowrap}
-.scroll-note:after{content:"↓";margin-left:9px;font-size:16px}
-#pin-label{position:fixed;z-index:11;padding:10px 15px;background:white;border:1px solid #c9e2eb;box-shadow:0 14px 40px rgba(63,109,134,.13);border-radius:30px;font-size:12px;font-family:Prompt,sans-serif;font-weight:600;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s ease}
-#pin-label:before{content:"";display:inline-block;width:8px;height:8px;background:#3a93b9;border-radius:50%;margin-right:8px}
-.chapter-route{background:linear-gradient(165deg,#f3f9fb 4%,#faf8f3 70%)}.chapter-route .copy{align-self:center}
-.route-art{position:absolute;z-index:3;right:0;top:18%;height:75%;width:min(64vw,1000px);overflow:visible;filter:drop-shadow(0px 15px 36px rgba(72,117,141,.06))}
-.route-map{height:100%;width:100%;overflow:visible}
-.route-node{fill:#fff;stroke:#65afcb;stroke-width:4}.route-node-inner{fill:#65afcb}.route-marker-text{font:600 14px Prompt,Arial,sans-serif;fill:#397b98}
-.route-chip{position:absolute;z-index:7;left:55%;top:15%;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #e0ebee;border-radius:16px;padding:13px 19px;box-shadow:0 16px 50px rgba(82,130,145,.13);font-size:12px;font-weight:700;transform:translateY(12px);opacity:0}
-.route-chip .check{height:24px;width:24px;display:grid;place-items:center;border-radius:50%;background:#d8f0e8;color:#378069}
-.route-stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:34px}.route-stats span{padding:10px 13px;border:1px solid #d2e6ed;border-radius:14px;background:rgba(255,255,255,.74);font-size:12px;color:#426777}
-.chapter-city{background:radial-gradient(circle at 74% 45%,#e9f4f8 0,#faf8f3 48%)}.chapter-city .copy{align-self:center}
-.scene-end{height:100svh;background:var(--ink);color:#faf8f3}.scene-end .chapter-inner{background:radial-gradient(circle at 75% 45%,#294453 0%,#191919 54%);align-items:center}
-.end-copy{width:min(900px,100%);z-index:10}.end-copy h2{font-size:clamp(49px,8.5vw,130px)}.end-copy .lede{color:#cbd8dc;max-width:640px}.end-copy .eyebrow{color:#b7d9e5}
-.actions{margin-top:33px;display:flex;gap:12px;flex-wrap:wrap}.button{display:inline-flex;align-items:center;justify-content:center;border-radius:50px;padding:15px 23px;font-size:14px;font-weight:700;min-height:50px;transition:transform .25s,background .25s}.button:hover{transform:translateY(-3px)}.button-main{background:#a9d9eb;color:#191919}.button-outline{border:1px solid rgba(250,248,243,.3);color:#fff;background:transparent}
-.end-motif{position:absolute;right:-80px;top:12%;width:min(52vw,700px);aspect-ratio:1;border:1px solid rgba(169,217,235,.16);border-radius:50%;box-shadow:0 0 0 60px rgba(169,217,235,.035),0 0 0 150px rgba(169,217,235,.028),0 0 0 260px rgba(169,217,235,.018)}
-.footerbar{position:absolute;z-index:11;left:clamp(22px,9vw,150px);right:clamp(22px,9vw,150px);bottom:30px;display:flex;align-items:center;justify-content:space-between;color:#aec0c6;font-size:11px;letter-spacing:.06em}
-.copy,.eyebrow,.lede,.kicker{transition:opacity .45s,transform .45s}.chapter:not(.is-current) .copy{opacity:.65}
-.motion-toggle{border:none;background:transparent;color:#475d66;text-decoration:underline;font-size:12px;padding:8px}
-.fallback{text-align:center;display:none;padding:20px;color:#4a7182}
-@media(max-width:800px){
- .topbar{padding:16px 20px}.nav-pill{padding:9px 13px}.brand{font-size:12px}
- .chapter{height:170svh}.chapter-inner{padding:112px 22px 70px;display:block}
- .copy{width:100%;max-width:460px}.eyebrow{font-size:10px;margin-bottom:18px}
- h1,h2{font-size:clamp(43px,11.3vw,65px)}.lede{font-size:14.5px;line-height:1.55;max-width:335px;margin-top:17px}
- .kicker{margin-top:15px}.scene-number{left:22px;bottom:24px}.scene-progress{right:22px;bottom:27px}.scroll-note{bottom:54px;left:22px;transform:none;font-size:9px}
- .route-art{top:37%;right:-6%;width:105%;height:57%}.route-chip{left:auto;right:7%;top:55%;font-size:10px;padding:9px 12px}
- .route-stats{margin-top:17px}.route-stats span{font-size:10px;padding:7px 8px}
- .scene-end .chapter-inner{display:flex;align-items:center}.end-copy h2{font-size:clamp(45px,12vw,78px)}
- .end-motif{top:30%;right:-50%;width:100vw}.footerbar{left:22px;right:22px;bottom:22px;font-size:9px}
- .motion-toggle{display:none}
-}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
-</style>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
-</head>
-<body>
-<div id="top-progress" aria-hidden="true"></div>
-<canvas id="world" aria-hidden="true"></canvas>
-<div id="pin-label" aria-hidden="true">Your next customer</div>
-<header class="topbar">
- <a class="brand" href="#begin" aria-label="The Launch Era, beginning"><span class="brandmark">T</span><span>THE LAUNCH ERA</span></a>
- <nav class="nav-right" aria-label="Main navigation"><button id="motion-toggle" class="nav-pill motion-toggle" type="button">Pause motion</button><a class="nav-pill nav-link" href="#ready">See the system ↗</a></nav>
-</header>
-<main>
-<section class="chapter chapter-globe is-current" id="begin" data-scene="globe">
- <div class="chapter-inner">
-  <div class="copy">
-   <div class="eyebrow">01 / One connected business</div>
-   <h1 class="headline">Every new lead.<br><em>One clear</em> place.</h1>
-   <p class="lede">Your cleaning business moves fast. Your requests, clients, quotes, and bookings shouldn't live in five different places.</p>
-   <div class="kicker"><span class="line"></span> Scroll to explore the journey</div>
-  </div>
-  <div class="scene-number">CHAPTER 01 / 03</div><div class="scroll-note">Scroll to continue</div>
-  <div class="scene-progress" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
- </div>
-</section>
-<section class="chapter chapter-route" id="journey" data-scene="route">
- <div class="chapter-inner">
-  <div class="copy">
-   <div class="eyebrow">02 / From inquiry to confirmed</div>
-   <h2 class="headline">A smoother<br><em>booking</em> journey.</h2>
-   <p class="lede">A customer asks for a cleaning. You have the details you need to quote, confirm, and keep the job moving.</p>
-   <div class="route-stats"><span>New request</span><span>Quote</span><span>Confirmed</span><span>Job complete</span></div>
-  </div>
-  <div class="route-art" role="img" aria-label="Animated van follows the route from a new request to a confirmed cleaning job">
-   <svg class="route-map" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid meet">
-    <defs><path id="route-path" d="M 105 342 C 210 110 358 126 500 262 C 650 412 792 108 914 177"/><mask id="path-mask" maskUnits="userSpaceOnUse"><path id="reveal-stroke" d="M 105 342 C 210 110 358 126 500 262 C 650 412 792 108 914 177" fill="none" stroke="white" stroke-width="9" stroke-linecap="round"/></mask></defs>
-    <path d="M 105 342 C 210 110 358 126 500 262 C 650 412 792 108 914 177" fill="none" stroke="#d6e4e9" stroke-width="3" stroke-dasharray="1 9" stroke-linecap="round"/>
-    <path d="M 105 342 C 210 110 358 126 500 262 C 650 412 792 108 914 177" fill="none" stroke="#62a8c0" stroke-width="4" stroke-dasharray="1 9" stroke-linecap="round" mask="url(#path-mask)"/>
-    <path id="travelled" d="M 105 342 C 210 110 358 126 500 262 C 650 412 792 108 914 177" fill="none" stroke="#91cee3" stroke-width="5" stroke-linecap="round"/>
-    <circle cx="105" cy="342" r="24" fill="#dceef4"/><circle cx="105" cy="342" r="10" class="route-node-inner"/>
-    <text x="74" y="396" class="route-marker-text">REQUEST</text>
-    <g id="destination"><circle cx="914" cy="177" r="30" fill="#e2f3f8"/><circle cx="914" cy="177" r="15" class="route-node"/><circle cx="914" cy="177" r="5" class="route-node-inner"/></g>
-    <text x="864" y="234" class="route-marker-text">BOOKED</text>
-    <g id="van" transform="translate(105,342)">
-     <rect x="-28" y="-15" width="50" height="29" rx="8" fill="#397b98"/>
-     <path d="M 17 -10 L 30 -10 L 38 2 L 38 13 L 17 13 Z" fill="#397b98"/>
-     <path d="M 22 -7 L 29 -7 L 34 1 L 22 1 Z" fill="#e4f4f9"/>
-     <circle cx="-14" cy="15" r="6" fill="#191919"/><circle cx="26" cy="15" r="6" fill="#191919"/>
-     <circle cx="-14" cy="15" r="2" fill="#fff"/><circle cx="26" cy="15" r="2" fill="#fff"/>
-     <path d="M -17 -6 L 9 -6" stroke="#e0f5ff" stroke-width="3" stroke-linecap="round"/>
-    </g>
-   </svg>
-  </div>
-  <div class="route-chip" id="arrival-chip"><span class="check">✓</span> Booking confirmed</div>
-  <div class="scene-number">CHAPTER 02 / 03</div><div class="scene-progress" aria-hidden="true"><i></i><i class="on"></i><i></i></div>
- </div>
-</section>
-<section class="chapter chapter-city" id="grow" data-scene="city">
- <div class="chapter-inner">
-  <div class="copy">
-   <div class="eyebrow">03 / More clarity, room to grow</div>
-   <h2 class="headline">Built for<br><em>what's next.</em></h2>
-   <p class="lede">As the jobs add up, stay on top of every client, estimate, invoice, and follow-up—without a complicated system.</p>
-   <div class="kicker"><span class="line"></span> Less admin. More room to grow.</div>
-  </div>
-  <div class="scene-number">CHAPTER 03 / 03</div><div class="scene-progress" aria-hidden="true"><i></i><i></i><i class="on"></i></div>
- </div>
-</section>
-<section class="chapter scene-end" id="ready" data-scene="end">
- <div class="chapter-inner">
-  <div class="end-motif" aria-hidden="true"></div>
-  <div class="end-copy">
-   <div class="eyebrow">The Launch Era / Cleaning App + Booking Page</div>
-   <h2>Your business.<br>Less chaos.<br><span style="color:#a9d9eb">More control.</span></h2>
-   <p class="lede">Bookings, clients, quotes, invoices, jobs, and follow-ups—organized in one simple place.</p>
-   <div class="actions"><a class="button button-main" href="https://thelaunchera.com" rel="noopener">Explore The Launch Era ↗</a><button class="button button-outline" id="replay" type="button">↻ Replay the story</button></div>
-  </div>
-  <div class="footerbar"><span>THE LAUNCH ERA © 2026</span><span>Made for cleaning business owners</span></div>
- </div>
-</section>
-</main>
-<script type="module">
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
-const chapters = Array.from(document.querySelectorAll('.chapter'));
-const canvas = document.getElementById('world');
-const pinLabel = document.getElementById('pin-label');
-const progressEl = document.getElementById('top-progress');
-const motionButton = document.getElementById('motion-toggle');
-const reducedQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-let reduced = reducedQuery.matches;
-let paused = false;
-let scene = null;
-let renderer = null;
-let camera = null;
-let globe = null;
-let city = null;
-let cityMesh = null;
-let cityRing = null;
-let cityBuildings = [];
-let marker = null;
-let markerRings = [];
-let routeTimeline = null;
-let routeLength = 0;
-let travelPath = document.getElementById('travelled');
-let revealPath = document.getElementById('reveal-stroke');
-let routePath = document.getElementById('route-path');
-let van = document.getElementById('van');
-let lastActive = -1;
-let currentProgress = [0,0,0,0];
-let smoothGlobe = 0, smoothCity = 0, smoothRoute = 0;
-let lastTime = 0;
-const clamp = (x,min=0,max=1) => Math.min(max,Math.max(min,x));
-const ease = t => t*t*(3-2*t);
-const mobile = () => innerWidth <= 800;
-const noiseHash = (x,y,z) => { const v=Math.sin(x*127.1+y*311.7+z*74.7)*43758.5453; return v-Math.floor(v); };
-function noise3(x,y,z) {
- const ix=Math.floor(x),iy=Math.floor(y),iz=Math.floor(z), fx=x-ix,fy=y-iy,fz=z-iz;
- const u=ease(fx),v=ease(fy),w=ease(fz),lerp=(a,b,t)=>a+(b-a)*t;
- const a=lerp(noiseHash(ix,iy,iz),noiseHash(ix+1,iy,iz),u);
- const b=lerp(noiseHash(ix,iy+1,iz),noiseHash(ix+1,iy+1,iz),u);
- const c=lerp(noiseHash(ix,iy,iz+1),noiseHash(ix+1,iy,iz+1),u);
- const d=lerp(noiseHash(ix,iy+1,iz+1),noiseHash(ix+1,iy+1,iz+1),u);
- return lerp(lerp(a,b,v),lerp(c,d,v),w)*2-1;
-}
-function makeGlobe(){
- globe = new THREE.Group();
- const ocean = new THREE.Mesh(new THREE.SphereGeometry(1.28,64,48),new THREE.MeshPhysicalMaterial({color:'#e0f1f5',roughness:.23,metalness:.03,clearcoat:1,clearcoatRoughness:.15}));
- globe.add(ocean);
- const atmosphere = new THREE.Mesh(new THREE.SphereGeometry(1.345,48,32),new THREE.MeshBasicMaterial({color:'#a5d6ea',side:THREE.BackSide,transparent:true,opacity:.19,depthWrite:false}));
- globe.add(atmosphere);
- const positions=[],colors=[]; const a=Math.PI*(3-Math.sqrt(5)),lat=.27,lon=.14;
- const markerNormal = new THREE.Vector3(Math.cos(lat)*Math.sin(lon),Math.sin(lat),Math.cos(lat)*Math.cos(lon));
- for(let i=0;i<20000;i++){
-   const y=1-(i/(19999))*2, r=Math.sqrt(1-y*y), theta=i*a;
-   const x=Math.cos(theta)*r,z=Math.sin(theta)*r;
-   const n=noise3(x*2.2+3,y*2.2,z*2.2)+.47*noise3(x*5.3,y*5.3+7,z*5.3);
-   if(n>.045 || (x*markerNormal.x+y*markerNormal.y+z*markerNormal.z)>.9801){
-      positions.push(x*1.298,y*1.298,z*1.298);
-      const k=clamp((n+.2)/.9);colors.push(.31+.22*k,.59+.22*k,.68+.24*k);
-   }
- }
- const geom = new THREE.BufferGeometry();geom.setAttribute('position',new THREE.Float32BufferAttribute(positions,3));geom.setAttribute('color',new THREE.Float32BufferAttribute(colors,3));
- const data=new Uint8Array(32*32*4);for(let y=0;y<32;y++)for(let x=0;x<32;x++){const d=Math.hypot(x-15.5,y-15.5);const i=(y*32+x)*4;data[i]=data[i+1]=data[i+2]=255;data[i+3]=d<14?255:0;}
- const tex=new THREE.DataTexture(data,32,32);tex.needsUpdate=true;
- const dots=new THREE.Points(geom,new THREE.PointsMaterial({vertexColors:true,transparent:true,alphaTest:.35,size:.023,map:tex,depthWrite:false,sizeAttenuation:true}));
- globe.add(dots);
- marker=new THREE.Group();marker.position.copy(markerNormal.clone().multiplyScalar(1.32));marker.quaternion.setFromUnitVectors(new THREE.Vector3(0,0,1),markerNormal);globe.add(marker);
- const stem=new THREE.Mesh(new THREE.CylinderGeometry(.009,.009,.17,10),new THREE.MeshBasicMaterial({color:'#397b98'}));stem.rotation.x=Math.PI/2;stem.position.z=.085;marker.add(stem);
- const bead=new THREE.Mesh(new THREE.SphereGeometry(.061,16,12),new THREE.MeshBasicMaterial({color:'#397b98'}));bead.position.z=.19;marker.add(bead);
- for(let i=0;i<2;i++){const ring=new THREE.Mesh(new THREE.RingGeometry(.1,.11,48),new THREE.MeshBasicMaterial({color:'#5ea9c8',side:THREE.DoubleSide,transparent:true,opacity:.48,depthWrite:false}));ring.position.z=.012;marker.add(ring);markerRings.push(ring);}
- globe.position.set(mobile()?0:1.36,mobile()?-.72:-.08,0);
- scene.add(globe);
-}
-function makeCity(){
- city=new THREE.Group();const geo=new THREE.BoxGeometry(1,1,1);geo.translate(0,.5,0);
- const mat=new THREE.MeshStandardMaterial({color:'#fff',roughness:.56,metalness:.02});
- cityMesh=new THREE.InstancedMesh(geo,mat,121);cityMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
- const dummy=new THREE.Object3D();let i=0;
- for(let z=-5;z<=5;z++)for(let x=-5;x<=5;x++){
-   const d=Math.hypot(x,z),seed=noiseHash(x+12,z+14,4),w=.62+seed*.16,h=.34+Math.max(0,5.7-d)*(.23+seed*.32);
-   const tower=x===0&&z===0;const height=tower?5:h;
-   cityBuildings.push({x:x*.87,z:z*.87,d,height,width:w,index:i});
-   dummy.position.set(x*.87,0,z*.87);dummy.scale.set(w,0.001,w);dummy.updateMatrix();cityMesh.setMatrixAt(i,dummy.matrix);
-   const color=new THREE.Color(tower?'#4a94b5':(seed>.91?'#8dc8e1':seed>.45?'#e4eff3':'#ffffff'));cityMesh.setColorAt(i,color);i++;
- }
- cityMesh.instanceMatrix.needsUpdate=true;city.add(cityMesh);
- const ground=new THREE.Mesh(new THREE.PlaneGeometry(13,13),new THREE.MeshStandardMaterial({color:'#eaf4f5',roughness:1,transparent:true,opacity:.72}));ground.rotation.x=-Math.PI/2;ground.position.y=-.035;city.add(ground);
- const grid=new THREE.GridHelper(11,.87,'#b4d4df','#cfe2e7');grid.position.y=.008;grid.material.transparent=true;grid.material.opacity=.4;city.add(grid);
- cityRing=new THREE.Mesh(new THREE.RingGeometry(.97,1,96),new THREE.MeshBasicMaterial({color:'#5baccb',transparent:true,opacity:0,side:THREE.DoubleSide,depthWrite:false}));cityRing.rotation.x=-Math.PI/2;cityRing.position.y=.045;city.add(cityRing);
- city.position.set(mobile()?0:1.6,mobile()?-1.65:-2.55,0);
- scene.add(city);
-}
-function setup3d(){
- try{
- scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(35,innerWidth/innerHeight,.1,100);
- renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:'low-power'});
- renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.7));renderer.setSize(innerWidth,innerHeight);
- renderer.outputColorSpace=THREE.SRGBColorSpace;
- scene.add(new THREE.HemisphereLight('#ffffff','#92b2be',2.5));
- const sunlight=new THREE.DirectionalLight('#ffffff',3);sunlight.position.set(-3,7,8);scene.add(sunlight);
- makeGlobe();makeCity();
- }catch(err){console.warn('3D fallback active',err);canvas.style.display='none';const fb=document.createElement('div');fb.className='fallback';fb.textContent='A better way to run your cleaning business';document.querySelector('#begin .copy').appendChild(fb);}
-}
-function setupRoute(){
- routeLength=travelPath.getTotalLength();travelPath.style.strokeDasharray=String(routeLength);travelPath.style.strokeDashoffset=String(routeLength);
- revealPath.style.strokeDasharray=String(routeLength);revealPath.style.strokeDashoffset=String(routeLength);
- const gsap=window.gsap;
- if(gsap&&window.MotionPathPlugin&&window.DrawSVGPlugin){
-  gsap.registerPlugin(window.MotionPathPlugin,window.DrawSVGPlugin);
-  routeTimeline=gsap.timeline({paused:true});
-  routeTimeline.fromTo(revealPath,{drawSVG:'0% 0%'},{drawSVG:'0% 100%',duration:2.4,ease:'power2.out'},0);
-  routeTimeline.fromTo(travelPath,{drawSVG:'0% 0%'},{drawSVG:'0% 100%',duration:3.4,ease:'power1.inOut'},0);
-  routeTimeline.to(van,{motionPath:{path:routePath,align:routePath,alignOrigin:[.5,.5],autoRotate:true},duration:3.4,ease:'power1.inOut'},0);
-  routeTimeline.fromTo('#destination',{scale:1,transformOrigin:'914px 177px'},{scale:1.2,duration:.16,yoyo:true,repeat:1,ease:'power1.out'},3.38);
-  routeTimeline.fromTo('#arrival-chip',{autoAlpha:0,y:12},{autoAlpha:1,y:0,duration:.35},3.48);
- }
-}
-function routeFallback(p){
- const t=ease(p),l=routeLength*t,pt=routePath.getPointAtLength(l);
- const next=routePath.getPointAtLength(Math.min(routeLength,l+2));
- const deg=Math.atan2(next.y-pt.y,next.x-pt.x)*180/Math.PI;
- travelPath.style.strokeDashoffset=String(routeLength*(1-t));
- revealPath.style.strokeDashoffset=String(routeLength*(1-clamp(t*1.35)));
- van.setAttribute('transform','translate('+pt.x+','+pt.y+') rotate('+deg+')');
- document.getElementById('arrival-chip').style.opacity=p>.87?'1':'0';
-}
-function calculate(){
- for(let i=0;i<chapters.length;i++){
-  const r=chapters[i].getBoundingClientRect(),travel=Math.max(1,r.height-innerHeight);
-  currentProgress[i]=clamp(-r.top/travel);
- }
- let active=0,best=Infinity;
- for(let i=0;i<chapters.length;i++){
-   const r=chapters[i].getBoundingClientRect();
-   const dist=Math.abs((r.top+r.bottom)/2-innerHeight/2);
-   if(dist<best){best=dist;active=i;}
- }
- // Center-distance is reliable for long sticky cinematic sections.
- const scrollPct=clamp(scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight));
- progressEl.style.width=(scrollPct*100).toFixed(2)+'%';
- if(active!==lastActive){
-  lastActive=active;chapters.forEach((el,i)=>el.classList.toggle('is-current',i===active));
-  document.getElementById('world').style.opacity=(active===0||active===2)?'1':'0';
- }
- return active;
-}
-const dummy=new THREE.Object3D(), tempPoint=new THREE.Vector3();
-function drawCity(p){
- const front=p*8.1;
- for(const b of cityBuildings){
-  const t=clamp((front-b.d+.55)/1.28);
-  const back=1+2.70158*Math.pow(t-1,3)+1.70158*Math.pow(t-1,2);
-  dummy.position.set(b.x,0,b.z);dummy.scale.set(b.width,Math.max(.001,b.height*back),b.width);dummy.updateMatrix();cityMesh.setMatrixAt(b.index,dummy.matrix);
- }
- cityMesh.instanceMatrix.needsUpdate=true;
- cityRing.scale.setScalar(Math.max(.05,front));cityRing.material.opacity=front>6.5?Math.max(0,.65-(front-6.5)*.5):.58;
-}
-function animate(ms){
- if(document.hidden){requestAnimationFrame(animate);return;}
- const dt=Math.min((ms-lastTime)/1000||.016,.05);lastTime=ms;
- const active=calculate();
- const easing=paused?1:clamp(dt*5.2,.025,1);
- smoothGlobe+=(currentProgress[0]-smoothGlobe)*easing;
- smoothRoute+=(currentProgress[1]-smoothRoute)*easing;
- smoothCity+=(currentProgress[2]-smoothCity)*easing;
- const g=reduced?1:smoothGlobe, c=reduced?1:smoothCity, r=reduced?1:smoothRoute;
- if(routeTimeline){routeTimeline.progress(r)}else{routeFallback(r);}
- if(renderer&&scene){
-  if(active===0){
-   globe.visible=true;city.visible=false;
-   globe.position.set(mobile()?0:1.36,mobile()?-.83:-.08,0);
-   globe.rotation.set(.08,2.4*(1-ease(g))+.14,0);
-   camera.position.set(0,0,(mobile()?7.7:5.6)-(mobile()?1.4:2.35)*ease(g));
-   camera.lookAt(0,0,0);
-   const pulse=reduced?1:(ms*.0006)%1;
-   for(let i=0;i<markerRings.length;i++){const t=(pulse+i*.5)%1;markerRings[i].scale.setScalar(1+t*3);markerRings[i].material.opacity=(1-t)*.55;}
-   marker.getWorldPosition(tempPoint);tempPoint.project(camera);
-   pinLabel.style.left=((tempPoint.x*.5+.5)*innerWidth+12)+'px';
-   pinLabel.style.top=((-tempPoint.y*.5+.5)*innerHeight-28)+'px';
-   pinLabel.style.opacity=g>.67&&tempPoint.z<1?'1':'0';
-  } else if(active===2){
-   globe.visible=false;city.visible=true;pinLabel.style.opacity='0';
-   city.position.set(mobile()?0:1.6,mobile()?-1.6:-2.55,0);
-   drawCity(c);
-   const ang=.27+c*.42;
-   camera.position.set(Math.sin(ang)*(mobile()?14:11),mobile()?12:10,Math.cos(ang)*(mobile()?17:14));
-   camera.lookAt(0,mobile()?-1.05:-1.4,0);
-  }else{globe.visible=false;city.visible=false;pinLabel.style.opacity='0';}
-  if(active===0||active===2)renderer.render(scene,camera);
- }
- requestAnimationFrame(animate);
-}
-function handleResize(){
- if(!camera||!renderer)return;
- camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.7));
-}
-motionButton.addEventListener('click',()=>{paused=!paused;reduced=paused||reducedQuery.matches;motionButton.textContent=paused?'Resume motion':'Pause motion';});
-reducedQuery.addEventListener('change',()=>{reduced=paused||reducedQuery.matches;});
-document.getElementById('replay').addEventListener('click',()=>{window.scrollTo({top:0,behavior:reduced?'instant':'smooth'});});
-window.addEventListener('resize',handleResize,{passive:true});
-window.addEventListener('pagehide',()=>{if(routeTimeline)routeTimeline.kill();if(renderer){scene.traverse(obj=>{if(obj.geometry)obj.geometry.dispose();if(obj.material){const all=Array.isArray(obj.material)?obj.material:[obj.material];all.forEach(m=>{if(m.map)m.map.dispose();m.dispose();});}});renderer.dispose();}});
-try{setupRoute()}catch(err){console.warn('Route fallback active',err);}
-try{setup3d()}catch(err){console.warn('3D initialization error',err);}
-requestAnimationFrame(animate);
-</script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#FAF8F3" />
+    <meta
+      name="description"
+      content="A cinematic tour of The Launch Era: from new cleaning requests to an organized business."
+    />
+    <title>The Launch Era — A Better Way to Run Your Cleaning Business</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ivory: #faf8f3;
+        --ink: #191919;
+        --blue: #a9d9eb;
+        --deep: #397b98;
+        --muted: #69777b;
+        --hair: rgba(25, 25, 25, 0.12);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--ivory);
+        color: var(--ink);
+        font-family: Futura, 'Avenir Next', Arial, sans-serif;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+      }
+      button,
+      a {
+        font: inherit;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button {
+        cursor: pointer;
+      }
+      button:focus-visible,
+      a:focus-visible {
+        outline: 3px solid #397b98;
+        outline-offset: 4px;
+      }
+      #top-progress {
+        position: fixed;
+        z-index: 60;
+        top: 0;
+        left: 0;
+        height: 3px;
+        width: 0;
+        background: var(--deep);
+        transition: width 0.12s linear;
+      }
+      .topbar {
+        position: fixed;
+        z-index: 50;
+        inset: 3px 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 21px clamp(20px, 5vw, 82px);
+        pointer-events: none;
+      }
+      .topbar > * {
+        pointer-events: auto;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 11px;
+        font-family: Prompt, sans-serif;
+        font-weight: 800;
+        font-size: 13px;
+        letter-spacing: 0.005em;
+      }
+      .brandmark {
+        height: 31px;
+        width: 31px;
+        display: grid;
+        place-items: center;
+        border-radius: 9px;
+        background: var(--ink);
+        color: var(--ivory);
+        font-size: 15px;
+      }
+      .nav-right {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+      }
+      .nav-pill {
+        border: 1px solid rgba(25, 25, 25, 0.12);
+        border-radius: 50px;
+        background: rgba(250, 248, 243, 0.85);
+        backdrop-filter: blur(12px);
+        padding: 10px 16px;
+        font-size: 12px;
+        font-weight: 650;
+      }
+      .nav-pill:hover {
+        background: #fff;
+      }
+      .nav-link {
+        background: var(--blue);
+        border: 1px solid transparent;
+      }
+      .chapter {
+        height: 205svh;
+        position: relative;
+        isolation: isolate;
+      }
+      .chapter-inner {
+        position: sticky;
+        top: 0;
+        min-height: 100svh;
+        height: 100svh;
+        display: flex;
+        align-items: center;
+        padding: 120px clamp(22px, 9vw, 150px) 60px;
+        overflow: hidden;
+      }
+      #world {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        opacity: 1;
+        transition: opacity 0.65s ease;
+      }
+      .chapter-inner:before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background:
+          radial-gradient(
+            ellipse at 74% 42%,
+            rgba(169, 217, 235, 0.24),
+            transparent 45%
+          ),
+          radial-gradient(
+            ellipse at 25% 95%,
+            rgba(242, 216, 91, 0.06),
+            transparent 55%
+          );
+        pointer-events: none;
+      }
+      .copy {
+        position: relative;
+        z-index: 5;
+        width: min(45vw, 650px);
+        max-width: 100%;
+        pointer-events: none;
+      }
+      .copy a,
+      .copy button {
+        pointer-events: auto;
+      }
+      .eyebrow {
+        font-family: Prompt, sans-serif;
+        font-size: 12px;
+        font-weight: 650;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        color: #446f81;
+        margin-bottom: 25px;
+      }
+      .eyebrow:before {
+        content: '';
+        width: 26px;
+        height: 2px;
+        background: #7eb5cd;
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+      h1,
+      h2 {
+        font-family: Prompt, sans-serif;
+        letter-spacing: -0.065em;
+        line-height: 1.05;
+        font-weight: 700;
+      }
+      h1 {
+        font-size: clamp(45px, 6.7vw, 108px);
+      }
+      h2 {
+        font-size: clamp(44px, 5.8vw, 91px);
+      }
+      .headline em {
+        font-style: normal;
+        color: #4c99b5;
+      }
+      .lede {
+        font-size: clamp(15px, 1.26vw, 20px);
+        line-height: 1.75;
+        color: #5d676a;
+        max-width: 475px;
+        margin-top: 26px;
+      }
+      .kicker {
+        margin-top: 30px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        font-size: 12px;
+        color: #617176;
+        letter-spacing: 0.02em;
+      }
+      .kicker .line {
+        height: 1px;
+        width: 33px;
+        background: #84979f;
+      }
+      .scene-number {
+        position: absolute;
+        bottom: 46px;
+        left: clamp(22px, 9vw, 150px);
+        z-index: 6;
+        color: #85949b;
+        font-family: Prompt, sans-serif;
+        font-size: 12px;
+        letter-spacing: 0.2em;
+      }
+      .scene-progress {
+        position: absolute;
+        bottom: 49px;
+        right: clamp(22px, 6vw, 80px);
+        z-index: 6;
+        display: flex;
+        gap: 8px;
+      }
+      .scene-progress i {
+        width: 26px;
+        height: 3px;
+        border-radius: 8px;
+        background: #cbd8dc;
+      }
+      .scene-progress i.on {
+        background: #478ca8;
+      }
+      .scroll-note {
+        position: absolute;
+        bottom: 44px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 5;
+        letter-spacing: 0.14em;
+        font-size: 10px;
+        text-transform: uppercase;
+        color: #6b8086;
+        white-space: nowrap;
+      }
+      .scroll-note:after {
+        content: '↓';
+        margin-left: 9px;
+        font-size: 16px;
+      }
+      #pin-label {
+        position: fixed;
+        z-index: 11;
+        padding: 10px 15px;
+        background: white;
+        border: 1px solid #c9e2eb;
+        box-shadow: 0 14px 40px rgba(63, 109, 134, 0.13);
+        border-radius: 30px;
+        font-size: 12px;
+        font-family: Prompt, sans-serif;
+        font-weight: 600;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s ease;
+      }
+      #pin-label:before {
+        content: '';
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #3a93b9;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+      .chapter-route {
+        background: linear-gradient(165deg, #f3f9fb 4%, #faf8f3 70%);
+      }
+      .chapter-route .copy {
+        align-self: center;
+      }
+      .route-art {
+        position: absolute;
+        z-index: 3;
+        right: 0;
+        top: 18%;
+        height: 75%;
+        width: min(64vw, 1000px);
+        overflow: visible;
+        filter: drop-shadow(0px 15px 36px rgba(72, 117, 141, 0.06));
+      }
+      .route-map {
+        height: 100%;
+        width: 100%;
+        overflow: visible;
+      }
+      .route-node {
+        fill: #fff;
+        stroke: #65afcb;
+        stroke-width: 4;
+      }
+      .route-node-inner {
+        fill: #65afcb;
+      }
+      .route-marker-text {
+        font:
+          600 14px Prompt,
+          Arial,
+          sans-serif;
+        fill: #397b98;
+      }
+      .route-chip {
+        position: absolute;
+        z-index: 7;
+        left: 55%;
+        top: 15%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #fff;
+        border: 1px solid #e0ebee;
+        border-radius: 16px;
+        padding: 13px 19px;
+        box-shadow: 0 16px 50px rgba(82, 130, 145, 0.13);
+        font-size: 12px;
+        font-weight: 700;
+        transform: translateY(12px);
+        opacity: 0;
+      }
+      .route-chip .check {
+        height: 24px;
+        width: 24px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: #d8f0e8;
+        color: #378069;
+      }
+      .route-stats {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 34px;
+      }
+      .route-stats span {
+        padding: 10px 13px;
+        border: 1px solid #d2e6ed;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.74);
+        font-size: 12px;
+        color: #426777;
+      }
+      .chapter-city {
+        background: radial-gradient(circle at 74% 45%, #e9f4f8 0, #faf8f3 48%);
+      }
+      .chapter-city .copy {
+        align-self: center;
+      }
+      .scene-end {
+        height: 100svh;
+        background: var(--ink);
+        color: #faf8f3;
+      }
+      .scene-end .chapter-inner {
+        background: radial-gradient(circle at 75% 45%, #294453 0%, #191919 54%);
+        align-items: center;
+      }
+      .end-copy {
+        width: min(900px, 100%);
+        z-index: 10;
+      }
+      .end-copy h2 {
+        font-size: clamp(49px, 8.5vw, 130px);
+      }
+      .end-copy .lede {
+        color: #cbd8dc;
+        max-width: 640px;
+      }
+      .end-copy .eyebrow {
+        color: #b7d9e5;
+      }
+      .actions {
+        margin-top: 33px;
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        padding: 15px 23px;
+        font-size: 14px;
+        font-weight: 700;
+        min-height: 50px;
+        transition:
+          transform 0.25s,
+          background 0.25s;
+      }
+      .button:hover {
+        transform: translateY(-3px);
+      }
+      .button-main {
+        background: #a9d9eb;
+        color: #191919;
+      }
+      .button-outline {
+        border: 1px solid rgba(250, 248, 243, 0.3);
+        color: #fff;
+        background: transparent;
+      }
+      .end-motif {
+        position: absolute;
+        right: -80px;
+        top: 12%;
+        width: min(52vw, 700px);
+        aspect-ratio: 1;
+        border: 1px solid rgba(169, 217, 235, 0.16);
+        border-radius: 50%;
+        box-shadow:
+          0 0 0 60px rgba(169, 217, 235, 0.035),
+          0 0 0 150px rgba(169, 217, 235, 0.028),
+          0 0 0 260px rgba(169, 217, 235, 0.018);
+      }
+      .footerbar {
+        position: absolute;
+        z-index: 11;
+        left: clamp(22px, 9vw, 150px);
+        right: clamp(22px, 9vw, 150px);
+        bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: #aec0c6;
+        font-size: 11px;
+        letter-spacing: 0.06em;
+      }
+      .copy,
+      .eyebrow,
+      .lede,
+      .kicker {
+        transition:
+          opacity 0.45s,
+          transform 0.45s;
+      }
+      .chapter:not(.is-current) .copy {
+        opacity: 1;
+      }
+      .motion-toggle {
+        border: none;
+        background: transparent;
+        color: #475d66;
+        text-decoration: underline;
+        font-size: 12px;
+        padding: 8px;
+      }
+      .fallback {
+        text-align: center;
+        display: none;
+        padding: 20px;
+        color: #4a7182;
+      }
+      @media (max-width: 800px) {
+        .topbar {
+          padding: 16px 20px;
+        }
+        .nav-pill {
+          padding: 9px 13px;
+        }
+        .brand {
+          font-size: 12px;
+        }
+        .chapter {
+          height: 170svh;
+        }
+        .chapter-inner {
+          padding: 112px 22px 70px;
+          display: block;
+        }
+        /* Readable top half: 3D stays behind, and fades in below the copy. */
+        .chapter-globe .chapter-inner::after,
+        .chapter-city .chapter-inner::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          height: 67%;
+          z-index: 2;
+          pointer-events: none;
+          background: linear-gradient(180deg, #faf8f3 0%, #faf8f3 53%, rgba(250,248,243,.97) 74%, rgba(250,248,243,0) 100%);
+        }
+        .chapter-globe .copy,
+        .chapter-city .copy {
+          position: relative;
+          z-index: 5;
+        }
+        .copy {
+          width: 100%;
+          max-width: 460px;
+        }
+        .eyebrow {
+          font-size: 10px;
+          margin-bottom: 18px;
+        }
+        h1,
+        h2 {
+          font-size: clamp(43px, 11.3vw, 65px);
+        }
+        .lede {
+          font-size: 14.5px;
+          line-height: 1.55;
+          max-width: 335px;
+          margin-top: 17px;
+        }
+        .kicker {
+          margin-top: 15px;
+        }
+        .scene-number {
+          left: 22px;
+          bottom: 24px;
+        }
+        .scene-progress {
+          right: 22px;
+          bottom: 27px;
+        }
+        .scroll-note {
+          bottom: 54px;
+          left: 22px;
+          transform: none;
+          font-size: 9px;
+        }
+        .route-art {
+          top: 37%;
+          right: -6%;
+          width: 105%;
+          height: 57%;
+        }
+        .route-chip {
+          left: auto;
+          right: 7%;
+          top: 55%;
+          font-size: 10px;
+          padding: 9px 12px;
+        }
+        .route-stats {
+          margin-top: 17px;
+        }
+        .route-stats span {
+          font-size: 10px;
+          padding: 7px 8px;
+        }
+        .scene-end .chapter-inner {
+          display: flex;
+          align-items: center;
+        }
+        .end-copy h2 {
+          font-size: clamp(45px, 12vw, 78px);
+        }
+        .end-motif {
+          top: 30%;
+          right: -50%;
+          width: 100vw;
+        }
+        .footerbar {
+          left: 22px;
+          right: 22px;
+          bottom: 22px;
+          font-size: 9px;
+        }
+        .motion-toggle {
+          display: none;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *:before,
+        *:after {
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"
+    ></script>
+  </head>
+  <body>
+    <div id="top-progress" aria-hidden="true"></div>
+    <canvas id="world" aria-hidden="true"></canvas>
+    <div id="pin-label" aria-hidden="true">Your next customer</div>
+    <header class="topbar">
+      <a class="brand" href="#begin" aria-label="The Launch Era, beginning"
+        ><span class="brandmark">T</span><span>THE LAUNCH ERA</span></a
+      >
+      <nav class="nav-right" aria-label="Main navigation">
+        <button id="motion-toggle" class="nav-pill motion-toggle" type="button">
+          Pause motion</button
+        ><a class="nav-pill nav-link" href="#ready">See the system ↗</a>
+      </nav>
+    </header>
+    <main>
+      <section
+        class="chapter chapter-globe is-current"
+        id="begin"
+        data-scene="globe"
+      >
+        <div class="chapter-inner">
+          <div class="copy">
+            <div class="eyebrow">01 / One connected business</div>
+            <h1 class="headline">
+              Every new lead.<br /><em>One clear</em> place.
+            </h1>
+            <p class="lede">
+              Your cleaning business moves fast. Your requests, clients, quotes,
+              and bookings shouldn't live in five different places.
+            </p>
+            <div class="kicker">
+              <span class="line"></span> Scroll to explore the journey
+            </div>
+          </div>
+          <div class="scene-number">CHAPTER 01 / 03</div>
+          <div class="scroll-note">Scroll to continue</div>
+          <div class="scene-progress" aria-hidden="true">
+            <i class="on"></i><i></i><i></i>
+          </div>
+        </div>
+      </section>
+      <section class="chapter chapter-route" id="journey" data-scene="route">
+        <div class="chapter-inner">
+          <div class="copy">
+            <div class="eyebrow">02 / From inquiry to confirmed</div>
+            <h2 class="headline">A smoother<br /><em>booking</em> journey.</h2>
+            <p class="lede">
+              A customer asks for a cleaning. You have the details you need to
+              quote, confirm, and keep the job moving.
+            </p>
+            <div class="route-stats">
+              <span>New request</span><span>Quote</span><span>Confirmed</span
+              ><span>Job complete</span>
+            </div>
+          </div>
+          <div
+            class="route-art"
+            role="img"
+            aria-label="Animated van follows the route from a new request to a confirmed cleaning job"
+          >
+            <svg
+              class="route-map"
+              viewBox="0 0 1000 520"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <defs>
+                <path
+                  id="route-path"
+                  d="M 105 342 C 210 110 358 126 500 262 C 650 412 792 108 914 177"
+                />
+                <mask id="path-mask" maskUnits="userSpaceOnUse">
+                  <path
+                    id="reveal-stroke"
+                    d="M 105 342 C 210 110 358 126 500 262 C 650 412 792 108 914 177"
+                    fill="none"
+                    stroke="white"
+                    stroke-width="9"
+                    stroke-linecap="round"
+                  />
+                </mask>
+              </defs>
+              <path
+                d="M 105 342 C 210 110 358 126 500 262 C 650 412 792 108 914 177"
+                fill="none"
+                stroke="#d6e4e9"
+                stroke-width="3"
+                stroke-dasharray="1 9"
+                stroke-linecap="round"
+              />
+              <path
+                d="M 105 342 C 210 110 358 126 500 262 C 650 412 792 108 914 177"
+                fill="none"
+                stroke="#62a8c0"
+                stroke-width="4"
+                stroke-dasharray="1 9"
+                stroke-linecap="round"
+                mask="url(#path-mask)"
+              />
+              <path
+                id="travelled"
+                d="M 105 342 C 210 110 358 126 500 262 C 650 412 792 108 914 177"
+                fill="none"
+                stroke="#91cee3"
+                stroke-width="5"
+                stroke-linecap="round"
+              />
+              <circle cx="105" cy="342" r="24" fill="#dceef4" />
+              <circle cx="105" cy="342" r="10" class="route-node-inner" />
+              <text x="74" y="396" class="route-marker-text">REQUEST</text>
+              <g id="destination">
+                <circle cx="914" cy="177" r="30" fill="#e2f3f8" />
+                <circle cx="914" cy="177" r="15" class="route-node" />
+                <circle cx="914" cy="177" r="5" class="route-node-inner" />
+              </g>
+              <text x="864" y="234" class="route-marker-text">BOOKED</text>
+              <g id="van" transform="translate(105,342)">
+                <rect
+                  x="-28"
+                  y="-15"
+                  width="50"
+                  height="29"
+                  rx="8"
+                  fill="#397b98"
+                />
+                <path
+                  d="M 17 -10 L 30 -10 L 38 2 L 38 13 L 17 13 Z"
+                  fill="#397b98"
+                />
+                <path d="M 22 -7 L 29 -7 L 34 1 L 22 1 Z" fill="#e4f4f9" />
+                <circle cx="-14" cy="15" r="6" fill="#191919" />
+                <circle cx="26" cy="15" r="6" fill="#191919" />
+                <circle cx="-14" cy="15" r="2" fill="#fff" />
+                <circle cx="26" cy="15" r="2" fill="#fff" />
+                <path
+                  d="M -17 -6 L 9 -6"
+                  stroke="#e0f5ff"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                />
+              </g>
+            </svg>
+          </div>
+          <div class="route-chip" id="arrival-chip">
+            <span class="check">✓</span> Booking confirmed
+          </div>
+          <div class="scene-number">CHAPTER 02 / 03</div>
+          <div class="scene-progress" aria-hidden="true">
+            <i></i><i class="on"></i><i></i>
+          </div>
+        </div>
+      </section>
+      <section class="chapter chapter-city" id="grow" data-scene="city">
+        <div class="chapter-inner">
+          <div class="copy">
+            <div class="eyebrow">03 / More clarity, room to grow</div>
+            <h2 class="headline">Built for<br /><em>what's next.</em></h2>
+            <p class="lede">
+              As the jobs add up, stay on top of every client, estimate,
+              invoice, and follow-up—without a complicated system.
+            </p>
+            <div class="kicker">
+              <span class="line"></span> Less admin. More room to grow.
+            </div>
+          </div>
+          <div class="scene-number">CHAPTER 03 / 03</div>
+          <div class="scene-progress" aria-hidden="true">
+            <i></i><i></i><i class="on"></i>
+          </div>
+        </div>
+      </section>
+      <section class="chapter scene-end" id="ready" data-scene="end">
+        <div class="chapter-inner">
+          <div class="end-motif" aria-hidden="true"></div>
+          <div class="end-copy">
+            <div class="eyebrow">
+              The Launch Era / Cleaning App + Booking Page
+            </div>
+            <h2>
+              Your business.<br />Less chaos.<br /><span style="color: #a9d9eb"
+                >More control.</span
+              >
+            </h2>
+            <p class="lede">
+              Bookings, clients, quotes, invoices, jobs, and
+              follow-ups—organized in one simple place.
+            </p>
+            <div class="actions">
+              <a
+                class="button button-main"
+                href="https://thelaunchera.com"
+                rel="noopener"
+                >Explore The Launch Era ↗</a
+              ><button class="button button-outline" id="replay" type="button">
+                ↻ Replay the story
+              </button>
+            </div>
+          </div>
+          <div class="footerbar">
+            <span>THE LAUNCH ERA © 2026</span
+            ><span>Made for cleaning business owners</span>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script type="module">
+      import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
+      const chapters = Array.from(document.querySelectorAll('.chapter'));
+      const canvas = document.getElementById('world');
+      const globeStage = document.querySelector('#begin .chapter-inner');
+      const cityStage = document.querySelector('#grow .chapter-inner');
+      globeStage.appendChild(canvas);
+      const pinLabel = document.getElementById('pin-label');
+      const progressEl = document.getElementById('top-progress');
+      const motionButton = document.getElementById('motion-toggle');
+      const reducedQuery = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+      );
+      let reduced = reducedQuery.matches;
+      let paused = false;
+      let scene = null;
+      let renderer = null;
+      let camera = null;
+      let globe = null;
+      let city = null;
+      let cityMesh = null;
+      let cityRing = null;
+      let cityBuildings = [];
+      let marker = null;
+      let markerRings = [];
+      let routeTimeline = null;
+      let routeLength = 0;
+      let travelPath = document.getElementById('travelled');
+      let revealPath = document.getElementById('reveal-stroke');
+      let routePath = document.getElementById('route-path');
+      let van = document.getElementById('van');
+      let lastActive = -1;
+      let currentProgress = [0, 0, 0, 0];
+      let smoothGlobe = 0,
+        smoothCity = 0,
+        smoothRoute = 0;
+      let lastTime = 0;
+      const clamp = (x, min = 0, max = 1) => Math.min(max, Math.max(min, x));
+      const ease = t => t * t * (3 - 2 * t);
+      const mobile = () => innerWidth <= 800;
+      const noiseHash = (x, y, z) => {
+        const v = Math.sin(x * 127.1 + y * 311.7 + z * 74.7) * 43758.5453;
+        return v - Math.floor(v);
+      };
+      function noise3(x, y, z) {
+        const ix = Math.floor(x),
+          iy = Math.floor(y),
+          iz = Math.floor(z),
+          fx = x - ix,
+          fy = y - iy,
+          fz = z - iz;
+        const u = ease(fx),
+          v = ease(fy),
+          w = ease(fz),
+          lerp = (a, b, t) => a + (b - a) * t;
+        const a = lerp(noiseHash(ix, iy, iz), noiseHash(ix + 1, iy, iz), u);
+        const b = lerp(
+          noiseHash(ix, iy + 1, iz),
+          noiseHash(ix + 1, iy + 1, iz),
+          u
+        );
+        const c = lerp(
+          noiseHash(ix, iy, iz + 1),
+          noiseHash(ix + 1, iy, iz + 1),
+          u
+        );
+        const d = lerp(
+          noiseHash(ix, iy + 1, iz + 1),
+          noiseHash(ix + 1, iy + 1, iz + 1),
+          u
+        );
+        return lerp(lerp(a, b, v), lerp(c, d, v), w) * 2 - 1;
+      }
+      function makeGlobe() {
+        globe = new THREE.Group();
+        const ocean = new THREE.Mesh(
+          new THREE.SphereGeometry(1.28, 64, 48),
+          new THREE.MeshPhysicalMaterial({
+            color: '#e0f1f5',
+            roughness: 0.23,
+            metalness: 0.03,
+            clearcoat: 1,
+            clearcoatRoughness: 0.15,
+          })
+        );
+        globe.add(ocean);
+        const atmosphere = new THREE.Mesh(
+          new THREE.SphereGeometry(1.345, 48, 32),
+          new THREE.MeshBasicMaterial({
+            color: '#a5d6ea',
+            side: THREE.BackSide,
+            transparent: true,
+            opacity: 0.19,
+            depthWrite: false,
+          })
+        );
+        globe.add(atmosphere);
+        const positions = [],
+          colors = [];
+        const a = Math.PI * (3 - Math.sqrt(5)),
+          lat = 0.27,
+          lon = 0.14;
+        const markerNormal = new THREE.Vector3(
+          Math.cos(lat) * Math.sin(lon),
+          Math.sin(lat),
+          Math.cos(lat) * Math.cos(lon)
+        );
+        for (let i = 0; i < 20000; i++) {
+          const y = 1 - (i / 19999) * 2,
+            r = Math.sqrt(1 - y * y),
+            theta = i * a;
+          const x = Math.cos(theta) * r,
+            z = Math.sin(theta) * r;
+          const n =
+            noise3(x * 2.2 + 3, y * 2.2, z * 2.2) +
+            0.47 * noise3(x * 5.3, y * 5.3 + 7, z * 5.3);
+          if (
+            n > 0.045 ||
+            x * markerNormal.x + y * markerNormal.y + z * markerNormal.z >
+              0.9801
+          ) {
+            positions.push(x * 1.298, y * 1.298, z * 1.298);
+            const k = clamp((n + 0.2) / 0.9);
+            colors.push(0.31 + 0.22 * k, 0.59 + 0.22 * k, 0.68 + 0.24 * k);
+          }
+        }
+        const geom = new THREE.BufferGeometry();
+        geom.setAttribute(
+          'position',
+          new THREE.Float32BufferAttribute(positions, 3)
+        );
+        geom.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+        const data = new Uint8Array(32 * 32 * 4);
+        for (let y = 0; y < 32; y++)
+          for (let x = 0; x < 32; x++) {
+            const d = Math.hypot(x - 15.5, y - 15.5);
+            const i = (y * 32 + x) * 4;
+            data[i] = data[i + 1] = data[i + 2] = 255;
+            data[i + 3] = d < 14 ? 255 : 0;
+          }
+        const tex = new THREE.DataTexture(data, 32, 32);
+        tex.needsUpdate = true;
+        const dots = new THREE.Points(
+          geom,
+          new THREE.PointsMaterial({
+            vertexColors: true,
+            transparent: true,
+            alphaTest: 0.35,
+            size: 0.023,
+            map: tex,
+            depthWrite: false,
+            sizeAttenuation: true,
+          })
+        );
+        globe.add(dots);
+        marker = new THREE.Group();
+        marker.position.copy(markerNormal.clone().multiplyScalar(1.32));
+        marker.quaternion.setFromUnitVectors(
+          new THREE.Vector3(0, 0, 1),
+          markerNormal
+        );
+        globe.add(marker);
+        const stem = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.009, 0.009, 0.17, 10),
+          new THREE.MeshBasicMaterial({ color: '#397b98' })
+        );
+        stem.rotation.x = Math.PI / 2;
+        stem.position.z = 0.085;
+        marker.add(stem);
+        const bead = new THREE.Mesh(
+          new THREE.SphereGeometry(0.061, 16, 12),
+          new THREE.MeshBasicMaterial({ color: '#397b98' })
+        );
+        bead.position.z = 0.19;
+        marker.add(bead);
+        for (let i = 0; i < 2; i++) {
+          const ring = new THREE.Mesh(
+            new THREE.RingGeometry(0.1, 0.11, 48),
+            new THREE.MeshBasicMaterial({
+              color: '#5ea9c8',
+              side: THREE.DoubleSide,
+              transparent: true,
+              opacity: 0.48,
+              depthWrite: false,
+            })
+          );
+          ring.position.z = 0.012;
+          marker.add(ring);
+          markerRings.push(ring);
+        }
+        globe.position.set(mobile() ? 0 : 1.36, mobile() ? -1.65 : -0.08, 0);
+        scene.add(globe);
+      }
+      function makeCity() {
+        city = new THREE.Group();
+        const geo = new THREE.BoxGeometry(1, 1, 1);
+        geo.translate(0, 0.5, 0);
+        const mat = new THREE.MeshStandardMaterial({
+          color: '#fff',
+          roughness: 0.56,
+          metalness: 0.02,
+        });
+        cityMesh = new THREE.InstancedMesh(geo, mat, 121);
+        cityMesh.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+        const dummy = new THREE.Object3D();
+        let i = 0;
+        for (let z = -5; z <= 5; z++)
+          for (let x = -5; x <= 5; x++) {
+            const d = Math.hypot(x, z),
+              seed = noiseHash(x + 12, z + 14, 4),
+              w = 0.62 + seed * 0.16,
+              h = 0.34 + Math.max(0, 5.7 - d) * (0.23 + seed * 0.32);
+            const tower = x === 0 && z === 0;
+            const height = tower ? 5 : h;
+            cityBuildings.push({
+              x: x * 0.87,
+              z: z * 0.87,
+              d,
+              height,
+              width: w,
+              index: i,
+            });
+            dummy.position.set(x * 0.87, 0, z * 0.87);
+            dummy.scale.set(w, 0.001, w);
+            dummy.updateMatrix();
+            cityMesh.setMatrixAt(i, dummy.matrix);
+            const color = new THREE.Color(
+              tower
+                ? '#4a94b5'
+                : seed > 0.91
+                  ? '#8dc8e1'
+                  : seed > 0.45
+                    ? '#e4eff3'
+                    : '#ffffff'
+            );
+            cityMesh.setColorAt(i, color);
+            i++;
+          }
+        cityMesh.instanceMatrix.needsUpdate = true;
+        city.add(cityMesh);
+        const ground = new THREE.Mesh(
+          new THREE.PlaneGeometry(13, 13),
+          new THREE.MeshStandardMaterial({
+            color: '#eaf4f5',
+            roughness: 1,
+            transparent: true,
+            opacity: 0.72,
+          })
+        );
+        ground.rotation.x = -Math.PI / 2;
+        ground.position.y = -0.035;
+        city.add(ground);
+        const grid = new THREE.GridHelper(11, 0.87, '#b4d4df', '#cfe2e7');
+        grid.position.y = 0.008;
+        grid.material.transparent = true;
+        grid.material.opacity = 0.4;
+        city.add(grid);
+        cityRing = new THREE.Mesh(
+          new THREE.RingGeometry(0.97, 1, 96),
+          new THREE.MeshBasicMaterial({
+            color: '#5baccb',
+            transparent: true,
+            opacity: 0,
+            side: THREE.DoubleSide,
+            depthWrite: false,
+          })
+        );
+        cityRing.rotation.x = -Math.PI / 2;
+        cityRing.position.y = 0.045;
+        city.add(cityRing);
+        city.position.set(mobile() ? 0 : 1.6, mobile() ? -3.0 : -2.55, 0);
+        scene.add(city);
+      }
+      function setup3d() {
+        try {
+          scene = new THREE.Scene();
+          camera = new THREE.PerspectiveCamera(
+            35,
+            innerWidth / innerHeight,
+            0.1,
+            100
+          );
+          renderer = new THREE.WebGLRenderer({
+            canvas,
+            antialias: true,
+            alpha: true,
+            powerPreference: 'low-power',
+          });
+          renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.7));
+          renderer.setSize(innerWidth, innerHeight);
+          renderer.outputColorSpace = THREE.SRGBColorSpace;
+          scene.add(new THREE.HemisphereLight('#ffffff', '#92b2be', 2.5));
+          const sunlight = new THREE.DirectionalLight('#ffffff', 3);
+          sunlight.position.set(-3, 7, 8);
+          scene.add(sunlight);
+          makeGlobe();
+          makeCity();
+        } catch (err) {
+          console.warn('3D fallback active', err);
+          canvas.style.display = 'none';
+          const fb = document.createElement('div');
+          fb.className = 'fallback';
+          fb.textContent = 'A better way to run your cleaning business';
+          document.querySelector('#begin .copy').appendChild(fb);
+        }
+      }
+      function setupRoute() {
+        routeLength = travelPath.getTotalLength();
+        travelPath.style.strokeDasharray = String(routeLength);
+        travelPath.style.strokeDashoffset = String(routeLength);
+        revealPath.style.strokeDasharray = String(routeLength);
+        revealPath.style.strokeDashoffset = String(routeLength);
+        const gsap = window.gsap;
+        if (gsap && window.MotionPathPlugin && window.DrawSVGPlugin) {
+          gsap.registerPlugin(window.MotionPathPlugin, window.DrawSVGPlugin);
+          routeTimeline = gsap.timeline({ paused: true });
+          routeTimeline.fromTo(
+            revealPath,
+            { drawSVG: '0% 0%' },
+            { drawSVG: '0% 100%', duration: 2.4, ease: 'power2.out' },
+            0
+          );
+          routeTimeline.fromTo(
+            travelPath,
+            { drawSVG: '0% 0%' },
+            { drawSVG: '0% 100%', duration: 3.4, ease: 'power1.inOut' },
+            0
+          );
+          routeTimeline.to(
+            van,
+            {
+              motionPath: {
+                path: routePath,
+                align: routePath,
+                alignOrigin: [0.5, 0.5],
+                autoRotate: true,
+              },
+              duration: 3.4,
+              ease: 'power1.inOut',
+            },
+            0
+          );
+          routeTimeline.fromTo(
+            '#destination',
+            { scale: 1, transformOrigin: '914px 177px' },
+            {
+              scale: 1.2,
+              duration: 0.16,
+              yoyo: true,
+              repeat: 1,
+              ease: 'power1.out',
+            },
+            3.38
+          );
+          routeTimeline.fromTo(
+            '#arrival-chip',
+            { autoAlpha: 0, y: 12 },
+            { autoAlpha: 1, y: 0, duration: 0.35 },
+            3.48
+          );
+        }
+      }
+      function routeFallback(p) {
+        const t = ease(p),
+          l = routeLength * t,
+          pt = routePath.getPointAtLength(l);
+        const next = routePath.getPointAtLength(Math.min(routeLength, l + 2));
+        const deg = (Math.atan2(next.y - pt.y, next.x - pt.x) * 180) / Math.PI;
+        travelPath.style.strokeDashoffset = String(routeLength * (1 - t));
+        revealPath.style.strokeDashoffset = String(
+          routeLength * (1 - clamp(t * 1.35))
+        );
+        van.setAttribute(
+          'transform',
+          'translate(' + pt.x + ',' + pt.y + ') rotate(' + deg + ')'
+        );
+        document.getElementById('arrival-chip').style.opacity =
+          p > 0.87 ? '1' : '0';
+      }
+      function calculate() {
+        for (let i = 0; i < chapters.length; i++) {
+          const r = chapters[i].getBoundingClientRect(),
+            travel = Math.max(1, r.height - innerHeight);
+          currentProgress[i] = clamp(-r.top / travel);
+        }
+        let active = 0,
+          best = Infinity;
+        for (let i = 0; i < chapters.length; i++) {
+          const r = chapters[i].getBoundingClientRect();
+          const dist = Math.abs((r.top + r.bottom) / 2 - innerHeight / 2);
+          if (dist < best) {
+            best = dist;
+            active = i;
+          }
+        }
+        // Center-distance is reliable for long sticky cinematic sections.
+        const scrollPct = clamp(
+          scrollY /
+            Math.max(1, document.documentElement.scrollHeight - innerHeight)
+        );
+        progressEl.style.width = (scrollPct * 100).toFixed(2) + '%';
+        if (active !== lastActive) {
+          lastActive = active;
+          chapters.forEach((el, i) =>
+            el.classList.toggle('is-current', i === active)
+          );
+          // Parent the shared canvas to its scene so text remains above WebGL.
+          if (active === 0 && canvas.parentElement !== globeStage) globeStage.appendChild(canvas);
+          if (active === 2 && canvas.parentElement !== cityStage) cityStage.appendChild(canvas);
+          canvas.style.opacity = active === 0 || active === 2 ? '1' : '0';
+        }
+        return active;
+      }
+      const dummy = new THREE.Object3D(),
+        tempPoint = new THREE.Vector3();
+      function drawCity(p) {
+        const front = p * 8.1;
+        for (const b of cityBuildings) {
+          const t = clamp((front - b.d + 0.55) / 1.28);
+          const back =
+            1 + 2.70158 * Math.pow(t - 1, 3) + 1.70158 * Math.pow(t - 1, 2);
+          dummy.position.set(b.x, 0, b.z);
+          dummy.scale.set(b.width, Math.max(0.001, b.height * back), b.width);
+          dummy.updateMatrix();
+          cityMesh.setMatrixAt(b.index, dummy.matrix);
+        }
+        cityMesh.instanceMatrix.needsUpdate = true;
+        cityRing.scale.setScalar(Math.max(0.05, front));
+        cityRing.material.opacity =
+          front > 6.5 ? Math.max(0, 0.65 - (front - 6.5) * 0.5) : 0.58;
+      }
+      function animate(ms) {
+        if (document.hidden) {
+          requestAnimationFrame(animate);
+          return;
+        }
+        const dt = Math.min((ms - lastTime) / 1000 || 0.016, 0.05);
+        lastTime = ms;
+        const active = calculate();
+        const easing = paused ? 1 : clamp(dt * 5.2, 0.025, 1);
+        smoothGlobe += (currentProgress[0] - smoothGlobe) * easing;
+        smoothRoute += (currentProgress[1] - smoothRoute) * easing;
+        smoothCity += (currentProgress[2] - smoothCity) * easing;
+        const g = reduced ? 1 : smoothGlobe,
+          c = reduced ? 1 : smoothCity,
+          r = reduced ? 1 : smoothRoute;
+        if (routeTimeline) {
+          routeTimeline.progress(r);
+        } else {
+          routeFallback(r);
+        }
+        if (renderer && scene) {
+          if (active === 0) {
+            globe.visible = true;
+            city.visible = false;
+            globe.position.set(
+              mobile() ? 0 : 1.36,
+              mobile() ? -1.65 : -0.08,
+              0
+            );
+            globe.rotation.set(0.08, 2.4 * (1 - ease(g)) + 0.14, 0);
+            camera.position.set(
+              0,
+              0,
+              (mobile() ? 9.2 : 5.6) - (mobile() ? 1.3 : 2.35) * ease(g)
+            );
+            camera.lookAt(0, 0, 0);
+            const pulse = reduced ? 1 : (ms * 0.0006) % 1;
+            for (let i = 0; i < markerRings.length; i++) {
+              const t = (pulse + i * 0.5) % 1;
+              markerRings[i].scale.setScalar(1 + t * 3);
+              markerRings[i].material.opacity = (1 - t) * 0.55;
+            }
+            marker.getWorldPosition(tempPoint);
+            tempPoint.project(camera);
+            pinLabel.style.left =
+              (tempPoint.x * 0.5 + 0.5) * innerWidth + 12 + 'px';
+            pinLabel.style.top =
+              (-tempPoint.y * 0.5 + 0.5) * innerHeight - 28 + 'px';
+            pinLabel.style.opacity = g > 0.67 && tempPoint.z < 1 ? '1' : '0';
+          } else if (active === 2) {
+            globe.visible = false;
+            city.visible = true;
+            pinLabel.style.opacity = '0';
+            city.position.set(mobile() ? 0 : 1.6, mobile() ? -3.0 : -2.55, 0);
+            drawCity(c);
+            const ang = 0.27 + c * 0.42;
+            camera.position.set(
+              Math.sin(ang) * (mobile() ? 18 : 11),
+              mobile() ? 17 : 10,
+              Math.cos(ang) * (mobile() ? 24 : 14)
+            );
+            camera.lookAt(0, mobile() ? -0.2 : -1.4, 0);
+          } else {
+            globe.visible = false;
+            city.visible = false;
+            pinLabel.style.opacity = '0';
+          }
+          if (active === 0 || active === 2) renderer.render(scene, camera);
+        }
+        requestAnimationFrame(animate);
+      }
+      function handleResize() {
+        if (!camera || !renderer) return;
+        camera.aspect = innerWidth / innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(innerWidth, innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.7));
+      }
+      motionButton.addEventListener('click', () => {
+        paused = !paused;
+        reduced = paused || reducedQuery.matches;
+        motionButton.textContent = paused ? 'Resume motion' : 'Pause motion';
+      });
+      reducedQuery.addEventListener('change', () => {
+        reduced = paused || reducedQuery.matches;
+      });
+      document.getElementById('replay').addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: reduced ? 'instant' : 'smooth' });
+      });
+      window.addEventListener('resize', handleResize, { passive: true });
+      window.addEventListener('pagehide', () => {
+        if (routeTimeline) routeTimeline.kill();
+        if (renderer) {
+          scene.traverse(obj => {
+            if (obj.geometry) obj.geometry.dispose();
+            if (obj.material) {
+              const all = Array.isArray(obj.material)
+                ? obj.material
+                : [obj.material];
+              all.forEach(m => {
+                if (m.map) m.map.dispose();
+                m.dispose();
+              });
+            }
+          });
+          renderer.dispose();
+        }
+      });
+      try {
+        setupRoute();
+      } catch (err) {
+        console.warn('Route fallback active', err);
+      }
+      try {
+        setup3d();
+      } catch (err) {
+        console.warn('3D initialization error', err);
+      }
+      requestAnimationFrame(animate);
+    </script>
+  </body>
 </html>
