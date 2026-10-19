@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#F3F0E8" />
+    <meta name="description" content="Thoughtful home and workspace cleaning. Request a service in three simple steps, in English or Spanish." />
+    <title>Clara Home Care — Thoughtful care, right at home</title>
+    <link rel="icon" href="./assets/clara-mark.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles-boutique.css" />
+    <script type="module" src="./src/app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main" data-i18n="skipToContent">Skip to content</a>
+
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="Clara Home Care — home" data-i18n-aria="brandHome">
+        <img class="brand__mark" src="./assets/clara-mark.svg" alt="" width="38" height="38" />
+        <span class="brand__wordmark">clara<span class="brand__dot">.</span></span>
+        <span class="brand__descriptor" data-i18n="brandDescriptor">HOME CARE</span>
+      </a>
+      <nav class="desktop-nav" aria-label="Main navigation" data-i18n-aria="mainNavigation">
+        <a href="#services" data-i18n="navServices">Services</a>
+        <a href="#booking" data-i18n="navBooking">Booking</a>
+        <a href="#gallery" data-i18n="navGallery">Our work</a>
+        <a href="#faq" data-i18n="navFaq">FAQs</a>
+      </nav>
+      <div class="header-actions">
+        <button class="language-toggle" id="languageToggle" type="button" aria-label="Switch language to Spanish" data-i18n-aria="languageSwitch" aria-pressed="false">
+          <span class="language-toggle__active">EN</span><span class="language-toggle__divider">/</span><span>ES</span>
+        </button>
+        <a class="button button--small button--blue header-book" href="#booking" data-i18n="heroPrimaryCta">Book your cleaning</a>
+        <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu" data-i18n-aria="menuOpen">
+          <span></span><span></span>
+        </button>
+      </div>
+      <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" data-i18n-aria="mobileNavigation" hidden>
+        <a href="#services" data-i18n="navServices">Services</a>
+        <a href="#booking" data-i18n="navBooking">Booking</a>
+        <a href="#gallery" data-i18n="navGallery">Our work</a>
+        <a href="#faq" data-i18n="navFaq">FAQs</a>
+      </nav>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="hero" aria-labelledby="heroTitle">
+        <img class="hero__image" id="heroImage" src="./assets/boutique/hero-stay.webp" alt="A warm living room with a fireplace and soft natural light" fetchpriority="high" />
+        <div class="hero__shade"></div>
+        <div class="hero__inner page-shell">
+          <p class="eyebrow eyebrow--light" data-i18n="heroEyebrow">A thoughtful clean, for the life you live</p>
+          <h1 id="heroTitle"><span class="hero__line-mask"><span data-i18n="heroHeadingLine1">A calmer kind</span></span><br /><span class="hero__line-mask"><span class="hero__italic" data-i18n="heroHeadingLine2">of clean.</span></span></h1>
+          <p class="hero__copy" data-i18n="heroBody">Come home to spaces that feel a little lighter.</p>
+          <div class="hero__actions">
+            <a class="button button--blue" href="#booking" data-i18n="heroPrimaryCta">Book your cleaning</a>
+            <a class="text-link text-link--light" href="#services"><span data-i18n="heroSecondaryCta">Explore services</span><span aria-hidden="true">↘</span></a>
+          </div>
+        </div>
+        <div class="hero__bottom page-shell">
+          <span data-i18n="heroNote">A clear, considered way to care for your space.</span>
+          <a href="#services" class="scroll-cue" aria-label="Scroll to services" data-i18n-aria="scrollToServices"><span></span></a>
+        </div>
+      </section>
+
+      <section class="section services-section page-shell" id="services" aria-labelledby="servicesTitle">
+        <div class="section-intro section-intro--split reveal">
+          <div>
+            <p class="eyebrow" data-i18n="servicesEyebrow">Good care, room by room</p>
+            <h2 class="section-title" id="servicesTitle" data-i18n="servicesTitle">A clean that fits<br />your kind of day.</h2>
+          </div>
+          <p class="section-intro__copy" data-i18n="servicesIntro">From a weekly reset to a fresh start between chapters, choose the care your space needs.</p>
+        </div>
+        <div class="services-grid" id="servicesGrid" aria-label="Cleaning services" data-i18n-aria="servicesList"></div>
+        <div class="service-detail" id="serviceDetail" hidden></div>
+      </section>
+
+      <section class="section booking-section" id="booking" aria-labelledby="bookingTitle">
+        <div class="page-shell booking-shell">
+          <div class="booking-heading reveal">
+            <p class="eyebrow" data-i18n="bookingEyebrow">Your next clear day starts here</p>
+            <h2 class="section-title" id="bookingTitle" data-i18n="bookingTitle">Let's make home<br />feel lighter.</h2>
+            <p class="booking-heading__copy" data-i18n="bookingIntro">Three simple steps. Choose what works, and we’ll take it from there.</p>
+          </div>
+          <ol class="booking-progress" id="bookingProgress" aria-label="Booking progress" data-i18n-aria="bookingProgress"></ol>
+          <div class="booking-error" id="bookingError" role="alert" aria-live="polite" hidden></div>
+          <div class="booking-step-view" id="bookingStepView" tabindex="-1"></div>
+        </div>
+      </section>
+
+      <section class="section comparison-section page-shell" id="beforeAfter" aria-labelledby="comparisonTitle">
+        <div class="comparison-copy reveal">
+          <p class="eyebrow" data-i18n="comparisonEyebrow">The difference is in the details</p>
+          <h2 class="section-title" id="comparisonTitle" data-i18n="comparisonTitle">A small detail.<br />A fresh feeling.</h2>
+          <p data-i18n="comparisonBody">Drag to explore a real before-and-after sink cleaning example.</p>
+          <span class="sample-note" data-i18n="comparisonNote">Example photo pair · not a Clara customer claim</span>
+        </div>
+        <div class="comparison-widget reveal" id="comparisonWidget" style="--split: 50%">
+          <div class="comparison-frame" id="comparisonFrame">
+            <img class="comparison-image comparison-image--before" src="./assets/before-sink.webp" alt="A sink before cleaning, with visible mineral buildup" loading="lazy" />
+            <div class="comparison-after" id="comparisonAfter">
+              <img class="comparison-image comparison-image--after" src="./assets/after-sink.webp" alt="The same sink after cleaning" loading="lazy" />
+            </div>
+            <span class="comparison-label comparison-label--before" data-i18n="beforeLabel">Before</span>
+            <span class="comparison-label comparison-label--after" data-i18n="afterLabel">After</span>
+            <span class="comparison-handle" aria-hidden="true"><span>↔</span></span>
+            <input class="comparison-range" id="comparisonRange" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after" data-i18n-aria="sliderAria" />
+          </div>
+          <p class="comparison-caption" data-i18n="comparisonCaption">Drag the line to compare</p>
+        </div>
+      </section>
+
+      <section class="section gallery-section" id="gallery" aria-labelledby="galleryTitle">
+        <div class="page-shell">
+          <div class="section-intro section-intro--split reveal">
+            <div>
+              <p class="eyebrow" data-i18n="galleryEyebrow">Considered care, in every corner</p>
+              <h2 class="section-title" id="galleryTitle" data-i18n="galleryTitle">A little more room<br />to breathe.</h2>
+            </div>
+            <p class="section-intro__copy" data-i18n="galleryIntro">Real spaces, thoughtful details, and the feeling of coming back to a fresh start.</p>
+          </div>
+          <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
+      </section>
+
+      <section class="section why-section page-shell" id="whyUs" aria-labelledby="whyTitle">
+        <div class="why-heading reveal">
+          <p class="eyebrow" data-i18n="whyEyebrow">Less to think about</p>
+          <h2 class="section-title" id="whyTitle" data-i18n="whyTitle">Good care should<br />feel easy.</h2>
+        </div>
+        <div class="why-list" id="whyList"></div>
+      </section>
+
+      <section class="section reviews-section" id="reviews" aria-labelledby="reviewsTitle">
+        <div class="page-shell reviews-heading reveal">
+          <div>
+            <p class="eyebrow" data-i18n="reviewsEyebrow">A note from the neighborhood</p>
+            <h2 class="section-title" id="reviewsTitle" data-i18n="reviewsTitle">Kind words,<br />honestly labeled.</h2>
+          </div>
+          <div class="review-controls">
+            <button class="round-control" id="reviewsPrev" type="button" aria-label="Previous reviews" data-i18n-aria="previousReviews">←</button>
+            <button class="round-control" id="reviewsNext" type="button" aria-label="Next reviews" data-i18n-aria="nextReviews">→</button>
+          </div>
+        </div>
+        <div class="reviews-track" id="reviewsTrack" aria-label="Sample customer reviews" data-i18n-aria="sampleReviews"></div>
+      </section>
+
+      <section class="section faq-section page-shell" id="faq" aria-labelledby="faqTitle">
+        <div class="faq-heading reveal">
+          <p class="eyebrow" data-i18n="faqEyebrow">The useful details</p>
+          <h2 class="section-title" id="faqTitle" data-i18n="faqTitle">A few good<br />things to know.</h2>
+        </div>
+        <div class="faq-list" id="faqList"></div>
+      </section>
+
+      <section class="final-cta" id="finalCta" aria-labelledby="finalCtaTitle">
+        <div class="final-cta__image-wrap" aria-hidden="true">
+          <img src="./assets/boutique/gallery-bright-home.webp" alt="" loading="lazy" />
+        </div>
+        <div class="final-cta__shade"></div>
+        <div class="page-shell final-cta__inner reveal">
+          <p class="eyebrow eyebrow--light" data-i18n="finalEyebrow">One less thing on your list</p>
+          <h2 id="finalCtaTitle" data-i18n="finalTitle">Make room for<br />what matters.</h2>
+          <p data-i18n="finalBody">Tell us what your space needs. We’ll help you find the right next step.</p>
+          <a class="button button--blue" href="#booking" data-i18n="heroPrimaryCta">Book your cleaning</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="page-shell footer-main">
+        <a class="brand brand--footer" href="#top" aria-label="Clara Home Care — home" data-i18n-aria="brandHome">
+          <img class="brand__mark" src="./assets/clara-mark.svg" alt="" width="38" height="38" />
+          <span class="brand__wordmark">clara<span class="brand__dot">.</span></span>
+          <span class="brand__descriptor" data-i18n="brandDescriptor">HOME CARE</span>
+        </a>
+        <p class="footer-note" data-i18n="footerNote">A calmer kind of clean, for homes and workspaces.</p>
+        <nav class="footer-links" aria-label="Footer navigation" data-i18n-aria="footerNavigation">
+          <a href="#services" data-i18n="navServices">Services</a>
+          <a href="#booking" data-i18n="navBooking">Booking</a>
+          <a href="#gallery" data-i18n="navGallery">Our work</a>
+          <a href="#faq" data-i18n="navFaq">FAQs</a>
+        </nav>
+      </div>
+      <div class="page-shell footer-bottom">
+        <span data-i18n="footerCopyright">© 2026 Clara Home Care</span>
+        <span class="footer-disclaimer" data-i18n="footerDisclaimer">Demo website · no real booking is created</span>
+        <a href="#top" class="back-to-top"><span data-i18n="backToTop">Back to top</span><span aria-hidden="true">↑</span></a>
+      </div>
+    </footer>
+
+    <a class="mobile-sticky-book" id="mobileStickyBook" href="#booking" data-i18n="heroPrimaryCta">Book your cleaning</a>
+  </body>
+</html>
