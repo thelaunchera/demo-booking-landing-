@@ -421,10 +421,10 @@ export const SERVICES = [
   },
   {
     id: "commercial",
-    image: "./assets/drive/office.png",
+    image: "https://raw.githubusercontent.com/thelaunchera/the-launch-era-new-website-/02fd29d82699d3e452d3d6ddbfcbe6d5773d1b4a/public/assets/clara-private-demo/home-office-commercial-drive.png",
     name: { en: "Commercial cleaning", es: "Limpieza comercial" },
     description: { en: "Quietly polished spaces, ready for the workday.", es: "Espacios cuidados y listos para la jornada." },
-    alt: { en: "A shared office with desks and soft natural light", es: "Una oficina compartida con escritorios y luz natural" },
+    alt: { en: "An inviting home office with warm wood and garden light", es: "Una oficina acogedora con madera cálida y luz natural del jardín" },
     details: {
       en: ["For offices, studios, and shared spaces", "Workday-friendly service planning", "A clear scope for your team and space"],
       es: ["Para oficinas, estudios y espacios compartidos", "Planificación compatible con la jornada", "Un alcance claro para tu equipo y espacio"]
