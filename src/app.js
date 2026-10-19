@@ -87,11 +87,11 @@ function applyStaticTranslations() {
     ? "A warm living room with a fireplace and soft natural light"
     : "Una sala cálida con chimenea y luz natural suave";
   $(".comparison-image--before").alt = state.locale === "en"
-    ? "A sink before cleaning, with visible mineral buildup"
-    : "Un lavamanos antes de limpiarlo, con depósitos minerales visibles";
+    ? "Shower glass before cleaning, with visible residue"
+    : "Vidrio de ducha antes de limpiarlo, con residuos visibles";
   $(".comparison-image--after").alt = state.locale === "en"
-    ? "The same sink after cleaning"
-    : "El mismo lavamanos después de limpiarlo";
+    ? "The same shower glass after cleaning"
+    : "El mismo vidrio de ducha después de limpiarlo";
   $("#comparisonRange").setAttribute("aria-label", t("sliderAria"));
 
   document.title = state.locale === "en"
