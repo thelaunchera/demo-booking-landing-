@@ -12,7 +12,8 @@ export const DRIVE_PHOTOS = {
   'entry.png': { id: '1gWI0VX9T4deCt1mO2CQm9V0OUCwfyepi', source: 'Move_09_CleanEntry_Miami.png' },
   'detail.png': { id: '1XnaFVKkTXB2pG8OjmUcvY2RQCi-GJMA8', source: 'Corner_02_Bathroom_Baseboard_AFTER.png' },
   'pet-sofa.png': { id: '1A0b2yRasFbntbaYKZM_fl14UZLn-uxNi', source: 'Pet_07_Terrier_HairFreeSofa_Savannah.png' },
-  'bathroom.png': { id: '1r7AcdXLbmKw4Z7sGra401HCKirx3GKJ1', source: 'MH50_C_Bathroom_02_Guest.png' }
+  'bathroom.png': { id: '1r7AcdXLbmKw4Z7sGra401HCKirx3GKJ1', source: 'MH50_C_Bathroom_02_Guest.png' },
+  'bedroom.png': { id: '1hx3j9caZ2zzlQQKwDiPIGqlfPu6tqGU7', source: 'CLEAN_Roll_03_Bedroom.png' }
 };
 function isPng(bytes) {
   return bytes.length > 4000 && bytes.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
