@@ -37,6 +37,17 @@ for (const config of configurations) {
     assert.ok(metrics.serviceCards >= 4, 'Not enough services');
     assert.ok(metrics.overflow <= 3,'Horizontal overflow '+metrics.overflow+'px');
     assert.deepEqual(metrics.brokenImages, [],'Broken images');
+    assert.equal(await page.locator('#mobileStickyBook').count(), 0, 'Floating CTA should not exist');
+    assert.equal(await page.locator('#bookingProgress .booking-progress__item').count(), 3, 'Three booking steps required');
+    assert.equal(await page.locator('#bookingStepCounter').innerText(), '01', 'Initial step counter missing');
+    assert.equal(await page.locator('#finalCta img').getAttribute('src'), './assets/drive/final-warm-entry.png', 'Closing image not updated');
+    const colors = await page.locator('.hero__actions .button--olive').evaluate(el => ({
+      bg: getComputedStyle(el).backgroundColor,
+      fg: getComputedStyle(el).color
+    }));
+    assert.equal(colors.bg, 'rgb(89, 103, 73)', 'Primary CTA must be olive');
+    assert.equal(colors.fg, 'rgb(250, 248, 243)', 'CTA needs light readable text');
+    assert.equal(await page.locator('.mobile-sticky-book').count(), 0, 'Sticky button blocks content');
     await page.locator('#sonnyToggle').click();
     assert.equal(await page.locator('#sonnyPanel').isVisible(),true,'Sonny panel did not open');
     await page.locator('#sonnyTopics [data-sonny-topic="book"]').click();
@@ -53,12 +64,16 @@ for (const config of configurations) {
     await page.locator('[data-action="set-property"][data-value="home"]').click();
     await page.locator('[data-action="next"]').click();
     assert.ok(await page.locator('#bookingStepView .calendar').isVisible(),'Calendar not shown');
+    assert.equal(await page.locator('#bookingStepCounter').innerText(), '02', 'Second step indicator incorrect');
+    await page.screenshot({path:directory+'/'+config.name+'-booking-step2.png',animations:'disabled'});
     const date = page.locator('[data-action="choose-date"]:not([disabled])').first();
     if(await date.count()===0) await page.locator('[data-action="month-next"]').click();
     await page.locator('[data-action="choose-date"]:not([disabled])').first().click();
     await page.locator('[data-action="choose-time"][data-value="morning"]').click();
     await page.locator('[data-action="next"]').click();
     assert.ok(await page.locator('#customerForm').isVisible(),'Guest details not shown');
+    assert.equal(await page.locator('#bookingStepCounter').innerText(), '03', 'Final step indicator incorrect');
+    await page.screenshot({path:directory+'/'+config.name+'-booking-step3.png',animations:'disabled'});
     for(const [field,value] of Object.entries({name:'QA Preview',email:'qa@example.com',phone:'5551234567',address:'123 Test Street',city:'Test City',region:'FL',postal:'33435'})) {
       await page.locator('#guest-'+field).fill(value);
     }
