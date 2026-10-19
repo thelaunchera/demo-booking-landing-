@@ -24,6 +24,7 @@ for (const config of configurations) {
     if (response.url().startsWith(base) && response.status() >= 400) errors.push('HTTP '+response.status()+' '+response.url());
   });
   await page.goto(base, { waitUntil: 'networkidle' });
+  await page.evaluate(async () => { await Promise.all([...document.images].map(async img => { img.loading = 'eager'; try { await img.decode(); } catch {} })); });
   await page.screenshot({path:directory+'/'+config.name+'-homepage.png',fullPage:true,animations:'disabled'});
   const metrics = await page.evaluate(() => ({
     overflow: document.documentElement.scrollWidth - window.innerWidth,
@@ -66,7 +67,7 @@ for (const config of configurations) {
     await page.screenshot({path:directory+'/'+config.name+'-confirmation.png',animations:'disabled'});
     await page.locator('[data-action="restart"]').click();
     assert.ok(await page.locator('#bookingStepView [data-action="select-service"]').first().isVisible(),'Repeat booking did not reset');
-    await page.locator('#comparisonRange').fill('72');
+    await page.locator('#comparisonRange').evaluate(el => { el.value='72'; el.dispatchEvent(new Event('input',{bubbles:true})); });
     assert.ok((await page.locator('#comparisonWidget').getAttribute('style')).includes('72%'),'Comparison slider not updating');
     assert.deepEqual(errors, [],'Browser errors');
     results.push({device:config.name,passed:true,metrics});
