@@ -370,11 +370,11 @@ export const COPY = {
     whyReliableText: "Expectativas claras y un horario confirmado por el equipo.",
     whyBookingTitle: "Fácil de reservar",
     whyBookingText: "Una solicitud sencilla de tres pasos, pensada para navegar desde cualquier dispositivo.",
-    galleryAltTeam: "Una sala acogedora con plantas y texturas naturales",
-    galleryAltKitchen: "Una sala luminosa con un sofá verde salvia",
-    galleryAltTable: "Una persona alisando sábanas blancas",
-    galleryAltBathroom: "Un dormitorio con luz suave, madera cálida y ropa blanca",
-    galleryAltBedroom: "Sábanas blancas con un pequeño arreglo de flores",
+    galleryAltTeam: "Un corgi disfrutando de un hogar limpio y cómodo para mascotas",
+    galleryAltKitchen: "Una cocina limpia y acogedora",
+    galleryAltTable: "Un detalle de baño recién limpiado",
+    galleryAltBathroom: "Un baño luminoso e impecable",
+    galleryAltBedroom: "Un terrier descansando sobre un sofá limpio",
     faqOne: "¿Qué incluye una limpieza regular?",
     faqTwo: "¿Las fechas y horarios están confirmados?",
     faqThree: "¿Puedo añadir una solicitud especial?",
@@ -386,7 +386,7 @@ export const COPY = {
 export const SERVICES = [
   {
     id: "regular",
-    image: "./assets/boutique/service-regular-team.webp",
+    image: "./assets/drive/regular-team.png",
     name: { en: "Regular cleaning", es: "Limpieza regular" },
     description: { en: "A considered reset for the rooms you use most.", es: "Una puesta a punto cuidada para los espacios que más usas." },
     alt: { en: "Two housekeepers preparing a bed in a bright room", es: "Dos profesionales preparando una cama en una habitación luminosa" },
@@ -397,7 +397,7 @@ export const SERVICES = [
   },
   {
     id: "deep",
-    image: "./assets/boutique/service-deep-bath.webp",
+    image: "./assets/drive/deep-bathroom.png",
     name: { en: "Deep cleaning", es: "Limpieza profunda" },
     description: { en: "A closer clean, with time for the finer details.", es: "Una limpieza a fondo, con tiempo para cada detalle." },
     alt: { en: "A modern bathroom in stone and light wood", es: "Un baño moderno en piedra y madera clara" },
@@ -408,7 +408,7 @@ export const SERVICES = [
   },
   {
     id: "move",
-    image: "./assets/boutique/service-move-out.webp",
+    image: "./assets/drive/move-ready.png",
     name: { en: "Move-in / move-out", es: "Entrada / salida" },
     description: { en: "A fresh handover, from empty rooms to the final corners.", es: "Una entrega impecable, del primer cuarto al último rincón." },
     alt: { en: "An empty, sunlit room ready for a move", es: "Una habitación vacía y luminosa lista para una mudanza" },
@@ -419,7 +419,7 @@ export const SERVICES = [
   },
   {
     id: "commercial",
-    image: "./assets/boutique/service-commercial-office.webp",
+    image: "./assets/drive/office.png",
     name: { en: "Commercial cleaning", es: "Limpieza comercial" },
     description: { en: "Quietly polished spaces, ready for the workday.", es: "Espacios cuidados y listos para la jornada." },
     alt: { en: "A shared office with desks and soft natural light", es: "Una oficina compartida con escritorios y luz natural" },
@@ -430,7 +430,7 @@ export const SERVICES = [
   },
   {
     id: "custom",
-    image: "./assets/boutique/service-custom-living.webp",
+    image: "./assets/drive/entry.png",
     name: { en: "Custom quote", es: "Presupuesto a medida" },
     description: { en: "A thoughtful plan for your space and its particular needs.", es: "Un plan pensado para tu espacio y sus necesidades." },
     alt: { en: "A neutral living room with natural textures and rattan details", es: "Una sala en tonos neutros con texturas naturales y detalles de ratán" },
@@ -442,11 +442,11 @@ export const SERVICES = [
 ];
 
 export const GALLERY = [
-  { image: "./assets/boutique/gallery-living.webp", altKey: "galleryAltTeam", shape: "gallery-item--wide" },
-  { image: "./assets/boutique/gallery-bright-home.webp", altKey: "galleryAltKitchen", shape: "gallery-item--tall" },
-  { image: "./assets/boutique/gallery-linen-care.webp", altKey: "galleryAltTable", shape: "gallery-item--small" },
-  { image: "./assets/boutique/gallery-bedroom.webp", altKey: "galleryAltBathroom", shape: "gallery-item--wide" },
-  { image: "./assets/boutique/gallery-flower-bed.webp", altKey: "galleryAltBedroom", shape: "gallery-item--tall" }
+  { image: "./assets/drive/pet-corgi.png", altKey: "galleryAltTeam", shape: "gallery-item--wide" },
+  { image: "./assets/drive/kitchen.png", altKey: "galleryAltKitchen", shape: "gallery-item--tall" },
+  { image: "./assets/drive/detail.png", altKey: "galleryAltTable", shape: "gallery-item--small" },
+  { image: "./assets/drive/bathroom.png", altKey: "galleryAltBathroom", shape: "gallery-item--wide" },
+  { image: "./assets/drive/pet-sofa.png", altKey: "galleryAltBedroom", shape: "gallery-item--tall" }
 ];
 
 export const FAQS = [
