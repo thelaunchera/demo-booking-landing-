@@ -19,9 +19,12 @@ jobs:
         run: |
           npm install --no-save playwright
           npx playwright install --with-deps chromium
-      - name: Start demo
+      - name: Build public site
+        run: npm run build
+      - name: Start demo from built assets
         run: |
-          PORT=4173 npm start > /tmp/booking-demo-server.log 2>&1 &
+          cd dist
+          python3 -m http.server 4173 --bind 127.0.0.1 > /tmp/booking-demo-server.log 2>&1 &
           for i in $(seq 1 30); do
             if curl -fsS http://127.0.0.1:4173/ >/dev/null; then exit 0; fi
             sleep 1
