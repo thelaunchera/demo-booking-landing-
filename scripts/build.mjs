@@ -1,4 +1,5 @@
 import { cp, mkdir, rm } from "node:fs/promises";
+import { fetchDrivePhotos } from "./drive-photos.mjs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -11,4 +12,5 @@ await mkdir(output, { recursive: true });
 for (const entry of entries) {
   await cp(path.join(root, entry), path.join(output, entry), { recursive: true });
 }
-console.log(`Static site built at ${output}`);
+await fetchDrivePhotos(output);
+console.log(`Static site built with Drive photography at ${output}`);
