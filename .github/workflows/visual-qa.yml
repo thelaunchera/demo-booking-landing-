@@ -1,0 +1,39 @@
+name: Visual QA - Booking Demo
+on:
+  push:
+    branches:
+      - feature/claraclean-booking-demo
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test-visual:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install test browser
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Start demo
+        run: |
+          PORT=4173 npm start > /tmp/booking-demo-server.log 2>&1 &
+          for i in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:4173/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/booking-demo-server.log
+          exit 1
+      - name: Verify six responsive viewports and booking flow
+        run: node tests/visual-qa.mjs
+      - name: Upload phone tablet and desktop screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cleaning-booking-visual-qa
+          path: qa-screenshots/
+          if-no-files-found: warn
