@@ -536,3 +536,33 @@ body.menu-is-open { overflow:hidden; }
  .sonny-panel { height:min(440px,calc(100dvh - 170px)); }
 }
 @media (prefers-reduced-motion:reduce) {.sonny-panel,.sonny-toggle { animation:none; transition:none; } }
+
+/* Better mobile typography, with CTA colors intentionally unchanged. */
+@media (max-width: 760px) {
+ .hero__copy { font-size:16px; line-height:1.6 }
+ .section-intro__copy, .booking-heading__copy { font-size:15px; line-height:1.65 }
+ .eyebrow, .hero__bottom, .service-card__number { font-size:11px }
+ .service-card__name { font-size:clamp(22px,5.6vw,27px); line-height:1.12 }
+ .service-card__description { font-size:13px; line-height:1.5 }
+ .booking-progress__item { font-size:11px; line-height:1.25 }
+ .booking-progress__number { font-size:11px }
+ .step-panel__intro p { font-size:14px; line-height:1.55 }
+ .service-choice__text strong { font-size:15px; line-height:1.35 }
+ .service-choice__text small { font-size:13px; line-height:1.4 }
+ .property-fieldset legend, .form-field>span { font-size:14px }
+ .choice-pill, .counter-control__label, .booking-error { font-size:13px }
+ .form-field input, .form-field select, .form-field textarea { font-size:16px }
+ .calendar-day, .calendar-empty { font-size:13px }
+ .calendar__selected, .availability-note, .time-choice small { font-size:13px }
+ .why-item p, .faq-question, .faq-answer, .confirmation-panel__body { font-size:14px; line-height:1.55 }
+ .sonny-message, .sonny-panel__form input { font-size:14px }
+ .sonny-panel__topics button { font-size:12px }
+ .sonny-toggle__label strong { font-size:13px }
+ .sonny-panel__note { font-size:11px }
+ .tle-offer__copy>p { font-size:15px }
+}
+@media (max-width:380px) {
+ .service-card__description { font-size:12.5px }
+ .service-card__name { font-size:22px }
+ .booking-progress__item { font-size:10px }
+}
