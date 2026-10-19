@@ -163,7 +163,7 @@ function renderGallery() {
   gallery.innerHTML = GALLERY.map((item, index) => `
     <figure class="gallery-item ${item.shape} reveal">
       <img src="${item.image}" alt="${escapeHtml(t(item.altKey))}" loading="lazy" />
-      <span class="gallery-item__index">0${index + 1}</span>
+
     </figure>
   `).join("");
   observeReveals(gallery);
@@ -289,9 +289,9 @@ function renderSummary(includeAddress = false, className = "summary-card") {
 function renderStepOne() {
   const serviceChoices = SERVICES.map((service) => `
     <button class="service-choice${state.service === service.id ? " is-selected" : ""}" type="button" data-action="select-service" data-value="${service.id}" data-focus="service-${service.id}" aria-pressed="${state.service === service.id}">
-      <span class="service-choice__mark" aria-hidden="true"></span>
+      <span class="service-choice__mark" aria-hidden="true"></span><img class="service-choice__image" src="${service.image}" alt="" loading="lazy" />
       <span class="service-choice__text"><strong>${escapeHtml(service.name[state.locale])}</strong><small>${escapeHtml(service.description[state.locale])}</small></span>
-      <span class="service-choice__arrow" aria-hidden="true">↗</span>
+      <span class="service-choice__arrow" aria-hidden="true">›</span>
     </button>
   `).join("");
 
@@ -821,10 +821,10 @@ function initHeroMotion() {
 
 const SONNY = {
   en: {
-    status: "Interactive demo guide", hint: "Chat with booking assistant", open: "Chat with Sonny, the booking guide",
-    close: "Close chat", inputLabel: "Ask Sonny a question", placeholder: "Ask about booking...", send: "Send message",
+    status: "Interactive demo guide", hint: "Chat with booking assistant", open: "Chat with the AI booking assistant",
+    close: "Close chat", inputLabel: "Ask the booking assistant a question", placeholder: "Ask about booking...", send: "Send message",
     note: "Demo assistant. No live AI or messages sent.",
-    intro: "Hi! I'm Sonny 👋 I can walk you through this booking demo. What would you like to know?",
+    intro: "Hi! I can guide you through the booking demo. What would you like to know?",
     topics: [["book", "Try a booking"], ["quote", "Request a quote"], ["times", "Available times"]],
     book: "Choose a cleaning service, select a preferred future date and time, then enter demo details. It takes just 3 steps!",
     quote: "Select Custom Quote under Services, then describe the space and what you need in the final step.",
@@ -834,10 +834,10 @@ const SONNY = {
     go: "Go to the booking form"
   },
   es: {
-    status: "Guía interactiva de demostración", hint: "Chat con el asistente", open: "Chatea con Sonny, guía de reservas",
-    close: "Cerrar chat", inputLabel: "Pregúntale a Sonny", placeholder: "Pregunta sobre reservas...", send: "Enviar mensaje",
+    status: "Guía interactiva de demostración", hint: "Chat con el asistente", open: "Chatea con el asistente de reservas con IA",
+    close: "Cerrar chat", inputLabel: "Pregúntale al asistente de reservas", placeholder: "Pregunta sobre reservas...", send: "Enviar mensaje",
     note: "Asistente de demostración. No usa IA en vivo ni envía mensajes.",
-    intro: "¡Hola! Soy Sonny 👋 Te ayudo a probar este demo de reservas. ¿Qué necesitas saber?",
+    intro: "¡Hola! Puedo ayudarte a probar este demo de reservas. ¿Qué necesitas saber?",
     topics: [["book", "Probar reserva"], ["quote", "Pedir cotización"], ["times", "Fechas disponibles"]],
     book: "Elige un servicio, una fecha y un horario preferido, y completa tus datos de prueba. ¡Son solo 3 pasos!",
     quote: "Elige Custom Quote en Servicios y describe el espacio y lo que necesitas en el último paso.",
