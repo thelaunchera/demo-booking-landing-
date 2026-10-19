@@ -1,0 +1,35 @@
+name: Publish Cleaning Booking Preview
+on:
+  push:
+    branches:
+      - feature/claraclean-booking-demo
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: cleaning-booking-pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: booking-demo-preview
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run source checks and build only public assets
+        run: |
+          npm test
+          npm run build
+          node scripts/close-public-preview.mjs
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+      - id: deployment
+        uses: actions/deploy-pages@v4

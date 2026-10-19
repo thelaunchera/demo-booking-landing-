@@ -1,0 +1,9 @@
+name: Completed hero-photo import
+on:
+  workflow_dispatch:
+jobs:
+  completed:
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Photo import completed'
