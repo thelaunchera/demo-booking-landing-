@@ -22,13 +22,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Run source checks
-        run: npm test
+      - name: Run source checks and build only public assets
+        run: |
+          npm test
+          npm run build
       - uses: actions/configure-pages@v5
-        with:
-          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: ./dist
       - id: deployment
         uses: actions/deploy-pages@v4
