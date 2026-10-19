@@ -142,7 +142,7 @@ function renderServiceDetail(id) {
         <p class="service-detail__description">${escapeHtml(service.description[state.locale])}</p>
         <ul>${service.details[state.locale].map((line) => `<li>${escapeHtml(line)}</li>`).join("")}</ul>
         <p class="service-detail__note">${escapeHtml(t("serviceDetailNote"))}</p>
-        <button class="button button--blue" type="button" data-detail-book="${service.id}">${escapeHtml(t("serviceDetailCta"))}<span aria-hidden="true">↗</span></button>
+        <button class="button button--olive" type="button" data-detail-book="${service.id}">${escapeHtml(t("serviceDetailCta"))}<span aria-hidden="true">↗</span></button>
       </div>
     </div>
   `;
@@ -215,6 +215,9 @@ function stepLabel(step) {
 
 function renderProgress() {
   const progress = $("#bookingProgress");
+  const visualStep = Math.min(state.step, 3);
+  $("#bookingStepCounter").textContent = String(visualStep).padStart(2, "0");
+  $("#bookingTrackFill").style.width = `${visualStep * (100 / 3)}%`;
   progress.innerHTML = [1, 2, 3].map((step) => {
     const complete = state.step > step || state.step === 4;
     const active = state.step === step;
@@ -338,7 +341,7 @@ function renderStepOne() {
         </div>
       </fieldset>
       ${extraKeys.length ? `<fieldset class="property-fieldset"><legend>${escapeHtml(t("extras"))}</legend><div class="choice-pills choice-pills--wrap">${extraKeys.map((key) => `<button class="choice-pill choice-pill--extra${state.extras.includes(key) ? " is-selected" : ""}" type="button" data-action="toggle-extra" data-value="${key}" data-focus="extra-${key}" aria-pressed="${state.extras.includes(key)}">${escapeHtml(t(key))}</button>`).join("")}</div></fieldset>` : ""}
-      <div class="step-actions"><a class="text-link" href="#services"><span aria-hidden="true">←</span><span>${escapeHtml(t("backToServices"))}</span></a><button class="button button--blue" type="button" data-action="next">${escapeHtml(t("continue"))}<span aria-hidden="true">→</span></button></div>
+      <div class="step-actions"><a class="text-link" href="#services"><span aria-hidden="true">←</span><span>${escapeHtml(t("backToServices"))}</span></a><button class="button button--olive" type="button" data-action="next">${escapeHtml(t("continue"))}<span aria-hidden="true">→</span></button></div>
     </div>
   `;
 }
@@ -407,7 +410,7 @@ function renderStepTwo() {
           <p class="availability-note"><span aria-hidden="true">i</span>${escapeHtml(t("timePreferenceNote"))}</p>
         </div>
       </div>
-      <div class="step-actions"><button class="button button--quiet" type="button" data-action="previous"><span aria-hidden="true">←</span>${escapeHtml(t("back"))}</button><button class="button button--blue" type="button" data-action="next">${escapeHtml(t("continue"))}<span aria-hidden="true">→</span></button></div>
+      <div class="step-actions"><button class="button button--quiet" type="button" data-action="previous"><span aria-hidden="true">←</span>${escapeHtml(t("back"))}</button><button class="button button--olive" type="button" data-action="next">${escapeHtml(t("continue"))}<span aria-hidden="true">→</span></button></div>
     </div>
   `;
 }
@@ -442,7 +445,7 @@ function renderStepThree() {
             ${fieldMarkup("postal", "postal", "postalPlaceholder", "text", true, 'autocomplete="postal-code"')}
             <label class="form-field form-field--full" for="guest-instructions"><span>${escapeHtml(t("instructions"))}</span><textarea id="guest-instructions" name="instructions" data-field="instructions" placeholder="${escapeHtml(t("instructionsPlaceholder"))}">${escapeHtml(state.user.instructions)}</textarea></label>
           </div>
-          <div class="form-submit-row"><p>${escapeHtml(t("requestFootnote"))}</p><button class="button button--blue" type="submit">${escapeHtml(t("requestButton"))}<span aria-hidden="true">→</span></button></div>
+          <div class="form-submit-row"><p>${escapeHtml(t("requestFootnote"))}</p><button class="button button--olive" type="submit">${escapeHtml(t("requestButton"))}<span aria-hidden="true">→</span></button></div>
         </form>
         <div class="summary-column">${renderSummary(true)}</div>
       </div>
@@ -460,7 +463,7 @@ function renderConfirmation() {
       <h3 id="confirmationTitle" tabindex="-1">${escapeHtml(t("confirmationTitle"))}</h3>
       <p class="confirmation-panel__body">${escapeHtml(t("confirmationBody"))}</p>
       ${renderSummary(false, "summary-card summary-card--confirmation")}
-      <button class="button button--blue" type="button" data-action="restart">${escapeHtml(t("tryAnother"))}<span aria-hidden="true">↻</span></button>
+      <button class="button button--olive" type="button" data-action="restart">${escapeHtml(t("tryAnother"))}<span aria-hidden="true">↻</span></button>
     </div>
   `;
 }
@@ -816,30 +819,6 @@ function initHeroMotion() {
   update();
 }
 
-function initStickyCta() {
-  const sticky = $("#mobileStickyBook");
-  const booking = $("#booking");
-  if (!("IntersectionObserver" in window)) return;
-  const observer = new IntersectionObserver(([entry]) => {
-    sticky.classList.toggle("is-hidden", entry.isIntersecting);
-  }, { threshold: 0.08 });
-  observer.observe(booking);
-}
-
-function initAnchors() {
-  document.addEventListener("click", (event) => {
-    const link = event.target.closest('a[href^="#"]');
-    if (!link) return;
-    const target = document.querySelector(link.getAttribute("href"));
-    if (!target) return;
-    if (link.id === "mobileStickyBook") {
-      $("#menuToggle").setAttribute("aria-expanded", "false");
-      closeMobileMenu();
-    }
-  });
-}
-
-
 const SONNY = {
   en: {
     status: "Interactive demo guide", hint: "Chat with booking assistant", open: "Chat with Sonny, the booking guide",
@@ -967,8 +946,6 @@ function init() {
   initReviewControls();
   initComparison();
   initHeroMotion();
-  initStickyCta();
-  initAnchors();
   initSonny();
 
   const bookingView = $("#bookingStepView");
