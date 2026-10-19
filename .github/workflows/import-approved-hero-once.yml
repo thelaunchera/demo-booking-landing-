@@ -1,0 +1,32 @@
+name: Import Approved Sunlit Hero Photo
+on:
+  push:
+    branches: [feature/claraclean-booking-demo]
+    paths: ['.github/workflows/import-approved-hero-once.yml']
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feature/claraclean-booking-demo
+      - name: Import owner-approved image
+        env:
+          APPROVED_PHOTO_URL: "https://sdmntprnorthcentralus.oaiusercontent.com/files/00000000-6a84-822f-b6b6-3fcebf789343/raw?se=2026-10-19T14%3A11%3A22Z&sp=r&sv=2026-02-06&sr=b&scid=747ddc8c-87e5-5db1-baf3-8b2446471037&skoid=bbd22fc4-f881-4ea4-b2f3-c12033cf6a8b&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-18T16%3A35%3A37Z&ske=2026-10-19T16%3A35%3A37Z&sks=b&skv=2026-02-06&sig=kCbiRNHGSrhr3QqpQZzG0MNStBoSoZNObuwylFRWvS4%3D"
+        run: |
+          mkdir -p assets/drive
+          curl -fsSL --retry 3 --max-time 60 "$APPROVED_PHOTO_URL" -o assets/drive/natural-sunlit-living-room.png
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path("assets/drive/natural-sunlit-living-room.png")
+          assert p.stat().st_size > 50000, "Downloaded photo too small"
+          assert p.read_bytes()[:8] == b'\x89PNG\r\n\x1a\n', "Downloaded content is not PNG"
+          print("Verified hero image:",p.stat().st_size,"bytes")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/drive/natural-sunlit-living-room.png
+          git commit -m "Add approved Natural Sunlit Living Room photo from owner Drive"
+          git push origin HEAD:feature/claraclean-booking-demo
