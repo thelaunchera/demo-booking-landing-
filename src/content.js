@@ -1,5 +1,12 @@
 export const COPY = {
   en: {
+
+    tleEyebrow: "FOR CLEANING BUSINESS OWNERS",
+    tleTitle: "What if booking your business felt this easy?",
+    tleDescription: "Your branding, your services, and one clear booking link. Less back-and-forth, more organized requests.",
+    tleNote: "Interactive preview only. Real bookings and availability require a connected system.",
+    tleButton: "Explore The Launch Era",
+    tleReplay: "Try the booking flow again",
     skipToContent: "Skip to content",
     brandHome: "Clara Home Care — home",
     mainNavigation: "Main navigation",
@@ -184,6 +191,13 @@ export const COPY = {
     faqFive: "Will this form book a real cleaning?"
   },
   es: {
+
+    tleEyebrow: "PARA DUEÑOS DE NEGOCIOS DE LIMPIEZA",
+    tleTitle: "¿Y si reservar en tu negocio fuera así de fácil?",
+    tleDescription: "Tu marca, tus servicios y un solo enlace para reservar. Menos mensajes de ida y vuelta y solicitudes más organizadas.",
+    tleNote: "Vista previa interactiva. Las reservas y la disponibilidad reales necesitan un sistema conectado.",
+    tleButton: "Descubre The Launch Era",
+    tleReplay: "Prueba otra reserva",
     skipToContent: "Saltar al contenido",
     brandHome: "Inicio de Clara Home Care",
     mainNavigation: "Navegación principal",
