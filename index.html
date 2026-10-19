@@ -99,18 +99,18 @@
         <div class="comparison-copy reveal">
           <p class="eyebrow" data-i18n="comparisonEyebrow">The difference is in the details</p>
           <h2 class="section-title" id="comparisonTitle" data-i18n="comparisonTitle">A small detail.<br />A fresh feeling.</h2>
-          <p data-i18n="comparisonBody">Drag to explore a real before-and-after sink cleaning example.</p>
+          <p data-i18n="comparisonBody">Slide to compare this same shower before and after cleaning.</p>
           <span class="sample-note" data-i18n="comparisonNote">Example photo pair · not a Clara customer claim</span>
         </div>
         <div class="comparison-widget reveal" id="comparisonWidget" style="--split: 50%">
           <div class="comparison-frame" id="comparisonFrame">
-            <img class="comparison-image comparison-image--before" src="./assets/before-sink.webp" alt="A sink before cleaning, with visible mineral buildup" loading="lazy" />
+            <img class="comparison-image comparison-image--before" src="https://raw.githubusercontent.com/thelaunchera/the-launch-era-new-website-/7aeb57df0831d3c2bd10b378dc27c76f693aa5cc/public/assets/clara-private-demo/shower-before.webp" alt="A sink before cleaning, with visible mineral buildup" loading="lazy" />
             <div class="comparison-after" id="comparisonAfter">
-              <img class="comparison-image comparison-image--after" src="./assets/after-sink.webp" alt="The same sink after cleaning" loading="lazy" />
+              <img class="comparison-image comparison-image--after" src="https://raw.githubusercontent.com/thelaunchera/the-launch-era-new-website-/7aeb57df0831d3c2bd10b378dc27c76f693aa5cc/public/assets/clara-private-demo/shower-after.webp" alt="The same sink after cleaning" loading="lazy" />
             </div>
             <span class="comparison-label comparison-label--before" data-i18n="beforeLabel">Before</span>
             <span class="comparison-label comparison-label--after" data-i18n="afterLabel">After</span>
-            <span class="comparison-handle" aria-hidden="true"><span>↔</span></span>
+            <span class="comparison-handle" aria-hidden="true"><span><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5 3 12l6 7 M15 5l6 7-6 7"/></svg></span></span>
             <input class="comparison-range" id="comparisonRange" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after" data-i18n-aria="sliderAria" />
           </div>
           <p class="comparison-caption" data-i18n="comparisonCaption">Drag the line to compare</p>
@@ -124,7 +124,7 @@
               <p class="eyebrow" data-i18n="galleryEyebrow">Considered care, in every corner</p>
               <h2 class="section-title" id="galleryTitle" data-i18n="galleryTitle">A little more room<br />to breathe.</h2>
             </div>
-            <p class="section-intro__copy" data-i18n="galleryIntro">Real spaces, thoughtful details, and the feeling of coming back to a fresh start.</p>
+            <p class="section-intro__copy" data-i18n="galleryIntro">One thoughtfully cared-for home, room by room, with one happy dog.</p>
           </div>
           <div class="gallery-grid" id="galleryGrid"></div>
         </div>
@@ -215,8 +215,8 @@
     <aside class="sonny-assistant" id="sonnyAssistant" aria-label="Demo booking assistant">
       <section class="sonny-panel" id="sonnyPanel" aria-labelledby="sonnyTitle" hidden>
         <header class="sonny-panel__header">
-          <span class="sonny-panel__avatar" aria-hidden="true">S</span>
-          <div><strong id="sonnyTitle">Sonny</strong><small id="sonnyStatus">Interactive demo guide</small></div>
+          <span class="sonny-panel__avatar" aria-hidden="true"><img src="https://raw.githubusercontent.com/thelaunchera/the-launch-era-new-website-/7aeb57df0831d3c2bd10b378dc27c76f693aa5cc/public/assets/clara-private-demo/sonny-blue-robot.webp" alt="" width="35" height="35" /></span>
+          <div><strong id="sonnyTitle">AI Assistant</strong><small id="sonnyStatus">Interactive demo guide</small></div>
           <button type="button" class="sonny-panel__close" id="sonnyClose" aria-label="Close chat">×</button>
         </header>
         <div class="sonny-panel__messages" id="sonnyMessages" role="log" aria-live="polite" aria-relevant="additions"></div>
@@ -228,9 +228,9 @@
         </form>
         <p class="sonny-panel__note" id="sonnyNote">Demo assistant. No live AI, bookings, or data transmission.</p>
       </section>
-      <button class="sonny-toggle" type="button" id="sonnyToggle" aria-controls="sonnyPanel" aria-expanded="false" aria-label="Chat with Sonny, the booking guide">
-        <span class="sonny-toggle__avatar" aria-hidden="true">S<span class="sonny-toggle__spark">✦</span></span>
-        <span class="sonny-toggle__label"><strong>Sonny</strong><small id="sonnyToggleHint">Chat with booking assistant</small></span>
+      <button class="sonny-toggle" type="button" id="sonnyToggle" aria-controls="sonnyPanel" aria-expanded="false" aria-label="Chat with the booking assistant">
+        <span class="sonny-toggle__avatar" aria-hidden="true"><img src="https://raw.githubusercontent.com/thelaunchera/the-launch-era-new-website-/7aeb57df0831d3c2bd10b378dc27c76f693aa5cc/public/assets/clara-private-demo/sonny-blue-robot.webp" alt="" width="48" height="48" /></span>
+        <span id="sonnyToggleHint" class="visually-hidden">Chat with booking assistant</span>
         <span class="sonny-toggle__chevron" aria-hidden="true">↗</span>
       </button>
     </aside>
