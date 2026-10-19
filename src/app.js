@@ -4,6 +4,7 @@ const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+
 const state = {
   locale: "en",
   step: 1,
@@ -683,6 +684,7 @@ function initLanguageToggle() {
     renderReviews();
     renderFaq();
     renderBooking();
+    renderSonnyLocale();
   });
 }
 
@@ -708,6 +710,13 @@ function initServices() {
   });
 }
 
+function closeMobileMenu() {
+  $("#menuToggle").setAttribute("aria-expanded", "false");
+  $("#menuToggle").setAttribute("aria-label", t("menuOpen"));
+  $("#mobileNav").hidden = true;
+  document.body.classList.remove("menu-is-open");
+}
+
 function initMobileMenu() {
   const button = $("#menuToggle");
   const nav = $("#mobileNav");
@@ -716,12 +725,11 @@ function initMobileMenu() {
     button.setAttribute("aria-expanded", String(open));
     button.setAttribute("aria-label", t(open ? "menuClose" : "menuOpen"));
     nav.hidden = !open;
+    document.body.classList.toggle('menu-is-open', open);
   });
   nav.addEventListener("click", (event) => {
     if (!event.target.closest("a")) return;
-    button.setAttribute("aria-expanded", "false");
-    button.setAttribute("aria-label", t("menuOpen"));
-    nav.hidden = true;
+    closeMobileMenu();
   });
 }
 
@@ -826,8 +834,127 @@ function initAnchors() {
     if (!target) return;
     if (link.id === "mobileStickyBook") {
       $("#menuToggle").setAttribute("aria-expanded", "false");
-      $("#mobileNav").hidden = true;
+      closeMobileMenu();
     }
+  });
+}
+
+
+const SONNY = {
+  en: {
+    status: "Interactive demo guide", hint: "Chat with booking assistant", open: "Chat with Sonny, the booking guide",
+    close: "Close chat", inputLabel: "Ask Sonny a question", placeholder: "Ask about booking...", send: "Send message",
+    note: "Demo assistant. No live AI or messages sent.",
+    intro: "Hi! I'm Sonny 👋 I can walk you through this booking demo. What would you like to know?",
+    topics: [["book", "Try a booking"], ["quote", "Request a quote"], ["times", "Available times"]],
+    book: "Choose a cleaning service, select a preferred future date and time, then enter demo details. It takes just 3 steps!",
+    quote: "Select Custom Quote under Services, then describe the space and what you need in the final step.",
+    times: "The calendar shows future dates for demonstration only. These time windows are preferences, not live availability.",
+    data: "This is a safe front-end demo. It never transmits or saves the details you enter, and no real booking is made.",
+    other: "I can help with booking steps, custom quotes, or preferred dates. Which would you like to try?",
+    go: "Go to the booking form"
+  },
+  es: {
+    status: "Guía interactiva de demostración", hint: "Chat con el asistente", open: "Chatea con Sonny, guía de reservas",
+    close: "Cerrar chat", inputLabel: "Pregúntale a Sonny", placeholder: "Pregunta sobre reservas...", send: "Enviar mensaje",
+    note: "Asistente de demostración. No usa IA en vivo ni envía mensajes.",
+    intro: "¡Hola! Soy Sonny 👋 Te ayudo a probar este demo de reservas. ¿Qué necesitas saber?",
+    topics: [["book", "Probar reserva"], ["quote", "Pedir cotización"], ["times", "Fechas disponibles"]],
+    book: "Elige un servicio, una fecha y un horario preferido, y completa tus datos de prueba. ¡Son solo 3 pasos!",
+    quote: "Elige Custom Quote en Servicios y describe el espacio y lo que necesitas en el último paso.",
+    times: "El calendario muestra fechas futuras como demostración. Los horarios son preferencias, no disponibilidad en vivo.",
+    data: "Este demo no envía ni guarda los datos que escribes, y no crea reservas reales.",
+    other: "Puedo ayudarte con los pasos para reservar, cotizaciones o fechas preferidas. ¿Qué quieres probar?",
+    go: "Ir al formulario de reserva"
+  }
+};
+let sonnyIntroduced = false;
+function sonnyText() { return SONNY[state.locale]; }
+function appendSonnyMessage(message, author = "assistant") {
+  const log = $("#sonnyMessages");
+  const bubble = document.createElement("p");
+  bubble.className = "sonny-message sonny-message--" + author;
+  bubble.textContent = message;
+  log.append(bubble);
+  log.scrollTop = log.scrollHeight;
+}
+function renderSonnyLocale() {
+  const copy = sonnyText();
+  $("#sonnyStatus").textContent = copy.status;
+  $("#sonnyToggleHint").textContent = copy.hint;
+  $("#sonnyToggle").setAttribute("aria-label", copy.open);
+  $("#sonnyClose").setAttribute("aria-label", copy.close);
+  $("#sonnyInputLabel").textContent = copy.inputLabel;
+  $("#sonnyInput").placeholder = copy.placeholder;
+  $("#sonnySend").setAttribute("aria-label", copy.send);
+  $("#sonnyNote").textContent = copy.note;
+  $("#sonnyTopics").replaceChildren();
+  for (const [topic, label] of copy.topics) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.sonnyTopic = topic;
+    button.textContent = label;
+    $("#sonnyTopics").append(button);
+  }
+  if (!sonnyIntroduced) return;
+  $("#sonnyMessages").replaceChildren();
+  appendSonnyMessage(copy.intro);
+}
+function toggleSonny(open) {
+  const panel = $("#sonnyPanel");
+  panel.hidden = !open;
+  $("#sonnyToggle").setAttribute("aria-expanded", String(open));
+  $("#sonnyAssistant").classList.toggle("is-open", open);
+  if (open) {
+    if (!sonnyIntroduced) { sonnyIntroduced = true; appendSonnyMessage(sonnyText().intro); }
+    $("#sonnyInput").focus({ preventScroll: true });
+  } else $("#sonnyToggle").focus({ preventScroll: true });
+}
+function answerSonny(query, topic) {
+  const q = (query || "").toLowerCase();
+  const copy = sonnyText();
+  let selected = topic;
+  if (!selected) {
+    if (/quot|estim|cotiz|presup|custom/.test(q)) selected = "quote";
+    else if (/date|time|calendar|avail|fecha|hora|dispon/.test(q)) selected = "times";
+    else if (/data|privacy|informaci|save|send|real|segur|priv/.test(q)) selected = "data";
+    else if (/book|reserv|clean|step|paso|service|servicio/.test(q)) selected = "book";
+  }
+  appendSonnyMessage(copy[selected] || copy.other);
+  if (selected === "book" || selected === "quote") {
+    const link = document.createElement("a");
+    link.href = selected === "quote" ? "#services" : "#booking";
+    link.className = "sonny-jump";
+    link.textContent = copy.go + " ↗";
+    link.addEventListener("click", () => toggleSonny(false));
+    $("#sonnyMessages").append(link);
+  }
+}
+function initSonny() {
+  renderSonnyLocale();
+  $("#sonnyToggle").addEventListener("click", () => toggleSonny($("#sonnyPanel").hidden));
+  $("#sonnyClose").addEventListener("click", () => toggleSonny(false));
+  $("#sonnyTopics").addEventListener("click", (event) => {
+    const topic = event.target.closest("[data-sonny-topic]")?.dataset.sonnyTopic;
+    if (!topic) return;
+    const label = sonnyText().topics.find((item) => item[0] === topic)?.[1] || topic;
+    appendSonnyMessage(label, "visitor");
+    answerSonny("", topic);
+  });
+  $("#sonnyForm").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const input = $("#sonnyInput");
+    const value = input.value.trim();
+    if (!value) return;
+    appendSonnyMessage(value.slice(0, 240), "visitor");
+    input.value = "";
+    answerSonny(value);
+    input.focus();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    if (!$("#sonnyPanel").hidden) toggleSonny(false);
+    if ($("#menuToggle").getAttribute("aria-expanded") === "true") closeMobileMenu();
   });
 }
 
@@ -842,6 +969,7 @@ function init() {
   initHeroMotion();
   initStickyCta();
   initAnchors();
+  initSonny();
 
   const bookingView = $("#bookingStepView");
   bookingView.addEventListener("click", handleBookingAction);
