@@ -138,7 +138,7 @@ export const COPY = {
     sliderAria: "Drag to compare before and after",
     galleryEyebrow: "QUIET DETAILS, FRESH SPACES",
     galleryTitle: "The feeling of a\nwell-cared-for home.",
-    galleryIntro: "Soft light, considered details, and a little more room to breathe.",
+    galleryIntro: "A room-by-room photo story from one welcoming home, with one very happy dog.",
     whyEyebrow: "CARE, MADE SIMPLE",
     whyTitle: "Good care should\nfeel effortless.",
     reviewsEyebrow: "KIND WORDS, CLEARLY MARKED",
@@ -180,11 +180,11 @@ export const COPY = {
     whyReliableText: "Straightforward expectations, with time confirmed by the team.",
     whyBookingTitle: "Easy to book",
     whyBookingText: "A simple three-step request, made for the way people browse.",
-    galleryAltTeam: "A welcoming living room with plants and natural textures",
-    galleryAltKitchen: "A sunlit living room with a sage-green sofa",
-    galleryAltTable: "A housekeeper smoothing crisp white bed linens",
-    galleryAltBathroom: "A softly lit bedroom with warm wood and white linen",
-    galleryAltBedroom: "Fresh white bedding with a small arrangement of flowers",
+    galleryAltTeam: "A golden retriever resting in the living room of a bright modern house",
+    galleryAltKitchen: "The kitchen in the same warm, light-filled house",
+    galleryAltTable: "The dining room in the same warm modern house",
+    galleryAltBathroom: "An open-plan lounge connected to the same kitchen",
+    galleryAltBedroom: "The sunroom in the same home, with natural light and greenery",
     faqOne: "What does a regular clean include?",
     faqTwo: "Are the dates and times confirmed?",
     faqThree: "Can I add a special request?",
@@ -330,7 +330,7 @@ export const COPY = {
     sliderAria: "Arrastra para comparar el antes y el después",
     galleryEyebrow: "DETALLES TRANQUILOS, ESPACIOS FRESCOS",
     galleryTitle: "La sensación de una\ncasa bien cuidada.",
-    galleryIntro: "Luz suave, detalles pensados y un poco más de espacio para respirar.",
+    galleryIntro: "Un recorrido por una misma casa luminosa, acompañada de un solo perro.",
     whyEyebrow: "CUIDADO, SIN COMPLICACIONES",
     whyTitle: "El buen cuidado\ndebería sentirse fácil.",
     reviewsEyebrow: "PALABRAS AMABLES, CLARAMENTE MARCADAS",
@@ -372,11 +372,11 @@ export const COPY = {
     whyReliableText: "Expectativas claras y un horario confirmado por el equipo.",
     whyBookingTitle: "Fácil de reservar",
     whyBookingText: "Una solicitud sencilla de tres pasos, pensada para navegar desde cualquier dispositivo.",
-    galleryAltTeam: "Un corgi disfrutando de un hogar limpio y cómodo para mascotas",
-    galleryAltKitchen: "Una cocina limpia y acogedora",
-    galleryAltTable: "Un detalle de baño recién limpiado",
-    galleryAltBathroom: "Un baño luminoso e impecable",
-    galleryAltBedroom: "Un terrier descansando sobre un sofá limpio",
+    galleryAltTeam: "Un golden retriever descansando en la sala de la misma casa",
+    galleryAltKitchen: "La cocina luminosa de la misma casa",
+    galleryAltTable: "El comedor de la misma casa moderna",
+    galleryAltBathroom: "La sala conectada a la misma cocina",
+    galleryAltBedroom: "La sala acristalada de la misma casa, sin mascotas adicionales",
     faqOne: "¿Qué incluye una limpieza regular?",
     faqTwo: "¿Las fechas y horarios están confirmados?",
     faqThree: "¿Puedo añadir una solicitud especial?",
@@ -444,11 +444,11 @@ export const SERVICES = [
 ];
 
 export const GALLERY = [
-  { image: "./assets/drive/pet-corgi.png", altKey: "galleryAltTeam", shape: "gallery-item--wide" },
-  { image: "./assets/drive/kitchen.png", altKey: "galleryAltKitchen", shape: "gallery-item--tall" },
-  { image: "./assets/drive/detail.png", altKey: "galleryAltTable", shape: "gallery-item--small" },
-  { image: "./assets/drive/bathroom.png", altKey: "galleryAltBathroom", shape: "gallery-item--wide" },
-  { image: "./assets/drive/pet-sofa.png", altKey: "galleryAltBedroom", shape: "gallery-item--tall" }
+  { image: "https://raw.githubusercontent.com/thelaunchera/the-launch-era-new-website-/7aeb57df0831d3c2bd10b378dc27c76f693aa5cc/public/assets/clara-private-demo/gallery/01-living-room-dog.webp", altKey: "galleryAltTeam", shape: "gallery-item--wide" },
+  { image: "https://raw.githubusercontent.com/thelaunchera/the-launch-era-new-website-/7aeb57df0831d3c2bd10b378dc27c76f693aa5cc/public/assets/clara-private-demo/gallery/02-kitchen.webp", altKey: "galleryAltKitchen", shape: "gallery-item--tall" },
+  { image: "https://raw.githubusercontent.com/thelaunchera/the-launch-era-new-website-/7aeb57df0831d3c2bd10b378dc27c76f693aa5cc/public/assets/clara-private-demo/gallery/03-dining-room.webp", altKey: "galleryAltTable", shape: "gallery-item--small" },
+  { image: "https://raw.githubusercontent.com/thelaunchera/the-launch-era-new-website-/7aeb57df0831d3c2bd10b378dc27c76f693aa5cc/public/assets/clara-private-demo/gallery/04-lounge.webp", altKey: "galleryAltBathroom", shape: "gallery-item--wide" },
+  { image: "https://raw.githubusercontent.com/thelaunchera/the-launch-era-new-website-/7aeb57df0831d3c2bd10b378dc27c76f693aa5cc/public/assets/clara-private-demo/gallery/05-sunroom.webp", altKey: "galleryAltBedroom", shape: "gallery-item--tall" }
 ];
 
 export const FAQS = [
