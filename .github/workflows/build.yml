@@ -1,4 +1,4 @@
-name: Publish Brand Board Studio to GitHub Pages
+name: Build Brand Board Studio
 
 on:
   push:
@@ -8,62 +8,30 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: github-pages-brand-board
+  group: brand-board-studio-build
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    name: Publish AFTR and Brand Board Studio together
+  build:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}brand-board-studio/
     steps:
-      - name: Checkout Brand Board Studio
+      - name: Checkout Brand Board Studio source
         uses: actions/checkout@v4
-
-      - name: Checkout existing published AFTR website
-        uses: actions/checkout@v4
-        with:
-          ref: gh-pages
-          path: _site
-          persist-credentials: false
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
 
-      - name: Install Brand Board Studio dependencies
+      - name: Install dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Compile Brand Board Studio
+      - name: Verify production build
         run: npm run build
 
-      - name: Merge compiled app without overwriting AFTR
+      - name: Verify GitHub Pages assets
         run: |
-          rm -rf _site/.git
-          rm -rf _site/brand-board-studio
-          mkdir -p _site/brand-board-studio
-          cp -R dist/. _site/brand-board-studio/
-          touch _site/.nojekyll
-          test -f _site/index.html
-          test -f _site/aftr-nightclub/index.html
-          test -f _site/brand-board-studio/index.html
-          test -d _site/brand-board-studio/assets
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload complete website
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          test -f dist/index.html
+          test -d dist/assets
