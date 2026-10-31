@@ -94,5 +94,24 @@
       "Reemplaza la foto; después prueba moverla y cambiar el encuadre"
     ],
     "expected": "La imagen se muestra grande, los controles están debajo sin invadirla, la revisión permite sustituir o eliminar y los cambios permanecen al actualizar."
+  },
+  {
+    "name": "Conservar foto vertical completa en vista previa y PNG",
+    "viewport": "mobile",
+    "covers": [
+      "foto vertical sin corte",
+      "ajuste contain por defecto",
+      "exportación PNG respeta encuadre",
+      "revisión visual de foto generada con IA"
+    ],
+    "description": "Valida que una nueva foto vertical no pierda rostro ni pies en la miniatura y que la exportación respete el mismo ajuste.",
+    "steps": [
+      "En una marca abre Identidad y añade una foto vertical con el cuerpo completo",
+      "Comprueba que el marco muestre la imagen entera por defecto, aunque aparezcan márgenes laterales",
+      "Abre Revisar detalles y visualiza la imagen en grande",
+      "Descarga el Brand Board como PNG",
+      "Comprueba la sección de galería exportada"
+    ],
+    "expected": "La vista ampliada abre la foto guardada, tanto los pies como la cabeza son visibles en la miniatura y el PNG exportado conserva el encuadre sin recortes."
   }
 ]
