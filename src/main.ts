@@ -10,6 +10,7 @@ import {
   galleryHTML,
   galleryManagerHTML,
   loadGallery,
+  getGalleryPhotoSource,
   addFiles,
   removePhoto,
   movePhoto,
@@ -404,6 +405,44 @@ function addBrand(name,type){
   Object.assign(starter,clone(fallback),{id,name,category:type,tagline:'Una marca con una historia propia.',description:'Una nueva identidad creada para un proyecto demo.',monogram:name.trim().split(/\s+/).map(x=>x[0]).slice(0,2).join('').toUpperCase(),site:'',logoImage:'',patternImage:'',heroPhoto:'',detailPhoto:'',imageY:50,imageX:50,imageScale:1});
   brands.push(starter);activeId=id;save();tab='identity';view='board';focused=false;render();notify('Nueva marca creada. Ahora puedes darle identidad.');
 }
+async function openPhotoReview(section,id){
+  const source=await getGalleryPhotoSource(id);
+  if(!source){notify('No se pudo cargar la imagen para revisarla.');return;}
+  document.querySelector('#gallery-photo-review')?.remove();
+  const dialog=document.createElement('dialog');
+  dialog.id='gallery-photo-review';
+  dialog.className='gallery-photo-review-dialog';
+  const heading=document.createElement('h3');
+  heading.textContent='Revisa la fotografía antes de usarla';
+  const image=document.createElement('img');
+  image.src=source;image.alt='Vista ampliada de la foto seleccionada';
+  const note=document.createElement('p');
+  note.textContent='Especialmente si la hiciste con IA: revisa pies, manos, rostro, proporciones y detalles de fondo. La aplicación no puede garantizar automáticamente que una foto generada sea correcta.';
+  const bar=document.createElement('div');bar.className='gallery-review-buttons';
+  const close=document.createElement('button');close.type='button';close.textContent='Conservar foto';
+  close.addEventListener('click',()=>dialog.close());
+  const replace=document.createElement('button');replace.type='button';replace.textContent='Reemplazar foto';
+  replace.addEventListener('click',()=>{
+    dialog.close();
+    uploadSection=section;replacementPhotoId=id;
+    const input=$('section-upload');
+    if(input){input.value='';input.multiple=false;input.click();}
+  });
+  const remove=document.createElement('button');remove.type='button';remove.textContent='Eliminar foto';
+  remove.addEventListener('click',()=>{
+    dialog.close();
+    if(!confirm('¿Eliminar esta foto del Brand Board?'))return;
+    removePhoto(active(),section,id,save).then(()=>{
+      render();notify('Foto eliminada. Puedes reemplazarla por una versión corregida.');
+    }).catch(e=>notify(e.message));
+  });
+  bar.append(close,replace,remove);
+  dialog.append(heading,image,note,bar);
+  document.body.append(dialog);
+  dialog.addEventListener('close',()=>dialog.remove(),{once:true});
+  dialog.showModal();
+}
+
 function perform(action,button){
   const b=active();
   if(action==='new')openNew();
@@ -429,6 +468,7 @@ function perform(action,button){
     if (input) { input.value='';input.multiple=!replacementPhotoId;input.click(); }
     return;
   }
+  if(action==='gallery-review') {void openPhotoReview(button.dataset.section,button.dataset.id);return;}
   if(action==='gallery-delete') {
     removePhoto(b,button.dataset.section,button.dataset.id,save).then(()=>{
       render();notify('Foto eliminada.');
