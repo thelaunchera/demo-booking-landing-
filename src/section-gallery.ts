@@ -77,6 +77,7 @@ async function dropPhoto(id) {
     });
   } catch { /* Removing metadata still hides the photo. */ }
 }
+export function getCachedGalleryPhotoSource(id){return cache.get(id)||'';}
 export async function getGalleryPhotoSource(id) {
   if(typeof id!=='string'||!(/^[a-f0-9]{8}-[a-f0-9-]{27,40}$/i.test(id)||/^photo-[a-z0-9-]{5,140}$/i.test(id)))return '';
   return cache.get(id)||await readPhoto(id)||'';
@@ -194,7 +195,13 @@ export async function addFiles(brand, section, files, persist, replacementId = '
     } else {
       const id = freshId();
       await putPhoto(id, data);
-      gallery[section].push({ id, fit: 'contain', x: 50, y: 50 });
+      gallery[section].push({
+        id,fit:section==='applications'?'cover':'contain',x:50,y:50,
+        left:section==='applications'?(gallery[section].length?15:0):0,
+        top:section==='applications'?(gallery[section].length?12:0):0,
+        width:section==='applications'?(gallery[section].length?58:100):100,
+        height:section==='applications'?(gallery[section].length?74:100):100
+      });
       if (!persist()) {
         gallery[section].pop();
         await dropPhoto(id);
