@@ -109,7 +109,8 @@ export function galleryHTML(brand, section) {
       : '<div class="gallery-image-loading">Cargando foto…</div>';
     return '<div class="gallery-photo-card" data-section="' + section + '" data-image-id="' +
       escapeHtml(photo.id) + '" draggable="true">' +
-      picture + '<div class="gallery-photo-bar"><span class="gallery-photo-number">' + (index + 1) + '</span>' +
+      '<div class="gallery-photo-media">' + picture + '</div>' +
+      '<div class="gallery-photo-bar"><span class="gallery-photo-number">Foto ' + (index + 1) + '</span>' +
       '<div class="gallery-photo-actions">' +
       '<button type="button" data-action="gallery-left" data-section="' + section + '" data-id="' + escapeHtml(photo.id) +
       '" aria-label="Mover foto a la izquierda" title="Mover a la izquierda">←</button>' +
@@ -119,11 +120,13 @@ export function galleryHTML(brand, section) {
       '" aria-label="Cambiar ajuste de foto" title="Alternar llenar o ajustar">⊡</button>' +
       '<button type="button" data-action="gallery-replace" data-section="' + section + '" data-id="' + escapeHtml(photo.id) +
       '" aria-label="Reemplazar foto" title="Reemplazar imagen">↻</button>' +
+      '<button type="button" data-action="gallery-review" data-section="' + section + '" data-id="' + escapeHtml(photo.id) +
+      '" aria-label="Revisar fotografía en grande" title="Revisar detalles">◎</button>' +
       '<button type="button" class="gallery-remove" data-action="gallery-delete" data-section="' + section + '" data-id="' +
       escapeHtml(photo.id) + '" aria-label="Eliminar foto" title="Eliminar">×</button></div></div></div>';
   }).join('');
   return '<div class="gallery-dropzone" data-section-drop="' + section + '">' +
-    '<div class="section-photo-grid">' + tiles + '</div></div>';
+    '<div class="section-photo-grid gallery-count-' + Math.min(3,photos.length) + '">' + tiles + '</div></div>';
 }
 export function galleryManagerHTML(brand) {
   const gallery = ensureGallery(brand);
