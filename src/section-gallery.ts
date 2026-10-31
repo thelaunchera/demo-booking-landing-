@@ -116,11 +116,11 @@ export function galleryHTML(brand, section) {
       escapeHtml(photo.id) + '" draggable="true">' +
       '<div class="gallery-photo-media">' + picture + '</div>' +
       '<div class="gallery-photo-bar"><span class="gallery-photo-number">Foto ' + (index + 1) + '</span>' +
-      '<div class="gallery-photo-actions">' +
+      '<details class="gallery-photo-tools"><summary>Editar foto</summary><div class="gallery-photo-actions">' +
       '<button type="button" data-action="gallery-left" data-section="' + section + '" data-id="' + escapeHtml(photo.id) +
-      '" aria-label="Mover foto a la izquierda" title="Mover a la izquierda">←</button>' +
+      '" aria-label="Mover foto a la izquierda" title="Poner antes">Antes</button>' +
       '<button type="button" data-action="gallery-right" data-section="' + section + '" data-id="' + escapeHtml(photo.id) +
-      '" aria-label="Mover foto a la derecha" title="Mover a la derecha">→</button>' +
+      '" aria-label="Mover foto a la derecha" title="Poner después">Después</button>' +
       '<button type="button" data-action="gallery-fit" data-section="' + section + '" data-id="' + escapeHtml(photo.id) +
       '" aria-label="Cambiar ajuste de foto" title="Alternar llenar o ajustar">⊡</button>' +
       '<button type="button" data-action="gallery-replace" data-section="' + section + '" data-id="' + escapeHtml(photo.id) +
@@ -128,7 +128,7 @@ export function galleryHTML(brand, section) {
       '<button type="button" data-action="gallery-review" data-section="' + section + '" data-id="' + escapeHtml(photo.id) +
       '" aria-label="Revisar fotografía en grande" title="Revisar detalles">◎</button>' +
       '<button type="button" class="gallery-remove" data-action="gallery-delete" data-section="' + section + '" data-id="' +
-      escapeHtml(photo.id) + '" aria-label="Eliminar foto" title="Eliminar">×</button></div></div></div>';
+      escapeHtml(photo.id) + '" aria-label="Eliminar foto" title="Eliminar">Eliminar</button></div></details></div></div>';
   }).join('');
   return '<div class="gallery-dropzone" data-section-drop="' + section + '">' +
     '<div class="section-photo-grid gallery-count-' + Math.min(3,photos.length) + '">' + tiles + '</div></div>';
