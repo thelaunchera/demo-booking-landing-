@@ -78,7 +78,7 @@ async function dropPhoto(id) {
   } catch { /* Removing metadata still hides the photo. */ }
 }
 export async function getGalleryPhotoSource(id) {
-  if(typeof id!=='string'||!id.startsWith('photo-'))return '';
+  if(typeof id!=='string'||!(/^[a-f0-9]{8}-[a-f0-9-]{27,40}$/i.test(id)||/^photo-[a-z0-9-]{5,140}$/i.test(id)))return '';
   return cache.get(id)||await readPhoto(id)||'';
 }
 export function ensureGallery(brand) {
@@ -194,7 +194,7 @@ export async function addFiles(brand, section, files, persist, replacementId = '
     } else {
       const id = freshId();
       await putPhoto(id, data);
-      gallery[section].push({ id, fit: 'cover', x: 50, y: 50 });
+      gallery[section].push({ id, fit: 'contain', x: 50, y: 50 });
       if (!persist()) {
         gallery[section].pop();
         await dropPhoto(id);
