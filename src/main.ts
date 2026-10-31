@@ -295,10 +295,12 @@ async function loadImage(src){
   if(!src)return null;
   return new Promise(resolve=>{const img=new Image();img.crossOrigin='anonymous';img.onload=()=>resolve(img);img.onerror=()=>resolve(null);img.src=src;});
 }
-function canvasImage(ctx,img,x,y,w,h,pX=50,pY=50,scale=1){
+function canvasImage(ctx,img,x,y,w,h,pX=50,pY=50,scale=1,mode='cover'){
   if(!img)return false;
-  const fit=Math.max(w/img.width,h/img.height)*scale,iw=img.width*fit,ih=img.height*fit;
-  const dx=x-(iw-w)*(pX/100),dy=y-(ih-h)*(pY/100);
+  const fit=(mode==='contain'?Math.min(w/img.width,h/img.height):Math.max(w/img.width,h/img.height))*scale;
+  const iw=img.width*fit,ih=img.height*fit;
+  const dx=mode==='contain'?x+(w-iw)/2:x-(iw-w)*(pX/100);
+  const dy=mode==='contain'?y+(h-ih)/2:y-(ih-h)*(pY/100);
   ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();ctx.drawImage(img,dx,dy,iw,ih);ctx.restore();return true;
 }
 function write(ctx,s,x,y,size,color,fontName='Arial',weight='normal'){
@@ -370,7 +372,7 @@ async function exportPNG(){
       const col=i%3, r=Math.floor(i/3),x=52+col*438,y=galleryY+r*288;
       g.fillStyle=c[2];g.fillRect(x,y,418,264);
       const photo=await loadImage(row.photos[i].src);
-      if(photo)canvasImage(g,photo,x,y,418,264,row.photos[i].x,row.photos[i].y);
+      if(photo)canvasImage(g,photo,x,y,418,264,row.photos[i].x,row.photos[i].y,1,row.photos[i].fit);
     }
     galleryY+=Math.ceil(row.photos.length/3)*288+25;
   }
