@@ -1,0 +1,77 @@
+[
+  {
+    "name": "Crear marca y añadir fotos en varias secciones",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "creación de marca",
+      "galerías independientes por sección",
+      "subida múltiple JPG PNG WEBP",
+      "persistencia de fotos"
+    ],
+    "description": "Comprueba que cada sección acepta imágenes propias sin mezclarse con las otras.",
+    "steps": [
+      "Crea una marca demo llamada Sol Coffee",
+      "En el Brand Board pulsa Añadir fotos en Identidad y selecciona dos fotos JPG o PNG",
+      "Añade otra imagen a Paleta de color",
+      "Recarga la página y selecciona la marca"
+    ],
+    "expected": "Identidad conserva dos imágenes, Paleta de color conserva una imagen y las demás secciones continúan separadas."
+  },
+  {
+    "name": "Ordenar reemplazar ajustar y borrar fotos",
+    "viewport": "mobile",
+    "covers": [
+      "mover fotos con botones",
+      "reemplazar foto",
+      "modo contain cover",
+      "eliminar fotos",
+      "edición desde el móvil"
+    ],
+    "description": "Valida controles de galería utilizables en pantalla pequeña.",
+    "steps": [
+      "Abre una marca con al menos dos fotos en Universo visual",
+      "Pulsa la flecha derecha sobre la primera foto",
+      "Pulsa Cambiar ajuste sobre otra foto",
+      "Pulsa Reemplazar e introduce otro JPG",
+      "Borra una foto con la X"
+    ],
+    "expected": "La galería cambia el orden, permite reemplazo y la foto borrada deja de aparecer sin eliminar las demás."
+  },
+  {
+    "name": "Importar y exportar fotos con respaldo",
+    "viewport": "desktop",
+    "covers": [
+      "respaldo JSON con archivos",
+      "restauración de fotos",
+      "retención tras actualizar",
+      "exportación PNG con todas las galerías"
+    ],
+    "description": "Comprueba que las imágenes de las secciones están incluidas en los archivos de salida.",
+    "steps": [
+      "Sube una foto a Patrones y otra a Aplicaciones",
+      "Pulsa Respaldo y guarda el archivo JSON",
+      "Pulsa Exportar PNG para descargar el board completo",
+      "Importa el respaldo descargado y confirma la restauración"
+    ],
+    "expected": "El PNG incluye las imágenes por sección y el archivo de respaldo restaura las mismas imágenes."
+  },
+  {
+    "name": "Mantener la edición de identidad y colores",
+    "viewport": "desktop",
+    "covers": [
+      "edición de nombre y tagline",
+      "selección de color y fuente",
+      "vista de aplicaciones",
+      "guía de marca"
+    ],
+    "description": "Garantiza que las funciones anteriores siguen operando junto con las galerías.",
+    "steps": [
+      "Selecciona Casa Brownie y cambia su tagline",
+      "Abre Estilo y cambia el color Acento",
+      "Abre Aplicaciones y luego Guía de marca",
+      "Vuelve al Brand Board"
+    ],
+    "expected": "Los cambios se mantienen y las vistas del estudio siguen funcionando."
+  }
+]
