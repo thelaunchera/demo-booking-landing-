@@ -28,6 +28,9 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
+      - name: Check official GitHub demo links
+        run: node --test tests/link-targets.test.mjs
+
       - name: Verify production build
         run: npm run build
 
