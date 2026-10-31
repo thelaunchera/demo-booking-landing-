@@ -4,7 +4,10 @@
 https://thelaunchera.github.io/demo-booking-landing-/brand-board-studio/
 
 **Código fuente completo:** rama `brand-board-studio` de este repositorio.  
-**AppDeploy (alternativa):** https://the-launch-era-brand-board-studio-evbqlv.v2.appdeploy.ai/
+**Las tres demos de la biblioteca se abren desde las páginas oficiales publicadas con GitHub:**
+- Casa Brownie: https://thelaunchera.com/demos/casa-brownie/
+- CRUMB: https://thelaunchera.com/demos/crumb/
+- AFTR: https://thelaunchera.com/demos/aftr/
 
 ## Funcionalidades
 
@@ -36,7 +39,7 @@ npm run preview
 2. Cuando termina bien, `main/.github/workflows/deploy-brand-board-pages.yml` construye y publica en **GitHub Pages**.
 3. Se publica en la subcarpeta `/brand-board-studio/` y se preservan los archivos de AFTR y las otras demos.
 
-**Importante:** GitHub Pages y AppDeploy son publicaciones independientes; modificar este repositorio no actualiza automáticamente AppDeploy.
+**Importante:** el Brand Board utiliza la publicación de GitHub Pages y enlaces de demos servidos desde el repositorio del website. Los enlaces antiguos almacenados en el navegador se sustituyen automáticamente por las URLs oficiales.
 
 ## Archivos y datos
 
@@ -47,4 +50,4 @@ Este repositorio contiene el **código**, las pruebas y las configuraciones de l
 - Para trabajar en otro dispositivo, usa la función de respaldo e importación.
 - Algunas fotografías iniciales de las demos son referencias externas y requieren conexión a internet.
 
-El código base corresponde al snapshot AppDeploy `1793486164462`.
+El Brand Board mantiene su código fuente en la rama `brand-board-studio`; los destinos públicos oficiales están en GitHub Pages.
