@@ -1,30 +1,46 @@
-name: Build Brand Board Studio
+name: Build and publish Brand Board Studio
 
 on:
   push:
-    branches: [brand-board-studio]
+    branches:
+      - brand-board-studio
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: brand-board-studio-github-pages
+  cancel-in-progress: false
 
 jobs:
-  build:
+  publish:
+    name: Build and publish under /brand-board-studio/
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout Brand Board Studio source
         uses: actions/checkout@v4
-      - name: Use Node.js
+
+      - name: Install Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: npm
+          cache-dependency-path: package.json
+
       - name: Install dependencies
         run: npm install --no-audit --no-fund
-      - name: Build static website
+
+      - name: Build static application
         run: npm run build
-      - name: Upload static build
-        uses: actions/upload-artifact@v4
+
+      - name: Publish without deleting AFTR or other demos
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          name: brand-board-studio-static-build
-          path: dist/
-          if-no-files-found: error
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./dist
+          destination_dir: brand-board-studio
+          keep_files: true
+          enable_jekyll: false
+          commit_message: 'Publish Brand Board Studio website'
