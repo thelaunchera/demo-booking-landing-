@@ -31,7 +31,7 @@ const DEMOS=[
     colors:['#422419','#BC7658','#E5D3A9','#FCF3E9','#A5AB91','#DEAF95'],
     heroPhoto:'https://www.amummytoo.co.uk/wp-content/uploads/2025/04/big-batch-brownies-SQUARE.jpg',
     detailPhoto:'https://images.ctfassets.net/brcxfsm84vq2/3XfvKaeEjct7Rjgweuzp5r/174011d220376e0cf240558c79796251/Fudge_Brownies_Salted_Caramel.jpg?w=600',
-    site:'https://casa-brownie-demo-miami-ltg7rb.v2.appdeploy.ai/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
+    site:'https://thelaunchera.com/demos/casa-brownie/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
   },
   {
     id:'crumb',name:'CRUMB Cookies',category:'Cookie Shop · Demo',description:'Cookies oversized, horneadas frescas y llenas de personalidad.',tagline:'The good stuff, fresh from the oven.',
@@ -39,7 +39,7 @@ const DEMOS=[
     colors:['#392720','#BA8E6A','#E9DBCA','#FAF7F0','#B9AB8F','#DFC2A4'],
     heroPhoto:'https://d2ol7oe51mr4n9.cloudfront.net/user_3FC9GcVebQE6WAxiCP5Hh9w95GF/e5bb099c-dc60-4ebe-884c-2c33dccfab62.jpg',
     detailPhoto:'https://d2ol7oe51mr4n9.cloudfront.net/user_3FC9GcVebQE6WAxiCP5Hh9w95GF/678a8c92-21bd-410c-b72f-18e051b620c8.jpg',
-    site:'https://crumb-cookies-animated-demo-w1fcop.v2.appdeploy.ai/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
+    site:'https://thelaunchera.com/demos/crumb/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
   },
   {
     id:'aftr',name:'AFTR Las Vegas',category:'Nightclub · Demo',description:'Nightlife de alta energía, música y experiencias después del anochecer.',tagline:'After dark. Beyond ordinary.',
@@ -47,9 +47,26 @@ const DEMOS=[
     colors:['#0B0911','#9A6AFF','#FF3F9D','#F3F0F7','#D9FF52','#C6C9D4'],
     heroPhoto:'https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/aftr-nightclub/assets/hero.webp',
     detailPhoto:'https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/aftr-nightclub/assets/dj.webp',
-    site:'https://aftr-las-vegas-nightclub-fwv6yu.v2.appdeploy.ai/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
+    site:'https://thelaunchera.com/demos/aftr/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
   }
 ];
+// Demos oficiales: publicados en GitHub Pages desde el repositorio de The Launch Era.
+// Nunca recuperar las URLs antiguas de AppDeploy desde la memoria del navegador o backups.
+const OFFICIAL_DEMO_SITES={
+  'casa-brownie':'https://thelaunchera.com/demos/casa-brownie/',
+  'crumb':'https://thelaunchera.com/demos/crumb/',
+  'aftr':'https://thelaunchera.com/demos/aftr/'
+};
+function publishedSite(brand){
+  if(OFFICIAL_DEMO_SITES[brand.id])return OFFICIAL_DEMO_SITES[brand.id];
+  const candidate=String(brand.site||'').trim();
+  if(!candidate)return '';
+  try{
+    const url=new URL(candidate);
+    if(url.protocol!=='https:'||/([.]|^)appdeploy[.]ai$/i.test(url.hostname))return '';
+    return url.href;
+  }catch{return '';}
+}
 const TYPES=['Bakery · Demo','Cookie Shop · Demo','Nightclub · Demo','Boutique · Demo','Beauty · Demo','Wellness · Demo','Restaurante · Demo','Otra categoría'];
 const FONTS=['Bodoni Moda','DM Serif Display','Cormorant Garamond','Bebas Neue','Georgia','Manrope','DM Sans','Arial'];
 const clone=x=>JSON.parse(JSON.stringify(x));
@@ -68,6 +85,7 @@ function hydrate(){
   return previous.map(b=>{
     const d=base.find(x=>x.id===b.id)||base[0];
     const merged={...clone(d),...b};
+    merged.site=publishedSite(merged);
     if(!b.heroPhoto)merged.heroPhoto=d.heroPhoto;
     if(!b.detailPhoto)merged.detailPhoto=b.referenceImage||d.detailPhoto;
     if(!b.titleFont||b.titleFont==='Georgia')merged.titleFont=d.titleFont;
@@ -273,7 +291,7 @@ function render(){
       '<div class="sidebar-caption">Mis marcas demo</div><div class="sidebar-navgroup"><nav class="brandlist" aria-label="Marcas">'+
       brands.map(x=>'<button class="brandnav '+(x.id===b.id?'active':'')+'" data-brand="'+html(x.id)+'"><span class="navlogo" style="background:'+hex(x.colors[1])+';color:'+hex(x.colors[0])+'">'+html(x.monogram.slice(0,3))+'</span><span class="navinfo"><strong>'+html(x.name)+'</strong><small>'+html(x.category)+'</small></span><span class="navarrow">›</span></button>').join('')+
       '</nav><button class="newbrand" data-action="new">＋ Nueva marca</button></div>'+
-      '<div class="sidefoot"><a href="'+html(b.site||'#')+'" '+(b.site?'target="_blank" rel="noopener noreferrer"':'')+'>↗ Abrir demo actual</a><a href="#" data-action="backup">↓ Respaldo de mis marcas</a><a href="#" data-action="import">↑ Importar respaldo</a><span>Área de trabajo creativa de The Launch Era. Los cambios se guardan solo en este navegador.</span></div>'+
+      '<div class="sidefoot"><a href="'+html(publishedSite(b)||'#')+'" '+(publishedSite(b)?'target="_blank" rel="noopener noreferrer"':'')+'>↗ Abrir demo de GitHub</a><a href="#" data-action="backup">↓ Respaldo de mis marcas</a><a href="#" data-action="import">↑ Importar respaldo</a><span>Área de trabajo creativa de The Launch Era. Los cambios se guardan solo en este navegador.</span></div>'+
     '</aside><div class="content"><header class="header"><div class="breadcrumb">The Launch Era &nbsp; / &nbsp; Demo Studio &nbsp; / &nbsp; <b>Brand Boards</b></div>'+
       '<div class="header-end"><span class="savepoint"></span><span class="savetext">Guardado local</span><span class="head-avatar">L</span></div></header>'+
       '<main class="workspace"><div class="page-intro"><div><div class="kicker">Creative direction · Brand identity</div><h1>'+html(b.name)+'</h1><p>'+html(b.category)+' &nbsp; · &nbsp; Una identidad lista para llevar al siguiente diseño.</p></div>'+
@@ -281,7 +299,7 @@ function render(){
       '<div class="switcher"><button class="viewtab '+(view==='board'?'active':'')+'" data-view="board">✦ Brand Board</button>'+
       '<button class="viewtab '+(view==='mockups'?'active':'')+'" data-view="mockups">Aplicaciones</button>'+
       '<button class="viewtab '+(view==='guide'?'active':'')+'" data-view="guide">Guía de marca</button>'+
-      '<span class="viewspacer"></span>'+(b.site?'<a class="btn ghost" href="'+html(b.site)+'" target="_blank" rel="noopener noreferrer">↗ Ver demo</a>':'')+'</div>'+
+      '<span class="viewspacer"></span>'+(publishedSite(b)?'<a class="btn ghost" href="'+html(publishedSite(b))+'" target="_blank" rel="noopener noreferrer">↗ Ver demo en GitHub</a>':'')+'</div>'+
       '<div class="workspace-grid '+(focused?'focus':'')+'"><div class="left-stage">'+content+
       '<p class="workspace-hint">El tablero se actualiza al editar. Puedes cargar nuevas fotos y exportar el resultado sin modificar tus demos.</p></div>'+
       (focused?'':editor(b))+'</div></main></div></div>'+
@@ -622,7 +640,7 @@ document.addEventListener('change',async event=>{
       if(data.format!=='the-launch-era-brand-boards'||!Array.isArray(data.brands)||!data.brands.length||data.brands.length>150||!data.brands.every(x=>x.id&&x.name&&Array.isArray(x.colors)&&x.colors.length===6))throw Error();
       if(!confirm('¿Reemplazar los Brand Boards de este dispositivo por los del respaldo?'))return;
       await galleryRestore(data.photos);
-      brands=data.brands;activeId=brands[0].id;save();render();notify('Respaldo e imágenes restaurados.');
+      brands=data.brands.map(b=>({...b,site:publishedSite(b)}));activeId=brands[0].id;save();render();notify('Respaldo e imágenes restaurados.');
     }catch(e){notify('Este archivo no es un respaldo válido.');}
   }
 });
