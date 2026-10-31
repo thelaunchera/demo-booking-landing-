@@ -1,0 +1,86 @@
+name: Deploy Brand Board Studio and AFTR to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/deploy-brand-board-pages.yml
+  workflow_run:
+    workflows:
+      - Build Brand Board Studio
+    types:
+      - completed
+    branches:
+      - brand-board-studio
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages-brand-and-aftr
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+
+      - name: Checkout Brand Board Studio source
+        uses: actions/checkout@v4
+        with:
+          ref: brand-board-studio
+          path: brand-source
+
+      - name: Checkout existing AFTR GitHub Pages files
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: _site
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        working-directory: brand-source
+        run: npm install --no-audit --no-fund
+
+      - name: Build Brand Board Studio
+        working-directory: brand-source
+        run: npm run build
+
+      - name: Merge application with existing AFTR website
+        run: |
+          rm -rf _site/.git
+          rm -rf _site/brand-board-studio
+          mkdir -p _site/brand-board-studio
+          cp -R brand-source/dist/. _site/brand-board-studio/
+          touch _site/.nojekyll
+          test -f _site/index.html
+          test -f _site/aftr-nightclub/index.html
+          test -f _site/brand-board-studio/index.html
+          test -d _site/brand-board-studio/assets
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Publish full site on GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
