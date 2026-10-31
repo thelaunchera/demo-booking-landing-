@@ -1,4 +1,4 @@
-name: Build and publish Brand Board Studio
+name: Publish Brand Board Studio to GitHub Pages
 
 on:
   push:
@@ -7,40 +7,63 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
-  group: brand-board-studio-github-pages
+  group: github-pages-brand-board
   cancel-in-progress: false
 
 jobs:
-  publish:
-    name: Build and publish under /brand-board-studio/
+  deploy:
+    name: Publish AFTR and Brand Board Studio together
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}brand-board-studio/
     steps:
-      - name: Checkout Brand Board Studio source
+      - name: Checkout Brand Board Studio
         uses: actions/checkout@v4
 
-      - name: Install Node.js
+      - name: Checkout existing published AFTR website
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+          path: _site
+          persist-credentials: false
+
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
-          cache: npm
-          cache-dependency-path: package.json
 
-      - name: Install dependencies
+      - name: Install Brand Board Studio dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Build static application
+      - name: Compile Brand Board Studio
         run: npm run build
 
-      - name: Publish without deleting AFTR or other demos
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Merge compiled app without overwriting AFTR
+        run: |
+          rm -rf _site/.git
+          rm -rf _site/brand-board-studio
+          mkdir -p _site/brand-board-studio
+          cp -R dist/. _site/brand-board-studio/
+          touch _site/.nojekyll
+          test -f _site/index.html
+          test -f _site/aftr-nightclub/index.html
+          test -f _site/brand-board-studio/index.html
+          test -d _site/brand-board-studio/assets
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload complete website
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages
-          publish_dir: ./dist
-          destination_dir: brand-board-studio
-          keep_files: true
-          enable_jekyll: false
-          commit_message: 'Publish Brand Board Studio website'
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
