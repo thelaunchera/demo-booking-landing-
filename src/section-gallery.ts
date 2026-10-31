@@ -77,6 +77,10 @@ async function dropPhoto(id) {
     });
   } catch { /* Removing metadata still hides the photo. */ }
 }
+export async function getGalleryPhotoSource(id) {
+  if(typeof id!=='string'||!id.startsWith('photo-'))return '';
+  return cache.get(id)||await readPhoto(id)||'';
+}
 export function ensureGallery(brand) {
   if (!brand.sectionPhotos || typeof brand.sectionPhotos !== 'object' || Array.isArray(brand.sectionPhotos)) {
     brand.sectionPhotos = {};
