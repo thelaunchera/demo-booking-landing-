@@ -11,6 +11,7 @@ import {
   galleryManagerHTML,
   loadGallery,
   getGalleryPhotoSource,
+  getCachedGalleryPhotoSource,
   addFiles,
   removePhoto,
   movePhoto,
@@ -86,6 +87,8 @@ let view='board',tab='identity',focused=false,toastId;
 let uploadSection = 'identity';
 let replacementPhotoId = '';
 let draggedGallery = null;
+let selectedApplicationId = '';
+let applicationDrag = null;
 const active=()=>brands.find(x=>x.id===activeId)||brands[0];
 function notify(s){
   document.querySelector('.toast')?.remove();
@@ -109,17 +112,51 @@ function wordmark(b,variant=''){
   if(b.style==='nightclub'&&b.name.toLowerCase()==='aftr las vegas')return '<span style="'+style+'">AFTR</span>';
   return '<span style="'+style+'">'+html(b.name)+'</span>';
 }
+const clamp=(n,min,max)=>Math.max(min,Math.min(max,Number(n)||0));
+function appLayers(b){
+  const items=ensureGallery(b).applications;
+  const layers=items.map((item,index)=>{
+    const source=getCachedGalleryPhotoSource(item.id);
+    const left=clamp(item.left??(index?15:0),0,100),top=clamp(item.top??(index?12:0),0,100);
+    const width=clamp(item.width??(index?58:100),12,100),height=clamp(item.height??(index?74:100),12,100);
+    return '<div class="board-application-layer'+(selectedApplicationId===item.id?' selected':'')+'" tabindex="0" role="button"'+
+      ' aria-label="Editar foto '+(index+1)+'" data-application-id="'+html(item.id)+'"'+
+      ' style="left:'+left+'%;top:'+top+'%;width:'+width+'%;height:'+height+'%;z-index:'+(index+1)+'">'+
+      (source?'<img src="'+html(source)+'" alt="Foto editable de aplicación" style="object-fit:'+(item.fit==='contain'?'contain':'cover')+'">':
+        '<span>Abriendo foto…</span>')+
+      '<span class="board-layer-handle" aria-hidden="true"></span></div>';
+  }).join('');
+  const activeItem=items.find(v=>v.id===selectedApplicationId)||items[items.length-1];
+  const actions=activeItem?
+    '<div class="board-application-tools" aria-label="Controles de foto seleccionada">'+
+    '<button data-action="app-select" data-id="'+html(activeItem.id)+'">Seleccionar foto</button>'+
+    '<label>Tamaño <input aria-label="Cambiar tamaño de foto" type="range" data-app-size="'+html(activeItem.id)+'" min="18" max="100" step="1" value="'+clamp(activeItem.width??100,18,100)+'"></label>'+
+    '<button data-action="app-fit" data-id="'+html(activeItem.id)+'">'+(activeItem.fit==='contain'?'Llenar':'Ver completa')+'</button>'+
+    '<button data-action="app-replace" data-id="'+html(activeItem.id)+'">Reemplazar</button>'+
+    '<button data-action="app-front" data-id="'+html(activeItem.id)+'">Al frente</button>'+
+    '<button data-action="app-back" data-id="'+html(activeItem.id)+'">Al fondo</button>'+
+    '<button class="danger" data-action="app-remove" data-id="'+html(activeItem.id)+'">Eliminar</button>'+
+    '</div>':'';
+  return '<div class="board-application-editor">'+
+    '<div class="package-area board-application-canvas" data-section-drop="applications" style="background:'+hex(b.colors[4])+'">'+
+    (items.length?layers:'<div class="board-application-empty"><span>Tu fotografía de producto o packaging va aquí</span>'+
+      '<button type="button" data-action="section-add" data-section="applications">Añadir fotografía</button></div>')+
+    '</div>'+
+    '<div class="board-application-header">'+
+       '<button type="button" data-action="'+(items.length?'app-replace':'section-add')+'" data-section="applications"'+
+       (items.length?' data-id="'+html((activeItem||items[0]).id)+'"':'')+'>'+
+         (items.length?'Cambiar imagen':'Colocar imagen')+'</button>'+
+       (items.length?'<button type="button" data-action="section-add" data-section="applications">Añadir otra foto</button>':'')+
+    '</div>'+actions+'</div>';
+}
 function board(b){
   const c=b.colors.map((v,i)=>hex(v,DEMOS[0].colors[i]));
   const cssVars='--ink:'+c[0]+';--accent:'+c[1]+';--soft:'+c[2]+';--paper:'+c[3]+';--extra:'+c[4]+';--detail:'+c[5]+';--muted:'+c[0]+'99;';
   const picX=Math.max(0,Math.min(100,Number(b.imageX)||50)),picY=Math.max(0,Math.min(100,Number(b.imageY)||50)),scale=Math.max(1,Math.min(2,Number(b.imageScale)||1));
   const photostyle='object-position:'+picX+'% '+picY+'%;transform:scale('+scale+');';
   const showPhoto=b.heroPhoto?imageMarkup(b.heroPhoto,'hero-shot',b.name):'<div class="no-photo" style="height:100%">Arrastra una fotografía</div>';
-  const graphic=b.style==='nightclub'?'✧':b.style==='cookies'?'✺':b.symbol||'✳';
+  const graphic='◌'; // Neutral editorial mark. Never render colored emoji placeholders.
   const paintPattern=b.patternImage?'<img class="pattern-image" src="'+html(b.patternImage)+'" alt="Patrón de la marca">':'';
-  const packageMark=b.style==='nightclub'
-    ?'<div class="pkg-ticket" style="color:'+c[3]+';background:'+c[0]+';border-color:'+c[2]+'">'+html(b.monogram)+' / VIP</div>'
-    :'<div class="pkg-box" style="background:'+c[0]+';color:'+c[3]+';font-family:'+font(b.titleFont)+'">'+html(b.monogram)+'</div><div class="pkg-cup" style="background:'+c[3]+';color:'+c[0]+'">'+html(graphic)+'</div>';
   const block=(text,section)=>'<div class="art-label"><span>'+text+'</span>'+
     addControl(section)+'</div>';
   return '<div class="artboard" id="artboard" style="'+cssVars+'">'+
@@ -152,13 +189,13 @@ function board(b){
       '</div>'+
       '<div class="art-section double">'+
         '<div>'+block('04 &nbsp; Patrón','pattern')+'<div class="pattern-preview" data-pattern="'+html(graphic+'  '+graphic+'  '+graphic+'  '+graphic+'  '+graphic+'  '+graphic)+'" style="background:'+c[2]+';color:'+c[0]+'">'+paintPattern+'</div>'+galleryHTML(b,'pattern')+'</div>'+
-        '<div>'+block('05 &nbsp; Packaging / aplicación','applications')+'<div class="package-area" style="background:'+c[4]+'">'+packageMark+'</div>'+galleryHTML(b,'applications')+'</div>'+
+        '<div>'+block('05 &nbsp; Packaging / aplicación','applications')+appLayers(b)+'</div>'+
       '</div>'+
       '<div class="art-section">'+block('06 &nbsp; Universo visual','universe')+
         '<div class="mood-strip">'+
           '<div class="mood-photo">'+imageMarkup(b.detailPhoto,'',b.name+' referencia secundaria')+'</div>'+
           '<div class="mood-photo">'+imageMarkup(b.heroPhoto,'',b.name+' fotografía de referencia')+'</div>'+
-          '<div class="mood-photo" style="background:'+c[1]+';color:'+c[3]+';font-family:'+font(b.titleFont)+'">'+html(graphic)+'</div>'+
+          '<div class="mood-photo mood-photo-edit" style="background:'+c[1]+';color:'+c[3]+'"><button type="button" data-action="section-add" data-section="universe">Añadir foto</button></div>'+
         '</div>'+galleryHTML(b,'universe')+
       '</div>'+
       '<div class="art-footer"><span>'+html(b.tone)+'</span><span>CONCEPT BRAND  /  THE LAUNCH ERA</span></div>'+
@@ -353,11 +390,17 @@ async function exportPNG(){
   if(pattern){canvasImage(g,pattern,52,1462,622,281);}
   else{for(let i=0;i<15;i++){write(g,b.symbol,65+(i%5)*125,1548+Math.floor(i/5)*86,60,c[0],display);}}
   g.fillStyle=c[4];g.fillRect(688,1462,660,281);
-  g.save();g.translate(950,1605);g.rotate(-.15);
-  g.fillStyle=c[0];g.fillRect(-125,-88,250,180);
-  write(g,b.monogram,-66,30,83,c[3],display);g.restore();
-  if(b.style==='nightclub'){write(g,'AFTR  /  VIP',1044,1641,68,c[3],display);}
-  else{g.fillStyle=c[3];g.fillRect(1100,1516,127,186);write(g,b.symbol,1137,1632,55,c[0],display);}
+  // Packaging is a true photo-layer canvas; export exactly what the board shows.
+  const applications=ensureGallery(b).applications;
+  g.save();g.beginPath();g.rect(688,1462,660,281);g.clip();
+  for (let index=0;index<applications.length;index++){
+    const item=applications[index],src=await getGalleryPhotoSource(item.id),img=await loadImage(src);
+    if(!img)continue;
+    const l=clamp(item.left??(index?15:0),0,100),t=clamp(item.top??(index?12:0),0,100);
+    const w=clamp(item.width??(index?58:100),12,100),h=clamp(item.height??(index?74:100),12,100);
+    canvasImage(g,img,688+660*l/100,1462+281*t/100,660*w/100,281*h/100,50,50,1,item.fit==='contain'?'contain':'cover');
+  }
+  g.restore();
   title('05  Visual universe',1800);
   if(detail)canvasImage(g,detail,52,1815,224,64);
   if(hero)canvasImage(g,hero,287,1815,224,64);
@@ -470,6 +513,26 @@ function perform(action,button){
     if (input) { input.value='';input.multiple=!replacementPhotoId;input.click(); }
     return;
   }
+  if(action==='app-select'||action==='app-front'||action==='app-back'||action==='app-remove'||action==='app-fit'||action==='app-replace'){
+    const items=ensureGallery(b).applications,id=button.dataset.id,
+      index=items.findIndex(v=>v.id===id);
+    if(index<0)return;
+    selectedApplicationId=id;
+    if(action==='app-replace'){
+      uploadSection='applications';replacementPhotoId=id;
+      const input=$('section-upload');if(input){input.value='';input.multiple=false;input.click();}
+      return;
+    }
+    if(action==='app-remove'){
+      if(!confirm('¿Quitar esta foto del tablero?'))return;
+      removePhoto(b,'applications',id,save).then(()=>{selectedApplicationId='';preview();notify('Foto eliminada.');});
+      return;
+    }
+    if(action==='app-front'){items.push(...items.splice(index,1));save();}
+    if(action==='app-back'){items.unshift(...items.splice(index,1));save();}
+    if(action==='app-fit'){items[index].fit=items[index].fit==='contain'?'cover':'contain';save();}
+    preview();return;
+  }
   if(action==='gallery-review') {void openPhotoReview(button.dataset.section,button.dataset.id);return;}
   if(action==='gallery-delete') {
     removePhoto(b,button.dataset.section,button.dataset.id,save).then(()=>{
@@ -521,6 +584,14 @@ document.addEventListener('input',event=>{
   if(t.dataset.color!==undefined){
     const n=Number(t.dataset.color);if(Number.isInteger(n)&&n>=0&&n<6){b.colors[n]=hex(t.value);save();preview();}
   }
+  if(t.dataset.appSize){
+    const item=ensureGallery(b).applications.find(x=>x.id===t.dataset.appSize);
+    if(item){item.width=clamp(t.value,18,100);
+      item.height=clamp(item.height??100,12,100);
+      const tile=document.querySelector('.board-application-layer[data-application-id="'+item.id+'"]');
+      if(tile)tile.style.width=item.width+'%';
+      save();}
+  }
   if(t.dataset.range){
     const k=t.dataset.range;
     if(['imageX','imageY','imageScale'].includes(k)){
@@ -536,8 +607,12 @@ document.addEventListener('change',async event=>{
     const current=activeId;
     try {
       const count=await addFiles(active(),uploadSection,t.files,save,replacementPhotoId);
+      if(uploadSection==='applications'){
+        const list=ensureGallery(active()).applications;
+        selectedApplicationId=replacementPhotoId||list[list.length-1]?.id||'';
+      }
       if(activeId===current)render();
-      notify(count+' foto(s) añadidas a la sección.');
+      notify('Imagen colocada en el tablero. Puedes moverla y ajustar su tamaño.');
     } catch(e) {notify(e.message||'No se pudieron subir las imágenes.');}
     return;
   }
@@ -597,6 +672,44 @@ document.addEventListener('drop',event=>{
   event.preventDefault();target.classList.remove('over');const file=event.dataTransfer?.files?.[0];
   if(file)assignImage(file,target.dataset.drop);
 });
+let editorDrag=null;
+document.addEventListener('pointerdown',event=>{
+ const tile=event.target.closest('.board-application-layer');
+ if(!tile||event.target.closest('button')||event.pointerType==='mouse'&&event.button!==0)return;
+ const canvas=tile.closest('.board-application-canvas'),rect=canvas?.getBoundingClientRect();
+ if(!rect?.width||!rect?.height)return;
+ const item=ensureGallery(active()).applications.find(x=>x.id===tile.dataset.applicationId);
+ if(!item)return;
+ selectedApplicationId=item.id;
+ const resize=Boolean(event.target.closest('.board-layer-handle'));
+ editorDrag={id:item.id,pointerId:event.pointerId,startX:event.clientX,startY:event.clientY,
+  left:item.left??0,top:item.top??0,width:item.width??100,height:item.height??100,
+  containerWidth:rect.width,containerHeight:rect.height,resize,element:tile};
+ tile.setPointerCapture?.(event.pointerId);event.preventDefault();
+});
+document.addEventListener('pointermove',event=>{
+ if(!editorDrag||event.pointerId!==editorDrag.pointerId)return;
+ const state=editorDrag,photo=ensureGallery(active()).applications.find(x=>x.id===state.id);
+ if(!photo)return;
+ const dx=(event.clientX-state.startX)/state.containerWidth*100;
+ const dy=(event.clientY-state.startY)/state.containerHeight*100;
+ if(state.resize){
+  photo.width=clamp(state.width+dx,18,100);
+  photo.height=clamp(state.height+dy,18,100);
+  state.element.style.width=photo.width+'%';state.element.style.height=photo.height+'%';
+ }else{
+  photo.left=clamp(state.left+dx,0,100-photo.width);
+  photo.top=clamp(state.top+dy,0,100-photo.height);
+  state.element.style.left=photo.left+'%';state.element.style.top=photo.top+'%';
+ }
+});
+document.addEventListener('pointerup',event=>{
+ if(editorDrag&&editorDrag.pointerId===event.pointerId){
+  editorDrag=null;save();preview();
+ }
+});
+document.addEventListener('pointercancel',()=>{if(editorDrag){editorDrag=null;save();}});
+
 let pointerStart=null;
 document.addEventListener('pointerdown',event=>{
   const hit=event.target.closest('.art-photo');
