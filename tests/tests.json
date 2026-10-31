@@ -73,5 +73,26 @@
       "Vuelve al Brand Board"
     ],
     "expected": "Los cambios se mantienen y las vistas del estudio siguen funcionando."
+  },
+  {
+    "name": "Revisión detallada de fotos de IA y controles fuera de la imagen",
+    "viewport": "mobile",
+    "covers": [
+      "vista ampliada sin recorte",
+      "validación visual de manos y pies",
+      "reemplazar imagen defectuosa",
+      "eliminar imagen defectuosa",
+      "toolbar visible debajo de la foto",
+      "diseño adaptable al iPhone"
+    ],
+    "description": "Garantiza que fotografías generadas con IA puedan inspeccionarse en grande y descartarse o sustituirse antes de conservarlas en el Brand Board.",
+    "steps": [
+      "En CRUMB abre Brand Board en un teléfono",
+      "Añade una fotografía vertical a Universo visual",
+      "Comprueba que la foto queda completa dentro de su marco y que los controles no la tapan",
+      "Pulsa Revisar detalles y comprueba el texto de revisión de manos, pies y rostro",
+      "Reemplaza la foto; después prueba moverla y cambiar el encuadre"
+    ],
+    "expected": "La imagen se muestra grande, los controles están debajo sin invadirla, la revisión permite sustituir o eliminar y los cambios permanecen al actualizar."
   }
 ]
