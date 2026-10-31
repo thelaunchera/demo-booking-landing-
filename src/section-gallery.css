@@ -195,3 +195,15 @@
 .gallery-review-buttons button{min-height:43px;flex:1;border-radius:9px;border:1px solid #ded3c7;
  background:#fff;color:#40372f;font-weight:700;padding:9px 12px;cursor:pointer}
 .gallery-review-buttons button[data-action="review-replace"]{background:#32251f;color:white}
+
+
+/* Photos read as a clean mosaic; editing is revealed on demand, not six floating icons. */
+.gallery-photo-tools{width:100%}
+.gallery-photo-tools>summary{list-style:none;display:flex;justify-content:center;align-items:center;cursor:pointer;
+ padding:8px 10px;font-size:11px;font-weight:700;color:#51473c;background:#f8f4ee;border:1px solid #e4dacd;
+ border-radius:7px;min-height:33px}
+.gallery-photo-tools>summary::-webkit-details-marker{display:none}
+.gallery-photo-tools>.gallery-photo-actions{margin-top:7px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+.gallery-photo-tools .gallery-photo-actions button{height:auto!important;min-height:35px!important;font-size:10px;padding:6px 3px}
+.gallery-photo-tools .gallery-photo-actions .gallery-remove{font-size:10px!important;font-weight:700}
+.gallery-photo-bar{background:#fff;border-top:1px solid #eee6de}
