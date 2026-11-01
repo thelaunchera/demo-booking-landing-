@@ -8,7 +8,7 @@
 .scene-typography{position:absolute;inset:5% 0 0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;pointer-events:none;mix-blend-mode:multiply;opacity:.46}
 .scene-typography span{display:block;font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(145px,18vw,320px);line-height:.68;white-space:nowrap;letter-spacing:-.095em;color:#651e39;text-shadow:none}
 .scene-typography span:first-child{transform:translateX(-7%)}.scene-typography span:last-child{transform:translateX(4%)}
-.hero-model{filter:url(#jaramilloHaloFix)!important;z-index:5}
+.hero-model{filter:drop-shadow(11px 17px 19px rgba(47,16,34,.26))!important;z-index:5}
 .scene-label{z-index:7}
 @media(min-width:701px){.hero-scene{overflow:visible}.scene-typography span{font-size:clamp(140px,17vw,310px)}}
 @media(max-width:700px){
@@ -82,3 +82,22 @@
  .collection-item:nth-child(8) .card-photo::after,
  .collection-item:nth-child(9) .card-photo::after{font-size:clamp(44px,13vw,92px)}
 }
+
+/* Couture masthead: strong lettering behind the model, never over her face. */
+.hero-scene .scene-typography{mix-blend-mode:normal!important;opacity:1!important;z-index:2!important;top:4%!important}
+.hero-scene .scene-typography span{
+  font-family:'Playfair Display',Georgia,serif!important;
+  font-weight:700!important;
+  letter-spacing:-.088em!important;
+  color:rgba(87,27,48,.46)!important;
+  text-shadow:none!important;
+  font-size:clamp(124px,17.4vw,315px)!important;
+  line-height:.83!important;
+}
+.hero-model{filter:drop-shadow(9px 14px 19px rgba(40,12,26,.24))!important}
+@media(max-width:700px){
+  .hero-scene .scene-typography{top:10%!important}
+  .hero-scene .scene-typography span{font-size:clamp(102px,27vw,195px)!important;letter-spacing:-.095em!important;line-height:.95!important;color:rgba(94,30,51,.48)!important}
+  .hero-model{max-width:none}
+}
+@media(prefers-reduced-motion:reduce){.hero-model{animation:none!important}}
