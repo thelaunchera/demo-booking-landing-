@@ -162,6 +162,18 @@ function hydrate(){
     merged.site=publishedSite(merged);
     if(!b.heroPhoto)merged.heroPhoto=d.heroPhoto;
     if(!b.detailPhoto)merged.detailPhoto=b.referenceImage||d.detailPhoto;
+    // Migrate only older official Jaramillo imagery, leaving custom user uploads untouched.
+    if(merged.id==='jaramillo-boutique'){
+      const prevHero=String(b.heroPhoto||'');
+      const prevDetail=String(b.detailPhoto||'');
+      if(/\/assets\/(?:hero-model-v2|model-cutout)[.]webp$/.test(prevHero))merged.heroPhoto=d.heroPhoto;
+      if(/\/assets\/colombian-jeans[.]webp$/.test(prevDetail))merged.detailPhoto=d.detailPhoto;
+      if(b.tagline==='Colombian spirit. New York attitude.')merged.tagline=d.tagline;
+      const list=merged.sectionPhotos?.hero||[];
+      for(const photo of list){
+        if(typeof photo.src==='string' && /\/assets\/hero-model-v2[.]webp$/.test(photo.src))photo.src=d.heroPhoto;
+      }
+    }
     if(!b.titleFont||b.titleFont==='Georgia')merged.titleFont=d.titleFont;
     if(!merged.style)merged.style=d.style;
     if(!Array.isArray(merged.colors)||merged.colors.length!==6)merged.colors=d.colors;
