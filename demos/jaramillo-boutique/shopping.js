@@ -219,4 +219,4 @@
     price.textContent = displayPrice(UNIT_PRICE);
     foot.append(price);
   }
-})()
+})();
