@@ -55,24 +55,27 @@
   document.addEventListener('keydown', event => { if (event.key === 'Escape') { closeMenu(); closeDrawer(); } });
 
   function selectCategory(kind) {
-    $$('.filter').forEach(button => {
+    $$$('.filter').forEach(button => {
       const active = button.dataset.category === kind;
       button.classList.toggle('is-selected', active);
       button.setAttribute('aria-pressed', String(active));
     });
-    $$('.product-card').forEach(card => { card.hidden = kind !== 'all' && card.dataset.kind !== kind; });
+    $$$('.product-card').forEach(card => { card.hidden = kind !== 'all' && card.dataset.kind !== kind; });
   }
-  $$('.filter').forEach(button => button.addEventListener('click', () => selectCategory(button.dataset.category)));
+  $$$('.filter').forEach(button => button.addEventListener('click', () => selectCategory(button.dataset.category)));
   $$('[data-select-category]').forEach(link => link.addEventListener('click', () => selectCategory(link.dataset.selectCategory)));
 
   // The drawer uses the exact same catalog and image references as the main counter.
-  const catalog = $('.product-card').map(card => ({
+  const catalog = $$('.product-card').map(card => ({
     name: card.dataset.product,
     image: card.dataset.image,
-    kind: card.dataset.kind
+    kind: card.dataset.kind,
+    priceCents: Number(card.dataset.priceCents)
   }));
+  const money = cents => new Intl.NumberFormat('en-US', {style:'currency',currency:'USD'}).format(cents / 100);
+  const priceFor = name => catalog.find(item => item.name === name)?.priceCents || 0;
   const drawerCatalog = $('#drawerProducts');
-  const drawerTabs = $('[data-drawer-category]');
+  const drawerTabs = $$('[data-drawer-category]');
   let drawerCategory = 'all';
   function renderDrawerCatalog() {
     drawerCatalog.replaceChildren();
@@ -83,12 +86,13 @@
       const details = document.createElement('div'); details.className = 'drawer-product-detail';
       const category = document.createElement('small'); category.textContent = item.kind === 'bakery' ? 'BAKERY & SWEETS' : item.kind.toUpperCase();
       const name = document.createElement('strong'); name.textContent = item.name;
+      const price = document.createElement('span'); price.className = 'drawer-product-price'; price.textContent = money(item.priceCents);
       const add = document.createElement('button'); add.type = 'button'; add.className = 'drawer-product-add';
       const selected = box.find(entry => entry.name === item.name);
       add.textContent = selected ? '+ Add more (' + selected.qty + ')' : '+ Add';
       add.setAttribute('aria-label', 'Add ' + item.name + ' to your box');
       add.addEventListener('click', () => addProduct(item.name, item.image, false));
-      details.append(category, name, add);
+      details.append(category, name, price, add);
       tile.append(image, details);
       drawerCatalog.append(tile);
     });
@@ -106,16 +110,23 @@
   let box = [];
   try {
     const stored = JSON.parse(sessionStorage.getItem('yummm-demo-box') || '[]');
-    if (Array.isArray(stored)) box = stored.filter(x => typeof x.name === 'string' && typeof x.image === 'string' && Number.isInteger(x.qty) && x.qty > 0).slice(0, 30);
+    if (Array.isArray(stored)) box = stored.filter(x =>
+      typeof x.name === 'string' && typeof x.image === 'string' &&
+      catalog.some(p => p.name === x.name && p.image === x.image) &&
+      Number.isInteger(x.qty) && x.qty > 0 && x.qty <= 24
+    ).slice(0, 30);
   } catch (_) { box = []; }
   const saveBox = () => { try { sessionStorage.setItem('yummm-demo-box', JSON.stringify(box)); } catch (_) {} };
   const countBox = () => box.reduce((sum, item) => sum + item.qty, 0);
+  // Prices are read from the current menu, not outdated browser storage.
+  const subtotalCents = () => box.reduce((sum, item) => sum + priceFor(item.name) * item.qty, 0);
   const itemRows = $('#boxItems');
   const renderBox = () => {
     $('#boxCount').textContent = String(countBox());
     $('#drawerPickCount').textContent = String(countBox());
     renderDrawerCatalog();
     $('#drawerSummary').textContent = `${countBox()} ${countBox() === 1 ? 'treat' : 'treats'} selected`;
+    $('#drawerSubtotal').textContent = money(subtotalCents());
     $('#previewBox').disabled = countBox() === 0;
     if (!box.length) { itemRows.innerHTML = '<p class="empty-box">Choose a treat above to start your box.</p>'; return; }
     itemRows.replaceChildren();
@@ -124,7 +135,8 @@
       const image = document.createElement('img'); image.src = `./images/${item.image}`; image.alt = '';
       const text = document.createElement('div');
       const strong = document.createElement('strong'); strong.textContent = item.name;
-      const small = document.createElement('small'); small.textContent = 'YUMMM favorite';
+      const small = document.createElement('small');
+      small.textContent = `${money(priceFor(item.name))} each · ${money(priceFor(item.name) * item.qty)} total`;
       text.append(strong, small);
       const qty = document.createElement('div'); qty.className = 'box-qty';
       const minus = document.createElement('button'); minus.type = 'button'; minus.textContent = '−'; minus.setAttribute('aria-label', `Remove one ${item.name}`);
@@ -173,7 +185,7 @@
     saveBox(); renderBox();
     if (showDrawer) openDrawer();
   }
-  $('.choose-item').forEach(button => button.addEventListener('click', () => {
+  $$('.choose-item').forEach(button => button.addEventListener('click', () => {
     const card = button.closest('.product-card');
     if (card) addProduct(card.dataset.product, card.dataset.image, true);
   }));
@@ -184,6 +196,7 @@
     const selected = document.querySelector('input[name="packaging"]:checked')?.value || 'Just for me';
     const list = box.map(item => `${item.qty} × ${item.name}`).join(', ');
     $('#previewContents').textContent = `${selected} · ${list}`;
+    $('#previewTotal').textContent = 'Estimated subtotal: ' + money(subtotalCents());
     closeDrawer(); preview.showModal();
   });
   $('#closePreview').addEventListener('click', () => preview.close());
