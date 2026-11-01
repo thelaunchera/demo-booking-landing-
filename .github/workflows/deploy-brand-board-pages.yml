@@ -96,6 +96,11 @@ jobs:
       - name: Smoke-test Jaramillo Boutique preview
         run: |
           node --check _site/jaramillo-boutique/main.js
+          node --check _site/jaramillo-boutique/shopping.js
+          test -s _site/jaramillo-boutique/shopping.css
+          grep -q 'id="bagTrigger"' _site/jaramillo-boutique/index.html
+          grep -q 'id="bagDialog"' _site/jaramillo-boutique/index.html
+          grep -q 'class="top-shell"' _site/jaramillo-boutique/index.html
           test -s _site/jaramillo-boutique/assets/colombian-jeans.webp
           test -s _site/jaramillo-boutique/assets/fajas.webp
           test -s _site/jaramillo-boutique/assets/noche.webp
