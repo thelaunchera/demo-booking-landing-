@@ -135,6 +135,12 @@ jobs:
           test -s _site/jaramillo-boutique/assets/hero-editorial-user.jpg
           test -s _site/jaramillo-boutique/hero-final-photo.css
           test -s _site/jaramillo-boutique/boutique-polish.css
+          test -s _site/jaramillo-boutique/lookbook-refined.css
+          grep -q 'data-editorial-look="blouses"' _site/jaramillo-boutique/index.html
+          grep -q 'data-editorial-look="winter"' _site/jaramillo-boutique/index.html
+          grep -q 'data-editorial-look="summer"' _site/jaramillo-boutique/index.html
+          grep -q 'panelBlouses' _site/jaramillo-boutique/main.js
+          grep -q 'position:relative!important' _site/jaramillo-boutique/lookbook-refined.css
           test -s _site/jaramillo-boutique/city-photos.css
           grep -q 'city-photo' _site/jaramillo-boutique/index.html
           grep -q 'Miami_waterfront_skyline' _site/jaramillo-boutique/index.html
