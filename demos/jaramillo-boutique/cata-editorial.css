@@ -124,3 +124,47 @@
 }
 @media(max-width:375px){.sizes-banner .sizes-line h2{font-size:39px}.hero h1{font-size:50px}}
 @media(prefers-reduced-motion:reduce){.hero .button-ivory{transition:none}}
+
+
+/* Tablet-only hero: the approved fashion photograph is the entire hero. */
+@media (min-width:701px) and (max-width:1199px){
+  .hero{
+    display:block!important;
+    grid-template-columns:none!important;
+    min-height:0!important;
+    height:auto!important;
+    background:#fff!important;
+  }
+  /* No duplicate copy over the artwork: the approved photo already includes typography. */
+  .hero .hero-text{
+    display:none!important;
+  }
+  .hero .hero-photo-scene{
+    display:flex!important;
+    grid-column:auto!important;
+    grid-row:auto!important;
+    width:100%!important;
+    height:min(94svh,950px)!important;
+    min-height:0!important;
+    max-height:none!important;
+    justify-content:center!important;
+    align-items:center!important;
+    padding:0!important;
+    overflow:hidden!important;
+    background:#fff!important;
+  }
+  .hero .hero-editorial-image{
+    display:block!important;
+    width:100%!important;
+    height:100%!important;
+    max-width:100%!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+    background:#fff!important;
+    transform:none!important;
+    filter:none!important;
+  }
+}
+@media (min-width:701px) and (max-width:1199px) and (orientation:portrait){
+  .hero .hero-photo-scene{height:min(87svh,1040px)!important}
+}
