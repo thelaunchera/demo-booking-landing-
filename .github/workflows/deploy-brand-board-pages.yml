@@ -1,4 +1,4 @@
-name: Deploy Brand Board Studio and AFTR to GitHub Pages
+name: Deploy Brand Board Studio, AFTR and Jaramillo to GitHub Pages
 
 on:
   push:
@@ -42,6 +42,13 @@ jobs:
           ref: brand-board-studio
           path: brand-source
 
+      - name: Checkout Jaramillo Boutique demo source
+        uses: actions/checkout@v4
+        with:
+          ref: demo/jaramillo-boutique
+          path: boutique-source
+          persist-credentials: false
+
       - name: Checkout existing AFTR GitHub Pages files
         uses: actions/checkout@v4
         with:
@@ -71,11 +78,19 @@ jobs:
           rm -rf _site/yummm
           mkdir -p _site/yummm
           cp -R demos/yummm/. _site/yummm/
+          rm -rf _site/jaramillo-boutique
+          mkdir -p _site/jaramillo-boutique
+          cp -R boutique-source/demos/jaramillo-boutique/. _site/jaramillo-boutique/
           touch _site/.nojekyll
           test -f _site/index.html
           test -f _site/aftr-nightclub/index.html
           test -f _site/brand-board-studio/index.html
           test -f _site/yummm/index.html
+          test -f _site/jaramillo-boutique/index.html
+          test -f _site/jaramillo-boutique/styles.css
+          test -f _site/jaramillo-boutique/main.js
+          test -f _site/jaramillo-boutique/assets/model-cutout.webp
+          test -f _site/jaramillo-boutique/assets/designer-real.webp
           test -d _site/brand-board-studio/assets
 
       - name: Configure Pages
