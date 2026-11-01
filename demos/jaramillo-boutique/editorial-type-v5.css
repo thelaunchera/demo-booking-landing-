@@ -5,8 +5,8 @@
 .hero-scene .arch{opacity:.14!important}
 .hero-scene .arch-two{display:none}
 .hero-scene .scene-word{display:none}
-.scene-typography{position:absolute;inset:5% 0 0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;pointer-events:none;mix-blend-mode:soft-light;opacity:.98}
-.scene-typography span{display:block;font-family:'Italiana',Georgia,serif;font-weight:400;font-size:clamp(145px,18vw,320px);line-height:.68;white-space:nowrap;letter-spacing:-.095em;color:#fff8e9;text-shadow:0 1px 18px #461d2b15}
+.scene-typography{position:absolute;inset:5% 0 0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;pointer-events:none;mix-blend-mode:multiply;opacity:.46}
+.scene-typography span{display:block;font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(145px,18vw,320px);line-height:.68;white-space:nowrap;letter-spacing:-.095em;color:#651e39;text-shadow:none}
 .scene-typography span:first-child{transform:translateX(-7%)}.scene-typography span:last-child{transform:translateX(4%)}
 .hero-model{filter:url(#jaramilloHaloFix)!important;z-index:5}
 .scene-label{z-index:7}
