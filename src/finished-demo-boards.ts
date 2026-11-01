@@ -614,4 +614,228 @@ export const FINISHED_DEMO_BOARDS = {
     }
   }
 };
+FINISHED_DEMO_BOARDS['jaramillo-boutique'] = {
+  "name": "Jaramillo Boutique",
+  "category": "Women's Fashion · Boutique Demo",
+  "description": "Boutique de moda femenina con inspiración colombiana y estilo neoyorquino. Jeans colombianos, prendas de noche, tendencias y colección de accesorios. Demo editorial EN/ES sin stock ni pagos reales; retrato original de la diseñadora.",
+  "tagline": "Colombian Spirit, New York Attitude.",
+  "tone": "Fashion editorial · femenina · elegante · atrevida",
+  "titleFont": "Italiana",
+  "bodyFont": "DM Sans",
+  "colors": [
+    "#5A0F21",
+    "#3D101D",
+    "#F7F4EF",
+    "#E4D3C3",
+    "#B69B7C",
+    "#1D1718"
+  ],
+  "heroPhoto": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/model-cutout.webp",
+  "detailPhoto": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/designer-real.webp",
+  "sectionPhotos": {
+    "hero": [
+      {
+        "id": "photo-jaramillo-boutique-hero-01",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/model-cutout.webp",
+        "fit": "contain",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-hero-02",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/hero-photo.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      }
+    ],
+    "identity": [
+      {
+        "id": "photo-jaramillo-boutique-identity-01",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/designer-real.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-identity-02",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/atelier.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-identity-03",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/model-cutout.webp",
+        "fit": "contain",
+        "x": 50,
+        "y": 50
+      }
+    ],
+    "palette": [
+      {
+        "id": "photo-jaramillo-boutique-palette-01",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/corse.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-palette-02",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/noche.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-palette-03",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/atelier.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      }
+    ],
+    "typography": [
+      {
+        "id": "photo-jaramillo-boutique-typography-01",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/hero-photo.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-typography-02",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/blusas.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      }
+    ],
+    "pattern": [
+      {
+        "id": "photo-jaramillo-boutique-pattern-01",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/corse.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-pattern-02",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/sandalias.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      }
+    ],
+    "applications": [
+      {
+        "id": "photo-jaramillo-boutique-applications-01",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/colombian-jeans.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-applications-02",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/fajas.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-applications-03",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/plataformas.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-applications-04",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/noche.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-applications-05",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/shoes.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-applications-06",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/sandalias.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      }
+    ],
+    "universe": [
+      {
+        "id": "photo-jaramillo-boutique-universe-01",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/designer-real.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-universe-02",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/atelier.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-universe-03",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/model-cutout.webp",
+        "fit": "contain",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-universe-04",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/colombian-jeans.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-universe-05",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/noche.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-universe-06",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/corse.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-universe-07",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/blusas.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-universe-08",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/winter.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "photo-jaramillo-boutique-universe-09",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/summer.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      }
+    ]
+  }
+};
 export const FINISHED_DEMO_IDS = Object.keys(FINISHED_DEMO_BOARDS);
