@@ -20,3 +20,48 @@
 @media(max-width:760px){html{scroll-padding-top:69px}.wrap{width:calc(100% - 34px)}.site-header{position:relative}.header-inner{height:68px;gap:10px}.logo{font-size:36px}.desktop-nav{display:none}.header-cta{margin-left:auto;padding:11px 16px;font-size:10px}.header-cta span{display:none}.menu-toggle{width:40px;height:40px;border:0;background:none;display:flex;flex-direction:column;gap:5px;align-items:center;justify-content:center;padding:10px}.menu-toggle span{width:20px;height:2px;background:var(--red);display:block}.mobile-nav{display:flex;position:absolute;top:68px;left:0;right:0;flex-direction:column;padding:12px 20px 22px;background:var(--ivory);box-shadow:0 20px 35px #32140d2b}.mobile-nav[hidden]{display:none}.mobile-nav a{border-bottom:1px solid var(--line);padding:16px 8px;font-size:13px;font-weight:700}.hero{height:690px;min-height:570px}.hero-slide img{object-position:center 39%}.hero-slide:nth-child(2) img{object-position:center 35%}.hero-shade{background:linear-gradient(0deg,rgba(20,11,9,.89) 0%,rgba(20,11,9,.53) 39%,transparent 80%)}.hero-content{justify-content:flex-end;padding-bottom:55px;padding-top:95px}.hero-eyebrow{font-size:10px;margin-bottom:14px;letter-spacing:.16em}.hero h1{font-size:clamp(53px,12vw,79px);margin-bottom:14px;line-height:.98}.hero-summary{font-size:13px;line-height:1.5;max-width:315px;margin-bottom:18px}.hero-actions{gap:9px}.hero-actions .button{padding:11px 13px;font-size:10px;min-height:42px}.hero-bottom{bottom:17px}.feature-links{grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:10px 6px;margin-top:-2px;border-radius:0 0 15px 15px;box-shadow:none}.feature-link{flex-direction:column;gap:9px;padding:11px 5px;align-items:center;text-align:center;border-right:1px solid var(--line)}.feature-link img{width:100%;height:120px;max-width:134px;border-radius:7px}.feature-link strong{font-size:22px}.feature-link small{font-size:8px;letter-spacing:.05em}.feature-link>span:nth-child(2){gap:5px}.editorial-banner{margin-top:22px;padding:10px 0}.ribbon-group>span{min-height:33px;padding:0 22px}.ribbon-label{font-size:10px;letter-spacing:.16em}.ribbon-row--reverse .ribbon-label{font-size:10px}.ribbon-script{font-size:22px}.ribbon-brand{font-size:17px}.section-space{padding-block:73px}.intro{padding-block:63px 77px}.intro h2{font-size:clamp(38px,9vw,56px)}.intro>p:last-child{font-size:13px}.section-heading{display:block;margin-bottom:29px}.section-heading h2{font-size:clamp(40px,9vw,57px)}.section-heading>p{font-size:13px;max-width:450px;margin-top:16px}.counter-head{display:block}.counter-filters{overflow-x:auto;display:flex;flex-wrap:nowrap;padding-bottom:10px;gap:7px;scrollbar-width:none}.filter{flex:none;padding:11px 13px;font-size:10px;min-height:40px}.bag-indicator{margin:6px 0 18px auto}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product-photo{height:240px}.product-details{display:block;padding:15px 11px;min-height:159px}.product-details h3{font-size:22px}.product-details p{font-size:11px}.choose-item{font-size:11px;margin-top:11px;padding:6px 12px;min-height:35px}.process-grid{grid-template-columns:1fr 1fr;gap:9px}.process-card{aspect-ratio:3/4.15}.process-label{left:12px;bottom:14px;right:10px}.process-label span{font-size:9px}.process-label strong{font-size:21px}.takehome-grid{grid-template-columns:1fr;gap:40px}.takehome-visual{height:465px;border-radius:160px 160px 12px 12px}.takehome-copy h2{font-size:clamp(51px,12vw,73px)}.moments-grid{grid-template-columns:1fr 1fr;gap:10px}.moment{height:230px}.moment.wide{grid-column:1/-1;height:330px}.moment figcaption{font-size:9px;left:12px;bottom:12px}.final-cta{padding-block:83px}.final-cta h2{font-size:clamp(45px,11vw,74px)}.footer{padding-top:51px}.footer-main,.footer-bottom{display:block}.footer-links{margin-top:29px;gap:15px}.footer-links a{font-size:11px}.footer-bottom span{display:block;margin-bottom:10px}.footer-logo{font-size:80px}}
 @media(max-width:440px){.hero{height:615px;min-height:615px}.hero h1{font-size:12vw}.hero-actions .button{font-size:9px}.feature-link img{height:105px}.feature-link strong{font-size:19px}.feature-link small{font-size:7px}.product-photo{height:190px}.product-details h3{font-size:19px}.product-details{min-height:163px}.process-card{aspect-ratio:3/4.4}.process-label strong{font-size:18px}.takehome-visual{height:410px}.box-drawer{padding:20px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
+/* Direct selection inside Your YUMMM Box — keeps the menu usable on iPhone. */
+.box-drawer{overscroll-behavior:contain;max-height:100dvh}
+.drawer-heading{position:sticky;top:-30px;z-index:4;background:#fffaf4;padding:2px 0 14px;border-bottom:1px solid #e8dacf}
+.drawer-heading h2{font-size:clamp(31px,4vw,42px);line-height:1.04}
+.close-drawer{flex:none;background:#fffaf4;color:var(--red);font-size:26px;min-width:43px;min-height:43px}
+.drawer-intro{margin:15px 0 19px}
+.drawer-shopping{border-bottom:1px solid #e4d6c9;padding-bottom:20px}
+.drawer-shop-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:0 0 14px}
+.drawer-shop-head h3,.drawer-selected h3{margin:0;font:400 24px/1.12 var(--serif);letter-spacing:-.025em}
+.drawer-shop-head span{color:var(--mute);font:700 10px var(--sans);white-space:nowrap}
+.drawer-shop-tabs{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;scroll-snap-type:x proximity;margin-bottom:16px;padding-bottom:3px}
+.drawer-shop-tabs::-webkit-scrollbar{display:none}
+.drawer-tab{flex:none;scroll-snap-align:start;border:1px solid #cdb3a5;background:#fffaf4;color:var(--ink);border-radius:999px;padding:9px 14px;min-height:38px;font-weight:800;font-size:11px}
+.drawer-tab.is-active,.drawer-tab:hover{background:var(--red);border-color:var(--red);color:#fffaf4}
+.drawer-products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.drawer-product{display:flex;flex-direction:column;min-width:0;border:1px solid #e5d8ca;border-radius:12px;overflow:hidden;background:#fffdf9}
+.drawer-product>img{width:100%;height:122px;object-fit:cover;display:block;background:#ecdcca}
+.drawer-product-detail{display:flex;flex:1;flex-direction:column;align-items:stretch;padding:11px;gap:7px}
+.drawer-product-detail small{font:800 9px var(--sans);letter-spacing:.09em;color:var(--red)}
+.drawer-product-detail strong{font:700 14px/1.25 var(--sans);letter-spacing:-.02em;min-height:35px;overflow-wrap:anywhere}
+.drawer-product-add{margin-top:auto;width:100%;min-height:38px;border:1px solid var(--red);background:#fffaf4;border-radius:999px;color:var(--red);font:800 11px var(--sans);padding:6px 8px}
+.drawer-product-add:hover,.drawer-product-add:focus-visible{background:var(--red);color:#fffaf4}
+.drawer-selected{padding-top:20px}
+.drawer-selected h3{display:flex;gap:9px;align-items:center}
+.drawer-selected h3 span{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--red);color:white;font:800 11px var(--sans)}
+.box-items{flex:none;max-height:none;overflow:visible;margin:9px 0 18px}
+.empty-box{padding:14px 0 8px;margin:0;color:#84685e;line-height:1.55}
+.drawer-footer{position:sticky;bottom:-30px;z-index:3;background:#fffaf4;padding:16px 30px calc(16px + env(safe-area-inset-bottom));margin:18px -30px -30px;box-shadow:0 -10px 28px #fffaf4f2;border-top:1px solid #e4d6c9}
+.drawer-footer .button:disabled{opacity:.5;cursor:not-allowed}
+.drawer-footer .button{min-height:48px}
+.drawer-disclaimer{margin:10px 0 0}
+@media(max-width:760px){
+ .box-drawer{padding:16px 17px calc(16px + env(safe-area-inset-bottom))}
+ .drawer-heading{top:-16px;padding:8px 0 14px}
+ .drawer-heading h2{font-size:34px}
+ .drawer-intro{font-size:12px}
+ .drawer-products{gap:9px}
+ .drawer-product>img{height:105px}
+ .drawer-product-detail{padding:10px}
+ .drawer-product-detail strong{font-size:13px;min-height:32px}
+ .drawer-footer{bottom:calc(-16px - env(safe-area-inset-bottom));margin:15px -17px calc(-16px - env(safe-area-inset-bottom));padding:13px 17px calc(12px + env(safe-area-inset-bottom))}
+ .drawer-summary{margin-bottom:9px}
+ .packaging-options{gap:4px 8px}
+ .packaging-options label span{padding:4px 0}
+}
