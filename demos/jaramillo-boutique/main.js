@@ -16,7 +16,7 @@ menuBtn.addEventListener('click',()=>{const expanded=menuBtn.getAttribute('aria-
 mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{menuBtn.setAttribute('aria-expanded','false');mobileMenu.hidden=true;}));
 const filters=[...document.querySelectorAll('.filter')];
 const cards=[...document.querySelectorAll('.collection-card')];
-filters.forEach(filter=>filter.addEventListener('click',()=>{const value=filter.dataset.filter;filters.forEach(btn=>{const active=btn===filter;btn.classList.toggle('is-selected',active);btn.setAttribute('aria-pressed',String(active));});cards.forEach(card=>{card.hidden=value!=='all'&&card.dataset.group!==value;});}));
+filters.forEach(filter=>filter.addEventListener('click',()=>{const value=filter.dataset.filter;filters.forEach(btn=>{const active=btn===filter;btn.classList.toggle('is-selected',active);btn.setAttribute('aria-pressed',String(active));});cards.forEach(card=>{const hide=value!=='all'&&card.dataset.group!==value;card.hidden=hide;const tile=card.closest('.collection-item');if(tile)tile.hidden=hide;});}));
 const dialog=document.querySelector('#lightbox');
 const lightboxImage=document.querySelector('#lightboxImg');
 const lightboxCaption=document.querySelector('#lightboxCaption');
