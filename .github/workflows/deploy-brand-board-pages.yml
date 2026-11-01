@@ -177,7 +177,8 @@ jobs:
           grep -q 'jb-editorial-banner' _site/jaramillo-boutique/index.html
           grep -q 'storyBannerImage' _site/jaramillo-boutique/main.js
           grep -q 'aspect-ratio:4/5' _site/jaramillo-boutique/boutique-polish.css
-          grep -q 'assets/noche.webp' _site/jaramillo-boutique/main.js
+          grep -q 'assets/corse.webp' _site/jaramillo-boutique/main.js
+          grep -q 'assets/noche.webp' _site/jaramillo-boutique/index.html
           grep -q 'object-fit:contain' _site/jaramillo-boutique/hero-final-photo.css
           grep -q 'Playfair Display' _site/jaramillo-boutique/editorial-type-v5.css
           grep -q 'Bespoke YUMMM treatment' _site/yummm/styles.css
