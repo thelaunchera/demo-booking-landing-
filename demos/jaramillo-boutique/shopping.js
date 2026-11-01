@@ -28,7 +28,8 @@
       disclaimer: 'Visual selection only · No purchase, reservation or payment. Sizes and stock are unconfirmed.',
       remove: 'Remove', decrease: 'Decrease', increase: 'Increase',
       itemAdded: 'Added to your bag', collection: 'JARAMILLO / THE COLLECTION',
-      qty: 'Quantity', bagList: 'Selected looks', unit: 'piece'
+      qty: 'Quantity', bagList: 'Selected looks', unit: 'piece',
+      share: 'SHARE MY SELECTION', availability: 'Photo is an editorial concept. Actual product, color, fit and stock must be confirmed before purchase.', categories: ['Fashion look','Colombian denim','Evening style','Shapewear','Heels & platforms','Sandals','Blouses','Fall / winter','Spring / summer']
     },
     es: {
       bag: 'BOLSA', open: 'Abrir bolsa', pieces: 'prendas', yourEdit: 'TU SELECCIÓN',
@@ -41,7 +42,8 @@
       disclaimer: 'Selección visual · No es compra, reserva ni pago. Tallas y existencias por confirmar.',
       remove: 'Quitar', decrease: 'Disminuir', increase: 'Aumentar',
       itemAdded: 'Añadido a tu bolsa', collection: 'JARAMILLO / LA COLECCIÓN',
-      qty: 'Cantidad', bagList: 'Prendas elegidas', unit: 'prenda'
+      qty: 'Cantidad', bagList: 'Prendas elegidas', unit: 'prenda',
+      share: 'COMPARTIR MI SELECCIÓN', availability: 'Foto editorial de concepto. Producto, color, ajuste y existencias deben confirmarse antes de comprar.', categories: ['Look de moda','Denim colombiano','Moda de noche','Fajas','Tacones y plataformas','Sandalias','Blusas','Otoño / invierno','Primavera / verano']
     }
   };
   const locale = () => document.documentElement.lang === 'es' ? 'es' : 'en';
@@ -100,6 +102,9 @@
     setText('productTitle', item.name);
     setText('productLead', w().productIntro);
     setText('productUnitPrice', displayPrice(UNIT_PRICE));
+    setText('productCategory', w().categories[index] || 'Jaramillo Boutique');
+    setText('productRef', 'LOOK ' + String(index+1).padStart(2, '0'));
+    setText('productAvailability', w().availability);
     qtyNode.textContent = '1';
     renderSizes();
   }
@@ -146,6 +151,8 @@
   function renderBag() {
     labelCount();
     setText('bagSubtotal', displayPrice(quantity() * UNIT_PRICE));
+    const shareButton = node('bagShare');
+    if (shareButton) shareButton.disabled = selections.length === 0;
     bagItems.replaceChildren();
     if (!selections.length) {
       const empty = document.createElement('div'); empty.className = 'bag-empty';
@@ -182,6 +189,24 @@
     if (!bagDialog.open) bagDialog.showModal();
   }
   bagTrigger.addEventListener('click', openBag);
+  node('collectionBagBtn')?.addEventListener('click', openBag);
+  node('bagShare')?.addEventListener('click', async () => {
+    if (!selections.length) return;
+    const share = window.JaramilloShare;
+    const status = node('bagShareStatus');
+    if (!share) { if (status) status.textContent = w().disclaimer; return; }
+    const lines = selections.map(item => {
+      const p = product(item.index);
+      return p ? '- '+p.name+' · '+(locale()==='es'?'Talla: ':'Size: ')+sizeText(item.size)+' · '+item.qty+' × '+displayPrice(UNIT_PRICE)+' = '+displayPrice(UNIT_PRICE * item.qty) : '';
+    }).filter(Boolean);
+    const title = locale()==='es'?'Mi selección Jaramillo Boutique':'My Jaramillo Boutique selection';
+    const subtotal = (locale()==='es'?'Subtotal de referencia: ':'Preview subtotal: ') + displayPrice(quantity() * UNIT_PRICE);
+    const footer = locale()==='es'?'Consulta de disponibilidad y precios de la demo; no es una compra.':'Availability inquiry with demo pricing; not an order.';
+    const text = [title,...lines,subtotal,footer,window.location.origin+window.location.pathname].join('\n');
+    const button = node('bagShare');button.disabled = true;
+    try { const result=await share.shareText(text,title);if (status) status.textContent=share.statusMessage(result); }
+    finally { button.disabled = false; }
+  });
   node('bagClose')?.addEventListener('click', () => bagDialog.close());
   node('bagContinue')?.addEventListener('click', () => {
     bagDialog.close();
@@ -197,6 +222,7 @@
     setText('bagSubtitle', w().bagSubtitle);
     setText('bagPiecesLabel', w().selected);
     setText('bagContinue', w().continue);
+    setText('bagShareText', w().share);
     setText('bagDisclaimer', w().disclaimer);
     setText('productOverline', w().collection);
     setText('productSizeLabel', w().sizeLabel);
@@ -206,6 +232,9 @@
     document.querySelectorAll('.quick-add-word').forEach(x => { x.textContent = w().choose; });
     renderSizes();
     setText('productUnitPrice', displayPrice(UNIT_PRICE));
+    setText('productCategory', w().categories[selectedIndex] || 'Jaramillo Boutique');
+    setText('productRef', 'LOOK ' + String(selectedIndex+1).padStart(2, '0'));
+    setText('productAvailability', w().availability);
     if (lightbox.open) setText('productTitle', product(selectedIndex)?.name || '');
     renderBag();
   }
