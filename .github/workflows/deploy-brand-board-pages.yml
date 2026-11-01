@@ -93,6 +93,15 @@ jobs:
           test -f _site/jaramillo-boutique/assets/designer-real.webp
           test -d _site/brand-board-studio/assets
 
+      - name: Smoke-test Jaramillo Boutique preview
+        run: |
+          node --check _site/jaramillo-boutique/main.js
+          test -s _site/jaramillo-boutique/assets/colombian-jeans.webp
+          test -s _site/jaramillo-boutique/assets/fajas.webp
+          test -s _site/jaramillo-boutique/assets/noche.webp
+          test -s _site/jaramillo-boutique/assets/plataformas.webp
+          test -s _site/jaramillo-boutique/assets/sandalias.webp
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
