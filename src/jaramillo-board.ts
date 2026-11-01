@@ -5,7 +5,7 @@ export const JARAMILLO_BOARD = {
   "id": "jaramillo-boutique",
   "name": "Jaramillo Boutique",
   "category": "Boutique · Demo",
-  "description": "Boutique de moda femenina con raíces colombianas en Nueva York: pantalones colombianos, fajas, vestidos, blusas y zapatos. Lookbook conceptual; confirmar inventario, tallas y direcciones antes de ofrecer productos.",
+  "description": "Boutique de moda femenina con raíces colombianas, presente en Miami, Las Vegas y Nueva York. Pantalones colombianos, fajas, vestidos, blusas y calzado. Fotos conceptuales; confirmar existencias, tallas y direcciones exactas antes de ofrecer productos.",
   "tagline": "Colombian spirit. New York attitude.",
   "monogram": "JB",
   "symbol": "✦",
@@ -21,7 +21,7 @@ export const JARAMILLO_BOARD = {
     "#1A1A1A",
     "#C9A36B"
   ],
-  "heroPhoto": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/corse.webp",
+  "heroPhoto": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/hero-model-v2.webp",
   "detailPhoto": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/colombian-jeans.webp",
   "site": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/",
   "logoImage": "",
@@ -31,6 +31,7 @@ export const JARAMILLO_BOARD = {
   "imageScale": 1,
   "sectionPhotos": {
     "hero": [
+      {"id":"photo-jaramillo-hero-updated","src":"https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/hero-model-v2.webp","fit":"contain","x":50,"y":50},
       {
         "id": "photo-jaramillo-hero-01",
         "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/corse.webp",
@@ -54,6 +55,7 @@ export const JARAMILLO_BOARD = {
       }
     ],
     "identity": [
+      {"id":"photo-jaramillo-designer-updated","src":"https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/designer-portrait-v2.webp","fit":"cover","x":50,"y":40},
       {
         "id": "photo-jaramillo-identity-01",
         "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/atelier.webp",
@@ -176,6 +178,7 @@ export const JARAMILLO_BOARD = {
       }
     ],
     "universe": [
+      {"id":"photo-jaramillo-designer-universe","src":"https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/designer-portrait-v2.webp","fit":"cover","x":50,"y":40},
       {
         "id": "photo-jaramillo-universe-01",
         "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/colombian-jeans.webp",
