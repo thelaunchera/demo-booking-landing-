@@ -113,5 +113,48 @@
       "Comprueba la sección de galería exportada"
     ],
     "expected": "La vista ampliada abre la foto guardada, tanto los pies como la cabeza son visibles en la miniatura y el PNG exportado conserva el encuadre sin recortes."
+  },
+  {
+    "name": "Jaramillo Boutique Brand Board con fotos y biblioteca de prompts",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "selección de demo Jaramillo Boutique",
+      "paleta y tipografía propias",
+      "galerías por sección",
+      "24 prompts con botón Copiar",
+      "enlace a demo publicada",
+      "conservación de YUMMM y otras marcas"
+    ],
+    "description": "Comprueba que Jaramillo aparece como marca propia, que sus imágenes están guardadas por sección y que la biblioteca editorial puede copiarse.",
+    "steps": [
+      "Abrir el Brand Board Studio",
+      "Seleccionar Jaramillo Boutique en la lista de marcas",
+      "Comprobar el hero, la imagen de La Diseñadora, paleta vino/marfil/dorado y galerías",
+      "Entrar en Prompts y verificar 24 entradas, leer un prompt y copiarlo",
+      "Abrir el enlace a la web y verificar Miami, Las Vegas y New York",
+      "Volver a Studio y seleccionar YUMMM"
+    ],
+    "expected": "Jaramillo aparece con fotos, identidad y 24 prompts distintos. Su enlace funciona y YUMMM conserva su propia marca."
+  },
+  {
+    "name": "Jaramillo responsive y persistencia de demo",
+    "viewport": "mobile",
+    "covers": [
+      "Jaramillo visible en iPhone",
+      "fotografías visibles",
+      "texto y controles no desbordan",
+      "persistencia de galería",
+      "conmutación de marcas"
+    ],
+    "description": "Verifica que los nuevos recursos se usan en móviles y no borran los datos existentes.",
+    "steps": [
+      "Abrir Studio en tamaño iPhone 390x844",
+      "Seleccionar Jaramillo Boutique",
+      "Desplazar de portada a galería y biblioteca de prompts",
+      "Cambiar a YUMMM y volver a Jaramillo",
+      "Recargar página"
+    ],
+    "expected": "Las imágenes de Jaramillo permanecen, las cuatro marcas previas siguen disponibles, y no hay desbordamientos horizontales."
   }
 ]
