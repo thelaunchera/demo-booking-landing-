@@ -10,11 +10,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Italiana&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261101-editorial-v2">
-  <link rel="stylesheet" href="shopping.css?v=20261101-editorial-v2">
+  <link rel="stylesheet" href="shopping.css?v=20261101-price-v7">
   <link rel="stylesheet" href="editorial-hero.css?v=20261101-rev3">
   <link rel="stylesheet" href="editorial-banner.css?v=20261101-rev3">
   <link rel="stylesheet" href="editorial-lookbook.css?v=20261101-rev3">
-  <link rel="stylesheet" href="editorial-type-v5.css?v=20261101-halo-v62">
+  <link rel="stylesheet" href="editorial-type-v5.css?v=20261101-price-v72">
   <style>.lookbook-swipe-cue{display:none}@media(max-width:700px){.lookbook-swipe-cue{display:block;margin:0 22px 12px;font-size:10px;letter-spacing:.04em;color:#85656a}}</style>
 </head>
 <body>
@@ -135,6 +135,7 @@
       <div class="lightbox-photo"><div class="lightbox-photo-stage"><img id="lightboxImg" src="" alt=""><button id="viewPhotoFull" class="photo-zoom-toggle" type="button" aria-pressed="false" aria-label="Enlarge photo">VIEW FULL PHOTO</button></div><p id="lightboxCaption"></p><p class="photo-swipe-hint" data-i18n="swipeHint">Swipe the photo to browse looks.</p></div>
       <div class="product-options">
         <span class="product-overline" id="productOverline">JARAMILLO / THE COLLECTION</span>
+        <p class="product-unit-price" id="productUnitPrice">$45.00</p>
         <h3 id="productTitle">Selected look</h3>
         <p class="product-lead" id="productLead">Discover the look and add it to your preview bag.</p>
         <p class="product-size-label" id="productSizeLabel">Size to ask about</p>
@@ -149,11 +150,12 @@
       <header class="bag-dialog-head"><div><span class="bag-eyebrow" id="bagEyebrow">YOUR EDIT</span><h2 id="bagTitle">Your bag<span>.</span></h2></div><button type="button" class="bag-close" id="bagClose" aria-label="Close bag">×</button></header>
       <p class="bag-subtitle" id="bagSubtitle">Collect the looks you love in one place.</p>
       <div class="bag-items" id="bagItems" aria-live="polite"></div>
-      <footer class="bag-dialog-foot"><div class="bag-total"><span id="bagPiecesLabel">Pieces selected</span><strong id="bagPiecesValue">0</strong></div><button type="button" id="bagContinue" class="bag-continue">CONTINUE EXPLORING</button><p id="bagDisclaimer">This is a visual selection only. No order or payment is placed; styles and sizes are unconfirmed.</p></footer>
+      <footer class="bag-dialog-foot"><div class="bag-total"><span id="bagPiecesLabel">Pieces selected</span><strong id="bagPiecesValue">0</strong></div>
+        <div class="bag-subtotal-row"><span id="bagSubtotalLabel">Subtotal</span><strong id="bagSubtotal">$0.00</strong></div><button type="button" id="bagContinue" class="bag-continue">CONTINUE EXPLORING</button><p id="bagDisclaimer">This is a visual selection only. No order or payment is placed; styles and sizes are unconfirmed.</p></footer>
     </div>
   </dialog>
   <script src="main.js?v=20261101-editorial-v2" defer></script>
-  <script src="shopping.js?v=20261101-editorial-v2" defer></script>
+  <script src="shopping.js?v=20261101-price-v7" defer></script>
   <script src="editorial-type-v5.js?v=20261101-halo-v6" defer></script>
 </body>
 </html>
