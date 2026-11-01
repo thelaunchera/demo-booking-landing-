@@ -3,3 +3,18 @@
 @media(max-width:700px){html{scroll-padding-top:75px}.announcement{font-size:9px;padding:9px 8px;letter-spacing:.1em}.site-head{height:70px;padding:0 19px}.wordmark{font-size:29px}.wordmark span{font-size:8px}.mobile-menu{top:101px}.hero{display:flex;flex-direction:column;min-height:0}.hero-text{padding:56px 25px 30px;min-height:390px}.hero h1{font-size:clamp(69px,14vw,112px);margin:17px 0 14px}.hero-body{font-size:13px;max-width:300px;margin-bottom:20px}.button{padding:15px 20px;font-size:11px;gap:35px}.hero-footnote{margin-top:30px}.hero-scene{min-height:420px;height:62vh;max-height:575px}.hero-model{height:112%;left:53%;transform:translateX(-49%)}.scene-label{right:18px;bottom:17px;font-size:8px}.signature-strip{gap:18px;padding:16px;font-size:9px;justify-content:flex-start}.section{padding:74px 18px}.intro-row{display:block}.intro-row h2,.designer-copy h2,.boutique-header h2{font-size:clamp(49px,11.5vw,70px)}.intro-row p{font-size:12px;line-height:1.7}.filters{gap:6px;flex-wrap:nowrap;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}.filters::-webkit-scrollbar{display:none}.filter{flex:0 0 auto;white-space:nowrap;padding:10px 14px;font-size:11px}.collection-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}.collection-card:first-child{grid-column:span 2}.collection-card:first-child .card-photo{aspect-ratio:1.18}.card-foot{font-size:9px;line-height:1.35;padding:11px 0 10px}.card-foot span:last-child{font-size:11px}.card-photo{aspect-ratio:.73}.story-break{padding:90px 20px}.story-break h2{font-size:48px}.designer{grid-template-columns:1fr}.designer-visual{padding:55px 60px 80px}.designer-photo{max-width:420px}.designer-copy{padding:70px 29px 85px}.designer-copy p{font-size:13px}.sizes-banner{grid-template-columns:1fr}.sizes-line{padding:55px 25px 30px}.sizes-line h2{font-size:64px;letter-spacing:.04em}.sizes-banner>img{height:310px}.boutiques{padding:85px 25px}.boutique-list{margin-top:40px}.boutique-item{grid-template-columns:34px 1fr;gap:14px;padding:22px 0}.boutique-item strong{font-size:25px}.boutique-item small{grid-column:2;text-align:left}.footer{padding:65px 20px 23px}.footer-wordmark{font-size:62px}.footer>p{margin-bottom:65px}.footer-end{gap:18px;flex-direction:column;align-items:center;line-height:1.4}.lightbox-inner{padding:45px 10px 10px}.lightbox-inner img{max-height:70vh}}
 @media(max-width:390px){.hero h1{font-size:63px}.hero-scene{height:420px}.hero-model{height:112%}.designer-visual{padding-left:35px;padding-right:35px}.sizes-line h2{font-size:56px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
+
+/* Keep the editorial logo fully visible on narrow phone screens. */
+@media (max-width: 700px) {
+  .footer-wordmark {
+    font-size: clamp(36px, 10.3vw, 48px);
+    letter-spacing: 0.012em;
+    line-height: 1.06;
+  }
+
+  .footer-wordmark span {
+    font-size: 10px;
+    letter-spacing: 0.32em;
+  }
+}
