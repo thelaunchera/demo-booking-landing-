@@ -6,12 +6,12 @@ export const JARAMILLO_BOARD = {
   "name": "Jaramillo Boutique",
   "category": "Boutique · Demo",
   "description": "Boutique de moda femenina con raíces colombianas, presente en Miami, Las Vegas y Nueva York. Pantalones colombianos, fajas, vestidos, blusas y calzado. Fotos conceptuales; confirmar existencias, tallas y direcciones exactas antes de ofrecer productos.",
-  "tagline": "Colombian spirit. New York attitude.",
+  "tagline": "Colombian roots. A look for every plan.",
   "monogram": "JB",
   "symbol": "✦",
   "titleFont": "Italiana",
   "bodyFont": "DM Sans",
-  "tone": "Sensual · editorial · sofisticada · segura",
+  "tone": "Moda femenina · editorial · directa · sofisticada",
   "style": "boutique",
   "colors": [
     "#5A0F21",
@@ -21,8 +21,8 @@ export const JARAMILLO_BOARD = {
     "#1A1A1A",
     "#C9A36B"
   ],
-  "heroPhoto": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/hero-model-v2.webp",
-  "detailPhoto": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/colombian-jeans.webp",
+  "heroPhoto": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/hero-editorial-user.jpg",
+  "detailPhoto": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/designer-portrait-v2.webp",
   "site": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/",
   "logoImage": "",
   "patternImage": "",
@@ -33,7 +33,7 @@ export const JARAMILLO_BOARD = {
     "hero": [
       {
         "id": "photo-jaramillo-hero-updated",
-        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/hero-model-v2.webp",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/hero-editorial-user.jpg",
         "fit": "contain",
         "x": 50,
         "y": 50
