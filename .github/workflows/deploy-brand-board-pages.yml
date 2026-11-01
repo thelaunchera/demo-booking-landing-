@@ -125,6 +125,7 @@ jobs:
           grep -q 'jaramilloHaloFix' _site/jaramillo-boutique/index.html
           grep -q 'scene-typography' _site/jaramillo-boutique/index.html
           grep -q 'JARA' _site/jaramillo-boutique/index.html
+          grep -q 'Playfair Display' _site/jaramillo-boutique/editorial-type-v5.css
           grep -q 'Bespoke YUMMM treatment' _site/yummm/styles.css
           grep -q 'Keep the editorial logo fully visible' _site/jaramillo-boutique/styles.css
 
