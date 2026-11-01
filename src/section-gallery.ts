@@ -77,12 +77,24 @@ async function dropPhoto(id) {
     });
   } catch { /* Removing metadata still hides the photo. */ }
 }
+export function getCachedGalleryPhotoSource(id){return cache.get(id)||'';}
+export async function getGalleryPhotoSource(id) {
+  if(typeof id!=='string'||!(/^[a-f0-9]{8}-[a-f0-9-]{27,40}$/i.test(id)||/^photo-[a-z0-9-]{5,140}$/i.test(id)))return '';
+  return cache.get(id)||await readPhoto(id)||'';
+}
 export function ensureGallery(brand) {
   if (!brand.sectionPhotos || typeof brand.sectionPhotos !== 'object' || Array.isArray(brand.sectionPhotos)) {
     brand.sectionPhotos = {};
   }
   for (const section of SECTION_DEFS) {
     if (!Array.isArray(brand.sectionPhotos[section.id])) brand.sectionPhotos[section.id] = [];
+    // Curated demo photographs are public, versioned GitHub assets. Unlike user uploads,
+    // they are available on every device and should not require IndexedDB seeding.
+    for (const photo of brand.sectionPhotos[section.id]) {
+      if (photo && typeof photo.id === 'string' && typeof photo.src === 'string' && /^https:\/\//i.test(photo.src)) {
+        cache.set(photo.id, photo.src);
+      }
+    }
   }
   return brand.sectionPhotos;
 }
@@ -109,21 +121,24 @@ export function galleryHTML(brand, section) {
       : '<div class="gallery-image-loading">Cargando foto…</div>';
     return '<div class="gallery-photo-card" data-section="' + section + '" data-image-id="' +
       escapeHtml(photo.id) + '" draggable="true">' +
-      picture + '<div class="gallery-photo-bar"><span class="gallery-photo-number">' + (index + 1) + '</span>' +
-      '<div class="gallery-photo-actions">' +
+      '<div class="gallery-photo-media">' + picture + '</div>' +
+      '<div class="gallery-photo-bar"><span class="gallery-photo-number">Foto ' + (index + 1) + '</span>' +
+      '<details class="gallery-photo-tools"><summary>Editar foto</summary><div class="gallery-photo-actions">' +
       '<button type="button" data-action="gallery-left" data-section="' + section + '" data-id="' + escapeHtml(photo.id) +
-      '" aria-label="Mover foto a la izquierda" title="Mover a la izquierda">←</button>' +
+      '" aria-label="Mover foto a la izquierda" title="Poner antes">Antes</button>' +
       '<button type="button" data-action="gallery-right" data-section="' + section + '" data-id="' + escapeHtml(photo.id) +
-      '" aria-label="Mover foto a la derecha" title="Mover a la derecha">→</button>' +
+      '" aria-label="Mover foto a la derecha" title="Poner después">Después</button>' +
       '<button type="button" data-action="gallery-fit" data-section="' + section + '" data-id="' + escapeHtml(photo.id) +
       '" aria-label="Cambiar ajuste de foto" title="Alternar llenar o ajustar">⊡</button>' +
       '<button type="button" data-action="gallery-replace" data-section="' + section + '" data-id="' + escapeHtml(photo.id) +
       '" aria-label="Reemplazar foto" title="Reemplazar imagen">↻</button>' +
+      '<button type="button" data-action="gallery-review" data-section="' + section + '" data-id="' + escapeHtml(photo.id) +
+      '" aria-label="Revisar fotografía en grande" title="Revisar detalles">◎</button>' +
       '<button type="button" class="gallery-remove" data-action="gallery-delete" data-section="' + section + '" data-id="' +
-      escapeHtml(photo.id) + '" aria-label="Eliminar foto" title="Eliminar">×</button></div></div></div>';
+      escapeHtml(photo.id) + '" aria-label="Eliminar foto" title="Eliminar">Eliminar</button></div></details></div></div>';
   }).join('');
   return '<div class="gallery-dropzone" data-section-drop="' + section + '">' +
-    '<div class="section-photo-grid">' + tiles + '</div></div>';
+    '<div class="section-photo-grid gallery-count-' + Math.min(3,photos.length) + '">' + tiles + '</div></div>';
 }
 export function galleryManagerHTML(brand) {
   const gallery = ensureGallery(brand);
@@ -187,7 +202,13 @@ export async function addFiles(brand, section, files, persist, replacementId = '
     } else {
       const id = freshId();
       await putPhoto(id, data);
-      gallery[section].push({ id, fit: 'cover', x: 50, y: 50 });
+      gallery[section].push({
+        id,fit:section==='applications'?'cover':'contain',x:50,y:50,
+        left:section==='applications'?(gallery[section].length?15:0):0,
+        top:section==='applications'?(gallery[section].length?12:0):0,
+        width:section==='applications'?(gallery[section].length?58:100):100,
+        height:section==='applications'?(gallery[section].length?74:100):100
+      });
       if (!persist()) {
         gallery[section].pop();
         await dropPhoto(id);

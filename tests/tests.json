@@ -73,5 +73,88 @@
       "Vuelve al Brand Board"
     ],
     "expected": "Los cambios se mantienen y las vistas del estudio siguen funcionando."
+  },
+  {
+    "name": "Revisión detallada de fotos de IA y controles fuera de la imagen",
+    "viewport": "mobile",
+    "covers": [
+      "vista ampliada sin recorte",
+      "validación visual de manos y pies",
+      "reemplazar imagen defectuosa",
+      "eliminar imagen defectuosa",
+      "toolbar visible debajo de la foto",
+      "diseño adaptable al iPhone"
+    ],
+    "description": "Garantiza que fotografías generadas con IA puedan inspeccionarse en grande y descartarse o sustituirse antes de conservarlas en el Brand Board.",
+    "steps": [
+      "En CRUMB abre Brand Board en un teléfono",
+      "Añade una fotografía vertical a Universo visual",
+      "Comprueba que la foto queda completa dentro de su marco y que los controles no la tapan",
+      "Pulsa Revisar detalles y comprueba el texto de revisión de manos, pies y rostro",
+      "Reemplaza la foto; después prueba moverla y cambiar el encuadre"
+    ],
+    "expected": "La imagen se muestra grande, los controles están debajo sin invadirla, la revisión permite sustituir o eliminar y los cambios permanecen al actualizar."
+  },
+  {
+    "name": "Conservar foto vertical completa en vista previa y PNG",
+    "viewport": "mobile",
+    "covers": [
+      "foto vertical sin corte",
+      "ajuste contain por defecto",
+      "exportación PNG respeta encuadre",
+      "revisión visual de foto generada con IA"
+    ],
+    "description": "Valida que una nueva foto vertical no pierda rostro ni pies en la miniatura y que la exportación respete el mismo ajuste.",
+    "steps": [
+      "En una marca abre Identidad y añade una foto vertical con el cuerpo completo",
+      "Comprueba que el marco muestre la imagen entera por defecto, aunque aparezcan márgenes laterales",
+      "Abre Revisar detalles y visualiza la imagen en grande",
+      "Descarga el Brand Board como PNG",
+      "Comprueba la sección de galería exportada"
+    ],
+    "expected": "La vista ampliada abre la foto guardada, tanto los pies como la cabeza son visibles en la miniatura y el PNG exportado conserva el encuadre sin recortes."
+  },
+  {
+    "name": "Jaramillo Boutique Brand Board con fotos y biblioteca de prompts",
+    "sanity": true,
+    "viewport": "desktop",
+    "covers": [
+      "selección de demo Jaramillo Boutique",
+      "paleta y tipografía propias",
+      "galerías por sección",
+      "24 prompts con botón Copiar",
+      "enlace a demo publicada",
+      "conservación de YUMMM y otras marcas"
+    ],
+    "description": "Comprueba que Jaramillo aparece como marca propia, que sus imágenes están guardadas por sección y que la biblioteca editorial puede copiarse.",
+    "steps": [
+      "Abrir el Brand Board Studio",
+      "Seleccionar Jaramillo Boutique en la lista de marcas",
+      "Comprobar el hero, la imagen de La Diseñadora, paleta vino/marfil/dorado y galerías",
+      "Entrar en Prompts y verificar 24 entradas, leer un prompt y copiarlo",
+      "Abrir el enlace a la web y verificar Miami, Las Vegas y New York",
+      "Volver a Studio y seleccionar YUMMM"
+    ],
+    "expected": "Jaramillo aparece con fotos, identidad y 24 prompts distintos. Su enlace funciona y YUMMM conserva su propia marca."
+  },
+  {
+    "name": "Jaramillo responsive y persistencia de demo",
+    "viewport": "mobile",
+    "covers": [
+      "Jaramillo visible en iPhone",
+      "fotografías visibles",
+      "texto y controles no desbordan",
+      "persistencia de galería",
+      "conmutación de marcas"
+    ],
+    "description": "Verifica que los nuevos recursos se usan en móviles y no borran los datos existentes.",
+    "steps": [
+      "Abrir Studio en tamaño iPhone 390x844",
+      "Seleccionar Jaramillo Boutique",
+      "Desplazar de portada a galería y biblioteca de prompts",
+      "Cambiar a YUMMM y volver a Jaramillo",
+      "Recargar página"
+    ],
+    "expected": "Las imágenes de Jaramillo permanecen, las cuatro marcas previas siguen disponibles, y no hay desbordamientos horizontales."
   }
 ]

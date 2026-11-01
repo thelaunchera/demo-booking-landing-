@@ -2,6 +2,11 @@
 // @ts-nocheck
 import './styles.css';
 import './section-gallery.css';
+import { YUMMM_ALL_PROMPTS } from './yummm-prompts';
+import { JARAMILLO_BOARD } from './jaramillo-board';
+import { JARAMILLO_ALL_PROMPTS } from './jaramillo-prompts';
+import { FINISHED_DEMO_BOARDS, FINISHED_DEMO_IDS } from './finished-demo-boards';
+import { FINISHED_DEMO_PROMPTS } from './finished-demo-prompts';
 import {
   SECTION_DEFS,
   ensureGallery,
@@ -10,6 +15,8 @@ import {
   galleryHTML,
   galleryManagerHTML,
   loadGallery,
+  getGalleryPhotoSource,
+  getCachedGalleryPhotoSource,
   addFiles,
   removePhoto,
   movePhoto,
@@ -29,7 +36,7 @@ const DEMOS=[
     colors:['#422419','#BC7658','#E5D3A9','#FCF3E9','#A5AB91','#DEAF95'],
     heroPhoto:'https://www.amummytoo.co.uk/wp-content/uploads/2025/04/big-batch-brownies-SQUARE.jpg',
     detailPhoto:'https://images.ctfassets.net/brcxfsm84vq2/3XfvKaeEjct7Rjgweuzp5r/174011d220376e0cf240558c79796251/Fudge_Brownies_Salted_Caramel.jpg?w=600',
-    site:'https://casa-brownie-demo-miami-ltg7rb.v2.appdeploy.ai/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
+    site:'https://thelaunchera.com/demos/casa-brownie/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
   },
   {
     id:'crumb',name:'CRUMB Cookies',category:'Cookie Shop · Demo',description:'Cookies oversized, horneadas frescas y llenas de personalidad.',tagline:'The good stuff, fresh from the oven.',
@@ -37,7 +44,7 @@ const DEMOS=[
     colors:['#392720','#BA8E6A','#E9DBCA','#FAF7F0','#B9AB8F','#DFC2A4'],
     heroPhoto:'https://d2ol7oe51mr4n9.cloudfront.net/user_3FC9GcVebQE6WAxiCP5Hh9w95GF/e5bb099c-dc60-4ebe-884c-2c33dccfab62.jpg',
     detailPhoto:'https://d2ol7oe51mr4n9.cloudfront.net/user_3FC9GcVebQE6WAxiCP5Hh9w95GF/678a8c92-21bd-410c-b72f-18e051b620c8.jpg',
-    site:'https://crumb-cookies-animated-demo-w1fcop.v2.appdeploy.ai/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
+    site:'https://thelaunchera.com/demos/crumb/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
   },
   {
     id:'aftr',name:'AFTR Las Vegas',category:'Nightclub · Demo',description:'Nightlife de alta energía, música y experiencias después del anochecer.',tagline:'After dark. Beyond ordinary.',
@@ -45,38 +52,182 @@ const DEMOS=[
     colors:['#0B0911','#9A6AFF','#FF3F9D','#F3F0F7','#D9FF52','#C6C9D4'],
     heroPhoto:'https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/aftr-nightclub/assets/hero.webp',
     detailPhoto:'https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/aftr-nightclub/assets/dj.webp',
-    site:'https://aftr-las-vegas-nightclub-fwv6yu.v2.appdeploy.ai/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
+    site:'https://thelaunchera.com/demos/aftr/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
+  },
+  {
+    id:'yummm',name:'YUMMM',category:'Coffee & Bakery · Demo',description:'Un rincón para cafés, cookies, repostería y pequeños momentos felices. Vitrina interactiva y cajas para llevar.',tagline:'Your daily happy place.',
+    monogram:'Y',symbol:'●',titleFont:'Nunito',bodyFont:'DM Sans',tone:'Cálida · divertida · editorial · deliciosa',style:'coffee',
+    colors:['#992B2B','#C85E49','#EFDDC9','#FBF6EC','#B99A7F','#39241D'],
+    heroPhoto:'https://thelaunchera.github.io/demo-booking-landing-/yummm/images/10.webp',detailPhoto:'https://thelaunchera.github.io/demo-booking-landing-/yummm/images/11.webp',
+    site:'https://thelaunchera.github.io/demo-booking-landing-/yummm/',
+    logoImage:'',patternImage:'',imageY:35,imageX:50,imageScale:1,
+    sectionPhotos:{"hero":[{"id":"photo-yummm-hero-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/10.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-hero-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/02.webp","fit":"cover","x":50,"y":50}],"identity":[{"id":"photo-yummm-identity-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/01.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-identity-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/06.webp","fit":"cover","x":50,"y":50}],"palette":[{"id":"photo-yummm-palette-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/06.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-palette-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/09.webp","fit":"cover","x":50,"y":50}],"typography":[{"id":"photo-yummm-typography-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/01.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-typography-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/09.webp","fit":"cover","x":50,"y":50}],"pattern":[{"id":"photo-yummm-pattern-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/12.webp","fit":"cover","x":50,"y":50}],"applications":[{"id":"photo-yummm-applications-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/12.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-applications-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/03.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-applications-03","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/07.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-applications-04","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/04.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-applications-05","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/08.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-applications-06","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/16.webp","fit":"cover","x":50,"y":50}],"universe":[{"id":"photo-yummm-universe-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/10.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/11.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-03","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/13.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-04","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/14.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-05","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/15.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-06","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/16.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-07","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/17.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-08","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/18.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-09","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/19.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-10","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/20.webp","fit":"cover","x":50,"y":50}]}
+  }
+  ,{
+    id:'jaramillo-boutique',name:'Jaramillo Boutique',category:'Women’s Fashion · Boutique Demo',
+    description:'Boutique editorial de moda femenina colombiana en Nueva York, diseño y colecciones de tendencia.',
+    tagline:'Colombian Spirit, New York Attitude.',
+    monogram:'JB',symbol:'◈',titleFont:'Italiana',bodyFont:'DM Sans',tone:'Fashion editorial · femenina · elegante · atrevida',style:'boutique',
+    colors:['#5A0F21','#3D101D','#F7F4EF','#E4D3C3','#B69B7C','#1D1718'],
+    heroPhoto:'https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/model-cutout.webp',
+    detailPhoto:'https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/designer-real.webp',
+    site:'https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/',
+    logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
   }
 ];
-const TYPES=['Bakery · Demo','Cookie Shop · Demo','Nightclub · Demo','Boutique · Demo','Beauty · Demo','Wellness · Demo','Restaurante · Demo','Otra categoría'];
-const FONTS=['Bodoni Moda','DM Serif Display','Cormorant Garamond','Bebas Neue','Georgia','Manrope','DM Sans','Arial'];
+// Add Jaramillo as a curated, fully editable demo just like YUMMM.
+DEMOS.push(JARAMILLO_BOARD);
+// Expand official demo boards with their approved photo collections and current brand identities.
+// Only the three completed demos are migrated; YUMMM keeps its existing curated setup.
+for (const demo of DEMOS) {
+  if (FINISHED_DEMO_BOARDS[demo.id]) {
+    Object.assign(demo, JSON.parse(JSON.stringify(FINISHED_DEMO_BOARDS[demo.id])));
+  }
+}
+// Demos oficiales: publicados en GitHub Pages desde el repositorio de The Launch Era.
+// Nunca recuperar las URLs antiguas de AppDeploy desde la memoria del navegador o backups.
+const OFFICIAL_DEMO_SITES={
+  'casa-brownie':'https://thelaunchera.com/demos/casa-brownie/',
+  'crumb':'https://thelaunchera.com/demos/crumb/',
+  'aftr':'https://thelaunchera.com/demos/aftr/',
+  'yummm':'https://thelaunchera.github.io/demo-booking-landing-/yummm/',
+  'jaramillo-boutique':'https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/',
+  'jaramillo-boutique':'https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/'
+};
+function publishedSite(brand){
+  if(OFFICIAL_DEMO_SITES[brand.id])return OFFICIAL_DEMO_SITES[brand.id];
+  const candidate=String(brand.site||'').trim();
+  if(!candidate)return '';
+  try{
+    const url=new URL(candidate);
+    if(url.protocol!=='https:'||/([.]|^)appdeploy[.]ai$/i.test(url.hostname))return '';
+    return url.href;
+  }catch{return '';}
+}
+const TYPES=['Coffee & Bakery · Demo','Bakery · Demo','Cookie Shop · Demo','Nightclub · Demo','Boutique · Demo','Beauty · Demo','Wellness · Demo','Restaurante · Demo','Otra categoría'];
+const FONTS=['Nunito','Bodoni Moda','DM Serif Display','Cormorant Garamond','Bebas Neue','Barlow Condensed','Italiana','Georgia','Manrope','DM Sans','Arial'];
 const clone=x=>JSON.parse(JSON.stringify(x));
 const $=id=>document.getElementById(id);
 const html=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','&#39;':'&#39;'}[c]||'&#39;'));
 const cssUrl=x=>'url('+JSON.stringify(x||'')+')';
 const hex=(v,f='#FFFFFF')=>/^#[0-9a-fA-F]{6}$/.test(v||'')?v:f;
-const FONT_MAP={'Bodoni Moda':"'Bodoni Moda',Georgia,serif",'DM Serif Display':"'DM Serif Display',Georgia,serif",'Cormorant Garamond':"'Cormorant Garamond',Georgia,serif",'Bebas Neue':"'Bebas Neue',Arial,sans-serif",Georgia:'Georgia,serif',Manrope:"Manrope,sans-serif",'DM Sans':"'DM Sans',sans-serif",Arial:'Arial,sans-serif'};
+const FONT_MAP={Nunito:"'Nunito',sans-serif",'Bodoni Moda':"'Bodoni Moda',Georgia,serif",'DM Serif Display':"'DM Serif Display',Georgia,serif",'Cormorant Garamond':"'Cormorant Garamond',Georgia,serif",'Bebas Neue':"'Bebas Neue',Arial,sans-serif",'Barlow Condensed':"'Barlow Condensed',Arial,sans-serif",Italiana:"'Italiana',Georgia,serif",Georgia:'Georgia,serif',Manrope:"Manrope,sans-serif",'DM Sans':"'DM Sans',sans-serif",Arial:'Arial,sans-serif'};
 const font=v=>FONT_MAP[v]||FONT_MAP['DM Sans'];
+
+function promptItems(b){return b.id==='yummm' ? YUMMM_ALL_PROMPTS : b.id==='jaramillo-boutique' ? JARAMILLO_ALL_PROMPTS : (FINISHED_DEMO_PROMPTS[b.id]||[]);}
+function promptsView(b){
+  const items=promptItems(b);
+  if(!items.length)return guide(b);
+  const count=items.length;
+  const sourceCount=new Set(Object.values(ensureGallery(b)).flat().map(p=>p.src).filter(Boolean)).size;
+  const isJaramillo=b.id==='jaramillo-boutique';
+  const card=(item,i)=>'<article class="yummm-prompt-card">'+
+      '<div class="yummm-prompt-meta"><small>'+html(item.group)+'</small><span>'+String(i+1).padStart(2,'0')+' / '+count+'</span></div>'+
+      '<h3>'+html(item.title)+'</h3><p>'+html(item.text.slice(0,165))+'…</p>'+
+      '<div class="yummm-prompt-actions"><button type="button" class="btn dark" data-demo-prompt="'+i+'">Copiar prompt</button><details><summary>Leer completo</summary><pre>'+html(item.text)+'</pre></details></div>'+
+    '</article>';
+  const content=isJaramillo
+    ?[
+       ['Página web · dirección Cata / 9 prompts','01 · Página web y experiencia de compra','9 prompts nuevos para reproducir la dirección editorial, los textos EN/ES, la navegación, la bolsa y la revisión iPhone.'],
+       ['Master prompts · 8 composiciones','02 · Composiciones máster','8 direcciones creativas originales para nuevas imágenes editoriales, sin modificar fotos aprobadas.'],
+       ['Producción fotográfica · 16 escenas','03 · Fotografía y colección','16 prompts para producir imágenes individuales de looks, taller, accesorios y referencias visuales.']
+      ].map(([group,title,description],i)=>{
+        const scoped=items.map((item,index)=>({item,index})).filter(entry=>entry.item.group===group);
+        return '<details class="studio-prompt-group"'+(i===0?' open':'')+'><summary><span class="studio-prompt-group-heading">'+html(title)+'</span><span class="studio-prompt-group-count">'+scoped.length+' PROMPTS</span></summary>'+
+          '<p class="studio-prompt-group-description">'+html(description)+'</p>'+
+          '<div class="yummm-prompt-grid">'+scoped.map(entry=>card(entry.item,entry.index)).join('')+'</div></details>';
+      }).join('')
+    :'<div class="yummm-prompt-grid">'+items.map((item,i)=>card(item,i)).join('')+'</div>';
+  return '<section class="yummm-prompt-library'+(isJaramillo?' studio-jaramillo-prompts':'')+'" aria-labelledby="brandPromptTitle">'+
+    '<div class="yummm-prompts-hero"><div><span class="yummm-prompts-overline">THE LAUNCH ERA / BRAND BOARD MASTER</span><h2 id="brandPromptTitle">'+html(b.name)+' · Photo & Prompt Studio</h2><p>'+
+    (isJaramillo?'9 prompts nuevos de la web aprobada · 8 composiciones máster · 16 escenas fotográficas. Organizados por categoría, listos para copiar.':'8 composiciones editoriales máster y '+String(Math.max(0,count-8))+' escenas fotográficas específicas de esta marca. Cada prompt produce una imagen independiente.')+
+    '</p></div><a class="btn ghost" href="'+html(publishedSite(b))+'" target="_blank" rel="noopener noreferrer">Ver demo real</a></div>'+
+    '<div class="yummm-prompts-help"><strong>Cómo utilizar estos prompts</strong><span>'+
+      (isJaramillo?'Abre la categoría que necesitas, pulsa Copiar prompt y adjunta las fotos aprobadas de Jaramillo. Los prompts de web indican cómo organizar y revisar el sitio; los de fotografía generan una imagen individual. No modificar la cara ni inventar inventario, direcciones o ventas.':'1. Elige una foto de la galería de '+html(b.name)+' · 2. Copia el prompt · 3. Genera una sola pieza · 4. Comprueba que logotipo, colores y producto no hayan cambiado. Las imágenes son referencias conceptuales, no pruebas de negocios reales.')+
+    '</span></div>'+
+    content+
+    '<div class="yummm-prompts-bottom"><p>'+sourceCount+' fotografías o referencias distintas, organizadas por portada, identidad, paleta, tipografía, patrones, aplicaciones y universo visual. Las fotos oficiales enlazan con archivos de las demos publicadas, sin consumir memoria del teléfono.</p><button class="btn" data-action="download-demo-prompts">Descargar los '+count+' prompts (.txt)</button></div>'+
+  '</section>';
+}
+
 function hydrate(){
   let previous=[];
   try{previous=JSON.parse(localStorage.getItem(KEY)||'[]');}catch(e){}
   if(!Array.isArray(previous))previous=[];
   const base=clone(DEMOS);
   if(!previous.length)return base;
-  return previous.map(b=>{
+  const hydrated=previous.map(b=>{
     const d=base.find(x=>x.id===b.id)||base[0];
     const merged={...clone(d),...b};
+    merged.site=publishedSite(merged);
     if(!b.heroPhoto)merged.heroPhoto=d.heroPhoto;
     if(!b.detailPhoto)merged.detailPhoto=b.referenceImage||d.detailPhoto;
+    // Migrate only older official Jaramillo imagery, leaving custom user uploads untouched.
+    if(merged.id==='jaramillo-boutique'){
+      const prevHero=String(b.heroPhoto||'');
+      const prevDetail=String(b.detailPhoto||'');
+      if(/\/assets\/(?:hero-model-v2|model-cutout)[.]webp$/.test(prevHero))merged.heroPhoto=d.heroPhoto;
+      if(/\/assets\/colombian-jeans[.]webp$/.test(prevDetail))merged.detailPhoto=d.detailPhoto;
+      if(b.tagline==='Colombian spirit. New York attitude.')merged.tagline=d.tagline;
+      const list=merged.sectionPhotos?.hero||[];
+      for(const photo of list){
+        if(typeof photo.src==='string' && /\/assets\/hero-model-v2[.]webp$/.test(photo.src))photo.src=d.heroPhoto;
+      }
+    }
     if(!b.titleFont||b.titleFont==='Georgia')merged.titleFont=d.titleFont;
     if(!merged.style)merged.style=d.style;
     if(!Array.isArray(merged.colors)||merged.colors.length!==6)merged.colors=d.colors;
     ensureGallery(merged);
+    // Migrate stale initial brand boards without discarding manually added photographs.
+    if(FINISHED_DEMO_BOARDS[merged.id]){
+      const official=FINISHED_DEMO_BOARDS[merged.id];
+      const oldHero=String(b.heroPhoto||'');
+      const oldDetail=String(b.detailPhoto||'');
+      if(!b.heroPhoto || /amummytoo|cloudfront|raw\\.githubusercontent\\.com/.test(oldHero))merged.heroPhoto=official.heroPhoto;
+      if(!b.detailPhoto || /ctfassets|cloudfront|raw\\.githubusercontent\\.com/.test(oldDetail))merged.detailPhoto=official.detailPhoto;
+      // CRUMB's legacy brown palette is not the approved blue identity.
+      if(merged.id==='crumb' && b.colors?.[0]?.toLowerCase()==='#392720'){
+        merged.colors=clone(official.colors);
+        merged.tone=official.tone;
+      }
+      // AFTR now uses Barlow Condensed and DM Sans on the published live demo.
+      if(merged.id==='aftr' && b.titleFont==='Bebas Neue')merged.titleFont='Barlow Condensed';
+      if(merged.id==='aftr' && b.bodyFont==='Manrope')merged.bodyFont='DM Sans';
+      const wasLegacy= !b.studioOfficialBoardVersion;
+      if(wasLegacy){
+        merged.tagline=official.tagline;
+        merged.description=official.description;
+        if(merged.id!=='crumb' || !b.colors || b.colors[0]==='#392720')merged.tone=official.tone;
+      }
+      for(const [section,photographs] of Object.entries(official.sectionPhotos)){
+        const current=merged.sectionPhotos[section]||[];
+        const seen=new Set(current.map(p=>p.src).filter(Boolean));
+        const fresh=photographs.filter(p=>!seen.has(p.src));
+        // Prioritize official approved imagery, retaining user uploads and their order.
+        merged.sectionPhotos[section]=current.length?current.concat(fresh.slice(0,Math.max(0,10-current.length)))
+          :clone(photographs);
+      }
+      merged.studioOfficialBoardVersion='2026-11-01';
+      ensureGallery(merged);
+    }
+    // YUMMM's existing cookie additions remain available in older saved boards.
+    if(merged.id==='yummm'){
+      const universe=merged.sectionPhotos.universe;
+      for(const n of [17,18,19,20]){
+        const source='https://thelaunchera.github.io/demo-booking-landing-/yummm/images/'+n+'.webp';
+        if(!universe.some(p=>p.src===source) && universe.length<10){
+          universe.push({id:'photo-yummm-universe-'+String(n-10).padStart(2,'0'),src:source,fit:'cover',x:50,y:50});
+        }
+      }
+      ensureGallery(merged);
+    }
     if(!Number.isFinite(Number(merged.imageX)))merged.imageX=50;
     if(!Number.isFinite(Number(merged.imageY)))merged.imageY=50;
     if(!Number.isFinite(Number(merged.imageScale)))merged.imageScale=1;
     return merged;
   });
+  // Add every missing official demo, preserving other brands already edited locally; includes Jaramillo Boutique.
+  return hydrated.concat(base.filter(d=>!hydrated.some(b=>b.id===d.id)));
 }
 let brands=hydrate();
 let activeId=localStorage.getItem(KEY+'-active')||brands[0].id;
@@ -85,6 +236,8 @@ let view='board',tab='identity',focused=false,toastId;
 let uploadSection = 'identity';
 let replacementPhotoId = '';
 let draggedGallery = null;
+let selectedApplicationId = '';
+let applicationDrag = null;
 const active=()=>brands.find(x=>x.id===activeId)||brands[0];
 function notify(s){
   document.querySelector('.toast')?.remove();
@@ -103,10 +256,49 @@ function imageMarkup(url,cls='',alt='Fotografía'){
 function wordmark(b,variant=''){
   const style='font-family:'+font(b.titleFont)+';';
   if(b.logoImage&&variant==='element')return '<img class="logo-uploaded" src="'+html(b.logoImage)+'" alt="Logo de '+html(b.name)+'">';
+  if(b.id==='yummm')return '<span style="font-family:Nunito,sans-serif;font-weight:1000;letter-spacing:-.09em">YUMMM</span>';
+  if(b.id==='jaramillo-boutique')return '<span style="font-family:Italiana,Georgia,serif;font-weight:400;letter-spacing:.04em">JARAMILLO<small style="display:block;font:600 .2em DM Sans,sans-serif;letter-spacing:.38em">BOUTIQUE</small></span>';
   if(b.style==='bakery'&&b.name.toLowerCase()==='casa brownie')return '<span style="'+style+'">casa<br><em>brownie.</em></span>';
   if(b.style==='cookies'&&b.name.toLowerCase()==='crumb cookies')return '<span style="'+style+'">crumb<span style="opacity:.55">.</span></span>';
   if(b.style==='nightclub'&&b.name.toLowerCase()==='aftr las vegas')return '<span style="'+style+'">AFTR</span>';
   return '<span style="'+style+'">'+html(b.name)+'</span>';
+}
+const clamp=(n,min,max)=>Math.max(min,Math.min(max,Number(n)||0));
+function appLayers(b){
+  const items=ensureGallery(b).applications;
+  const layers=items.map((item,index)=>{
+    const source=getCachedGalleryPhotoSource(item.id);
+    const left=clamp(item.left??(index?15:0),0,100),top=clamp(item.top??(index?12:0),0,100);
+    const width=clamp(item.width??(index?58:100),12,100),height=clamp(item.height??(index?74:100),12,100);
+    return '<div class="board-application-layer'+(selectedApplicationId===item.id?' selected':'')+'" tabindex="0" role="button"'+
+      ' aria-label="Editar foto '+(index+1)+'" data-application-id="'+html(item.id)+'"'+
+      ' style="left:'+left+'%;top:'+top+'%;width:'+width+'%;height:'+height+'%;z-index:'+(index+1)+'">'+
+      (source?'<img src="'+html(source)+'" alt="Foto editable de aplicación" style="object-fit:'+(item.fit==='contain'?'contain':'cover')+'">':
+        '<span>Abriendo foto…</span>')+
+      '<span class="board-layer-handle" aria-hidden="true"></span></div>';
+  }).join('');
+  const activeItem=items.find(v=>v.id===selectedApplicationId)||items[items.length-1];
+  const actions=activeItem?
+    '<div class="board-application-tools" aria-label="Controles de foto seleccionada">'+
+    '<button data-action="app-select" data-id="'+html(activeItem.id)+'">Seleccionar foto</button>'+
+    '<label>Tamaño <input aria-label="Cambiar tamaño de foto" type="range" data-app-size="'+html(activeItem.id)+'" min="18" max="100" step="1" value="'+clamp(activeItem.width??100,18,100)+'"></label>'+
+    '<button data-action="app-fit" data-id="'+html(activeItem.id)+'">'+(activeItem.fit==='contain'?'Llenar':'Ver completa')+'</button>'+
+    '<button data-action="app-replace" data-id="'+html(activeItem.id)+'">Reemplazar</button>'+
+    '<button data-action="app-front" data-id="'+html(activeItem.id)+'">Al frente</button>'+
+    '<button data-action="app-back" data-id="'+html(activeItem.id)+'">Al fondo</button>'+
+    '<button class="danger" data-action="app-remove" data-id="'+html(activeItem.id)+'">Eliminar</button>'+
+    '</div>':'';
+  return '<div class="board-application-editor">'+
+    '<div class="package-area board-application-canvas" data-section-drop="applications" style="background:'+hex(b.colors[4])+'">'+
+    (items.length?layers:'<div class="board-application-empty"><span>Tu fotografía de producto o packaging va aquí</span>'+
+      '<button type="button" data-action="section-add" data-section="applications">Añadir fotografía</button></div>')+
+    '</div>'+
+    '<div class="board-application-header">'+
+       '<button type="button" data-action="'+(items.length?'app-replace':'section-add')+'" data-section="applications"'+
+       (items.length?' data-id="'+html((activeItem||items[0]).id)+'"':'')+'>'+
+         (items.length?'Cambiar imagen':'Colocar imagen')+'</button>'+
+       (items.length?'<button type="button" data-action="section-add" data-section="applications">Añadir otra foto</button>':'')+
+    '</div>'+actions+'</div>';
 }
 function board(b){
   const c=b.colors.map((v,i)=>hex(v,DEMOS[0].colors[i]));
@@ -114,11 +306,8 @@ function board(b){
   const picX=Math.max(0,Math.min(100,Number(b.imageX)||50)),picY=Math.max(0,Math.min(100,Number(b.imageY)||50)),scale=Math.max(1,Math.min(2,Number(b.imageScale)||1));
   const photostyle='object-position:'+picX+'% '+picY+'%;transform:scale('+scale+');';
   const showPhoto=b.heroPhoto?imageMarkup(b.heroPhoto,'hero-shot',b.name):'<div class="no-photo" style="height:100%">Arrastra una fotografía</div>';
-  const graphic=b.style==='nightclub'?'✧':b.style==='cookies'?'✺':b.symbol||'✳';
+  const graphic='◌'; // Neutral editorial mark. Never render colored emoji placeholders.
   const paintPattern=b.patternImage?'<img class="pattern-image" src="'+html(b.patternImage)+'" alt="Patrón de la marca">':'';
-  const packageMark=b.style==='nightclub'
-    ?'<div class="pkg-ticket" style="color:'+c[3]+';background:'+c[0]+';border-color:'+c[2]+'">'+html(b.monogram)+' / VIP</div>'
-    :'<div class="pkg-box" style="background:'+c[0]+';color:'+c[3]+';font-family:'+font(b.titleFont)+'">'+html(b.monogram)+'</div><div class="pkg-cup" style="background:'+c[3]+';color:'+c[0]+'">'+html(graphic)+'</div>';
   const block=(text,section)=>'<div class="art-label"><span>'+text+'</span>'+
     addControl(section)+'</div>';
   return '<div class="artboard" id="artboard" style="'+cssVars+'">'+
@@ -151,13 +340,13 @@ function board(b){
       '</div>'+
       '<div class="art-section double">'+
         '<div>'+block('04 &nbsp; Patrón','pattern')+'<div class="pattern-preview" data-pattern="'+html(graphic+'  '+graphic+'  '+graphic+'  '+graphic+'  '+graphic+'  '+graphic)+'" style="background:'+c[2]+';color:'+c[0]+'">'+paintPattern+'</div>'+galleryHTML(b,'pattern')+'</div>'+
-        '<div>'+block('05 &nbsp; Packaging / aplicación','applications')+'<div class="package-area" style="background:'+c[4]+'">'+packageMark+'</div>'+galleryHTML(b,'applications')+'</div>'+
+        '<div>'+block('05 &nbsp; Packaging / aplicación','applications')+appLayers(b)+'</div>'+
       '</div>'+
       '<div class="art-section">'+block('06 &nbsp; Universo visual','universe')+
         '<div class="mood-strip">'+
           '<div class="mood-photo">'+imageMarkup(b.detailPhoto,'',b.name+' referencia secundaria')+'</div>'+
           '<div class="mood-photo">'+imageMarkup(b.heroPhoto,'',b.name+' fotografía de referencia')+'</div>'+
-          '<div class="mood-photo" style="background:'+c[1]+';color:'+c[3]+';font-family:'+font(b.titleFont)+'">'+html(graphic)+'</div>'+
+          '<div class="mood-photo mood-photo-edit" style="background:'+c[1]+';color:'+c[3]+'"><button type="button" data-action="section-add" data-section="universe">Añadir foto</button></div>'+
         '</div>'+galleryHTML(b,'universe')+
       '</div>'+
       '<div class="art-footer"><span>'+html(b.tone)+'</span><span>CONCEPT BRAND  /  THE LAUNCH ERA</span></div>'+
@@ -228,25 +417,25 @@ function render(){
   const b=active();
   const content=view==='board'
     ?'<div class="stage"><div class="stage-top"><strong>Vista previa · Identidad completa</strong><div class="stage-controls"><span>Brand Board 01</span><button class="microbtn" data-action="focus">'+(focused?'Mostrar editor':'Ampliar vista')+'</button></div></div>'+board(b)+'</div>'
-    :view==='mockups'?mockups(b):guide(b);
+    :view==='mockups'?mockups(b):view==='prompts'?promptsView(b):guide(b);
   $('app').innerHTML=
     '<div class="shell"><aside class="sidebar">'+
       '<div class="brandlock"><span class="brandlock-icon">L.</span><span><strong>The Launch Era</strong><small>BRAND BOARD STUDIO</small></span></div>'+
       '<div class="sidebar-caption">Mis marcas demo</div><div class="sidebar-navgroup"><nav class="brandlist" aria-label="Marcas">'+
       brands.map(x=>'<button class="brandnav '+(x.id===b.id?'active':'')+'" data-brand="'+html(x.id)+'"><span class="navlogo" style="background:'+hex(x.colors[1])+';color:'+hex(x.colors[0])+'">'+html(x.monogram.slice(0,3))+'</span><span class="navinfo"><strong>'+html(x.name)+'</strong><small>'+html(x.category)+'</small></span><span class="navarrow">›</span></button>').join('')+
       '</nav><button class="newbrand" data-action="new">＋ Nueva marca</button></div>'+
-      '<div class="sidefoot"><a href="'+html(b.site||'#')+'" '+(b.site?'target="_blank" rel="noopener noreferrer"':'')+'>↗ Abrir demo actual</a><a href="#" data-action="backup">↓ Respaldo de mis marcas</a><a href="#" data-action="import">↑ Importar respaldo</a><span>Área de trabajo creativa de The Launch Era. Los cambios se guardan solo en este navegador.</span></div>'+
+      '<div class="sidefoot"><a href="'+html(publishedSite(b)||'#')+'" '+(publishedSite(b)?'target="_blank" rel="noopener noreferrer"':'')+'>↗ Abrir demo de GitHub</a><a href="#" data-action="backup">↓ Respaldo de mis marcas</a><a href="#" data-action="import">↑ Importar respaldo</a><span>Área de trabajo creativa de The Launch Era. Los cambios se guardan solo en este navegador.</span></div>'+
     '</aside><div class="content"><header class="header"><div class="breadcrumb">The Launch Era &nbsp; / &nbsp; Demo Studio &nbsp; / &nbsp; <b>Brand Boards</b></div>'+
       '<div class="header-end"><span class="savepoint"></span><span class="savetext">Guardado local</span><span class="head-avatar">L</span></div></header>'+
       '<main class="workspace"><div class="page-intro"><div><div class="kicker">Creative direction · Brand identity</div><h1>'+html(b.name)+'</h1><p>'+html(b.category)+' &nbsp; · &nbsp; Una identidad lista para llevar al siguiente diseño.</p></div>'+
       '<div class="main-actions"><button class="btn" data-action="backup">↓ Respaldo</button><button class="btn" data-action="print">PDF</button><button class="btn dark" data-action="png">↓ Exportar PNG</button></div></div>'+
       '<div class="switcher"><button class="viewtab '+(view==='board'?'active':'')+'" data-view="board">✦ Brand Board</button>'+
       '<button class="viewtab '+(view==='mockups'?'active':'')+'" data-view="mockups">Aplicaciones</button>'+
-      '<button class="viewtab '+(view==='guide'?'active':'')+'" data-view="guide">Guía de marca</button>'+
-      '<span class="viewspacer"></span>'+(b.site?'<a class="btn ghost" href="'+html(b.site)+'" target="_blank" rel="noopener noreferrer">↗ Ver demo</a>':'')+'</div>'+
-      '<div class="workspace-grid '+(focused?'focus':'')+'"><div class="left-stage">'+content+
+      '<button class="viewtab '+(view==='guide'?'active':'')+'" data-view="guide">Guía de marca</button>'+ (b.id==='yummm'?'<button class="viewtab '+(view==='prompts'?'active':'')+'" data-view="prompts">Prompts (13)</button>':'')+
+      '<span class="viewspacer"></span>'+(publishedSite(b)?'<a class="btn ghost" href="'+html(publishedSite(b))+'" target="_blank" rel="noopener noreferrer">↗ Ver demo en GitHub</a>':'')+'</div>'+
+      '<div class="workspace-grid '+(focused?'focus':'')+(view==='prompts'?' prompt-mode':'')+'"><div class="left-stage">'+content+
       '<p class="workspace-hint">El tablero se actualiza al editar. Puedes cargar nuevas fotos y exportar el resultado sin modificar tus demos.</p></div>'+
-      (focused?'':editor(b))+'</div></main></div></div>'+
+      (focused||view==='prompts'?'':editor(b))+'</div></main></div></div>'+
       '<dialog id="new-dialog"><form method="dialog" class="dialog-body" id="new-form"><h3>Nueva marca demo</h3><p>Empieza con una dirección visual propia, no con un tablero vacío.</p>'+
       '<label class="field">Nombre de la marca<input name="brandname" class="modal-input" maxlength="55" required placeholder="Ej. Miel Coffee Studio"></label>'+
       '<label class="field" style="margin-top:14px">Tipo de marca<select name="brandtype" class="modal-input">'+TYPES.map(x=>'<option>'+html(x)+'</option>').join('')+'</select></label>'+
@@ -294,10 +483,12 @@ async function loadImage(src){
   if(!src)return null;
   return new Promise(resolve=>{const img=new Image();img.crossOrigin='anonymous';img.onload=()=>resolve(img);img.onerror=()=>resolve(null);img.src=src;});
 }
-function canvasImage(ctx,img,x,y,w,h,pX=50,pY=50,scale=1){
+function canvasImage(ctx,img,x,y,w,h,pX=50,pY=50,scale=1,mode='cover'){
   if(!img)return false;
-  const fit=Math.max(w/img.width,h/img.height)*scale,iw=img.width*fit,ih=img.height*fit;
-  const dx=x-(iw-w)*(pX/100),dy=y-(ih-h)*(pY/100);
+  const fit=(mode==='contain'?Math.min(w/img.width,h/img.height):Math.max(w/img.width,h/img.height))*scale;
+  const iw=img.width*fit,ih=img.height*fit;
+  const dx=mode==='contain'?x+(w-iw)/2:x-(iw-w)*(pX/100);
+  const dy=mode==='contain'?y+(h-ih)/2:y-(ih-h)*(pY/100);
   ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();ctx.drawImage(img,dx,dy,iw,ih);ctx.restore();return true;
 }
 function write(ctx,s,x,y,size,color,fontName='Arial',weight='normal'){
@@ -350,11 +541,17 @@ async function exportPNG(){
   if(pattern){canvasImage(g,pattern,52,1462,622,281);}
   else{for(let i=0;i<15;i++){write(g,b.symbol,65+(i%5)*125,1548+Math.floor(i/5)*86,60,c[0],display);}}
   g.fillStyle=c[4];g.fillRect(688,1462,660,281);
-  g.save();g.translate(950,1605);g.rotate(-.15);
-  g.fillStyle=c[0];g.fillRect(-125,-88,250,180);
-  write(g,b.monogram,-66,30,83,c[3],display);g.restore();
-  if(b.style==='nightclub'){write(g,'AFTR  /  VIP',1044,1641,68,c[3],display);}
-  else{g.fillStyle=c[3];g.fillRect(1100,1516,127,186);write(g,b.symbol,1137,1632,55,c[0],display);}
+  // Packaging is a true photo-layer canvas; export exactly what the board shows.
+  const applications=ensureGallery(b).applications;
+  g.save();g.beginPath();g.rect(688,1462,660,281);g.clip();
+  for (let index=0;index<applications.length;index++){
+    const item=applications[index],src=await getGalleryPhotoSource(item.id),img=await loadImage(src);
+    if(!img)continue;
+    const l=clamp(item.left??(index?15:0),0,100),t=clamp(item.top??(index?12:0),0,100);
+    const w=clamp(item.width??(index?58:100),12,100),h=clamp(item.height??(index?74:100),12,100);
+    canvasImage(g,img,688+660*l/100,1462+281*t/100,660*w/100,281*h/100,50,50,1,item.fit==='contain'?'contain':'cover');
+  }
+  g.restore();
   title('05  Visual universe',1800);
   if(detail)canvasImage(g,detail,52,1815,224,64);
   if(hero)canvasImage(g,hero,287,1815,224,64);
@@ -369,7 +566,7 @@ async function exportPNG(){
       const col=i%3, r=Math.floor(i/3),x=52+col*438,y=galleryY+r*288;
       g.fillStyle=c[2];g.fillRect(x,y,418,264);
       const photo=await loadImage(row.photos[i].src);
-      if(photo)canvasImage(g,photo,x,y,418,264,row.photos[i].x,row.photos[i].y);
+      if(photo)canvasImage(g,photo,x,y,418,264,row.photos[i].x,row.photos[i].y,1,row.photos[i].fit);
     }
     galleryY+=Math.ceil(row.photos.length/3)*288+25;
   }
@@ -404,6 +601,44 @@ function addBrand(name,type){
   Object.assign(starter,clone(fallback),{id,name,category:type,tagline:'Una marca con una historia propia.',description:'Una nueva identidad creada para un proyecto demo.',monogram:name.trim().split(/\s+/).map(x=>x[0]).slice(0,2).join('').toUpperCase(),site:'',logoImage:'',patternImage:'',heroPhoto:'',detailPhoto:'',imageY:50,imageX:50,imageScale:1});
   brands.push(starter);activeId=id;save();tab='identity';view='board';focused=false;render();notify('Nueva marca creada. Ahora puedes darle identidad.');
 }
+async function openPhotoReview(section,id){
+  const source=await getGalleryPhotoSource(id);
+  if(!source){notify('No se pudo cargar la imagen para revisarla.');return;}
+  document.querySelector('#gallery-photo-review')?.remove();
+  const dialog=document.createElement('dialog');
+  dialog.id='gallery-photo-review';
+  dialog.className='gallery-photo-review-dialog';
+  const heading=document.createElement('h3');
+  heading.textContent='Revisa la fotografía antes de usarla';
+  const image=document.createElement('img');
+  image.src=source;image.alt='Vista ampliada de la foto seleccionada';
+  const note=document.createElement('p');
+  note.textContent='Especialmente si la hiciste con IA: revisa pies, manos, rostro, proporciones y detalles de fondo. La aplicación no puede garantizar automáticamente que una foto generada sea correcta.';
+  const bar=document.createElement('div');bar.className='gallery-review-buttons';
+  const close=document.createElement('button');close.type='button';close.textContent='Conservar foto';
+  close.addEventListener('click',()=>dialog.close());
+  const replace=document.createElement('button');replace.type='button';replace.textContent='Reemplazar foto';
+  replace.addEventListener('click',()=>{
+    dialog.close();
+    uploadSection=section;replacementPhotoId=id;
+    const input=$('section-upload');
+    if(input){input.value='';input.multiple=false;input.click();}
+  });
+  const remove=document.createElement('button');remove.type='button';remove.textContent='Eliminar foto';
+  remove.addEventListener('click',()=>{
+    dialog.close();
+    if(!confirm('¿Eliminar esta foto del Brand Board?'))return;
+    removePhoto(active(),section,id,save).then(()=>{
+      render();notify('Foto eliminada. Puedes reemplazarla por una versión corregida.');
+    }).catch(e=>notify(e.message));
+  });
+  bar.append(close,replace,remove);
+  dialog.append(heading,image,note,bar);
+  document.body.append(dialog);
+  dialog.addEventListener('close',()=>dialog.remove(),{once:true});
+  dialog.showModal();
+}
+
 function perform(action,button){
   const b=active();
   if(action==='new')openNew();
@@ -420,6 +655,11 @@ function perform(action,button){
     if(!confirm('¿Eliminar el Brand Board de '+b.name+'? Esto no se puede deshacer.'))return;
     brands=brands.filter(x=>x.id!==b.id);activeId=brands[0].id;save();render();notify('Marca eliminada.');
   }
+  if(action==='download-demo-prompts' && promptItems(b).length){
+    const prompts=promptItems(b);
+    const txt=prompts.map((item,i)=>'PROMPT '+String(i+1).padStart(2,'0')+' / '+item.title+'\n'+item.group+'\n\n'+item.text).join('\n\n'+('-'.repeat(65))+'\n\n');
+    download(new Blob([txt],{type:'text/plain;charset=utf-8'}),b.id+'-'+prompts.length+'-creative-prompts.txt');notify(prompts.length+' prompts descargados.');return;
+  }
   if(action==='backup')backup();
   if(action==='import'){$('import-file')?.click();return;}
   if(action==='section-add' || action==='gallery-replace') {
@@ -429,6 +669,27 @@ function perform(action,button){
     if (input) { input.value='';input.multiple=!replacementPhotoId;input.click(); }
     return;
   }
+  if(action==='app-select'||action==='app-front'||action==='app-back'||action==='app-remove'||action==='app-fit'||action==='app-replace'){
+    const items=ensureGallery(b).applications,id=button.dataset.id,
+      index=items.findIndex(v=>v.id===id);
+    if(index<0)return;
+    selectedApplicationId=id;
+    if(action==='app-replace'){
+      uploadSection='applications';replacementPhotoId=id;
+      const input=$('section-upload');if(input){input.value='';input.multiple=false;input.click();}
+      return;
+    }
+    if(action==='app-remove'){
+      if(!confirm('¿Quitar esta foto del tablero?'))return;
+      removePhoto(b,'applications',id,save).then(()=>{selectedApplicationId='';preview();notify('Foto eliminada.');});
+      return;
+    }
+    if(action==='app-front'){items.push(...items.splice(index,1));save();}
+    if(action==='app-back'){items.unshift(...items.splice(index,1));save();}
+    if(action==='app-fit'){items[index].fit=items[index].fit==='contain'?'cover':'contain';save();}
+    preview();return;
+  }
+  if(action==='gallery-review') {void openPhotoReview(button.dataset.section,button.dataset.id);return;}
   if(action==='gallery-delete') {
     removePhoto(b,button.dataset.section,button.dataset.id,save).then(()=>{
       render();notify('Foto eliminada.');
@@ -463,6 +724,8 @@ function perform(action,button){
   }
 }
 document.addEventListener('click',event=>{
+  const promptBtn=event.target.closest('[data-demo-prompt]');
+  if(promptBtn){const item=promptItems(active())[Number(promptBtn.dataset.demoPrompt)];if(item){if(navigator.clipboard?.writeText){navigator.clipboard.writeText(item.text).then(()=>notify('Prompt copiado: '+item.title)).catch(()=>prompt('Copia el prompt:',item.text));}else prompt('Copia el prompt:',item.text);}return;}
   const nav=event.target.closest('[data-brand]');
   if(nav){activeId=nav.dataset.brand;save();view='board';tab='identity';focused=false;render();return;}
   const viewBtn=event.target.closest('[data-view]');
@@ -479,6 +742,14 @@ document.addEventListener('input',event=>{
   if(t.dataset.color!==undefined){
     const n=Number(t.dataset.color);if(Number.isInteger(n)&&n>=0&&n<6){b.colors[n]=hex(t.value);save();preview();}
   }
+  if(t.dataset.appSize){
+    const item=ensureGallery(b).applications.find(x=>x.id===t.dataset.appSize);
+    if(item){item.width=clamp(t.value,18,100);
+      item.height=clamp(item.height??100,12,100);
+      const tile=document.querySelector('.board-application-layer[data-application-id="'+item.id+'"]');
+      if(tile)tile.style.width=item.width+'%';
+      save();}
+  }
   if(t.dataset.range){
     const k=t.dataset.range;
     if(['imageX','imageY','imageScale'].includes(k)){
@@ -494,8 +765,12 @@ document.addEventListener('change',async event=>{
     const current=activeId;
     try {
       const count=await addFiles(active(),uploadSection,t.files,save,replacementPhotoId);
+      if(uploadSection==='applications'){
+        const list=ensureGallery(active()).applications;
+        selectedApplicationId=replacementPhotoId||list[list.length-1]?.id||'';
+      }
       if(activeId===current)render();
-      notify(count+' foto(s) añadidas a la sección.');
+      notify('Imagen colocada en el tablero. Puedes moverla y ajustar su tamaño.');
     } catch(e) {notify(e.message||'No se pudieron subir las imágenes.');}
     return;
   }
@@ -505,7 +780,7 @@ document.addEventListener('change',async event=>{
       if(data.format!=='the-launch-era-brand-boards'||!Array.isArray(data.brands)||!data.brands.length||data.brands.length>150||!data.brands.every(x=>x.id&&x.name&&Array.isArray(x.colors)&&x.colors.length===6))throw Error();
       if(!confirm('¿Reemplazar los Brand Boards de este dispositivo por los del respaldo?'))return;
       await galleryRestore(data.photos);
-      brands=data.brands;activeId=brands[0].id;save();render();notify('Respaldo e imágenes restaurados.');
+      brands=data.brands.map(b=>({...b,site:publishedSite(b)}));activeId=brands[0].id;save();render();notify('Respaldo e imágenes restaurados.');
     }catch(e){notify('Este archivo no es un respaldo válido.');}
   }
 });
@@ -555,6 +830,44 @@ document.addEventListener('drop',event=>{
   event.preventDefault();target.classList.remove('over');const file=event.dataTransfer?.files?.[0];
   if(file)assignImage(file,target.dataset.drop);
 });
+let editorDrag=null;
+document.addEventListener('pointerdown',event=>{
+ const tile=event.target.closest('.board-application-layer');
+ if(!tile||event.target.closest('button')||event.pointerType==='mouse'&&event.button!==0)return;
+ const canvas=tile.closest('.board-application-canvas'),rect=canvas?.getBoundingClientRect();
+ if(!rect?.width||!rect?.height)return;
+ const item=ensureGallery(active()).applications.find(x=>x.id===tile.dataset.applicationId);
+ if(!item)return;
+ selectedApplicationId=item.id;
+ const resize=Boolean(event.target.closest('.board-layer-handle'));
+ editorDrag={id:item.id,pointerId:event.pointerId,startX:event.clientX,startY:event.clientY,
+  left:item.left??0,top:item.top??0,width:item.width??100,height:item.height??100,
+  containerWidth:rect.width,containerHeight:rect.height,resize,element:tile};
+ tile.setPointerCapture?.(event.pointerId);event.preventDefault();
+});
+document.addEventListener('pointermove',event=>{
+ if(!editorDrag||event.pointerId!==editorDrag.pointerId)return;
+ const state=editorDrag,photo=ensureGallery(active()).applications.find(x=>x.id===state.id);
+ if(!photo)return;
+ const dx=(event.clientX-state.startX)/state.containerWidth*100;
+ const dy=(event.clientY-state.startY)/state.containerHeight*100;
+ if(state.resize){
+  photo.width=clamp(state.width+dx,18,100);
+  photo.height=clamp(state.height+dy,18,100);
+  state.element.style.width=photo.width+'%';state.element.style.height=photo.height+'%';
+ }else{
+  photo.left=clamp(state.left+dx,0,100-photo.width);
+  photo.top=clamp(state.top+dy,0,100-photo.height);
+  state.element.style.left=photo.left+'%';state.element.style.top=photo.top+'%';
+ }
+});
+document.addEventListener('pointerup',event=>{
+ if(editorDrag&&editorDrag.pointerId===event.pointerId){
+  editorDrag=null;save();preview();
+ }
+});
+document.addEventListener('pointercancel',()=>{if(editorDrag){editorDrag=null;save();}});
+
 let pointerStart=null;
 document.addEventListener('pointerdown',event=>{
   const hit=event.target.closest('.art-photo');
