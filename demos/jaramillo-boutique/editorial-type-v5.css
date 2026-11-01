@@ -1,0 +1,46 @@
+
+/* Jaramillo Boutique — distinctive editorial type behind the model, v5 */
+.hero-scene{position:relative;isolation:isolate;background:radial-gradient(ellipse at 58% 36%,#ead0b8 0%,#c99c98 61%,#65253c 100%)!important}
+.hero-scene::after{opacity:.38!important;inset:15% 12% 0 14%!important}
+.hero-scene .arch{opacity:.14!important}
+.hero-scene .arch-two{display:none}
+.hero-scene .scene-word{display:none}
+.scene-typography{position:absolute;inset:5% 0 0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;pointer-events:none;mix-blend-mode:soft-light;opacity:.98}
+.scene-typography span{display:block;font-family:'Italiana',Georgia,serif;font-weight:400;font-size:clamp(145px,18vw,320px);line-height:.68;white-space:nowrap;letter-spacing:-.095em;color:#fff8e9;text-shadow:0 1px 18px #461d2b15}
+.scene-typography span:first-child{transform:translateX(-7%)}.scene-typography span:last-child{transform:translateX(4%)}
+.hero-model{filter:url(#jaramilloHaloFix)!important;z-index:5}
+.scene-label{z-index:7}
+@media(min-width:701px){.hero-scene{overflow:visible}.scene-typography span{font-size:clamp(140px,17vw,310px)}}
+@media(max-width:700px){
+ .hero-scene{overflow:visible}
+ .scene-typography{inset:10% 0 0;justify-content:center}
+ .scene-typography span{font-size:clamp(115px,27vw,190px);line-height:.79;letter-spacing:-.075em}
+ .scene-typography span:first-child{transform:translateX(-6%)}.scene-typography span:last-child{transform:translateX(1%)}
+ .hero-model{z-index:5}
+}
+
+/* Every garment gets a deliberate photographic composition; no empty oversized beige cards. */
+.collection-grid{align-items:start!important}
+.collection-item,.collection-item:first-child{align-self:start!important;height:auto!important}
+.collection-card{height:auto!important;min-height:0!important}
+.card-photo,.collection-item .card-photo{position:relative;isolation:isolate;overflow:hidden!important;background:#d6b9ae!important;border:0!important;aspect-ratio:1.13!important}
+.card-photo::before{content:"";position:absolute;inset:-22px;z-index:0;background-image:var(--look-image);background-size:cover;background-position:center;filter:blur(22px) saturate(.85) brightness(.86);transform:scale(1.10);opacity:.65}
+.card-photo::after{content:attr(data-editorial);position:absolute;z-index:1;top:8%;left:4%;right:4%;font:400 clamp(42px,5.9vw,120px)/.86 'Italiana',Georgia,serif;text-align:center;letter-spacing:-.075em;overflow-wrap:anywhere;color:#fff8ed94;text-transform:uppercase;pointer-events:none}
+.collection-item .card-photo img{position:relative;z-index:2;display:block;height:100%!important;width:100%!important;object-fit:contain!important;object-position:center!important;filter:drop-shadow(0 8px 18px #33111d33)!important}
+.collection-item[data-photo-shape="portrait"] .card-photo{aspect-ratio:.57!important}
+.collection-item[data-photo-shape="portrait"] .card-photo img{width:96%!important;height:100%!important;margin:auto}
+.collection-item[data-photo-shape="landscape"] .card-photo img{width:100%!important;height:100%!important}
+.card-foot{background:#f7f4ef}
+.collection-item .quick-add,.collection-item:first-child .quick-add{bottom:82px!important}
+.collection-card:hover .card-photo img{transform:scale(1.014)!important}
+@media(max-width:700px){
+ .collection-grid{align-items:flex-start!important}
+ .collection-item,.collection-item:first-child{align-self:flex-start!important;flex:0 0 min(79vw,372px)!important}
+ .collection-item[data-photo-shape="portrait"] .card-photo{aspect-ratio:.57!important}
+ .collection-item[data-photo-shape="landscape"] .card-photo{aspect-ratio:1.13!important}
+ .card-photo::after{font-size:clamp(58px,16vw,100px);top:8%;color:#fff8edbd}
+ .collection-item .card-foot{min-height:64px!important;padding:12px 3px!important}
+ .collection-item .quick-add,.collection-item:first-child .quick-add{bottom:76px!important;right:10px!important}
+ .collection-item .card-photo img{filter:drop-shadow(0 10px 15px #35151e3b)!important}
+}
+@media(prefers-reduced-motion:reduce){.card-photo img{transition:none!important}}
