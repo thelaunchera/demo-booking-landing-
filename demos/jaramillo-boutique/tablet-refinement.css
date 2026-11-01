@@ -113,6 +113,16 @@
     transform:scale(1.015)!important;
     filter:none!important;
   }
+  /* Heels photograph is horizontal: preserve every shoe instead of cropping the display. */
+  #collections #collectionGrid .collection-item[data-group="shoes"] .card-photo{
+    aspect-ratio:5 / 4!important;
+    background:#e9d3c4!important;
+  }
+  #collections #collectionGrid .collection-item[data-group="shoes"] .card-photo img{
+    object-fit:contain!important;
+    object-position:center!important;
+    transform:none!important;
+  }
   #collections #collectionGrid .collection-item:not([data-editorial-look]) .card-photo::after{
     font-size:clamp(34px,4.4vw,54px)!important;
     line-height:.92!important;
