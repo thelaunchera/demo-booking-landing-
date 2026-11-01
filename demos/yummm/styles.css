@@ -122,3 +122,68 @@
 @media(max-width:760px){
   .feature-links{margin-top:12px;border-radius:16px}
 }
+
+
+/* YUMMM conversion hierarchy · 2026-11-01
+   Single clear action without changing the photographic hero or brand identity. */
+.hero-content {max-width: 1390px;}
+.hero-eyebrow {margin-bottom:clamp(12px,1.6vw,21px);}
+.hero h1 {
+  max-width: 11ch;
+  font-size:clamp(58px,7vw,108px);
+  line-height:1.02;
+  letter-spacing:-.052em;
+  margin-bottom:clamp(13px,1.8vw,23px);
+  text-wrap:balance;
+}
+.hero-summary {
+  font-size:clamp(15px,1.2vw,17px);
+  line-height:1.6;
+  max-width:43ch;
+  margin-bottom:clamp(20px,2.2vw,30px);
+}
+.hero-actions {gap:clamp(13px,2vw,23px);align-items:center;}
+.hero-actions .button.cream {
+  min-height:52px;
+  padding:14px 25px;
+  font-size:13px;
+  font-weight:800;
+  white-space:normal;
+  text-align:center;
+  box-shadow:0 10px 24px rgba(20,8,5,.16);
+}
+.hero-actions .button.transparent {
+  min-height:44px;
+  padding:9px 0;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:#fff9ef;
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:5px;
+  text-decoration-color:#fff9efb5;
+  font-size:12px;
+}
+.hero-actions .button.transparent:hover {background:none;transform:none;text-decoration-color:#fff9ef;}
+.header-cta {min-height:44px;display:inline-flex;align-items:center;}
+.section-heading {gap:clamp(17px,3vw,38px);margin-bottom:clamp(22px,3vw,37px);}
+.section-heading>p {line-height:1.65;font-size:clamp(14px,1.13vw,16px);}
+@media(max-width:760px) {
+ .hero-eyebrow {margin-bottom:12px;font-size:10px;}
+ .hero h1 {font-size:clamp(45px,11.2vw,69px);line-height:1.04;max-width:12ch;margin-bottom:12px;}
+ .hero-summary {font-size:14px;line-height:1.5;max-width:34ch;margin-bottom:18px;}
+ .hero-actions {gap:12px;align-items:center;}
+ .hero-actions .button.cream {min-height:48px;padding:12px 17px;font-size:12px;box-shadow:none;}
+ .hero-actions .button.transparent {font-size:12px;min-height:44px;padding:9px 0;}
+ .section-heading>p {font-size:14px;line-height:1.55;}
+ .feature-links {margin-top:12px;box-shadow:none;}
+}
+@media(max-width:365px) {
+ .hero h1 {font-size:clamp(39px,10.8vw,46px);}
+ .hero-actions {gap:8px;}
+ .hero-actions .button.cream {padding-inline:13px;}
+}
+@media(prefers-reduced-motion:reduce) {
+ .hero-actions .button,.header-cta {transition:none;}
+}
