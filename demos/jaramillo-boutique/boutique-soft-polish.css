@@ -1,0 +1,296 @@
+/* Jaramillo Boutique / softer buttons, human portrait, compact visual rhythm.
+   Loaded last; preserve approved hero image, collection products, accessible interactions. */
+:root{--jb-soft-radius:12px}
+/* Rounded, not pill-shaped: retain the boutique's editorial character. */
+.button,
+.button-ivory,
+.filter,
+.quick-add,
+.collection-bag-cta,
+.language-btn,
+.bag-trigger,
+.menu-btn,
+.text-link,
+.jb-banner-action,
+.photo-zoom-toggle,
+.size-option,
+.bag-quantity-button,
+.bag-remove,
+.bag-empty-link,
+.bag-share,
+.bag-dialog button,
+.lightbox button,
+.boutique-help button,
+.contact-inquiry button,
+.contact-inquiry input,
+.contact-inquiry select,
+.contact-inquiry textarea,
+.inquiry-form button,
+.inquiry-form input,
+.inquiry-form select,
+.inquiry-form textarea{
+ border-radius:var(--jb-soft-radius)!important;
+}
+#brandStoryBanner .story-tab{border-radius:0!important}
+#brandStoryBanner .story-tab:first-child{border-radius:10px 0 0 10px!important}
+#brandStoryBanner .story-tab:last-child{border-radius:0 10px 10px 0!important}
+.button,
+.quick-add,
+.collection-bag-cta,
+#brandStoryBanner .jb-banner-action{
+ transition:background .2s ease,transform .2s ease,box-shadow .2s ease!important;
+}
+.button:focus-visible,
+.quick-add:focus-visible,
+.collection-bag-cta:focus-visible,
+.filter:focus-visible,
+.language-btn:focus-visible{
+ outline:2px solid #b58b70!important;
+ outline-offset:3px!important;
+}
+#brandStoryBanner .jb-banner-action{border-radius:12px!important}
+/* A different photo of the real designer, with full face visible and natural proportions. */
+.designer{
+ min-height:0!important;
+ height:auto!important;
+ grid-template-columns:minmax(0,42%) minmax(0,58%)!important;
+ background:#f0e6de!important;
+}
+.designer .designer-visual{
+ background:#d5beb1!important;
+ min-height:0!important;
+ max-height:none!important;
+ padding:25px!important;
+ align-items:center!important;
+ justify-content:center!important;
+}
+.designer .designer-photo{
+ width:min(100%,295px)!important;
+ height:375px!important;
+ max-width:295px!important;
+ aspect-ratio:auto!important;
+ border:0!important;
+ overflow:hidden!important;
+ box-shadow:12px 12px 0 #faf1e588!important;
+ background:#d8c5b8!important;
+}
+.designer .designer-photo img{
+ display:block!important;
+ width:100%!important;
+ height:100%!important;
+ object-fit:cover!important;
+ object-position:center 20%!important;
+}
+.designer .designer-visual>span{
+ position:absolute!important;
+ left:22px!important;
+ bottom:18px!important;
+ color:#fff!important;
+ background:#491c2cb5!important;
+ padding:6px 10px!important;
+ font-size:8px!important;
+ letter-spacing:.12em!important;
+ border-radius:5px!important;
+}
+.designer .designer-copy{
+ padding:30px clamp(24px,5vw,80px)!important;
+ background:#f0e6de!important;
+}
+.designer .designer-copy h2{font-size:clamp(42px,4.4vw,62px)!important;margin:13px 0 10px!important}
+.designer .designer-copy p{font-size:12px!important;line-height:1.6!important;margin:7px 0!important}
+.designer .designer-copy .text-link{padding:12px 0!important;margin-top:12px!important}
+
+/* Cut the dead space from the tablet's wine-colored copy strip. */
+@media(min-width:701px) and (max-width:1199px){
+ .hero .hero-text{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr) 170px!important;
+  grid-template-rows:repeat(3,auto)!important;
+  gap:4px 22px!important;
+  padding:17px clamp(22px,4.2vw,56px) 19px!important;
+  min-height:0!important;
+  align-items:center!important;
+ }
+ .hero .hero-text .eyebrow{
+  grid-column:1!important;grid-row:1!important;
+  margin:0!important;
+  font-size:9px!important;
+  letter-spacing:.12em!important;
+ }
+ .hero .hero-text h1{
+  grid-column:1!important;grid-row:2!important;
+  margin:2px 0!important;
+  font-size:clamp(33px,4.6vw,51px)!important;
+  line-height:1.02!important;
+ }
+ .hero .hero-text h1 em{font-size:.72em!important}
+ .hero .hero-text .hero-body{
+  grid-column:1!important;grid-row:3!important;
+  font-size:11px!important;
+  line-height:1.4!important;
+  max-width:680px!important;
+  margin:0!important;
+ }
+ .hero .hero-text .button-ivory{
+  grid-column:2!important;grid-row:1 / 4!important;
+  align-self:center!important;justify-self:end!important;
+  min-width:155px!important;min-height:47px!important;
+  padding:11px 13px!important;
+  margin:0!important;
+  font-size:10px!important;
+  gap:10px!important;
+ }
+ .hero .hero-text .hero-footnote{display:none!important}
+
+ /* Tight, useful three-scene storytelling — no second giant hero. */
+ #brandStoryBanner.jb-editorial-banner{
+  grid-template-columns:minmax(140px,28%) minmax(0,1fr) 132px!important;
+  grid-template-rows:205px!important;
+  min-height:205px!important;
+  max-height:205px!important;
+ }
+ #brandStoryBanner .jb-banner-art{
+  min-height:0!important;
+  height:205px!important;
+ }
+ #brandStoryBanner .jb-banner-art .jb-banner-watermark{
+  font-size:135px!important;
+  bottom:-26px!important;
+ }
+ #brandStoryBanner .story-banner-copy{
+  gap:6px!important;
+  padding:16px clamp(17px,2.7vw,28px)!important;
+ }
+ #brandStoryBanner .story-banner-overline{
+  font-size:8px!important;
+  letter-spacing:.11em!important;
+ }
+ #brandStoryBanner .story-banner-title{
+  font-size:clamp(23px,3.2vw,34px)!important;
+  line-height:1.05!important;
+ }
+ #brandStoryBanner .jb-banner-description{
+  font-size:10px!important;
+  line-height:1.45!important;
+  max-width:450px;
+ }
+ #brandStoryBanner .jb-banner-action{
+  margin:3px 0 0!important;
+  min-height:40px!important;
+  padding:10px 13px!important;
+  font-size:9px!important;
+ }
+ #brandStoryBanner .story-banner-tabs{
+  gap:5px!important;
+  padding:8px 8px!important;
+  background:#55192e!important;
+ }
+ #brandStoryBanner .story-tab{
+  border:0!important;
+  border-radius:8px!important;
+  padding:9px 7px!important;
+  gap:7px!important;
+ }
+ #brandStoryBanner .story-tab:first-child,
+ #brandStoryBanner .story-tab:last-child{border-radius:8px!important}
+ #brandStoryBanner .story-tab-name{font-size:9px!important}
+ #brandStoryBanner .story-tab-number{font-size:9px!important}
+
+ /* In iPad portrait, pair the smaller real photo with the text instead of a full-screen portrait. */
+ .designer{
+  display:grid!important;
+  grid-template-columns:minmax(0,42%) minmax(0,58%)!important;
+  min-height:420px!important;
+  align-items:stretch!important;
+ }
+ .designer .designer-visual{
+  height:auto!important;
+  min-height:420px!important;
+  max-height:none!important;
+  padding:18px!important;
+ }
+ .designer .designer-photo{
+  width:min(95%,278px)!important;
+  max-width:278px!important;
+  height:340px!important;
+ }
+ .designer .designer-copy{padding:24px clamp(19px,3vw,38px)!important}
+ .designer .designer-copy h2{font-size:clamp(39px,4.6vw,55px)!important}
+ .designer .designer-copy p{font-size:11px!important;line-height:1.56!important}
+}
+@media(min-width:701px) and (max-width:820px){
+ .hero .hero-text{
+  grid-template-columns:minmax(0,1fr) 146px!important;
+  column-gap:12px!important;
+  padding:14px 22px 16px!important;
+ }
+ .hero .hero-text h1{font-size:34px!important}
+ .hero .hero-text .button-ivory{min-width:142px!important;font-size:9px!important}
+ .designer{grid-template-columns:39% 61%!important}
+ .designer .designer-visual{min-height:385px!important}
+ .designer .designer-photo{max-width:230px!important;width:95%!important;height:305px!important}
+ .designer .designer-copy h2{font-size:39px!important}
+ .designer .designer-copy p{font-size:11px!important;line-height:1.5!important}
+ #brandStoryBanner.jb-editorial-banner{
+  grid-template-columns:27% minmax(0,1fr) 116px!important;
+  grid-template-rows:205px!important;
+ }
+ #brandStoryBanner .story-banner-title{font-size:24px!important}
+ #brandStoryBanner .story-banner-copy{padding:13px!important}
+}
+
+/* Smaller screen uses compact portrait and keeps the approved hero scene intact. */
+@media(max-width:700px){
+ .designer{
+  display:flex!important;
+  flex-direction:column!important;
+  min-height:0!important;
+ }
+ .designer .designer-visual{
+  height:300px!important;
+  min-height:300px!important;
+  max-height:300px!important;
+  padding:16px 20px!important;
+ }
+ .designer .designer-photo{
+  width:min(70%,230px)!important;
+  max-width:230px!important;
+  height:268px!important;
+  box-shadow:9px 9px 0 #faf1e579!important;
+ }
+ .designer .designer-photo img{object-position:50% 20%!important}
+ .designer .designer-copy{padding:27px 23px 34px!important}
+ .designer .designer-copy h2{font-size:clamp(42px,9vw,57px)!important}
+ .designer .designer-visual>span{font-size:7px!important;bottom:8px!important;left:12px!important}
+ .hero .hero-text{
+  padding:21px 22px 27px!important;
+  gap:3px!important;
+ }
+ .hero .hero-text h1{
+  font-size:clamp(43px,10.6vw,59px)!important;
+  margin:8px 0 8px!important;
+ }
+ .hero .hero-text .hero-body{
+  font-size:12px!important;
+  line-height:1.5!important;
+  margin:0 0 13px!important;
+ }
+ .hero .hero-text .hero-footnote{display:none!important}
+ #brandStoryBanner.jb-editorial-banner{
+  grid-template-rows:216px 54px!important;
+  min-height:270px!important;
+  max-height:none!important;
+ }
+ #brandStoryBanner .jb-banner-art{height:216px!important;min-height:0!important}
+ #brandStoryBanner .story-banner-copy{gap:7px!important;padding:12px 12px!important}
+ #brandStoryBanner .story-banner-title{font-size:clamp(22px,5.9vw,30px)!important}
+ #brandStoryBanner .jb-banner-description{font-size:9px!important}
+ #brandStoryBanner .jb-banner-action{min-height:41px!important;padding:9px 11px!important}
+ #brandStoryBanner .story-banner-tabs{min-height:54px!important}
+ #brandStoryBanner .story-tab{border-radius:0!important}
+ #brandStoryBanner .story-tab:first-child{border-radius:0 0 0 10px!important}
+ #brandStoryBanner .story-tab:last-child{border-radius:0 0 10px 0!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .button,.quick-add,#brandStoryBanner .jb-banner-action{transition:none!important}
+}
