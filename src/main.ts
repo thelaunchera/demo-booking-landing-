@@ -119,16 +119,33 @@ function promptsView(b){
   const items=promptItems(b);
   if(!items.length)return guide(b);
   const count=items.length;
-  const groups=ensureGallery(b);
-  const sourceCount=new Set(Object.values(groups).flat().map(p=>p.src).filter(Boolean)).size;
-  return '<section class="yummm-prompt-library" aria-labelledby="brandPromptTitle">'+
-    '<div class="yummm-prompts-hero"><div><span class="yummm-prompts-overline">THE LAUNCH ERA / BRAND BOARD MASTER</span><h2 id="brandPromptTitle">'+html(b.name)+' · Photo & Prompt Studio</h2><p>8 composiciones editoriales máster y '+String(Math.max(0,count-8))+' escenas fotográficas específicas de esta marca. Cada prompt produce una imagen independiente.</p></div><a class="btn ghost" href="'+html(publishedSite(b))+'" target="_blank" rel="noopener noreferrer">Ver demo real</a></div>'+
-    '<div class="yummm-prompts-help"><strong>Cómo utilizar estos prompts</strong><span>1. Elige una foto de la galería de '+html(b.name)+' · 2. Copia el prompt · 3. Genera una sola pieza · 4. Comprueba que logotipo, colores y producto no hayan cambiado. Las imágenes son referencias conceptuales, no pruebas de negocios reales.</span></div>'+
-    '<div class="yummm-prompt-grid">'+items.map((item,i)=>'<article class="yummm-prompt-card">'+
+  const sourceCount=new Set(Object.values(ensureGallery(b)).flat().map(p=>p.src).filter(Boolean)).size;
+  const isJaramillo=b.id==='jaramillo-boutique';
+  const card=(item,i)=>'<article class="yummm-prompt-card">'+
       '<div class="yummm-prompt-meta"><small>'+html(item.group)+'</small><span>'+String(i+1).padStart(2,'0')+' / '+count+'</span></div>'+
       '<h3>'+html(item.title)+'</h3><p>'+html(item.text.slice(0,165))+'…</p>'+
       '<div class="yummm-prompt-actions"><button type="button" class="btn dark" data-demo-prompt="'+i+'">Copiar prompt</button><details><summary>Leer completo</summary><pre>'+html(item.text)+'</pre></details></div>'+
-    '</article>').join('')+'</div>'+
+    '</article>';
+  const content=isJaramillo
+    ?[
+       ['Página web · dirección Cata / 9 prompts','01 · Página web y experiencia de compra','9 prompts nuevos para reproducir la dirección editorial, los textos EN/ES, la navegación, la bolsa y la revisión iPhone.'],
+       ['Master prompts · 8 composiciones','02 · Composiciones máster','8 direcciones creativas originales para nuevas imágenes editoriales, sin modificar fotos aprobadas.'],
+       ['Producción fotográfica · 16 escenas','03 · Fotografía y colección','16 prompts para producir imágenes individuales de looks, taller, accesorios y referencias visuales.']
+      ].map(([group,title,description],i)=>{
+        const scoped=items.map((item,index)=>({item,index})).filter(entry=>entry.item.group===group);
+        return '<details class="studio-prompt-group"'+(i===0?' open':'')+'><summary><span class="studio-prompt-group-heading">'+html(title)+'</span><span class="studio-prompt-group-count">'+scoped.length+' PROMPTS</span></summary>'+
+          '<p class="studio-prompt-group-description">'+html(description)+'</p>'+
+          '<div class="yummm-prompt-grid">'+scoped.map(entry=>card(entry.item,entry.index)).join('')+'</div></details>';
+      }).join('')
+    :'<div class="yummm-prompt-grid">'+items.map((item,i)=>card(item,i)).join('')+'</div>';
+  return '<section class="yummm-prompt-library'+(isJaramillo?' studio-jaramillo-prompts':'')+'" aria-labelledby="brandPromptTitle">'+
+    '<div class="yummm-prompts-hero"><div><span class="yummm-prompts-overline">THE LAUNCH ERA / BRAND BOARD MASTER</span><h2 id="brandPromptTitle">'+html(b.name)+' · Photo & Prompt Studio</h2><p>'+
+    (isJaramillo?'9 prompts nuevos de la web aprobada · 8 composiciones máster · 16 escenas fotográficas. Organizados por categoría, listos para copiar.':'8 composiciones editoriales máster y '+String(Math.max(0,count-8))+' escenas fotográficas específicas de esta marca. Cada prompt produce una imagen independiente.')+
+    '</p></div><a class="btn ghost" href="'+html(publishedSite(b))+'" target="_blank" rel="noopener noreferrer">Ver demo real</a></div>'+
+    '<div class="yummm-prompts-help"><strong>Cómo utilizar estos prompts</strong><span>'+
+      (isJaramillo?'Abre la categoría que necesitas, pulsa Copiar prompt y adjunta las fotos aprobadas de Jaramillo. Los prompts de web indican cómo organizar y revisar el sitio; los de fotografía generan una imagen individual. No modificar la cara ni inventar inventario, direcciones o ventas.':'1. Elige una foto de la galería de '+html(b.name)+' · 2. Copia el prompt · 3. Genera una sola pieza · 4. Comprueba que logotipo, colores y producto no hayan cambiado. Las imágenes son referencias conceptuales, no pruebas de negocios reales.')+
+    '</span></div>'+
+    content+
     '<div class="yummm-prompts-bottom"><p>'+sourceCount+' fotografías o referencias distintas, organizadas por portada, identidad, paleta, tipografía, patrones, aplicaciones y universo visual. Las fotos oficiales enlazan con archivos de las demos publicadas, sin consumir memoria del teléfono.</p><button class="btn" data-action="download-demo-prompts">Descargar los '+count+' prompts (.txt)</button></div>'+
   '</section>';
 }
@@ -629,7 +646,7 @@ function perform(action,button){
   if(action==='download-demo-prompts' && promptItems(b).length){
     const prompts=promptItems(b);
     const txt=prompts.map((item,i)=>'PROMPT '+String(i+1).padStart(2,'0')+' / '+item.title+'\n'+item.group+'\n\n'+item.text).join('\n\n'+('-'.repeat(65))+'\n\n');
-    download(new Blob([txt],{type:'text/plain;charset=utf-8'}),b.id+'-13-creative-prompts.txt');notify(prompts.length+' prompts descargados.');return;
+    download(new Blob([txt],{type:'text/plain;charset=utf-8'}),b.id+'-'+prompts.length+'-creative-prompts.txt');notify(prompts.length+' prompts descargados.');return;
   }
   if(action==='backup')backup();
   if(action==='import'){$('import-file')?.click();return;}
