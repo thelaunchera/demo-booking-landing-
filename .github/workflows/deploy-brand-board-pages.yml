@@ -135,6 +135,11 @@ jobs:
           test -s _site/jaramillo-boutique/assets/hero-editorial-user.jpg
           test -s _site/jaramillo-boutique/hero-final-photo.css
           test -s _site/jaramillo-boutique/boutique-polish.css
+          test -s _site/jaramillo-boutique/city-photos.css
+          grep -q 'city-photo' _site/jaramillo-boutique/index.html
+          grep -q 'Miami_waterfront_skyline' _site/jaramillo-boutique/index.html
+          grep -q 'Las_Vegas_Strip_at_night_2023' _site/jaramillo-boutique/index.html
+          grep -q 'The_New_York_City_Skyline_at_Dusk' _site/jaramillo-boutique/index.html
           grep -q 'jb-editorial-banner' _site/jaramillo-boutique/index.html
           grep -q 'storyBannerImage' _site/jaramillo-boutique/main.js
           grep -q 'aspect-ratio:4/5' _site/jaramillo-boutique/boutique-polish.css
