@@ -118,6 +118,12 @@ jobs:
           test -s _site/jaramillo-boutique/editorial-lookbook.css
           grep -q 'brand-story-banner' _site/jaramillo-boutique/index.html
           grep -q 'storyTexts' _site/jaramillo-boutique/main.js
+          node --check _site/jaramillo-boutique/editorial-type-v5.js
+          test -s _site/jaramillo-boutique/editorial-type-v5.css
+          grep -q 'jaramilloHaloFix' _site/jaramillo-boutique/index.html
+          grep -q 'scene-typography' _site/jaramillo-boutique/index.html
+          grep -q 'JARA' _site/jaramillo-boutique/index.html
+          grep -q 'Bespoke YUMMM treatment' _site/yummm/styles.css
           grep -q 'Keep the editorial logo fully visible' _site/jaramillo-boutique/styles.css
 
       - name: Configure Pages
