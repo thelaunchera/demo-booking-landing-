@@ -105,7 +105,12 @@ jobs:
           node --check _site/jaramillo-boutique/main.js
           test -s _site/jaramillo-boutique/cata-editorial.css
           grep -q 'Tablet-only hero' _site/jaramillo-boutique/cata-editorial.css
-          grep -q 'tablet-photo-only' _site/jaramillo-boutique/index.html
+          grep -q 'tablet-catalog-02' _site/jaramillo-boutique/index.html
+          test -s _site/jaramillo-boutique/tablet-refinement.css
+          grep -q 'Replace three cramped instructional cards' _site/jaramillo-boutique/tablet-refinement.css
+          test "$(grep -o '<article class="collection-item"' _site/jaramillo-boutique/index.html | wc -l | tr -d ' ')" = "8"
+          ! grep -q 'href="assets/sandalias.webp"' _site/jaramillo-boutique/index.html
+          grep -q 'concept-bag-v2' _site/jaramillo-boutique/shopping.js
           grep -q '01 / WHAT ARE YOU WEARING' _site/jaramillo-boutique/index.html
           grep -q '02 / THE WOMAN BEHIND THE EDIT' _site/jaramillo-boutique/index.html
           grep -q 'Plans tonight?' _site/jaramillo-boutique/main.js
