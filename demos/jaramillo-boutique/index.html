@@ -14,9 +14,16 @@
   <link rel="stylesheet" href="editorial-hero.css?v=20261101-rev3">
   <link rel="stylesheet" href="editorial-banner.css?v=20261101-rev3">
   <link rel="stylesheet" href="editorial-lookbook.css?v=20261101-rev3">
+  <link rel="stylesheet" href="editorial-type-v5.css?v=20261101-typo">
   <style>.lookbook-swipe-cue{display:none}@media(max-width:700px){.lookbook-swipe-cue{display:block;margin:0 22px 12px;font-size:10px;letter-spacing:.04em;color:#85656a}}</style>
 </head>
 <body>
+  <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" style="position:absolute;pointer-events:none">
+    <defs><filter id="jaramilloHaloFix" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+      <feMorphology in="SourceAlpha" operator="erode" radius="4" result="cleanAlpha"/>
+      <feComposite in="SourceGraphic" in2="cleanAlpha" operator="in"/>
+    </filter></defs>
+  </svg>
   <div class="top-shell" id="topShell">
   <div class="announcement"><span data-i18n="announce">A DESIGNER'S EYE. A NEW YORK STATE OF MIND.</span></div>
   <header class="site-head">
@@ -53,7 +60,7 @@
       </div>
       <div class="hero-scene" aria-label="Fashion campaign featuring a model wearing burgundy tailoring">
         <div class="arch arch-one"></div><div class="arch arch-two"></div>
-        <span class="scene-word">J</span>
+        <div class="scene-typography" aria-hidden="true"><span>JARA</span><span>MILLO</span></div>
         <img class="hero-model" src="assets/hero-model-v2.webp" alt="Model in burgundy corset and tailored trousers, standing beyond the frame" fetchpriority="high">
         <span class="scene-label">THE JARAMILLO EDIT / 2026</span>
       </div>
@@ -147,5 +154,6 @@
   </dialog>
   <script src="main.js?v=20261101-editorial-v2" defer></script>
   <script src="shopping.js?v=20261101-editorial-v2" defer></script>
+  <script src="editorial-type-v5.js?v=20261101-typo" defer></script>
 </body>
 </html>
