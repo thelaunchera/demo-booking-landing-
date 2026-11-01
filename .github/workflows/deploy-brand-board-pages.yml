@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - .github/workflows/deploy-brand-board-pages.yml
+      - demos/yummm/**
   workflow_run:
     workflows:
       - Build Brand Board Studio
@@ -67,10 +68,14 @@ jobs:
           rm -rf _site/brand-board-studio
           mkdir -p _site/brand-board-studio
           cp -R brand-source/dist/. _site/brand-board-studio/
+          rm -rf _site/yummm
+          mkdir -p _site/yummm
+          cp -R demos/yummm/. _site/yummm/
           touch _site/.nojekyll
           test -f _site/index.html
           test -f _site/aftr-nightclub/index.html
           test -f _site/brand-board-studio/index.html
+          test -f _site/yummm/index.html
           test -d _site/brand-board-studio/assets
 
       - name: Configure Pages
