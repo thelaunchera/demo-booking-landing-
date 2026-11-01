@@ -1,0 +1,248 @@
+/* Jaramillo Boutique — tablet showroom / November 2026
+   Approved hero photo remains untouched; restore its copy as a clean panel underneath.
+   This file is intentionally last in the stylesheet chain. */
+@media (min-width:701px) and (max-width:1199px){
+  .hero{
+    display:flex!important;
+    flex-direction:column!important;
+    min-height:0!important;
+    grid-template-columns:none!important;
+    background:#fff!important;
+  }
+  .hero .hero-photo-scene{
+    order:1!important;
+    width:100%!important;
+    min-height:0!important;
+    height:min(88svh,900px)!important;
+    background:#fff!important;
+    overflow:hidden!important;
+  }
+  .hero .hero-editorial-image{
+    width:100%!important;
+    max-width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+    transform:none!important;
+    filter:none!important;
+  }
+  .hero .hero-text{
+    order:2!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    grid-template-rows:repeat(3,auto)!important;
+    align-content:center!important;
+    align-items:center!important;
+    column-gap:40px!important;
+    row-gap:10px!important;
+    width:100%!important;
+    min-height:0!important;
+    padding:37px clamp(28px,6.5vw,95px) 42px!important;
+    background:linear-gradient(115deg,#511529,#742c45)!important;
+    color:#fff8f1!important;
+  }
+  .hero .hero-text .eyebrow{grid-column:1;grid-row:1;margin:0!important;font-size:10px}
+  .hero .hero-text h1{
+    grid-column:1;grid-row:2!important;
+    font-size:clamp(43px,6vw,72px)!important;
+    line-height:1!important;
+    white-space:normal!important;
+    max-width:750px!important;
+    margin:0!important;
+    letter-spacing:-.044em;
+  }
+  .hero .hero-text h1 em{display:inline;font-size:.68em!important;margin-left:8px!important}
+  .hero .hero-text .hero-body{
+    grid-column:1;grid-row:3;
+    max-width:610px!important;
+    margin:0!important;
+    font-size:13px!important;
+    line-height:1.6!important;
+    color:#f5dedc!important;
+  }
+  .hero .hero-text .button-ivory{
+    grid-column:2;
+    grid-row:1 / 4;
+    justify-self:end;
+    min-width:166px;
+    min-height:50px!important;
+    margin:0!important;
+    white-space:nowrap;
+  }
+  .hero .hero-text .hero-footnote{display:none!important}
+  /* A real tablet layout: two full-size looks rather than three tiny product tiles. */
+  #collections.collections-section{
+    padding:65px clamp(25px,4vw,58px) 70px!important;
+  }
+  #collections .intro-row{
+    display:grid!important;
+    grid-template-columns:minmax(0,1.3fr) minmax(205px,.7fr);
+    align-items:end!important;
+    gap:18px!important;
+    margin-bottom:26px!important;
+  }
+  #collections .intro-row h2{font-size:clamp(54px,6.5vw,78px)!important;max-width:650px}
+  #collections .intro-row p{max-width:320px!important;font-size:12px!important}
+  #collections #collectionGrid{
+    display:grid!important;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:36px 20px!important;
+    align-items:start!important;
+    overflow:visible!important;
+    padding:0!important;
+  }
+  #collections #collectionGrid .collection-item,
+  #collections #collectionGrid .collection-item:first-child{
+    grid-column:auto!important;
+    width:100%!important;
+    min-width:0!important;
+    height:auto!important;
+    align-self:start!important;
+  }
+  #collections #collectionGrid .card-photo{
+    aspect-ratio:4 / 5!important;
+    min-height:0!important;
+    overflow:hidden!important;
+    border:0!important;
+  }
+  #collections #collectionGrid .collection-item:not([data-editorial-look]) .card-photo img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:50% 50%!important;
+    transform:scale(1.015)!important;
+    filter:none!important;
+  }
+  #collections #collectionGrid .collection-item:not([data-editorial-look]) .card-photo::after{
+    font-size:clamp(34px,4.4vw,54px)!important;
+    line-height:.92!important;
+    top:7%!important;
+    bottom:auto!important;
+    left:5%!important;
+    right:5%!important;
+    text-align:left!important;
+    color:#fff9f0d9!important;
+    max-height:25%;
+    overflow:hidden!important;
+  }
+  #collections #collectionGrid .collection-item .card-foot{
+    min-height:60px!important;
+    padding:14px 3px 10px!important;
+    font-size:12px!important;
+    letter-spacing:.025em!important;
+  }
+  #collections #collectionGrid .collection-item .quick-add{
+    min-height:47px!important;
+    margin:0!important;
+    font-size:11px!important;
+    padding:13px 19px!important;
+    letter-spacing:.08em!important;
+  }
+  #collections #collectionGrid .collection-item[data-editorial-look] .look-panel-title{
+    font-size:clamp(25px,3.9vw,45px)!important;
+  }
+  /* Designer: make the approved portrait a real fashion feature, not a small inset. */
+  .designer{
+    display:grid!important;
+    grid-template-columns:minmax(0,52%) minmax(0,48%)!important;
+    min-height:580px!important;
+    height:auto!important;
+    align-items:stretch!important;
+  }
+  .designer .designer-visual{
+    display:flex!important;
+    min-height:580px!important;
+    max-height:none!important;
+    height:auto!important;
+    padding:0!important;
+    align-items:stretch!important;
+    background:#d6b7a8!important;
+  }
+  .designer .designer-photo{
+    width:100%!important;
+    height:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    aspect-ratio:auto!important;
+    border:0!important;
+    box-shadow:none!important;
+  }
+  .designer .designer-photo img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+    object-position:center 39%!important;
+  }
+  .designer .designer-visual>span{
+    left:20px!important;
+    bottom:19px!important;
+    font-size:9px!important;
+    padding:9px 12px;
+    background:#3815278a;
+    color:#fff!important;
+    z-index:1;
+  }
+  .designer .designer-copy{
+    padding:48px clamp(24px,4vw,66px)!important;
+    background:#efe2d8!important;
+  }
+  .designer .designer-copy h2{font-size:clamp(47px,5.4vw,66px)!important}
+  .designer .designer-copy p{font-size:12px!important;line-height:1.65!important}
+}
+@media(min-width:701px) and (max-width:919px) and (orientation:portrait){
+  .hero .hero-photo-scene{height:min(85svh,890px)!important}
+  .hero .hero-text{
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    padding:30px 30px 36px!important;
+    gap:12px!important;
+  }
+  .hero .hero-text h1{font-size:clamp(47px,7.5vw,67px)!important}
+  .hero .hero-text .hero-body{font-size:12px!important}
+  .hero .hero-text .button-ivory{
+    align-self:flex-start!important;
+    justify-self:start!important;
+    margin-top:7px!important;
+    min-width:210px;
+  }
+  .designer{
+    grid-template-columns:1fr!important;
+    min-height:0!important;
+  }
+  .designer .designer-visual{height:600px!important;min-height:0!important;max-height:600px!important}
+  .designer .designer-photo{height:600px!important}
+  .designer .designer-photo img{object-position:center 36%!important}
+  .designer .designer-copy{padding:38px 34px 45px!important}
+  .designer .designer-copy h2{max-width:710px}
+}
+@media(max-width:700px){
+  /* Keep the user-approved iPhone hero unchanged; make her portrait more prominent below. */
+  .designer .designer-visual{
+    padding:0!important;
+    height:395px!important;
+    min-height:395px!important;
+    max-height:395px!important;
+  }
+  .designer .designer-photo{
+    width:100%!important;
+    height:100%!important;
+    aspect-ratio:auto!important;
+    max-width:none!important;
+    border:0!important;
+    box-shadow:none!important;
+  }
+  .designer .designer-photo img{width:100%!important;height:100%!important;object-fit:cover!important;object-position:center 37%!important}
+  .designer .designer-visual>span{
+    bottom:13px!important;
+    left:15px!important;
+    color:#fff!important;
+    font-size:8px!important;
+    z-index:2;
+    background:#321126b0;
+    padding:6px 9px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  #collectionGrid .card-photo img{transition:none!important}
+}
