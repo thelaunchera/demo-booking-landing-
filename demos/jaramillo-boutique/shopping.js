@@ -12,7 +12,8 @@
   const qtyNode = document.querySelector('#productQtyValue');
   if (!cards.length || !bagDialog || !lightbox || !bagTrigger || !addButton || !sizesNode) return;
 
-  const STORAGE_KEY = 'jaramillo-boutique-concept-bag-v1';
+  const STORAGE_KEY = 'jaramillo-boutique-concept-bag-v2';
+  const OLD_STORAGE_KEY = 'jaramillo-boutique-concept-bag-v1';
   const MAX_PER_VARIANT = 12;
   const UNIT_PRICE = 45;
   const displayPrice = value => '$' + value.toFixed(2);
@@ -29,7 +30,7 @@
       remove: 'Remove', decrease: 'Decrease', increase: 'Increase',
       itemAdded: 'Added to your bag', collection: 'JARAMILLO / THE COLLECTION',
       qty: 'Quantity', bagList: 'Selected looks', unit: 'piece',
-      share: 'SHARE MY SELECTION', availability: 'Photo is an editorial concept. Actual product, color, fit and stock must be confirmed before purchase.', categories: ['Fashion look','Colombian denim','Evening style','Shapewear','Heels & platforms','Sandals','Blouses','Fall / winter','Spring / summer']
+      share: 'SHARE MY SELECTION', availability: 'Photo is an editorial concept. Actual product, color, fit and stock must be confirmed before purchase.', categories: ['Fashion look','Colombian denim','Evening style','Shapewear','Heels & platforms','Blouses','Fall / winter','Spring / summer']
     },
     es: {
       bag: 'BOLSA', open: 'Abrir bolsa', pieces: 'prendas', yourEdit: 'TU SELECCIÓN',
@@ -43,7 +44,7 @@
       remove: 'Quitar', decrease: 'Disminuir', increase: 'Aumentar',
       itemAdded: 'Añadido a tu bolsa', collection: 'JARAMILLO / LA COLECCIÓN',
       qty: 'Cantidad', bagList: 'Prendas elegidas', unit: 'prenda',
-      share: 'COMPARTIR MI SELECCIÓN', availability: 'Foto editorial de concepto. Producto, color, ajuste y existencias deben confirmarse antes de comprar.', categories: ['Look de moda','Denim colombiano','Moda de noche','Fajas','Tacones y plataformas','Sandalias','Blusas','Otoño / invierno','Primavera / verano']
+      share: 'COMPARTIR MI SELECCIÓN', availability: 'Foto editorial de concepto. Producto, color, ajuste y existencias deben confirmarse antes de comprar.', categories: ['Look de moda','Denim colombiano','Moda de noche','Fajas','Tacones y plataformas','Blusas','Otoño / invierno','Primavera / verano']
     }
   };
   const locale = () => document.documentElement.lang === 'es' ? 'es' : 'en';
@@ -58,11 +59,16 @@
   const validSizes = ['ASK', 'S', 'M', 'L', 'XL', '6', '7', '8', '9', '10'];
   let selections = [];
   try {
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    if (Array.isArray(saved)) selections = saved.filter(x =>
-      Number.isInteger(x.index) && x.index >= 0 && x.index < cards.length &&
-      validSizes.includes(x.size) && Number.isInteger(x.qty) && x.qty >= 1 && x.qty <= MAX_PER_VARIANT
-    ).slice(0, 50);
+    const modern = localStorage.getItem(STORAGE_KEY);
+    const isLegacy = modern === null;
+    const saved = JSON.parse(modern ?? localStorage.getItem(OLD_STORAGE_KEY) ?? '[]');
+    if (Array.isArray(saved)) selections = saved
+      .filter(x => Number.isInteger(x.index) && x.index >= 0 &&
+        !(isLegacy && x.index === 5) &&
+        validSizes.includes(x.size) && Number.isInteger(x.qty) && x.qty >= 1 && x.qty <= MAX_PER_VARIANT)
+      .map(x => ({index: isLegacy && x.index > 5 ? x.index - 1 : x.index, size:x.size, qty:x.qty}))
+      .filter(x => x.index < cards.length).slice(0,50);
+    if (isLegacy) localStorage.setItem(STORAGE_KEY, JSON.stringify(selections));
   } catch (_) { selections = []; }
   let selectedIndex = 0;
   let selectedSize = 'ASK';
@@ -239,7 +245,7 @@
     renderBag();
   }
   renderLanguage();
-  // All nine products are US$45; the preview bag is not a checkout.
+  // All eight visible editorial looks are US$45 for demo purposes; no checkout.
   for (const card of cards) {
     const foot = card.querySelector('.card-foot');
     if (!foot || foot.querySelector('.card-price')) continue;
