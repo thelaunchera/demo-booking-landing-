@@ -86,6 +86,11 @@ jobs:
           test -f _site/aftr-nightclub/index.html
           test -f _site/brand-board-studio/index.html
           test -f _site/yummm/index.html
+          test -s _site/yummm/styles.css
+          node --check _site/yummm/script.js
+          grep -q 'id="headerBox"' _site/yummm/index.html
+          grep -q 'id="headerBoxCount"' _site/yummm/index.html
+          ! grep -Fq '$$$(' _site/yummm/script.js
           test -f _site/jaramillo-boutique/index.html
           test -f _site/jaramillo-boutique/styles.css
           test -f _site/jaramillo-boutique/main.js
