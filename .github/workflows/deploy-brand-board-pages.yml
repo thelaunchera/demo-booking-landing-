@@ -105,9 +105,13 @@ jobs:
           node --check _site/jaramillo-boutique/main.js
           node --check _site/jaramillo-boutique/editorial-type-v5.js
           test -s _site/jaramillo-boutique/editorial-type-v5.css
-          grep -q 'jaramilloHaloFix' _site/jaramillo-boutique/index.html
+          ! grep -q 'jaramilloHaloFix' _site/jaramillo-boutique/index.html
           grep -q 'V6: photography fills' _site/jaramillo-boutique/editorial-type-v5.css
           node --check _site/jaramillo-boutique/shopping.js
+          grep -q 'UNIT_PRICE = 45' _site/jaramillo-boutique/shopping.js
+          grep -q 'productUnitPrice' _site/jaramillo-boutique/index.html
+          grep -q 'bagSubtotal' _site/jaramillo-boutique/index.html
+          ! grep -q 'filter:url(#jaramilloHaloFix)' _site/jaramillo-boutique/editorial-type-v5.css
           test -s _site/jaramillo-boutique/shopping.css
           grep -q 'id="bagTrigger"' _site/jaramillo-boutique/index.html
           grep -q 'id="bagDialog"' _site/jaramillo-boutique/index.html
@@ -126,7 +130,7 @@ jobs:
           grep -q 'storyTexts' _site/jaramillo-boutique/main.js
           node --check _site/jaramillo-boutique/editorial-type-v5.js
           test -s _site/jaramillo-boutique/editorial-type-v5.css
-          grep -q 'jaramilloHaloFix' _site/jaramillo-boutique/index.html
+          ! grep -q 'jaramilloHaloFix' _site/jaramillo-boutique/index.html
           grep -q 'scene-typography' _site/jaramillo-boutique/index.html
           grep -q 'JARA' _site/jaramillo-boutique/index.html
           grep -q 'Playfair Display' _site/jaramillo-boutique/editorial-type-v5.css
