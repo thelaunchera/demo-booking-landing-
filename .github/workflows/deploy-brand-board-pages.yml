@@ -84,6 +84,8 @@ jobs:
           touch _site/.nojekyll
           test -f _site/index.html
           test -f _site/aftr-nightclub/index.html
+          test -s _site/aftr-nightclub/styles.css
+          grep -q 'AFTR editorial signature' _site/aftr-nightclub/styles.css
           test -f _site/brand-board-studio/index.html
           test -f _site/yummm/index.html
           test -s _site/yummm/styles.css
