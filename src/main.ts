@@ -99,7 +99,7 @@ function promptsView(b){
       '<h3>'+html(item.title)+'</h3><p>'+html(item.text.slice(0,174))+'…</p>'+
       '<div class="yummm-prompt-actions"><button type="button" class="btn dark" data-yummm-prompt="'+i+'">Copiar prompt</button><details><summary>Leer completo</summary><pre>'+html(item.text)+'</pre></details></div>'+
     '</article>').join('')+'</div>'+
-    '<div class="yummm-prompts-bottom"><p>Las 16 fotos de YUMMM también están guardadas en las galerías del Brand Board: portada, identidad, aplicaciones y universo visual. Los archivos son compartidos desde GitHub, no dependen del almacenamiento del iPhone.</p><button class="btn" data-action="download-yummm-prompts">Descargar todos los prompts (.txt)</button></div>'+
+    '<div class="yummm-prompts-bottom"><p>Las 21 fotos de YUMMM también están guardadas en las galerías del Brand Board: portada, identidad, aplicaciones y universo visual. Los archivos son compartidos desde GitHub, no dependen del almacenamiento del iPhone.</p><button class="btn" data-action="download-yummm-prompts">Descargar todos los prompts (.txt)</button></div>'+
   '</section>';
 }
 
