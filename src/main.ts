@@ -3,6 +3,8 @@
 import './styles.css';
 import './section-gallery.css';
 import { YUMMM_ALL_PROMPTS } from './yummm-prompts';
+import { FINISHED_DEMO_BOARDS, FINISHED_DEMO_IDS } from './finished-demo-boards';
+import { FINISHED_DEMO_PROMPTS } from './finished-demo-prompts';
 import {
   SECTION_DEFS,
   ensureGallery,
@@ -60,6 +62,13 @@ const DEMOS=[
     sectionPhotos:{"hero":[{"id":"photo-yummm-hero-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/10.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-hero-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/02.webp","fit":"cover","x":50,"y":50}],"identity":[{"id":"photo-yummm-identity-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/01.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-identity-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/06.webp","fit":"cover","x":50,"y":50}],"palette":[{"id":"photo-yummm-palette-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/06.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-palette-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/09.webp","fit":"cover","x":50,"y":50}],"typography":[{"id":"photo-yummm-typography-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/01.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-typography-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/09.webp","fit":"cover","x":50,"y":50}],"pattern":[{"id":"photo-yummm-pattern-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/12.webp","fit":"cover","x":50,"y":50}],"applications":[{"id":"photo-yummm-applications-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/12.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-applications-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/03.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-applications-03","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/07.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-applications-04","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/04.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-applications-05","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/08.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-applications-06","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/16.webp","fit":"cover","x":50,"y":50}],"universe":[{"id":"photo-yummm-universe-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/10.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/11.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-03","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/13.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-04","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/14.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-05","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/15.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-06","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/16.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-07","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/17.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-08","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/18.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-09","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/19.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-10","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/20.webp","fit":"cover","x":50,"y":50}]}
   }
 ];
+// Expand official demo boards with their approved photo collections and current brand identities.
+// Only the three completed demos are migrated; YUMMM keeps its existing curated setup.
+for (const demo of DEMOS) {
+  if (FINISHED_DEMO_BOARDS[demo.id]) {
+    Object.assign(demo, JSON.parse(JSON.stringify(FINISHED_DEMO_BOARDS[demo.id])));
+  }
+}
 // Demos oficiales: publicados en GitHub Pages desde el repositorio de The Launch Era.
 // Nunca recuperar las URLs antiguas de AppDeploy desde la memoria del navegador o backups.
 const OFFICIAL_DEMO_SITES={
@@ -79,27 +88,31 @@ function publishedSite(brand){
   }catch{return '';}
 }
 const TYPES=['Coffee & Bakery · Demo','Bakery · Demo','Cookie Shop · Demo','Nightclub · Demo','Boutique · Demo','Beauty · Demo','Wellness · Demo','Restaurante · Demo','Otra categoría'];
-const FONTS=['Nunito','Bodoni Moda','DM Serif Display','Cormorant Garamond','Bebas Neue','Georgia','Manrope','DM Sans','Arial'];
+const FONTS=['Nunito','Bodoni Moda','DM Serif Display','Cormorant Garamond','Bebas Neue','Barlow Condensed','Italiana','Georgia','Manrope','DM Sans','Arial'];
 const clone=x=>JSON.parse(JSON.stringify(x));
 const $=id=>document.getElementById(id);
 const html=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','&#39;':'&#39;'}[c]||'&#39;'));
 const cssUrl=x=>'url('+JSON.stringify(x||'')+')';
 const hex=(v,f='#FFFFFF')=>/^#[0-9a-fA-F]{6}$/.test(v||'')?v:f;
-const FONT_MAP={Nunito:"'Nunito',sans-serif",'Bodoni Moda':"'Bodoni Moda',Georgia,serif",'DM Serif Display':"'DM Serif Display',Georgia,serif",'Cormorant Garamond':"'Cormorant Garamond',Georgia,serif",'Bebas Neue':"'Bebas Neue',Arial,sans-serif",Georgia:'Georgia,serif',Manrope:"Manrope,sans-serif",'DM Sans':"'DM Sans',sans-serif",Arial:'Arial,sans-serif'};
+const FONT_MAP={Nunito:"'Nunito',sans-serif",'Bodoni Moda':"'Bodoni Moda',Georgia,serif",'DM Serif Display':"'DM Serif Display',Georgia,serif",'Cormorant Garamond':"'Cormorant Garamond',Georgia,serif",'Bebas Neue':"'Bebas Neue',Arial,sans-serif",'Barlow Condensed':"'Barlow Condensed',Arial,sans-serif",Italiana:"'Italiana',Georgia,serif",Georgia:'Georgia,serif',Manrope:"Manrope,sans-serif",'DM Sans':"'DM Sans',sans-serif",Arial:'Arial,sans-serif'};
 const font=v=>FONT_MAP[v]||FONT_MAP['DM Sans'];
 
+function promptItems(b){return b.id==='yummm' ? YUMMM_ALL_PROMPTS : (FINISHED_DEMO_PROMPTS[b.id]||[]);}
 function promptsView(b){
-  if(b.id!=='yummm')return guide(b);
-  const count=YUMMM_ALL_PROMPTS.length;
-  return '<section class="yummm-prompt-library" aria-labelledby="yummmPromptTitle">'+
-    '<div class="yummm-prompts-hero"><div><span class="yummm-prompts-overline">THE LAUNCH ERA / CREATIVE TOOLKIT</span><h2 id="yummmPromptTitle">YUMMM · Photo & Prompt Studio</h2><p>8 composiciones máster del freebie + 5 prompts de fotografía realista. Cada prompt está listo para copiar, editar y reutilizar con la foto original de YUMMM.</p></div><a class="btn ghost" href="'+html(publishedSite(b))+'" target="_blank" rel="noopener noreferrer">Ver demo real</a></div>'+
-    '<div class="yummm-prompts-help"><strong>Cómo usar los prompts</strong><span>1. Sube una foto original de YUMMM · 2. Copia un prompt · 3. Genera una imagen individual · 4. Mantén el branding del producto sin alteraciones.</span></div>'+
-    '<div class="yummm-prompt-grid">'+YUMMM_ALL_PROMPTS.map((item,i)=>'<article class="yummm-prompt-card">'+
+  const items=promptItems(b);
+  if(!items.length)return guide(b);
+  const count=items.length;
+  const groups=ensureGallery(b);
+  const sourceCount=new Set(Object.values(groups).flat().map(p=>p.src).filter(Boolean)).size;
+  return '<section class="yummm-prompt-library" aria-labelledby="brandPromptTitle">'+
+    '<div class="yummm-prompts-hero"><div><span class="yummm-prompts-overline">THE LAUNCH ERA / BRAND BOARD MASTER</span><h2 id="brandPromptTitle">'+html(b.name)+' · Photo & Prompt Studio</h2><p>8 composiciones editoriales máster y 5 escenas fotográficas creadas para la identidad aprobada de esta demo. Cada prompt produce una imagen independiente.</p></div><a class="btn ghost" href="'+html(publishedSite(b))+'" target="_blank" rel="noopener noreferrer">Ver demo real</a></div>'+
+    '<div class="yummm-prompts-help"><strong>Cómo utilizar estos prompts</strong><span>1. Elige una foto de la galería de '+html(b.name)+' · 2. Copia el prompt · 3. Genera una sola pieza · 4. Comprueba que logotipo, colores y producto no hayan cambiado. Las imágenes son referencias conceptuales, no pruebas de negocios reales.</span></div>'+
+    '<div class="yummm-prompt-grid">'+items.map((item,i)=>'<article class="yummm-prompt-card">'+
       '<div class="yummm-prompt-meta"><small>'+html(item.group)+'</small><span>'+String(i+1).padStart(2,'0')+' / '+count+'</span></div>'+
-      '<h3>'+html(item.title)+'</h3><p>'+html(item.text.slice(0,174))+'…</p>'+
-      '<div class="yummm-prompt-actions"><button type="button" class="btn dark" data-yummm-prompt="'+i+'">Copiar prompt</button><details><summary>Leer completo</summary><pre>'+html(item.text)+'</pre></details></div>'+
+      '<h3>'+html(item.title)+'</h3><p>'+html(item.text.slice(0,165))+'…</p>'+
+      '<div class="yummm-prompt-actions"><button type="button" class="btn dark" data-demo-prompt="'+i+'">Copiar prompt</button><details><summary>Leer completo</summary><pre>'+html(item.text)+'</pre></details></div>'+
     '</article>').join('')+'</div>'+
-    '<div class="yummm-prompts-bottom"><p>Las 21 fotos de YUMMM también están guardadas en las galerías del Brand Board: portada, identidad, aplicaciones y universo visual. Los archivos son compartidos desde GitHub, no dependen del almacenamiento del iPhone.</p><button class="btn" data-action="download-yummm-prompts">Descargar todos los prompts (.txt)</button></div>'+
+    '<div class="yummm-prompts-bottom"><p>'+sourceCount+' fotografías o referencias distintas, organizadas por portada, identidad, paleta, tipografía, patrones, aplicaciones y universo visual. Las fotos oficiales enlazan con archivos de las demos publicadas, sin consumir memoria del teléfono.</p><button class="btn" data-action="download-demo-prompts">Descargar los '+count+' prompts (.txt)</button></div>'+
   '</section>';
 }
 
@@ -119,7 +132,39 @@ function hydrate(){
     if(!merged.style)merged.style=d.style;
     if(!Array.isArray(merged.colors)||merged.colors.length!==6)merged.colors=d.colors;
     ensureGallery(merged);
-    // Keep the newly added unbranded cookie photography in existing YUMMM boards too.
+    // Migrate stale initial brand boards without discarding manually added photographs.
+    if(FINISHED_DEMO_BOARDS[merged.id]){
+      const official=FINISHED_DEMO_BOARDS[merged.id];
+      const oldHero=String(b.heroPhoto||'');
+      const oldDetail=String(b.detailPhoto||'');
+      if(!b.heroPhoto || /amummytoo|cloudfront|raw\\.githubusercontent\\.com/.test(oldHero))merged.heroPhoto=official.heroPhoto;
+      if(!b.detailPhoto || /ctfassets|cloudfront|raw\\.githubusercontent\\.com/.test(oldDetail))merged.detailPhoto=official.detailPhoto;
+      // CRUMB's legacy brown palette is not the approved blue identity.
+      if(merged.id==='crumb' && b.colors?.[0]?.toLowerCase()==='#392720'){
+        merged.colors=clone(official.colors);
+        merged.tone=official.tone;
+      }
+      // AFTR now uses Barlow Condensed and DM Sans on the published live demo.
+      if(merged.id==='aftr' && b.titleFont==='Bebas Neue')merged.titleFont='Barlow Condensed';
+      if(merged.id==='aftr' && b.bodyFont==='Manrope')merged.bodyFont='DM Sans';
+      const wasLegacy= !b.studioOfficialBoardVersion;
+      if(wasLegacy){
+        merged.tagline=official.tagline;
+        merged.description=official.description;
+        if(merged.id!=='crumb' || !b.colors || b.colors[0]==='#392720')merged.tone=official.tone;
+      }
+      for(const [section,photographs] of Object.entries(official.sectionPhotos)){
+        const current=merged.sectionPhotos[section]||[];
+        const seen=new Set(current.map(p=>p.src).filter(Boolean));
+        const fresh=photographs.filter(p=>!seen.has(p.src));
+        // Prioritize official approved imagery, retaining user uploads and their order.
+        merged.sectionPhotos[section]=current.length?current.concat(fresh.slice(0,Math.max(0,10-current.length)))
+          :clone(photographs);
+      }
+      merged.studioOfficialBoardVersion='2026-11-01';
+      ensureGallery(merged);
+    }
+    // YUMMM's existing cookie additions remain available in older saved boards.
     if(merged.id==='yummm'){
       const universe=merged.sectionPhotos.universe;
       for(const n of [17,18,19,20]){
@@ -128,14 +173,15 @@ function hydrate(){
           universe.push({id:'photo-yummm-universe-'+String(n-10).padStart(2,'0'),src:source,fit:'cover',x:50,y:50});
         }
       }
+      ensureGallery(merged);
     }
     if(!Number.isFinite(Number(merged.imageX)))merged.imageX=50;
     if(!Number.isFinite(Number(merged.imageY)))merged.imageY=50;
     if(!Number.isFinite(Number(merged.imageScale)))merged.imageScale=1;
     return merged;
   });
-  // Keep all local edits and custom brands. Add the new official YUMMM demo once.
-  return hydrated.concat(base.filter(d => d.id === 'yummm' && !hydrated.some(b => b.id === d.id)));
+  // Add every missing official demo, preserving other brands already edited locally.
+  return hydrated.concat(base.filter(d=>!hydrated.some(b=>b.id===d.id)));
 }
 let brands=hydrate();
 let activeId=localStorage.getItem(KEY+'-active')||brands[0].id;
@@ -562,9 +608,10 @@ function perform(action,button){
     if(!confirm('¿Eliminar el Brand Board de '+b.name+'? Esto no se puede deshacer.'))return;
     brands=brands.filter(x=>x.id!==b.id);activeId=brands[0].id;save();render();notify('Marca eliminada.');
   }
-  if(action==='download-yummm-prompts' && b.id==='yummm') {
-    const txt=YUMMM_ALL_PROMPTS.map((item,i)=>'PROMPT '+String(i+1).padStart(2,'0')+' / '+item.title+'\n'+item.group+'\n\n'+item.text).join('\n\n'+('-'.repeat(65))+'\n\n');
-    download(new Blob([txt],{type:'text/plain;charset=utf-8'}),'yummm-13-creative-prompts.txt');notify('13 prompts descargados.');return;
+  if(action==='download-demo-prompts' && promptItems(b).length){
+    const prompts=promptItems(b);
+    const txt=prompts.map((item,i)=>'PROMPT '+String(i+1).padStart(2,'0')+' / '+item.title+'\n'+item.group+'\n\n'+item.text).join('\n\n'+('-'.repeat(65))+'\n\n');
+    download(new Blob([txt],{type:'text/plain;charset=utf-8'}),b.id+'-13-creative-prompts.txt');notify(prompts.length+' prompts descargados.');return;
   }
   if(action==='backup')backup();
   if(action==='import'){$('import-file')?.click();return;}
@@ -630,8 +677,8 @@ function perform(action,button){
   }
 }
 document.addEventListener('click',event=>{
-  const promptBtn=event.target.closest('[data-yummm-prompt]');
-  if(promptBtn){const item=YUMMM_ALL_PROMPTS[Number(promptBtn.dataset.yummmPrompt)];if(item){if(navigator.clipboard?.writeText){navigator.clipboard.writeText(item.text).then(()=>notify('Prompt copiado: '+item.title)).catch(()=>prompt('Copia el prompt:',item.text));}else prompt('Copia el prompt:',item.text);}return;}
+  const promptBtn=event.target.closest('[data-demo-prompt]');
+  if(promptBtn){const item=promptItems(active())[Number(promptBtn.dataset.demoPrompt)];if(item){if(navigator.clipboard?.writeText){navigator.clipboard.writeText(item.text).then(()=>notify('Prompt copiado: '+item.title)).catch(()=>prompt('Copia el prompt:',item.text));}else prompt('Copia el prompt:',item.text);}return;}
   const nav=event.target.closest('[data-brand]');
   if(nav){activeId=nav.dataset.brand;save();view='board';tab='identity';focused=false;render();return;}
   const viewBtn=event.target.closest('[data-view]');
