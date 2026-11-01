@@ -27,12 +27,12 @@ dialog.addEventListener('close',()=>{lightboxImage.src='';});
 /* Brand-story chapters replace the static ticker. */
 const storyTexts={
  en:[
-  {count:'01 / 03 · THE LOOKS',title:'Dinner plans? We’ve got options.',sub:'Dresses, Colombian denim, blouses and heels. Start with the mood you’re in.',action:'FIND YOUR LOOK',href:'#collections',image:'assets/noche.webp'},
+  {count:'01 / 03 · THE LOOKS',title:'Dinner plans? We’ve got options.',sub:'Dresses, Colombian denim, blouses and heels. Start with the mood you’re in.',action:'FIND YOUR LOOK',href:'#collections',image:'assets/corse.webp'},
   {count:'02 / 03 · THE DESIGNER',title:'A Colombian eye on the latest styles.',sub:'Meet the designer behind Jaramillo and the point of view that shapes the collection.',action:'HER STORY',href:'#story',image:'assets/atelier.webp'},
   {count:'03 / 03 · THREE CITIES',title:'Miami. Vegas. New York. Which is yours?',sub:'Choose your city and see where to find Jaramillo Boutique.',action:'FIND A BOUTIQUE',href:'#boutiques',image:'assets/shoes.webp'}
  ],
  es:[
-  {count:'01 / 03 · LOS LOOKS',title:'¿Tienes cena o salida? Hay opciones.',sub:'Vestidos, pantalones colombianos, blusas y tacones. Empieza por tu estilo.',action:'VER LOS LOOKS',href:'#collections',image:'assets/noche.webp'},
+  {count:'01 / 03 · LOS LOOKS',title:'¿Tienes cena o salida? Hay opciones.',sub:'Vestidos, pantalones colombianos, blusas y tacones. Empieza por tu estilo.',action:'VER LOS LOOKS',href:'#collections',image:'assets/corse.webp'},
   {count:'02 / 03 · LA DISEÑADORA',title:'Una mirada colombiana a la moda.',sub:'Conoce a la diseñadora de Jaramillo y la visión detrás de la colección.',action:'CONOCE SU HISTORIA',href:'#story',image:'assets/atelier.webp'},
   {count:'03 / 03 · TRES CIUDADES',title:'Miami. Las Vegas. Nueva York. ¿La tuya?',sub:'Elige tu ciudad y descubre dónde encontrar Jaramillo Boutique.',action:'VER LAS TIENDAS',href:'#boutiques',image:'assets/shoes.webp'}
  ]
