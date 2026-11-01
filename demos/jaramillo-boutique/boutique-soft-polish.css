@@ -49,7 +49,7 @@
  outline-offset:3px!important;
 }
 #brandStoryBanner .jb-banner-action{border-radius:12px!important}
-/* A different photo of the real designer, with full face visible and natural proportions. */
+/* Burgundy evening look from the approved collection, compact in the designer story. */
 .designer{
  min-height:0!important;
  height:auto!important;
@@ -65,9 +65,9 @@
  justify-content:center!important;
 }
 .designer .designer-photo{
- width:min(100%,295px)!important;
- height:375px!important;
- max-width:295px!important;
+ width:min(100%,350px)!important;
+ height:300px!important;
+ max-width:350px!important;
  aspect-ratio:auto!important;
  border:0!important;
  overflow:hidden!important;
@@ -79,7 +79,7 @@
  width:100%!important;
  height:100%!important;
  object-fit:cover!important;
- object-position:center 20%!important;
+ object-position:center 39%!important;
 }
 .designer .designer-visual>span{
  position:absolute!important;
@@ -200,19 +200,19 @@
  .designer{
   display:grid!important;
   grid-template-columns:minmax(0,42%) minmax(0,58%)!important;
-  min-height:420px!important;
+  min-height:355px!important;
   align-items:stretch!important;
  }
  .designer .designer-visual{
   height:auto!important;
-  min-height:420px!important;
+  min-height:355px!important;
   max-height:none!important;
   padding:18px!important;
  }
  .designer .designer-photo{
-  width:min(95%,278px)!important;
-  max-width:278px!important;
-  height:340px!important;
+  width:min(95%,320px)!important;
+  max-width:320px!important;
+  height:275px!important;
  }
  .designer .designer-copy{padding:24px clamp(19px,3vw,38px)!important}
  .designer .designer-copy h2{font-size:clamp(39px,4.6vw,55px)!important}
@@ -227,8 +227,8 @@
  .hero .hero-text h1{font-size:34px!important}
  .hero .hero-text .button-ivory{min-width:142px!important;font-size:9px!important}
  .designer{grid-template-columns:39% 61%!important}
- .designer .designer-visual{min-height:385px!important}
- .designer .designer-photo{max-width:230px!important;width:95%!important;height:305px!important}
+ .designer .designer-visual{min-height:355px!important}
+ .designer .designer-photo{max-width:285px!important;width:96%!important;height:248px!important}
  .designer .designer-copy h2{font-size:39px!important}
  .designer .designer-copy p{font-size:11px!important;line-height:1.5!important}
  #brandStoryBanner.jb-editorial-banner{
@@ -247,18 +247,18 @@
   min-height:0!important;
  }
  .designer .designer-visual{
-  height:300px!important;
-  min-height:300px!important;
-  max-height:300px!important;
+  height:285px!important;
+  min-height:285px!important;
+  max-height:285px!important;
   padding:16px 20px!important;
  }
  .designer .designer-photo{
-  width:min(70%,230px)!important;
-  max-width:230px!important;
-  height:268px!important;
+  width:min(92%,315px)!important;
+  max-width:315px!important;
+  height:243px!important;
   box-shadow:9px 9px 0 #faf1e579!important;
  }
- .designer .designer-photo img{object-position:50% 20%!important}
+ .designer .designer-photo img{object-position:50% 39%!important}
  .designer .designer-copy{padding:27px 23px 34px!important}
  .designer .designer-copy h2{font-size:clamp(42px,9vw,57px)!important}
  .designer .designer-visual>span{font-size:7px!important;bottom:8px!important;left:12px!important}
