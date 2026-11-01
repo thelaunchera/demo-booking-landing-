@@ -61,6 +61,17 @@ const DEMOS=[
     logoImage:'',patternImage:'',imageY:35,imageX:50,imageScale:1,
     sectionPhotos:{"hero":[{"id":"photo-yummm-hero-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/10.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-hero-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/02.webp","fit":"cover","x":50,"y":50}],"identity":[{"id":"photo-yummm-identity-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/01.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-identity-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/06.webp","fit":"cover","x":50,"y":50}],"palette":[{"id":"photo-yummm-palette-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/06.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-palette-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/09.webp","fit":"cover","x":50,"y":50}],"typography":[{"id":"photo-yummm-typography-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/01.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-typography-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/09.webp","fit":"cover","x":50,"y":50}],"pattern":[{"id":"photo-yummm-pattern-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/12.webp","fit":"cover","x":50,"y":50}],"applications":[{"id":"photo-yummm-applications-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/12.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-applications-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/03.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-applications-03","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/07.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-applications-04","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/04.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-applications-05","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/08.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-applications-06","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/16.webp","fit":"cover","x":50,"y":50}],"universe":[{"id":"photo-yummm-universe-01","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/10.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-02","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/11.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-03","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/13.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-04","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/14.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-05","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/15.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-06","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/16.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-07","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/17.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-08","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/18.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-09","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/19.webp","fit":"cover","x":50,"y":50},{"id":"photo-yummm-universe-10","src":"https://thelaunchera.github.io/demo-booking-landing-/yummm/images/20.webp","fit":"cover","x":50,"y":50}]}
   }
+  ,{
+    id:'jaramillo-boutique',name:'Jaramillo Boutique',category:'Women’s Fashion · Boutique Demo',
+    description:'Boutique editorial de moda femenina colombiana en Nueva York, diseño y colecciones de tendencia.',
+    tagline:'Colombian Spirit, New York Attitude.',
+    monogram:'JB',symbol:'◈',titleFont:'Italiana',bodyFont:'DM Sans',tone:'Fashion editorial · femenina · elegante · atrevida',style:'boutique',
+    colors:['#5A0F21','#3D101D','#F7F4EF','#E4D3C3','#B69B7C','#1D1718'],
+    heroPhoto:'https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/model-cutout.webp',
+    detailPhoto:'https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/designer-real.webp',
+    site:'https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/',
+    logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
+  }
 ];
 // Expand official demo boards with their approved photo collections and current brand identities.
 // Only the three completed demos are migrated; YUMMM keeps its existing curated setup.
@@ -75,7 +86,8 @@ const OFFICIAL_DEMO_SITES={
   'casa-brownie':'https://thelaunchera.com/demos/casa-brownie/',
   'crumb':'https://thelaunchera.com/demos/crumb/',
   'aftr':'https://thelaunchera.com/demos/aftr/',
-  'yummm':'https://thelaunchera.github.io/demo-booking-landing-/yummm/'
+  'yummm':'https://thelaunchera.github.io/demo-booking-landing-/yummm/',
+  'jaramillo-boutique':'https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/'
 };
 function publishedSite(brand){
   if(OFFICIAL_DEMO_SITES[brand.id])return OFFICIAL_DEMO_SITES[brand.id];
@@ -211,6 +223,7 @@ function wordmark(b,variant=''){
   const style='font-family:'+font(b.titleFont)+';';
   if(b.logoImage&&variant==='element')return '<img class="logo-uploaded" src="'+html(b.logoImage)+'" alt="Logo de '+html(b.name)+'">';
   if(b.id==='yummm')return '<span style="font-family:Nunito,sans-serif;font-weight:1000;letter-spacing:-.09em">YUMMM</span>';
+  if(b.id==='jaramillo-boutique')return '<span style="font-family:Italiana,Georgia,serif;font-weight:400;letter-spacing:.04em">JARAMILLO<small style="display:block;font:600 .2em DM Sans,sans-serif;letter-spacing:.38em">BOUTIQUE</small></span>';
   if(b.style==='bakery'&&b.name.toLowerCase()==='casa brownie')return '<span style="'+style+'">casa<br><em>brownie.</em></span>';
   if(b.style==='cookies'&&b.name.toLowerCase()==='crumb cookies')return '<span style="'+style+'">crumb<span style="opacity:.55">.</span></span>';
   if(b.style==='nightclub'&&b.name.toLowerCase()==='aftr las vegas')return '<span style="'+style+'">AFTR</span>';
