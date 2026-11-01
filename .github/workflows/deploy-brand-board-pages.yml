@@ -111,8 +111,10 @@ jobs:
           grep -q 'preserve every shoe' _site/jaramillo-boutique/tablet-refinement.css
           grep -q 'Heels & shoes' _site/jaramillo-boutique/main.js
           test -s _site/jaramillo-boutique/boutique-soft-polish.css
-          grep -q 'assets/designer-real.webp' _site/jaramillo-boutique/index.html
-          grep -q 'boutique-soft-polish.css?v=20261101-compact03' _site/jaramillo-boutique/index.html
+          grep -q 'img src="assets/noche.webp"' _site/jaramillo-boutique/index.html
+          ! grep -q 'img src="assets/designer-real.webp"' _site/jaramillo-boutique/index.html
+          grep -q "image:'assets/corse.webp'" _site/jaramillo-boutique/main.js
+          grep -q 'boutique-soft-polish.css?v=20261101-red-collection04' _site/jaramillo-boutique/index.html
           grep -q 'grid-template-rows:205px' _site/jaramillo-boutique/boutique-soft-polish.css
           grep -q 'border-radius:var(--jb-soft-radius)' _site/jaramillo-boutique/boutique-soft-polish.css
           test "$(grep -o '<article class="collection-item"' _site/jaramillo-boutique/index.html | wc -l | tr -d ' ')" = "8"
