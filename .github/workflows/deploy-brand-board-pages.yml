@@ -102,6 +102,7 @@ jobs:
 
       - name: Smoke-test Jaramillo Boutique preview
         run: |
+          set -x
           node --check _site/jaramillo-boutique/main.js
           test -s _site/jaramillo-boutique/cata-editorial.css
           grep -q 'Tablet-only hero' _site/jaramillo-boutique/cata-editorial.css
