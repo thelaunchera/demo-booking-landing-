@@ -2,178 +2,87 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#f9f1e5">
-  <meta name="description" content="YUMMM — a little coffee, a little sweet, a whole lot of happy. Discover our feel-good coffee and bakery concept.">
-  <meta property="og:title" content="YUMMM | Coffee, Bakery & Sweets">
-  <meta property="og:description" content="A little coffee. A little sweet. A whole lot of happy.">
-  <title>YUMMM — Coffee, Bakery & Really Good Days</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#FBF6EC">
+  <meta name="description" content="YUMMM — coffee, bakery and sweets. Explore an original bakery concept, its fresh pastry display and delightful boxes to go.">
+  <meta property="og:title" content="YUMMM — Your daily happy place">
+  <meta property="og:description" content="Coffee, bakery and sweets. A little something good, every day.">
+  <title>YUMMM — Coffee · Bakery · Sweets</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght,SOFT,WONK@9..144,600,20,1;9..144,700,20,1&family=Nunito:wght@500;600;700;800;900;1000&display=swap" rel="stylesheet">
-  <style>
-    :root{--cream:#f9f1e5;--cream2:#f3e6d8;--red:#9e2a2a;--red2:#b94332;--brown:#39251f;--white:#fffaf2;--line:rgba(81,44,34,.17);--font:'DM Sans',sans-serif}
-    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;color:var(--brown);background:var(--cream);font-family:var(--font);-webkit-font-smoothing:antialiased}img{width:100%;height:100%;object-fit:cover;display:block}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible{outline:3px solid #de9b65;outline-offset:4px}::selection{background:#e3bb9e;color:var(--brown)}.container{width:min(100% - 100px,1400px);margin:auto}.announcement{background:var(--red);color:#ffefe2;text-align:center;padding:9px 16px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;font-size:10px}.header{position:sticky;top:0;z-index:30;background:rgba(249,241,229,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}.header-inner{height:83px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}.nav{display:flex;align-items:center;gap:27px}.nav a{font-size:12px;font-weight:800;letter-spacing:.035em;transition:color .2s}.nav a:hover{color:var(--red)}.nav-right{justify-content:flex-end}.logo{font:1000 44px/1 'Nunito',sans-serif;letter-spacing:-.095em;color:var(--red);padding-right:10px}.logo sup{font:700 11px var(--font);letter-spacing:0;vertical-align:top;margin-left:5px}.pill{display:inline-flex;align-items:center;justify-content:center;min-height:44px;border-radius:50px;padding:0 24px;font-size:12px;font-weight:800;letter-spacing:.035em;border:1px solid currentColor;transition:transform .22s,background .22s,color .22s;white-space:nowrap}.pill:hover{transform:translateY(-3px)}.pill.red{background:var(--red);color:#fff9f3;border-color:var(--red)}.pill.red:hover{background:#742025}.pill.outline{background:transparent;color:var(--red);border-color:var(--red)}.pill.outline:hover{background:var(--red);color:white}.mobile-menu-button{display:none;border:0;background:none;color:var(--red);font-size:24px;line-height:1;padding:10px}.hero{position:relative;overflow:hidden}.hero-grid{display:grid;grid-template-columns:49% 51%;min-height:680px;align-items:stretch}.hero-copy{padding:100px 25px 91px 0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}.eyebrow{display:flex;align-items:center;gap:12px;font-weight:800;font-size:11px;letter-spacing:.21em;text-transform:uppercase;color:var(--red)}.eyebrow:before{content:'';width:36px;height:1px;background:currentColor}.hero-title{max-width:720px;font:1000 clamp(76px,8.8vw,145px)/.86 'Nunito',sans-serif;letter-spacing:-.09em;color:var(--red);margin:30px 0 28px}.hero-title span{display:block}.hero-title .small{font:700 clamp(40px,4.5vw,73px)/1.02 'Fraunces',serif;letter-spacing:-.065em;color:var(--brown);margin-left:8px}.hero-description{font-size:16px;line-height:1.75;max-width:390px;color:#6a5148;margin:0 0 33px}.hero-actions{display:flex;gap:12px;flex-wrap:wrap}.hero-visual{position:relative;min-height:680px;padding:27px 0 27px 15px}.hero-visual .photo{width:100%;height:100%;border-radius:210px 210px 12px 12px;overflow:hidden;background:#c89e7d;position:absolute;inset:27px 0 27px 15px;width:calc(100% - 15px);height:calc(100% - 54px)}.hero-visual img{filter:saturate(.77) sepia(.10) contrast(.98);object-position:center center}.round-stamp{position:absolute;left:-76px;bottom:75px;width:166px;height:166px;border-radius:50%;background:var(--red);color:#fff3e5;display:flex;align-items:center;justify-content:center;text-align:center;transform:rotate(-13deg);box-shadow:0 13px 35px rgba(45,21,13,.18)}.round-stamp span{font:800 17px/1.26 'Nunito',sans-serif;letter-spacing:-.015em}.corner-mark{position:absolute;right:30px;top:67px;background:var(--cream);border-radius:60px;padding:12px 15px;font-size:10px;font-weight:900;letter-spacing:.14em;color:var(--red);text-transform:uppercase}.strip{overflow:hidden;background:var(--red);color:var(--cream);padding:18px 0;white-space:nowrap;font:900 15px 'Nunito',sans-serif;letter-spacing:.15em}.strip .inner{display:flex;width:max-content;gap:38px;animation:move 42s linear infinite}.strip b{font-size:21px;margin-left:36px;vertical-align:middle}@keyframes move{to{transform:translateX(-50%)}}.section{padding:120px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:44px}.section-kicker{color:var(--red);font:800 11px var(--font);letter-spacing:.20em;text-transform:uppercase;margin:0 0 20px}.section-title{font:700 clamp(43px,5.5vw,78px)/1.06 'Fraunces',serif;letter-spacing:-.065em;margin:0;max-width:650px}.section-description{max-width:310px;font-size:14px;line-height:1.75;color:#765e53;margin:0 0 7px}.feature-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.feature-card{min-width:0}.feature-photo{position:relative;height:440px;border-radius:8px;overflow:hidden;background:var(--cream2)}.feature-photo img{transition:transform .6s;filter:saturate(.87)}.feature-card:hover img{transform:scale(1.05)}.feature-tag{position:absolute;top:18px;left:18px;background:#fff9ee;color:var(--red);padding:10px 14px;font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;border-radius:50px}.feature-card h3{font:700 27px 'Fraunces',serif;letter-spacing:-.035em;margin:19px 0 6px}.feature-card p{color:#80665b;font-size:13px;margin:0;line-height:1.5}.manifesto{background:var(--red);color:var(--cream);position:relative;overflow:hidden}.manifesto:before{content:'Y';position:absolute;font:1000 650px 'Nunito',sans-serif;color:rgba(255,255,255,.035);right:-30px;top:-290px;pointer-events:none}.manifesto-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:9vw;padding:105px 0}.manifesto-photo{height:530px;border-radius:250px 250px 7px 7px;overflow:hidden;background:#c89d7a}.manifesto-photo img{filter:sepia(.08) saturate(.8)}.manifesto .section-kicker{color:#ffe0ce}.manifesto h2{font:700 clamp(50px,6vw,87px)/1.03 'Fraunces',serif;letter-spacing:-.075em;margin:0 0 28px}.manifesto h2 em{font-weight:600;font-style:italic;color:#e9b59a}.manifesto p{max-width:490px;line-height:1.8;color:#f4d7c6;font-size:15px}.manifesto .signature{font:1000 42px 'Nunito',sans-serif;letter-spacing:-.085em;color:#fff2e3;margin-top:27px}.menu{background:var(--cream2)}.menu-top{display:flex;justify-content:space-between;align-items:end;gap:24px}.filters{display:flex;flex-wrap:wrap;gap:8px;margin:45px 0 36px}.filter{border:1px solid #bfa69a;border-radius:50px;background:transparent;padding:12px 20px;color:var(--brown);font:800 11px var(--font);text-transform:uppercase;letter-spacing:.08em}.filter:hover,.filter[aria-pressed="true"]{background:var(--red);color:white;border-color:var(--red)}.menu-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.menu-item{min-width:0;background:#fff9f1;padding:12px 12px 23px;border:1px solid rgba(91,61,52,.07);border-radius:8px;animation:appear .25s ease}.menu-item[hidden]{display:none}.menu-image{height:270px;overflow:hidden;border-radius:4px;background:#d2b499}.menu-image img{filter:saturate(.82);transition:transform .35s}.menu-item:hover .menu-image img{transform:scale(1.05)}.menu-item h3{font:700 24px 'Fraunces',serif;letter-spacing:-.04em;margin:19px 12px 7px}.menu-item p{font-size:12px;line-height:1.65;color:#795f53;margin:0 12px}.menu-tag{display:block;margin:13px 12px 0;font-size:10px;letter-spacing:.13em;font-weight:900;color:var(--red);text-transform:uppercase}@keyframes appear{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}.sweet-section{overflow:hidden}.sweet-grid{display:grid;grid-template-columns:44% 56%;gap:8%;align-items:center}.sweet-copy h2{font:700 clamp(50px,6vw,92px)/.99 'Fraunces',serif;letter-spacing:-.07em;color:var(--red);margin:17px 0 24px}.sweet-copy p{max-width:385px;line-height:1.8;color:#795f55;margin-bottom:32px}.sweet-image{height:590px;position:relative}.sweet-image img{border-radius:7px;filter:saturate(.85);object-position:center}.sweet-quote{position:absolute;bottom:-20px;left:-38px;max-width:230px;background:var(--red);color:var(--cream);font:700 24px/1.18 'Fraunces',serif;padding:27px 30px;transform:rotate(-4deg)}.gallery{display:grid;grid-template-columns:1.2fr 1fr 1fr 1.2fr;gap:12px;padding:12px;background:var(--red)}.gallery figure{height:320px;overflow:hidden;margin:0}.gallery img{transition:transform .5s;filter:saturate(.83)}.gallery figure:hover img{transform:scale(1.06)}.cta{padding:128px 0 130px;text-align:center}.cta .section-kicker{margin-bottom:24px}.cta h2{font:700 clamp(58px,7.8vw,117px)/1.03 'Fraunces',serif;letter-spacing:-.075em;color:var(--red);margin:0 auto 20px;max-width:990px}.cta h2 em{font-weight:600}.cta p{color:#71594e;line-height:1.7;max-width:510px;margin:0 auto 30px}.footer{background:#3c261e;color:#f7ebde}.footer-inner{padding:66px 0 34px}.footer-top{display:flex;justify-content:space-between;gap:30px;align-items:start}.footer-logo{font:1000 clamp(76px,13vw,180px)/.8 'Nunito',sans-serif;letter-spacing:-.10em;color:#f8ebdd}.footer-aside{text-align:right}.footer-aside span{display:block;font:800 11px var(--font);letter-spacing:.13em;text-transform:uppercase;margin-bottom:13px;color:#cdb2a5}.footer-aside a{display:block;font:700 16px var(--font);margin:12px 0}.footer-bottom{margin-top:65px;padding-top:24px;border-top:1px solid rgba(255,255,255,.2);display:flex;justify-content:space-between;gap:20px;color:#b8a49a;font-size:11px;line-height:1.6}.floating-top{position:fixed;right:23px;bottom:22px;z-index:20;border:0;background:var(--red);color:white;width:49px;height:49px;border-radius:50%;font-size:23px;box-shadow:0 9px 28px #30100c33;opacity:0;pointer-events:none;transition:opacity .2s}.floating-top.show{opacity:1;pointer-events:auto}@media(max-width:1000px){.container{width:min(100% - 56px,1400px)}.hero-grid{min-height:610px}.hero-visual{min-height:610px}.hero-title{font-size:clamp(65px,8vw,110px)}.feature-photo{height:340px}.menu-image{height:220px}.gallery figure{height:240px}.manifesto-grid{gap:60px}}@media(max-width:740px){html{scroll-padding-top:72px}.container{width:calc(100% - 38px)}.header-inner{height:70px;grid-template-columns:1fr auto 1fr}.header .logo{font-size:37px}.mobile-menu-button{display:block;justify-self:start}.nav-left{display:none;position:absolute;top:70px;left:0;right:0;padding:20px;background:var(--cream);flex-direction:column;align-items:stretch;gap:0;box-shadow:0 20px 30px #38251f18}.nav-left.open{display:flex}.nav-left a{padding:15px 13px;border-bottom:1px solid var(--line)}.nav-right a{font-size:10px;padding:0 14px;min-height:39px}.hero-grid{grid-template-columns:1fr}.hero-copy{padding:65px 0 45px}.hero-title{font-size:clamp(71px,17vw,112px);margin:24px 0 20px}.hero-title .small{font-size:clamp(38px,9.5vw,61px);margin-left:2px}.hero-description{font-size:14px;max-width:340px}.hero-visual{padding:0;min-height:470px;margin-bottom:32px}.hero-visual .photo{inset:0;width:100%;height:100%;border-radius:160px 160px 9px 9px}.round-stamp{left:-10px;bottom:20px;width:122px;height:122px}.round-stamp span{font-size:14px}.corner-mark{top:29px;right:16px}.strip{padding:15px 0}.section{padding:79px 0}.section-head,.menu-top{display:block;margin-bottom:27px}.section-title{font-size:52px}.section-description{margin-top:17px}.feature-cards{grid-template-columns:1fr;gap:33px}.feature-photo{height:360px}.feature-card h3{font-size:28px}.manifesto-grid{display:flex;flex-direction:column;align-items:stretch;gap:45px;padding:75px 0}.manifesto-photo{height:410px;order:2}.manifesto h2{font-size:61px}.manifesto-copy{order:1}.menu-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.menu-item{padding:7px 7px 16px}.menu-image{height:200px}.menu-item h3{font-size:20px;margin:14px 8px 5px}.menu-item p{margin:0 8px;font-size:11px}.menu-tag{margin:12px 8px 0;font-size:9px}.filters{gap:7px;margin:31px 0 25px}.filter{padding:11px 14px;font-size:10px}.sweet-grid{grid-template-columns:1fr;gap:36px}.sweet-copy h2{font-size:70px}.sweet-image{height:440px}.sweet-quote{left:10px;bottom:-20px;font-size:21px}.gallery{grid-template-columns:1fr 1fr;gap:8px;padding:8px}.gallery figure{height:220px}.cta{padding:87px 0}.cta h2{font-size:clamp(55px,12vw,76px)}.footer-inner{padding-top:55px}.footer-top{display:block}.footer-logo{font-size:clamp(95px,20vw,155px)}.footer-aside{text-align:left;margin-top:43px}.footer-bottom{margin-top:42px;display:block}.footer-bottom span{display:block;margin-bottom:9px}}@media(max-width:430px){.hero-visual{min-height:390px}.hero-title{font-size:18vw}.menu-grid{grid-template-columns:1fr}.menu-image{height:290px}.gallery figure{height:165px}.footer-logo{font-size:22vw}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
-
-/* YUMMM editorial refresh */
-.hero-title{font-size:clamp(73px,8.9vw,137px);letter-spacing:-.087em}
-.hero-title span:nth-child(2){letter-spacing:-.105em}
-.hero-title .small{margin-top:16px}
-.hero-visual .photo{border-radius:230px 230px 18px 18px}
-.header .logo,.footer-logo{font-weight:1000}
-.feature-photo{height:455px}
-.feature-card:nth-child(2) .feature-photo img{object-position:50% 58%}
-.feature-card:nth-child(3) .feature-photo img{object-position:50% 60%}
-.manifesto-photo img{object-position:50% 40%}
-.lookbook{background:#fbf7ef;padding:122px 0 132px}
-.lookbook-heading{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:44px}
-.lookbook-heading .section-title em{color:var(--red)}
-.lookbook-heading>p{max-width:260px;font-size:14px;line-height:1.7;color:#74564b}
-.lookbook-grid{display:grid;grid-template-columns:1.15fr .85fr;grid-template-rows:395px 350px 395px;gap:16px}
-.lookbook-visual{position:relative;margin:0;overflow:hidden;min-width:0;border-radius:6px;background:#d7bdaa}
-.lookbook-visual img{filter:saturate(.82);transition:transform .65s}
-.lookbook-visual:hover img{transform:scale(1.045)}
-.lookbook-visual:after{content:'';position:absolute;inset:35% 0 0;pointer-events:none;background:linear-gradient(transparent,rgba(31,18,13,.58))}
-.lookbook-visual figcaption{position:absolute;z-index:1;left:29px;bottom:27px;right:23px;color:#fff8ed}
-.lookbook-visual figcaption span{display:block;font-size:10px;letter-spacing:.16em;font-weight:900;margin-bottom:10px}
-.lookbook-visual figcaption strong{font:600 32px/1.08 'Fraunces',serif;letter-spacing:-.05em}
-.lookbook-sign{grid-area:1/1/3/2}
-.lookbook-detail{grid-area:1/2/2/3}
-.lookbook-tote{grid-area:2/2/4/3}
-.lookbook-coffee{grid-area:3/1/4/2}
-.lookbook-detail img{object-position:center 55%}
-.lookbook-tote img{object-position:50% 45%}
-.lookbook-sign img{object-position:50% 55%}
-.sweet-image img{object-position:50% 40%}
-@media(max-width:740px){
-.hero-title{font-size:clamp(63px,16vw,112px)}
-.hero-visual{min-height:480px}
-.feature-photo{height:390px}
-.lookbook{padding:78px 0 88px}
-.lookbook-heading{display:block;margin-bottom:27px}
-.lookbook-heading>p{margin-top:19px}
-.lookbook-grid{grid-template-columns:1fr 1fr;grid-template-rows:300px 260px 260px;gap:9px}
-.lookbook-sign{grid-area:1/1/3/2}
-.lookbook-detail{grid-area:1/2/2/3}
-.lookbook-tote{grid-area:2/2/3/3}
-.lookbook-coffee{grid-area:3/1/4/3}
-.lookbook-visual figcaption{left:13px;bottom:16px;right:10px}
-.lookbook-visual figcaption span{font-size:8px;letter-spacing:.09em}
-.lookbook-visual figcaption strong{font-size:clamp(19px,4vw,29px)}
-}
-@media(max-width:430px){.hero-visual{min-height:400px}.hero-title{font-size:17vw}.lookbook-grid{grid-template-rows:250px 245px 245px}}
-
-  </style>
-<!-- Image assets: ./images/01.webp ... ./images/09.webp. Stock fallbacks are only used while files are not present. -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=Nunito:wght@700;800;900;1000&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="./images/10.webp">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
 </head>
 <body>
-  <div class="announcement">A LITTLE COFFEE · A LITTLE SWEET · A WHOLE LOT OF HAPPY</div>
-  <header class="header" id="top">
-    <div class="container header-inner">
-      <nav class="nav nav-left" id="navigation" aria-label="Main navigation">
-        <a href="#favorites">The good stuff</a><a href="#menu">Our menu</a><a href="#story">Our story</a><a href="#lookbook">The YUMMM world</a>
-      </nav>
-      <button class="mobile-menu-button" id="mobileMenu" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation">☰</button>
-      <a class="logo" href="#top" aria-label="YUMMM home">YUMMM</a>
-      <div class="nav nav-right"><a class="pill red" href="#menu">SEE THE MENU</a></div>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <div class="header-inner wrap">
+      <a class="logo" href="#top" aria-label="YUMMM home">YUMMM<span class="logo-period">.</span></a>
+      <nav class="desktop-nav" aria-label="Main navigation"><a href="#top" class="active">Home</a><a href="#counter">Menu</a><a href="#kitchen">Our kitchen</a><a href="#takehome">Boxes to go</a></nav>
+      <a class="header-cta" href="#counter">See the menu <span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" type="button" id="menuToggle" aria-controls="mobileNav" aria-expanded="false" aria-label="Open menu"><span></span><span></span></button>
     </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" hidden><a href="#top">Home</a><a href="#counter">Menu & sweets</a><a href="#kitchen">Our kitchen</a><a href="#takehome">Boxes to go</a><a href="#story">Our story</a></nav>
   </header>
-  <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">COFFEE, BAKERY & EVERYTHING GOOD</div>
-          <h1 class="hero-title" id="hero-title"><span>IT’S A</span><span>YUMMM</span><span class="small">kind of day.</span></h1>
-          <p class="hero-description">Really good coffee. Freshly baked happiness. The kind of little treat that makes the whole day.</p>
-          <div class="hero-actions"><a href="#favorites" class="pill red">DISCOVER THE GOOD STUFF</a><a href="#story" class="pill outline">OUR STORY</a></div>
-        </div>
-        <div class="hero-visual">
-          <div class="photo"><img src="./images/02.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=1200&q=85&fit=crop'" alt="YUMMM signature iced latte with creamy coffee swirls" fetchpriority="high"></div>
-          <div class="corner-mark">your daily happy place</div>
-          <div class="round-stamp"><span>SIP.<br>TREAT.<br>REPEAT. ✳</span></div>
-        </div>
+  <main id="main">
+    <section class="hero" aria-label="Welcome to YUMMM">
+      <div class="hero-media" aria-hidden="true">
+        <div class="hero-slide is-current" data-slide="0"><img src="./images/10.webp" alt="" fetchpriority="high"></div>
+        <div class="hero-slide" data-slide="1"><img src="./images/02.webp" alt="" loading="lazy"></div>
+        <div class="hero-slide" data-slide="2"><img src="./images/12.webp" alt="" loading="lazy"></div>
+      </div>
+      <div class="hero-shade"></div>
+      <div class="hero-content wrap">
+        <p class="hero-eyebrow">COFFEE · BAKERY · SWEETS</p>
+        <h1 id="heroTitle">Your daily<br><em>happy place.</em></h1>
+        <p class="hero-summary" id="heroSummary">Really good coffee, little bakery treats and sweet moments worth coming back for.</p>
+        <div class="hero-actions"><a class="button cream" href="#counter">Explore the menu</a><a class="button transparent" href="#kitchen">Behind the scenes</a></div>
+        <div class="hero-bottom"><div class="hero-pagination" role="group" aria-label="Featured scenes"><button type="button" class="slide-dot is-active" data-hero="0" aria-label="Show storefront" aria-pressed="true"><span></span></button><button type="button" class="slide-dot" data-hero="1" aria-label="Show signature coffee" aria-pressed="false"><span></span></button><button type="button" class="slide-dot" data-hero="2" aria-label="Show boxes to go" aria-pressed="false"><span></span></button></div><span class="hero-page"><span id="slideNumber">01</span> / 03</span></div>
       </div>
     </section>
-    <div class="strip" aria-hidden="true"><div class="inner"><span>FRESHLY BAKED <b>✳</b> MADE WITH LOVE <b>✳</b> COFFEE FIRST <b>✳</b> SWEET ALWAYS <b>✳</b></span><span>FRESHLY BAKED <b>✳</b> MADE WITH LOVE <b>✳</b> COFFEE FIRST <b>✳</b> SWEET ALWAYS <b>✳</b></span><span>FRESHLY BAKED <b>✳</b> MADE WITH LOVE <b>✳</b> COFFEE FIRST <b>✳</b> SWEET ALWAYS <b>✳</b></span></div></div>
-    <section class="section" id="favorites">
-      <div class="container">
-        <div class="section-head">
-          <div><p class="section-kicker">01 / THE CRAVINGS</p><h2 class="section-title">A few very good reasons to stop by.</h2></div>
-          <p class="section-description">The kind of treats that turn “just one bite” into your new favorite little ritual.</p>
+    <section class="feature-links wrap" aria-label="Explore our favorites">
+      <a href="#counter" data-select-category="coffee" class="feature-link"><img src="./images/02.webp" alt="YUMMM iced latte"><span><strong>Coffee</strong><small>THE GOOD SIPS</small></span><span class="feature-chevron" aria-hidden="true">↗</span></a>
+      <a href="#counter" data-select-category="cookies" class="feature-link"><img src="./images/03.webp" alt="Assorted YUMMM cookies in a box"><span><strong>Cookies</strong><small>BAKED FOR YOU</small></span><span class="feature-chevron" aria-hidden="true">↗</span></a>
+      <a href="#counter" data-select-category="bakery" class="feature-link"><img src="./images/05.webp" alt="Pistachio glazed pastry"><span><strong>Bakery</strong><small>SOMETHING SWEET</small></span><span class="feature-chevron" aria-hidden="true">↗</span></a>
+    </section>
+    <div class="ticker" aria-label="YUMMM favorites"><div class="ticker-track" aria-hidden="true"><span>FRESHLY BAKED <b>✳</b> MADE FOR THE MOMENT <b>✳</b> COFFEE + COOKIES <b>✳</b> BOX UP THE GOOD STUFF <b>✳</b></span><span>FRESHLY BAKED <b>✳</b> MADE FOR THE MOMENT <b>✳</b> COFFEE + COOKIES <b>✳</b> BOX UP THE GOOD STUFF <b>✳</b></span></div></div>
+    <section class="intro wrap section-space" id="story"><p class="kicker">THE YUMMM WAY</p><h2>Come for the coffee.<br><em>Stay for the feeling.</em></h2><p>From your first sip to the last crumb, it's all about making the everyday a little sweeter.</p></section>
+    <section class="showcase section-space" id="counter">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="kicker">FIND YOUR NEXT FAVORITE</p><h2>Step up to the <em>counter.</em></h2></div><p>Pick a drink, discover a sweet treat and put together your dream box. Every item here is part of our creative demo menu.</p></div>
+        <div class="counter-head"><div class="counter-filters" role="group" aria-label="Filter bakery display"><button class="filter is-selected" type="button" data-category="all" aria-pressed="true">All favorites</button><button class="filter" type="button" data-category="coffee" aria-pressed="false">Coffee</button><button class="filter" type="button" data-category="cookies" aria-pressed="false">Cookies</button><button class="filter" type="button" data-category="bakery" aria-pressed="false">Bakery & sweets</button></div><button type="button" class="bag-indicator" id="openBox" aria-label="View your box">Your box <span id="boxCount">0</span></button></div>
+        <div class="product-grid" id="productGrid">
+          <article class="product-card" data-kind="coffee" data-product="Signature Iced Latte" data-image="02.webp"><div class="product-photo"><img src="./images/02.webp" loading="lazy" alt="Signature iced latte in YUMMM cup"></div><div class="product-details"><div><span>COFFEE</span><h3>Signature Iced Latte</h3><p>Our creamy, refreshing little pick-me-up.</p></div><button type="button" class="choose-item">Choose <span aria-hidden="true">+</span></button></div></article>
+          <article class="product-card" data-kind="cookies" data-product="Chocolate Chunk Cookie" data-image="03.webp"><div class="product-photo"><img src="./images/03.webp" loading="lazy" alt="Chocolate chunk cookie in YUMMM box"></div><div class="product-details"><div><span>COOKIES</span><h3>Chocolate Chunk Cookie</h3><p>Big chocolate pieces, little moment of joy.</p></div><button type="button" class="choose-item">Choose <span aria-hidden="true">+</span></button></div></article>
+          <article class="product-card" data-kind="bakery" data-product="Pistachio Morning Roll" data-image="05.webp"><div class="product-photo"><img src="./images/05.webp" loading="lazy" alt="Pistachio topped glazed pastry"></div><div class="product-details"><div><span>BAKERY</span><h3>Pistachio Morning Roll</h3><p>A soft, iced swirl with a little crunch.</p></div><button type="button" class="choose-item">Choose <span aria-hidden="true">+</span></button></div></article>
+          <article class="product-card" data-kind="bakery" data-product="Golden Croissant" data-image="07.webp"><div class="product-photo"><img src="./images/07.webp" loading="lazy" alt="Golden croissants in YUMMM takeout box"></div><div class="product-details"><div><span>BAKERY</span><h3>Golden Croissant</h3><p>Golden layers for a slow morning.</p></div><button type="button" class="choose-item">Choose <span aria-hidden="true">+</span></button></div></article>
+          <article class="product-card" data-kind="cookies" data-product="Cookie Mix Box" data-image="03.webp"><div class="product-photo"><img src="./images/03.webp" loading="lazy" alt="Mixed cookie selection with four flavors"></div><div class="product-details"><div><span>COOKIES</span><h3>Cookie Mix Box</h3><p>Chocolate, pistachio and a little surprise.</p></div><button type="button" class="choose-item">Choose <span aria-hidden="true">+</span></button></div></article>
+          <article class="product-card" data-kind="coffee" data-product="Coffee To Go" data-image="09.webp"><div class="product-photo"><img src="./images/09.webp" loading="lazy" alt="Hot coffee in YUMMM takeaway cup"></div><div class="product-details"><div><span>COFFEE</span><h3>Coffee To Go</h3><p>A little warmth to take anywhere.</p></div><button type="button" class="choose-item">Choose <span aria-hidden="true">+</span></button></div></article>
         </div>
-        <div class="feature-cards">
-          <article class="feature-card"><div class="feature-photo"><img loading="lazy" src="./images/09.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=850&q=85&fit=crop'" alt="YUMMM branded takeaway cup"><span class="feature-tag">SIP HAPPY</span></div><h3>For the coffee moments.</h3><p>Smooth, cozy, and made for the first sip of the day.</p></article>
-          <article class="feature-card"><div class="feature-photo"><img loading="lazy" src="./images/07.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=850&q=85&fit=crop'" alt="A box of golden croissants in YUMMM packaging"><span class="feature-tag">FRESHLY BAKED</span></div><h3>For the flaky, buttery bits.</h3><p>Golden edges, soft centers, zero regrets.</p></article>
-          <article class="feature-card"><div class="feature-photo"><img loading="lazy" src="./images/03.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=850&q=85&fit=crop'" alt="YUMMM assorted bakery cookies in a gift box"><span class="feature-tag">ONE MORE PLEASE</span></div><h3>For your sweet tooth.</h3><p>A little indulgence goes a long way.</p></article>
-        </div>
+        <p class="display-note">Just exploring? This is a creative website demo — no live ordering or payment is connected.</p>
       </div>
     </section>
-    <section class="manifesto" id="story">
-      <div class="container manifesto-grid">
-        <div class="manifesto-photo"><img loading="lazy" src="./images/08.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1493857671505-72967e2e2760?w=1100&q=85&fit=crop'" alt="YUMMM red bakery apron worn by a team member"></div>
-        <div class="manifesto-copy"><p class="section-kicker">02 / THE YUMMM FEELING</p><h2>Not just a treat.<br><em>A whole mood.</em></h2><p>Some days call for an extra good cup of coffee. Others call for something warm, buttery, and sweet. We believe both deserve a little celebration.</p><p>YUMMM is our love letter to simple pleasures, shared tables, and the little pause that makes everything feel better.</p><div class="signature">YUMMM.</div></div>
-      </div>
-    </section>
-    <section class="section menu" id="menu" aria-labelledby="menu-title">
-      <div class="container">
-        <div class="menu-top"><div><p class="section-kicker">03 / PICK YOUR HAPPY</p><h2 class="section-title" id="menu-title">The good stuff,<br>all in one place.</h2></div><p class="section-description">A taste of the YUMMM concept. Discover what your next craving could look like.</p></div>
-        <div class="filters" role="group" aria-label="Filter menu items"><button type="button" class="filter" data-filter="all" aria-pressed="true">ALL THE GOODNESS</button><button type="button" class="filter" data-filter="coffee" aria-pressed="false">COFFEE</button><button type="button" class="filter" data-filter="bakery" aria-pressed="false">BAKERY</button><button type="button" class="filter" data-filter="sweets" aria-pressed="false">SWEETS</button></div>
-        <div class="menu-grid" id="menuGrid">
-          <article class="menu-item" data-category="coffee"><div class="menu-image"><img loading="lazy" src="./images/02.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=700&q=85&fit=crop'" alt="YUMMM signature iced latte"></div><span class="menu-tag">COFFEE</span><h3>Signature Iced Latte</h3><p>Cool, creamy, and always a good idea.</p></article>
-          <article class="menu-item" data-category="bakery"><div class="menu-image"><img loading="lazy" src="./images/07.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=700&q=85&fit=crop'" alt="Fresh YUMMM golden croissant gift box"></div><span class="menu-tag">BAKERY</span><h3>Golden Croissant</h3><p>Buttery, flaky layers of morning happiness.</p></article>
-          <article class="menu-item" data-category="sweets"><div class="menu-image"><img loading="lazy" src="./images/03.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=700&q=85&fit=crop'" alt="YUMMM four-cookie box"></div><span class="menu-tag">SWEETS</span><h3>Chunky Choc Cookies</h3><p>That soft-center, chocolatey kind of magic.</p></article>
-          <article class="menu-item" data-category="bakery"><div class="menu-image"><img loading="lazy" src="./images/05.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=700&q=85&fit=crop'" alt="Pistachio-glazed cinnamon roll with YUMMM coffee"></div><span class="menu-tag">BAKERY</span><h3>Morning Pastry</h3><p>A cozy little pick-me-up for any time of day.</p></article>
-          <article class="menu-item" data-category="coffee"><div class="menu-image"><img loading="lazy" src="./images/09.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=700&q=85&fit=crop'" alt="YUMMM signature red-lid coffee cup"></div><span class="menu-tag">COFFEE</span><h3>Everyday Coffee</h3><p>Comfort in a cup, just how you like it.</p></article>
-          <article class="menu-item" data-category="sweets"><div class="menu-image"><img loading="lazy" src="./images/05.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=700&q=85&fit=crop'" alt="Glazed sweet pastry with pistachio pieces"></div><span class="menu-tag">SWEETS</span><h3>Sweet Little Treat</h3><p>The one you absolutely deserve today.</p></article>
-        </div>
-      </div>
-    </section>
-    <section class="section sweet-section" id="moments">
-      <div class="container sweet-grid">
-        <div class="sweet-copy"><p class="section-kicker">04 / LITTLE JOYS, BIG FEELINGS</p><h2>It's the little things.</h2><p>That first coffee sip. The warm box of treats. The extra cookie you didn't plan on. These are the moments we're here for.</p><a href="#menu" class="pill red">FIND YOUR FAVORITE</a></div>
-        <div class="sweet-image"><img loading="lazy" src="./images/04.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=1200&q=85&fit=crop'" alt="YUMMM signature branded canvas tote in golden light"><span class="sweet-quote">Go on.<br>Make it a YUMMM day.</span></div>
-      </div>
-    </section>
-    <section class="lookbook" id="lookbook" aria-labelledby="lookbook-heading">
-  <div class="container">
-    <div class="lookbook-heading"><div><p class="section-kicker">05 / MORE THAN A COFFEE BREAK</p><h2 class="section-title" id="lookbook-heading">A brand you can <em>feel.</em></h2></div><p>From the first sip to the last crumb, every detail feels like YUMMM.</p></div>
-    <div class="lookbook-grid">
-      <figure class="lookbook-visual lookbook-sign"><img loading="lazy" src="./images/01.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1493857671505-72967e2e2760?w=1100&q=85&fit=crop'" alt="YUMMM cream storefront sign with terracotta lettering"><figcaption><span>THE FIRST HELLO</span><strong>Find your happy place.</strong></figcaption></figure>
-      <figure class="lookbook-visual lookbook-detail"><img loading="lazy" src="./images/06.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=900&q=85&fit=crop'" alt="YUMMM printed cream-and-terracotta brand stationery"><figcaption><span>THE LITTLE DETAILS</span><strong>Made to make you smile.</strong></figcaption></figure>
-      <figure class="lookbook-visual lookbook-tote"><img loading="lazy" src="./images/04.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=950&q=85&fit=crop'" alt="Cream canvas YUMMM tote bag"><figcaption><span>TAKE A LITTLE HAPPY HOME</span><strong>Good things travel.</strong></figcaption></figure>
-      <figure class="lookbook-visual lookbook-coffee"><img loading="lazy" src="./images/09.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=950&q=85&fit=crop'" alt="YUMMM branded takeaway coffee cup with a terracotta lid"><figcaption><span>ONE MORE SIP</span><strong>Keep the good days coming.</strong></figcaption></figure>
-    </div>
-  </div>
-</section>
-    <section class="cta" id="good-vibes"><div class="container"><p class="section-kicker">A LITTLE MORE JOY IN EVERY DAY</p><h2>Life's sweeter with a little <em>YUMMM.</em></h2><p>Stay for the coffee. Come back for the treats. Fall in love with the feeling.</p><a href="#menu" class="pill red">EXPLORE THE MENU</a></div></section>
+    <section class="kitchen section-space" id="kitchen"><div class="wrap"><div class="section-heading kitchen-head"><div><p class="kicker">FROM OUR KITCHEN</p><h2>Made with a little <em>more love.</em></h2></div><p>Follow a chocolate chip cookie from the first mix to the final box. It's the small moments behind the good stuff.</p></div><div class="process-grid">
+      <article class="process-card"><img src="./images/13.webp" loading="lazy" alt="Baker stirring chocolate chip cookie dough in a metal bowl"><div class="process-label"><span>01 / MIX</span><strong>It starts with the dough.</strong></div></article>
+      <article class="process-card"><img src="./images/14.webp" loading="lazy" alt="Baker scooping cookie dough onto a parchment lined tray"><div class="process-label"><span>02 / SCOOP</span><strong>One sweet scoop at a time.</strong></div></article>
+      <article class="process-card"><img src="./images/15.webp" loading="lazy" alt="Golden chocolate chip cookies baking in a warm oven"><div class="process-label"><span>03 / BAKE</span><strong>Warm from the oven.</strong></div></article>
+      <article class="process-card"><img src="./images/16.webp" loading="lazy" alt="Baker packing cookies in cream and red YUMMM boxes"><div class="process-label"><span>04 / BOX</span><strong>Ready to make your day.</strong></div></article>
+    </div></div></section>
+    <section class="takehome section-space" id="takehome"><div class="wrap takehome-grid"><div class="takehome-visual"><img src="./images/12.webp" loading="lazy" alt="YUMMM branded bags, cookie boxes, pastries, and takeaway coffee"><span class="visual-note">TAKE THE GOOD STUFF WITH YOU</span></div><div class="takehome-copy"><p class="kicker">TO GO, BUT MAKE IT SPECIAL</p><h2>Sweet things<br>come in <em>boxes.</em></h2><p>Mix your favorites, gift a little joy, or simply save something for later. Our packaging makes every treat feel like a special occasion.</p><div class="box-options" aria-label="Packaging choices"><div><span>01</span><strong>Single treat</strong><small>A little something just for you</small></div><div><span>02</span><strong>Cookie box</strong><small>Choose four or six favorites</small></div><div><span>03</span><strong>Gift assortment</strong><small>Wrapped up in a little YUMMM</small></div></div><button type="button" class="button red" id="buildBox">Make a sample box</button></div></div></section>
+    <section class="moments section-space"><div class="wrap"><div class="section-heading"><div><p class="kicker">A LOOK INSIDE</p><h2>Meet the YUMMM <em>world.</em></h2></div><p>A warm storefront, a tempting pastry counter and a take-home feeling you can recognize anywhere.</p></div><div class="moments-grid"><figure class="moment wide"><img src="./images/11.webp" loading="lazy" alt="YUMMM glass display case full of pastries"><figcaption>THE SWEETEST CORNER</figcaption></figure><figure class="moment"><img src="./images/10.webp" loading="lazy" alt="YUMMM cafe entrance with red awning"><figcaption>MEET US OUTSIDE</figcaption></figure><figure class="moment"><img src="./images/08.webp" loading="lazy" alt="YUMMM red apron with embroidered logo"><figcaption>THE LITTLE DETAILS</figcaption></figure></div></div></section>
+    <section class="final-cta"><div class="wrap"><span class="final-topline">COFFEE · BAKERY · SWEETS</span><h2>Life's better with<br><em>a little YUMMM.</em></h2><p>One more sip. One more cookie. One more happy day.</p><a class="button cream" href="#counter">Find your next favorite</a></div></section>
   </main>
-  <footer class="footer"><div class="container footer-inner"><div class="footer-top"><a href="#top" class="footer-logo" aria-label="Return to top">YUMMM.</a><div class="footer-aside"><span>COFFEE · BAKERY · SWEETS</span><a href="#menu">Explore the menu</a><a href="#lookbook">The YUMMM world</a><a href="#story">Our story</a><a href="#top">Back to top</a></div></div><div class="footer-bottom"><span>© YUMMM · A creative brand concept</span><span>Demo website · Product lineup, store details and ordering are illustrative only.</span></div></div></footer>
-  <button class="floating-top" id="backTop" aria-label="Back to top">↑</button>
-  <script>
-    const mobileMenu=document.getElementById('mobileMenu');
-    const navigation=document.getElementById('navigation');
-    mobileMenu.addEventListener('click',()=>{
-      const open=navigation.classList.toggle('open');
-      mobileMenu.setAttribute('aria-expanded',String(open));
-      mobileMenu.setAttribute('aria-label',open?'Close navigation':'Open navigation');
-      mobileMenu.textContent=open?'×':'☰';
-    });
-    navigation.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
-      navigation.classList.remove('open');
-      mobileMenu.setAttribute('aria-expanded','false');
-      mobileMenu.setAttribute('aria-label','Open navigation');
-      mobileMenu.textContent='☰';
-    }));
-    const filters=document.querySelectorAll('[data-filter]');
-    const items=document.querySelectorAll('.menu-item');
-    filters.forEach(button=>button.addEventListener('click',()=>{
-      const category=button.dataset.filter;
-      filters.forEach(f=>f.setAttribute('aria-pressed',String(f===button)));
-      items.forEach(item=>{item.hidden=category!=='all'&&item.dataset.category!==category;});
-    }));
-    const backTop=document.getElementById('backTop');
-    addEventListener('scroll',()=>backTop.classList.toggle('show',scrollY>450),{passive:true});
-    backTop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
-  </script>
+  <footer class="footer"><div class="wrap"><div class="footer-main"><a href="#top" class="footer-logo" aria-label="YUMMM home">YUMMM.</a><div class="footer-links"><a href="#counter">Explore the menu</a><a href="#kitchen">Behind the scenes</a><a href="#takehome">Boxes to go</a></div></div><div class="footer-bottom"><span>YUMMM · Coffee, Bakery & Sweets</span><span>Creative brand concept · Demonstration only. No orders or payments.</span></div></div></footer>
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="box-drawer" id="boxDrawer" role="dialog" aria-modal="true" aria-labelledby="boxDrawerTitle" aria-hidden="true">
+    <div class="drawer-heading"><div><p class="kicker">A LITTLE SOMETHING GOOD</p><h2 id="boxDrawerTitle">Your YUMMM box.</h2></div><button type="button" class="close-drawer" id="closeBox" aria-label="Close box">×</button></div>
+    <p class="drawer-intro">A fun preview of what you'd take home. No order is placed.</p>
+    <div class="box-items" id="boxItems" aria-live="polite"><p class="empty-box">Your box is looking a little lonely. Pick something from the counter.</p></div>
+    <fieldset class="packaging-options"><legend>How would you pack it?</legend><label><input type="radio" name="packaging" value="Just for me" checked><span>Just for me</span></label><label><input type="radio" name="packaging" value="Cookie box of 4"><span>Box of 4</span></label><label><input type="radio" name="packaging" value="Cookie box of 6"><span>Box of 6</span></label><label><input type="radio" name="packaging" value="Gift box"><span>Gift box</span></label></fieldset>
+    <div class="drawer-footer"><span class="drawer-summary" id="drawerSummary">0 treats selected</span><button type="button" class="button red" id="previewBox">Preview my box</button><p class="drawer-disclaimer">This is a product showcase demo, not a checkout.</p></div>
+  </aside>
+  <dialog class="preview-dialog" id="previewDialog" aria-labelledby="previewTitle"><button type="button" id="closePreview" class="preview-close" aria-label="Close preview">×</button><img src="./images/12.webp" alt="YUMMM takeaway packaging"><p class="kicker">JUST A LITTLE PREVIEW</p><h2 id="previewTitle">Your box is looking YUMMM.</h2><p id="previewContents"></p><button type="button" class="button red" id="backToMenu">Keep exploring</button><small>Demo only. Nothing was ordered or paid for.</small></dialog>
 </body>
 </html>
