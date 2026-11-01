@@ -12,8 +12,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=Nunito:wght@700;800;900;1000&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="./images/10.webp">
-  <link rel="stylesheet" href="./styles.css">
-  <script src="./script.js" defer></script>
+  <link rel="stylesheet" href="./styles.css?v=20261101-sticky-box">
+  <script src="./script.js?v=20261101-sticky-box" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -22,6 +22,10 @@
       <a class="logo" href="#top" aria-label="YUMMM home">YUMMM</a>
       <nav class="desktop-nav" aria-label="Main navigation"><a href="#top" class="active">Home</a><a href="#counter">Menu</a><a href="#kitchen">Our kitchen</a><a href="#takehome">Boxes to go</a></nav>
       <a class="header-cta" href="#counter">See the menu <span aria-hidden="true">↗</span></a>
+      <button class="header-box" id="headerBox" type="button" aria-label="Open your YUMMM box, 0 items" aria-controls="boxDrawer" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.8 9h16.4l-1.5 11.2H5.3L3.8 9Z"/><path d="M8.5 10V6a3.5 3.5 0 0 1 7 0v4"/></svg>
+        <span class="header-box-label">BOX</span><span class="header-box-count" id="headerBoxCount" aria-live="polite">0</span>
+      </button>
       <button class="menu-toggle" type="button" id="menuToggle" aria-controls="mobileNav" aria-expanded="false" aria-label="Open menu"><span></span><span></span></button>
     </div>
     <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" hidden><a href="#top">Home</a><a href="#counter">Menu & sweets</a><a href="#kitchen">Our kitchen</a><a href="#takehome">Boxes to go</a><a href="#story">Our story</a></nav>
