@@ -4,9 +4,9 @@
   const $$ = selector => Array.from(document.querySelectorAll(selector));
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const heroCopy = [
-    { title: 'Your daily<br><em>happy place.</em>', summary: 'Really good coffee, little bakery treats and sweet moments worth coming back for.' },
-    { title: 'Good days<br><em>start here.</em>', summary: 'Your favorite sip, served with a little extra happy.' },
-    { title: 'Sweet things.<br><em>To take home.</em>', summary: 'Cookies, pastries and beautiful little boxes, ready for your next moment.' }
+    { title: 'Your coffee break.<br><em>Made sweeter.</em>', summary: 'Coffee, pastries and cookies for your daily break or a gift to go. Find your favorite on the menu.' },
+    { title: 'Your favorite sip.<br><em>Freshly made.</em>', summary: 'Explore our coffee and bakery favorites for mornings, afternoons and little pauses.' },
+    { title: 'Cookies & pastries.<br><em>To take home.</em>', summary: 'Pick a sweet treat or a gift-ready box for your next visit, thank-you or celebration.' }
   ];
   const slides = $$('.hero-slide');
   const dots = $$('[data-hero]');
