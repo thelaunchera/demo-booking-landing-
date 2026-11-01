@@ -1,0 +1,216 @@
+/* Jaramillo Boutique — editorial collection, image-first and touch-safe.
+   Two narrow portraits become full-height magazine spreads. No print under CTA. */
+.collections-section #collectionGrid .collection-item{
+  justify-content:flex-start!important;
+  height:auto!important;
+  min-height:0!important;
+  align-self:stretch!important;
+}
+.collections-section #collectionGrid .collection-item .collection-card{
+  height:auto!important;
+  min-height:0!important;
+  flex:0 0 auto!important;
+  display:flex!important;
+  flex-direction:column!important;
+}
+.collections-section #collectionGrid .collection-item .card-foot{
+  flex:0 0 auto!important;
+  min-height:72px!important;
+  background:#f8f5ef;
+  padding:14px 2px!important;
+}
+/* Primary interaction lives AFTER the image and price, not on the photograph. */
+.collections-section #collectionGrid .collection-item .quick-add,
+.collections-section #collectionGrid .collection-item:first-child .quick-add{
+  position:relative!important;
+  inset:auto!important;
+  left:auto!important;
+  right:auto!important;
+  top:auto!important;
+  bottom:auto!important;
+  order:2;
+  z-index:6;
+  flex:0 0 auto!important;
+  display:flex!important;
+  width:100%!important;
+  min-width:0!important;
+  min-height:47px!important;
+  margin:0!important;
+  padding:12px 17px!important;
+  justify-content:space-between;
+  align-items:center;
+  border:1px solid #671e36!important;
+  border-top:0!important;
+  border-radius:0!important;
+  background:#5a172d!important;
+  color:#fff7f1!important;
+  font:700 11px/1.2 'DM Sans',Arial,sans-serif;
+  letter-spacing:.105em;
+  box-shadow:none!important;
+  transform:none!important;
+}
+.collections-section #collectionGrid .collection-item .quick-add span:last-child{
+  font-size:19px;
+  line-height:1;
+}
+.collections-section #collectionGrid .collection-item .quick-add:hover{
+  background:#782c47!important;
+  color:#fff!important;
+}
+.collections-section #collectionGrid .collection-item .quick-add:focus-visible{
+  outline:2px solid #b58459;
+  outline-offset:3px;
+}
+/* Never let card's overlay letters fall in the button area. */
+.collections-section #collectionGrid .collection-item .card-photo::after{
+  bottom:auto!important;
+  top:6%!important;
+  max-height:33%;
+  z-index:3;
+  line-height:.94!important;
+  overflow:hidden;
+  pointer-events:none!important;
+}
+/* Bespoke split frames for tall, narrow portrait photography. */
+.collections-section #collectionGrid .collection-item[data-editorial-look] .card-photo{
+  position:relative!important;
+  display:block!important;
+  width:100%;
+  aspect-ratio:4/5!important;
+  height:auto!important;
+  min-height:0!important;
+  overflow:hidden!important;
+  border:none!important;
+  background:#f0e2d5!important;
+  isolation:isolate!important;
+}
+.collections-section #collectionGrid .collection-item[data-editorial-look] .card-photo::before,
+.collections-section #collectionGrid .collection-item[data-editorial-look] .card-photo::after{
+  display:none!important;
+  content:none!important;
+}
+.collections-section #collectionGrid .collection-item[data-editorial-look] .card-photo img{
+  position:absolute!important;
+  display:block!important;
+  top:0!important;
+  bottom:0!important;
+  right:0!important;
+  left:auto!important;
+  width:59%!important;
+  height:100%!important;
+  max-width:none!important;
+  margin:0!important;
+  object-fit:cover!important;
+  object-position:50% 48%!important;
+  filter:none!important;
+  transform:scale(1.048)!important;
+  transform-origin:center!important;
+  border:0!important;
+  z-index:2!important;
+}
+.collections-section #collectionGrid .collection-item[data-editorial-look] .look-editorial-panel{
+  position:absolute;
+  z-index:4;
+  inset:0 auto 0 0;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  width:43%;
+  min-width:0;
+  padding:clamp(15px,1.8vw,27px);
+  overflow:hidden;
+  background:#f2e6da;
+  color:#511d30;
+}
+.collections-section #collectionGrid .look-panel-mark,
+.collections-section #collectionGrid .look-panel-edition{
+  display:block;
+  font:700 clamp(7px,.75vw,10px)/1.5 'DM Sans',Arial,sans-serif;
+  letter-spacing:.10em;
+  overflow-wrap:normal;
+  white-space:normal;
+}
+.collections-section #collectionGrid .look-panel-edition{font-weight:500;opacity:.72}
+.collections-section #collectionGrid .look-panel-title{
+  display:block;
+  width:100%;
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(26px,3.15vw,51px);
+  font-weight:700;
+  letter-spacing:-.062em;
+  line-height:.99;
+  overflow-wrap:normal;
+  hyphens:none;
+}
+/* 07: ivory fashion magazine, portrait at right. */
+.collections-section #collectionGrid .collection-item[data-editorial-look="blouses"] .look-editorial-panel{
+  background:linear-gradient(150deg,#fbf2e7,#e7d2c1);
+  border-right:1px solid #fff9f066;
+}
+.collections-section #collectionGrid .collection-item[data-editorial-look="blouses"] .look-panel-title{font-style:italic}
+/* 08: winter campaign in reverse, portrait at left and deep wine typography at right. */
+.collections-section #collectionGrid .collection-item[data-editorial-look="winter"] .card-photo img{
+  left:0!important;
+  right:auto!important;
+  width:59%!important;
+}
+.collections-section #collectionGrid .collection-item[data-editorial-look="winter"] .look-editorial-panel{
+  left:auto;
+  right:0;
+  width:43%;
+  color:#fbefe2;
+  background:linear-gradient(158deg,#552338,#321521);
+  border-left:1px solid #ffffff35;
+}
+.collections-section #collectionGrid .collection-item[data-editorial-look="winter"] .look-panel-title{
+  font-style:normal;
+  font-weight:600;
+}
+.collections-section #collectionGrid .collection-item[data-editorial-look="winter"] .look-panel-edition{
+  color:#edc6c4;
+}
+/* 09: lighter spring/summer fashion editorial, portrait at right. */
+.collections-section #collectionGrid .collection-item[data-editorial-look="summer"] .look-editorial-panel{
+  background:linear-gradient(160deg,#f7eee3,#eed8d3);
+  color:#792f4c;
+}
+.collections-section #collectionGrid .collection-item[data-editorial-look="summer"] .look-panel-title{
+  font-weight:600;
+  font-style:italic;
+}
+@media(max-width:700px){
+  .collections-section #collectionGrid .collection-item .card-foot{
+    min-height:75px!important;
+  }
+  .collections-section #collectionGrid .collection-item .quick-add{
+    min-height:49px!important;
+    padding:13px 16px!important;
+    font-size:10px!important;
+  }
+  .collections-section #collectionGrid .collection-item[data-editorial-look] .look-editorial-panel{
+    width:43%;
+    padding:clamp(11px,3.6vw,18px);
+  }
+  .collections-section #collectionGrid .collection-item[data-editorial-look] .look-panel-title{
+    font-size:clamp(24px,7.7vw,36px);
+    line-height:1.04;
+  }
+  .collections-section #collectionGrid .look-panel-mark,
+  .collections-section #collectionGrid .look-panel-edition{
+    font-size:8px;
+    letter-spacing:.065em;
+  }
+}
+@media(max-width:375px){
+ .collections-section #collectionGrid .collection-item[data-editorial-look] .look-panel-title{
+    font-size:clamp(23px,7.2vw,28px);
+ }
+ .collections-section #collectionGrid .collection-item[data-editorial-look] .look-editorial-panel{
+    padding:10px;
+ }
+}
+@media(prefers-reduced-motion:reduce){
+ .collections-section #collectionGrid .collection-item .quick-add{
+   transition:none!important;
+ }
+}
