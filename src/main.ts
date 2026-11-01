@@ -3,6 +3,8 @@
 import './styles.css';
 import './section-gallery.css';
 import { YUMMM_ALL_PROMPTS } from './yummm-prompts';
+import { JARAMILLO_BOARD } from './jaramillo-board';
+import { JARAMILLO_ALL_PROMPTS } from './jaramillo-prompts';
 import { FINISHED_DEMO_BOARDS, FINISHED_DEMO_IDS } from './finished-demo-boards';
 import { FINISHED_DEMO_PROMPTS } from './finished-demo-prompts';
 import {
@@ -73,6 +75,8 @@ const DEMOS=[
     logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
   }
 ];
+// Add Jaramillo as a curated, fully editable demo just like YUMMM.
+DEMOS.push(JARAMILLO_BOARD);
 // Expand official demo boards with their approved photo collections and current brand identities.
 // Only the three completed demos are migrated; YUMMM keeps its existing curated setup.
 for (const demo of DEMOS) {
@@ -87,6 +91,7 @@ const OFFICIAL_DEMO_SITES={
   'crumb':'https://thelaunchera.com/demos/crumb/',
   'aftr':'https://thelaunchera.com/demos/aftr/',
   'yummm':'https://thelaunchera.github.io/demo-booking-landing-/yummm/',
+  'jaramillo-boutique':'https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/',
   'jaramillo-boutique':'https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/'
 };
 function publishedSite(brand){
@@ -109,7 +114,7 @@ const hex=(v,f='#FFFFFF')=>/^#[0-9a-fA-F]{6}$/.test(v||'')?v:f;
 const FONT_MAP={Nunito:"'Nunito',sans-serif",'Bodoni Moda':"'Bodoni Moda',Georgia,serif",'DM Serif Display':"'DM Serif Display',Georgia,serif",'Cormorant Garamond':"'Cormorant Garamond',Georgia,serif",'Bebas Neue':"'Bebas Neue',Arial,sans-serif",'Barlow Condensed':"'Barlow Condensed',Arial,sans-serif",Italiana:"'Italiana',Georgia,serif",Georgia:'Georgia,serif',Manrope:"Manrope,sans-serif",'DM Sans':"'DM Sans',sans-serif",Arial:'Arial,sans-serif'};
 const font=v=>FONT_MAP[v]||FONT_MAP['DM Sans'];
 
-function promptItems(b){return b.id==='yummm' ? YUMMM_ALL_PROMPTS : (FINISHED_DEMO_PROMPTS[b.id]||[]);}
+function promptItems(b){return b.id==='yummm' ? YUMMM_ALL_PROMPTS : b.id==='jaramillo-boutique' ? JARAMILLO_ALL_PROMPTS : (FINISHED_DEMO_PROMPTS[b.id]||[]);}
 function promptsView(b){
   const items=promptItems(b);
   if(!items.length)return guide(b);
@@ -117,7 +122,7 @@ function promptsView(b){
   const groups=ensureGallery(b);
   const sourceCount=new Set(Object.values(groups).flat().map(p=>p.src).filter(Boolean)).size;
   return '<section class="yummm-prompt-library" aria-labelledby="brandPromptTitle">'+
-    '<div class="yummm-prompts-hero"><div><span class="yummm-prompts-overline">THE LAUNCH ERA / BRAND BOARD MASTER</span><h2 id="brandPromptTitle">'+html(b.name)+' · Photo & Prompt Studio</h2><p>8 composiciones editoriales máster y 5 escenas fotográficas creadas para la identidad aprobada de esta demo. Cada prompt produce una imagen independiente.</p></div><a class="btn ghost" href="'+html(publishedSite(b))+'" target="_blank" rel="noopener noreferrer">Ver demo real</a></div>'+
+    '<div class="yummm-prompts-hero"><div><span class="yummm-prompts-overline">THE LAUNCH ERA / BRAND BOARD MASTER</span><h2 id="brandPromptTitle">'+html(b.name)+' · Photo & Prompt Studio</h2><p>8 composiciones editoriales máster y '+String(Math.max(0,count-8))+' escenas fotográficas específicas de esta marca. Cada prompt produce una imagen independiente.</p></div><a class="btn ghost" href="'+html(publishedSite(b))+'" target="_blank" rel="noopener noreferrer">Ver demo real</a></div>'+
     '<div class="yummm-prompts-help"><strong>Cómo utilizar estos prompts</strong><span>1. Elige una foto de la galería de '+html(b.name)+' · 2. Copia el prompt · 3. Genera una sola pieza · 4. Comprueba que logotipo, colores y producto no hayan cambiado. Las imágenes son referencias conceptuales, no pruebas de negocios reales.</span></div>'+
     '<div class="yummm-prompt-grid">'+items.map((item,i)=>'<article class="yummm-prompt-card">'+
       '<div class="yummm-prompt-meta"><small>'+html(item.group)+'</small><span>'+String(i+1).padStart(2,'0')+' / '+count+'</span></div>'+
@@ -192,7 +197,7 @@ function hydrate(){
     if(!Number.isFinite(Number(merged.imageScale)))merged.imageScale=1;
     return merged;
   });
-  // Add every missing official demo, preserving other brands already edited locally.
+  // Add every missing official demo, preserving other brands already edited locally; includes Jaramillo Boutique.
   return hydrated.concat(base.filter(d=>!hydrated.some(b=>b.id===d.id)));
 }
 let brands=hydrate();
