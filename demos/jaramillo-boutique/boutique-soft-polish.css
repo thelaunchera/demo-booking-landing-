@@ -294,3 +294,16 @@
 @media(prefers-reduced-motion:reduce){
  .button,.quick-add,#brandStoryBanner .jb-banner-action{transition:none!important}
 }
+
+/* Collection finishing: rounded taps and editorial image corners.
+   Only corner radii change: keep exact sizes, grids, spacing and photo framing. */
+#collections .filters .filter{
+  border-radius:14px!important;
+}
+#collections #collectionGrid .collection-item .quick-add{
+  border-radius:12px!important;
+}
+#collections #collectionGrid .collection-item .card-photo{
+  border-radius:16px!important;
+  overflow:hidden!important;
+}
