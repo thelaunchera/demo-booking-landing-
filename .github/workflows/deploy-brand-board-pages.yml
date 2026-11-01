@@ -104,6 +104,8 @@ jobs:
         run: |
           node --check _site/jaramillo-boutique/main.js
           test -s _site/jaramillo-boutique/cata-editorial.css
+          grep -q 'Tablet-only hero' _site/jaramillo-boutique/cata-editorial.css
+          grep -q 'tablet-photo-only' _site/jaramillo-boutique/index.html
           grep -q '01 / WHAT ARE YOU WEARING' _site/jaramillo-boutique/index.html
           grep -q '02 / THE WOMAN BEHIND THE EDIT' _site/jaramillo-boutique/index.html
           grep -q 'Plans tonight?' _site/jaramillo-boutique/main.js
