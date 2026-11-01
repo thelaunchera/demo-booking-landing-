@@ -55,14 +55,14 @@
   document.addEventListener('keydown', event => { if (event.key === 'Escape') { closeMenu(); closeDrawer(); } });
 
   function selectCategory(kind) {
-    $$$('.filter').forEach(button => {
+    $$('.filter').forEach(button => {
       const active = button.dataset.category === kind;
       button.classList.toggle('is-selected', active);
       button.setAttribute('aria-pressed', String(active));
     });
-    $$$('.product-card').forEach(card => { card.hidden = kind !== 'all' && card.dataset.kind !== kind; });
+    $$('.product-card').forEach(card => { card.hidden = kind !== 'all' && card.dataset.kind !== kind; });
   }
-  $$$('.filter').forEach(button => button.addEventListener('click', () => selectCategory(button.dataset.category)));
+  $$('.filter').forEach(button => button.addEventListener('click', () => selectCategory(button.dataset.category)));
   $$('[data-select-category]').forEach(link => link.addEventListener('click', () => selectCategory(link.dataset.selectCategory)));
 
   // The drawer uses the exact same catalog and image references as the main counter.
@@ -123,6 +123,8 @@
   const itemRows = $('#boxItems');
   const renderBox = () => {
     $('#boxCount').textContent = String(countBox());
+    $('#headerBoxCount').textContent = String(countBox());
+    $('#headerBox').setAttribute('aria-label', 'Open your YUMMM box, ' + countBox() + (countBox() === 1 ? ' item' : ' items'));
     $('#drawerPickCount').textContent = String(countBox());
     renderDrawerCatalog();
     $('#drawerSummary').textContent = `${countBox()} ${countBox() === 1 ? 'treat' : 'treats'} selected`;
@@ -159,6 +161,7 @@
   const backdrop = $('#drawerBackdrop');
   const drawer = $('#boxDrawer');
   function openDrawer() {
+    closeMenu();
     previousFocus = document.activeElement;
     backdrop.hidden = false;
     drawer.classList.add('open');
@@ -175,6 +178,7 @@
     if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
   }
   $('#openBox').addEventListener('click', openDrawer);
+  $('#headerBox').addEventListener('click', openDrawer);
   $('#buildBox').addEventListener('click', openDrawer);
   $('#closeBox').addEventListener('click', closeDrawer);
   backdrop.addEventListener('click', closeDrawer);
