@@ -79,3 +79,37 @@
   .drawer-totals{padding:9px 0 11px}
   .drawer-totals strong{font-size:21px}
 }
+
+/* Sticky YUMMM shopping bar — same accessible bag pattern as the boutique demo. */
+.site-header{position:sticky!important;top:0;z-index:60;isolation:isolate;box-shadow:0 8px 27px rgba(61,33,22,.065)}
+.header-inner{gap:clamp(12px,2vw,26px)}
+.header-cta{margin-left:0}
+.header-box{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:45px;min-width:85px;border:1px solid #cfae9e;border-radius:999px;padding:8px 17px 8px 11px;background:#fffaf2;color:var(--red);font:800 10px/1 var(--sans);letter-spacing:.08em;white-space:nowrap;flex:none;transition:background .2s,color .2s}
+.header-box svg{width:20px;height:20px;flex:none}
+.header-box:hover,.header-box:focus-visible{color:#fffaf2;background:var(--red);border-color:var(--red)}
+.header-box-count{position:absolute;top:-9px;right:-8px;display:grid;place-items:center;width:24px;height:24px;border:2px solid var(--ivory);border-radius:50%;background:var(--red);color:white;font:800 11px/1 var(--sans);letter-spacing:0}
+.header-box:hover .header-box-count{background:#651a1c}
+#counter,#kitchen,#takehome,#story{scroll-margin-top:88px}
+@media(max-width:1050px){
+ .header-box{min-width:70px;padding:8px 11px;gap:5px}
+}
+@media(max-width:760px){
+ .site-header{position:sticky!important;top:0;z-index:60}
+ .header-inner{height:68px;gap:9px}
+ .header-cta{display:none}
+ .logo{font-size:clamp(30px,8.3vw,36px)}
+ .header-box{margin-left:auto;min-height:43px;min-width:61px;padding:6px 10px;gap:3px;flex-direction:column;border-radius:13px}
+ .header-box svg{width:19px;height:19px}
+ .header-box-label{font-size:9px}
+ .header-box-count{top:-7px;right:-6px}
+ .menu-toggle{flex:none;margin:0;min-height:43px;min-width:38px}
+ .mobile-nav{top:100%}
+ #counter,#kitchen,#takehome,#story{scroll-margin-top:72px}
+}
+@media(max-width:365px){
+ .header-inner{gap:5px}
+ .logo{font-size:28px}
+ .header-box{min-width:54px;padding-inline:6px}
+ .menu-toggle{min-width:34px;width:34px}
+}
+@media(prefers-reduced-motion:reduce){.header-box{transition:none}}
