@@ -65,6 +65,44 @@
   $$('.filter').forEach(button => button.addEventListener('click', () => selectCategory(button.dataset.category)));
   $$('[data-select-category]').forEach(link => link.addEventListener('click', () => selectCategory(link.dataset.selectCategory)));
 
+  // The drawer uses the exact same catalog and image references as the main counter.
+  const catalog = $('.product-card').map(card => ({
+    name: card.dataset.product,
+    image: card.dataset.image,
+    kind: card.dataset.kind
+  }));
+  const drawerCatalog = $('#drawerProducts');
+  const drawerTabs = $('[data-drawer-category]');
+  let drawerCategory = 'all';
+  function renderDrawerCatalog() {
+    drawerCatalog.replaceChildren();
+    catalog.filter(item => drawerCategory === 'all' || item.kind === drawerCategory).forEach(item => {
+      const tile = document.createElement('article'); tile.className = 'drawer-product';
+      const image = document.createElement('img');
+      image.src = './images/' + item.image; image.alt = ''; image.loading = 'lazy';
+      const details = document.createElement('div'); details.className = 'drawer-product-detail';
+      const category = document.createElement('small'); category.textContent = item.kind === 'bakery' ? 'BAKERY & SWEETS' : item.kind.toUpperCase();
+      const name = document.createElement('strong'); name.textContent = item.name;
+      const add = document.createElement('button'); add.type = 'button'; add.className = 'drawer-product-add';
+      const selected = box.find(entry => entry.name === item.name);
+      add.textContent = selected ? '+ Add more (' + selected.qty + ')' : '+ Add';
+      add.setAttribute('aria-label', 'Add ' + item.name + ' to your box');
+      add.addEventListener('click', () => addProduct(item.name, item.image, false));
+      details.append(category, name, add);
+      tile.append(image, details);
+      drawerCatalog.append(tile);
+    });
+  }
+  drawerTabs.forEach(tab => tab.addEventListener('click', () => {
+    drawerCategory = tab.dataset.drawerCategory;
+    drawerTabs.forEach(candidate => {
+      const active = candidate === tab;
+      candidate.classList.toggle('is-active', active);
+      candidate.setAttribute('aria-pressed', String(active));
+    });
+    renderDrawerCatalog();
+  }));
+
   let box = [];
   try {
     const stored = JSON.parse(sessionStorage.getItem('yummm-demo-box') || '[]');
@@ -75,9 +113,11 @@
   const itemRows = $('#boxItems');
   const renderBox = () => {
     $('#boxCount').textContent = String(countBox());
+    $('#drawerPickCount').textContent = String(countBox());
+    renderDrawerCatalog();
     $('#drawerSummary').textContent = `${countBox()} ${countBox() === 1 ? 'treat' : 'treats'} selected`;
     $('#previewBox').disabled = countBox() === 0;
-    if (!box.length) { itemRows.innerHTML = '<p class="empty-box">Your box is looking a little lonely. Pick something from the counter.</p>'; return; }
+    if (!box.length) { itemRows.innerHTML = '<p class="empty-box">Choose a treat above to start your box.</p>'; return; }
     itemRows.replaceChildren();
     box.forEach((item, index) => {
       const row = document.createElement('div'); row.className = 'box-row';
@@ -126,13 +166,16 @@
   $('#buildBox').addEventListener('click', openDrawer);
   $('#closeBox').addEventListener('click', closeDrawer);
   backdrop.addEventListener('click', closeDrawer);
-  $$('.choose-item').forEach(button => button.addEventListener('click', () => {
-    const card = button.closest('.product-card');
-    if (!card) return;
-    const existing = box.find(item => item.name === card.dataset.product);
+  function addProduct(name, image, showDrawer) {
+    const existing = box.find(item => item.name === name);
     if (existing) existing.qty = Math.min(24, existing.qty + 1);
-    else box.push({ name: card.dataset.product, image: card.dataset.image, qty: 1 });
-    saveBox(); renderBox(); openDrawer();
+    else box.push({ name, image, qty: 1 });
+    saveBox(); renderBox();
+    if (showDrawer) openDrawer();
+  }
+  $('.choose-item').forEach(button => button.addEventListener('click', () => {
+    const card = button.closest('.product-card');
+    if (card) addProduct(card.dataset.product, card.dataset.image, true);
   }));
   renderBox();
   const preview = $('#previewDialog');
