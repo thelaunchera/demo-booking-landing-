@@ -113,6 +113,11 @@ jobs:
           test -s _site/jaramillo-boutique/assets/sandalias.webp
           test -s _site/jaramillo-boutique/assets/model-cutout.webp
           test -s _site/jaramillo-boutique/assets/designer-real.webp
+          test -s _site/jaramillo-boutique/editorial-hero.css
+          test -s _site/jaramillo-boutique/editorial-banner.css
+          test -s _site/jaramillo-boutique/editorial-lookbook.css
+          grep -q 'brand-story-banner' _site/jaramillo-boutique/index.html
+          grep -q 'storyTexts' _site/jaramillo-boutique/main.js
           grep -q 'Keep the editorial logo fully visible' _site/jaramillo-boutique/styles.css
 
       - name: Configure Pages
