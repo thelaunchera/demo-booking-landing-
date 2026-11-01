@@ -65,3 +65,17 @@
  .packaging-options{gap:4px 8px}
  .packaging-options label span{padding:4px 0}
 }
+
+/* Demo product prices: visible in the menu, drawer and box summary. */
+.product-price{display:block;margin-top:12px;color:var(--red);font:800 18px/1.1 var(--sans);letter-spacing:-.02em}
+.drawer-product-price{display:block;color:var(--red);font:800 14px/1 var(--sans);margin:0 0 2px}
+.drawer-totals{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0 14px;border-top:1px solid var(--line)}
+.drawer-totals span{font-size:12px;font-weight:700;color:var(--mute)}
+.drawer-totals strong{font:800 23px/1 var(--sans);color:var(--red);white-space:nowrap}
+.preview-total{border-top:1px solid var(--line);padding-top:16px;font:800 18px/1.4 var(--sans)!important;color:var(--red)!important}
+@media(max-width:760px){
+  .product-price{font-size:16px;margin-top:10px}
+  .drawer-product-price{font-size:13px}
+  .drawer-totals{padding:9px 0 11px}
+  .drawer-totals strong{font-size:21px}
+}
