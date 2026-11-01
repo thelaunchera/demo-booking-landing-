@@ -84,8 +84,20 @@
   <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
   <aside class="box-drawer" id="boxDrawer" role="dialog" aria-modal="true" aria-labelledby="boxDrawerTitle" aria-hidden="true">
     <div class="drawer-heading"><div><p class="kicker">A LITTLE SOMETHING GOOD</p><h2 id="boxDrawerTitle">Your YUMMM box.</h2></div><button type="button" class="close-drawer" id="closeBox" aria-label="Close box">×</button></div>
-    <p class="drawer-intro">A fun preview of what you'd take home. No order is placed.</p>
-    <div class="box-items" id="boxItems" aria-live="polite"><p class="empty-box">Your box is looking a little lonely. Pick something from the counter.</p></div>
+    <p class="drawer-intro">Build your own little box. Pick favorites, choose packaging and preview it.</p>
+    <section class="drawer-shopping" aria-labelledby="drawerShopTitle">
+      <div class="drawer-shop-head"><h3 id="drawerShopTitle">Pick your favorites</h3><span>Tap + to add</span></div>
+      <div class="drawer-shop-tabs" role="group" aria-label="Browse treats inside your box">
+        <button type="button" class="drawer-tab is-active" data-drawer-category="all" aria-pressed="true">All</button>
+        <button type="button" class="drawer-tab" data-drawer-category="coffee" aria-pressed="false">Coffee</button>
+        <button type="button" class="drawer-tab" data-drawer-category="cookies" aria-pressed="false">Cookies</button>
+        <button type="button" class="drawer-tab" data-drawer-category="bakery" aria-pressed="false">Bakery</button>
+      </div>
+      <div class="drawer-products" id="drawerProducts" aria-label="Available YUMMM treats"></div>
+    </section>
+    <section class="drawer-selected" aria-labelledby="drawerSelectedTitle"><h3 id="drawerSelectedTitle">Your picks <span id="drawerPickCount">0</span></h3>
+      <div class="box-items" id="boxItems" aria-live="polite"><p class="empty-box">Choose a treat above to start your box.</p></div>
+    </section>
     <fieldset class="packaging-options"><legend>How would you pack it?</legend><label><input type="radio" name="packaging" value="Just for me" checked><span>Just for me</span></label><label><input type="radio" name="packaging" value="Cookie box of 4"><span>Box of 4</span></label><label><input type="radio" name="packaging" value="Cookie box of 6"><span>Box of 6</span></label><label><input type="radio" name="packaging" value="Gift box"><span>Gift box</span></label></fieldset>
     <div class="drawer-footer"><span class="drawer-summary" id="drawerSummary">0 treats selected</span><button type="button" class="button red" id="previewBox">Preview my box</button><p class="drawer-disclaimer">This is a product showcase demo, not a checkout.</p></div>
   </aside>
