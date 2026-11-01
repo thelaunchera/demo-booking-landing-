@@ -31,7 +31,13 @@ export const JARAMILLO_BOARD = {
   "imageScale": 1,
   "sectionPhotos": {
     "hero": [
-      {"id":"photo-jaramillo-hero-updated","src":"https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/hero-model-v2.webp","fit":"contain","x":50,"y":50},
+      {
+        "id": "photo-jaramillo-hero-updated",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/hero-model-v2.webp",
+        "fit": "contain",
+        "x": 50,
+        "y": 50
+      },
       {
         "id": "photo-jaramillo-hero-01",
         "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/corse.webp",
@@ -55,7 +61,13 @@ export const JARAMILLO_BOARD = {
       }
     ],
     "identity": [
-      {"id":"photo-jaramillo-designer-updated","src":"https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/designer-portrait-v2.webp","fit":"cover","x":50,"y":40},
+      {
+        "id": "photo-jaramillo-designer-updated",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/designer-portrait-v2.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 40
+      },
       {
         "id": "photo-jaramillo-identity-01",
         "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/atelier.webp",
@@ -178,7 +190,13 @@ export const JARAMILLO_BOARD = {
       }
     ],
     "universe": [
-      {"id":"photo-jaramillo-designer-universe","src":"https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/designer-portrait-v2.webp","fit":"cover","x":50,"y":40},
+      {
+        "id": "photo-jaramillo-designer-universe",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/designer-portrait-v2.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 40
+      },
       {
         "id": "photo-jaramillo-universe-01",
         "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/colombian-jeans.webp",
@@ -238,13 +256,6 @@ export const JARAMILLO_BOARD = {
       {
         "id": "photo-jaramillo-universe-09",
         "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/atelier.webp",
-        "fit": "cover",
-        "x": 50,
-        "y": 50
-      },
-      {
-        "id": "photo-jaramillo-universe-10",
-        "src": "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/shoes.webp",
         "fit": "cover",
         "x": 50,
         "y": 50
