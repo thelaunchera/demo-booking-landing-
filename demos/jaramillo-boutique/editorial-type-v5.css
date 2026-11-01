@@ -44,3 +44,41 @@
  .collection-item .card-photo img{filter:drop-shadow(0 10px 15px #35151e3b)!important}
 }
 @media(prefers-reduced-motion:reduce){.card-photo img{transition:none!important}}
+
+/* V6: photography fills its editorial space without generic empty mats. */
+.collection-item[data-photo-shape="portrait"] .card-photo{aspect-ratio:.52!important}
+.collection-item[data-photo-shape="portrait"] .card-photo img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  mask-image:linear-gradient(to bottom,transparent 0%,black 2.8%,black 100%);
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 2.8%,black 100%);
+}
+.collection-item[data-photo-shape="landscape"] .card-photo{
+  aspect-ratio:1.25!important;
+  background:#e9d3c0!important
+}
+.collection-item[data-photo-shape="landscape"] .card-photo img{max-width:100%;width:100%!important;height:100%!important;object-fit:cover!important}
+/* Art direction changes from one fashion story to another. */
+.collection-item:nth-child(1) .card-photo::after{top:5%;left:5%;right:auto;text-align:left;font-size:clamp(49px,6vw,115px);color:#fff0d4b5}
+.collection-item:nth-child(2) .card-photo::after{top:auto;bottom:5%;left:3%;right:3%;text-align:center;font-size:clamp(52px,7vw,125px);color:#fff6eac8}
+.collection-item:nth-child(3) .card-photo::after{top:4%;right:5%;left:auto;text-align:right;font-style:italic}
+.collection-item:nth-child(4) .card-photo::after{top:36%;left:4%;right:4%;font-size:clamp(42px,5.2vw,95px);letter-spacing:-.07em}
+.collection-item:nth-child(5) .card-photo::after{top:12%;left:5%;text-align:left}
+.collection-item:nth-child(6) .card-photo::after{top:auto;bottom:6%;text-align:center}
+.collection-item:nth-child(7) .card-photo::after{top:23%;left:2%;right:2%;text-align:center;color:#fff3e9a3;font-style:italic}
+.collection-item:nth-child(8) .card-photo::after{top:auto;bottom:11%;left:0;right:0;font-size:clamp(46px,6vw,92px);text-align:center}
+.collection-item:nth-child(9) .card-photo::after{top:13%;left:4%;right:auto;text-align:left;font-style:italic}
+@media(max-width:700px){
+ .collection-item[data-photo-shape="landscape"] .card-photo{aspect-ratio:1.25!important}
+ .collection-item[data-photo-shape="portrait"] .card-photo{aspect-ratio:.52!important}
+ .collection-item:nth-child(1) .card-photo::after,
+ .collection-item:nth-child(2) .card-photo::after,
+ .collection-item:nth-child(3) .card-photo::after,
+ .collection-item:nth-child(4) .card-photo::after,
+ .collection-item:nth-child(5) .card-photo::after,
+ .collection-item:nth-child(6) .card-photo::after,
+ .collection-item:nth-child(7) .card-photo::after,
+ .collection-item:nth-child(8) .card-photo::after,
+ .collection-item:nth-child(9) .card-photo::after{font-size:clamp(44px,13vw,92px)}
+}
