@@ -101,6 +101,9 @@ jobs:
           test -s _site/jaramillo-boutique/assets/noche.webp
           test -s _site/jaramillo-boutique/assets/plataformas.webp
           test -s _site/jaramillo-boutique/assets/sandalias.webp
+          test -s _site/jaramillo-boutique/assets/model-cutout.webp
+          test -s _site/jaramillo-boutique/assets/designer-real.webp
+          grep -q 'Keep the editorial logo fully visible' _site/jaramillo-boutique/styles.css
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
