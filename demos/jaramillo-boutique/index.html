@@ -11,6 +11,10 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=20261101-editorial-v2">
   <link rel="stylesheet" href="shopping.css?v=20261101-editorial-v2">
+  <link rel="stylesheet" href="editorial-hero.css?v=20261101-rev3">
+  <link rel="stylesheet" href="editorial-banner.css?v=20261101-rev3">
+  <link rel="stylesheet" href="editorial-lookbook.css?v=20261101-rev3">
+  <style>.lookbook-swipe-cue{display:none}@media(max-width:700px){.lookbook-swipe-cue{display:block;margin:0 22px 12px;font-size:10px;letter-spacing:.04em;color:#85656a}}</style>
 </head>
 <body>
   <div class="top-shell" id="topShell">
@@ -74,6 +78,7 @@
         <button type="button" class="filter" data-filter="shoes" data-i18n="filterShoes" aria-pressed="false">Shoes</button>
         <button type="button" class="filter" data-filter="essentials" data-i18n="filterEssentials" aria-pressed="false">Shapewear</button>
       </div>
+      <p class="lookbook-swipe-cue" data-i18n="collectionSwipe">Swipe through the looks to explore the collection.</p>
       <div class="collection-grid" id="collectionGrid">
         <article class="collection-item" data-group="clothing"><a class="collection-card large-card" href="assets/corse.webp" data-group="clothing" data-label-en="The signature look" data-label-es="El look insignia"><div class="card-photo"><img src="assets/corse.webp" alt="Burgundy tailored corset and trousers" loading="lazy"></div><div class="card-foot"><span data-i18n="cardCorse">THE SIGNATURE LOOK</span><span>01 <span aria-hidden="true">✦</span></span></div></a><button class="quick-add" type="button" data-product-index="0" aria-label="Choose The signature look and add to bag"><span class="quick-add-word">CHOOSE</span><span aria-hidden="true">+</span></button></article>
         <article class="collection-item" data-group="clothing"><a class="collection-card" href="assets/colombian-jeans.webp" data-group="clothing" data-label-en="Colombian jeans" data-label-es="Pantalones colombianos"><div class="card-photo"><img src="assets/colombian-jeans.webp" alt="High-waisted blue Colombian-inspired jeans and white top" loading="lazy"></div><div class="card-foot"><span data-i18n="cardJeans">COLOMBIAN JEANS</span><span>02 <span aria-hidden="true">✦</span></span></div></a><button class="quick-add" type="button" data-product-index="1" aria-label="Choose Colombian jeans and add to bag"><span class="quick-add-word">CHOOSE</span><span aria-hidden="true">+</span></button></article>
