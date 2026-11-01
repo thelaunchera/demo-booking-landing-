@@ -210,6 +210,15 @@
     renderBag();
   }
   renderLanguage();
+  // All nine products are US$45; the preview bag is not a checkout.
+  for (const card of cards) {
+    const foot = card.querySelector('.card-foot');
+    if (!foot || foot.querySelector('.card-price')) continue;
+    const price = document.createElement('strong');
+    price.className = 'card-price';
+    price.textContent = displayPrice(UNIT_PRICE);
+    foot.append(price);
+  }
 })(); + value.toFixed(2);
   const words = {
     en: {
@@ -402,10 +411,3 @@
   }
   renderLanguage();
 })();
-// Uniform US$45 pricing for all nine looks in this demo; no checkout is activated.
-for (const card of cards) {
- const foot=card.querySelector('.card-foot');
- if(!foot||foot.querySelector('.card-price'))continue;
- const price=document.createElement('span');price.className='card-price';price.textContent=displayPrice(UNIT_PRICE);
- foot.append(price);
-}
