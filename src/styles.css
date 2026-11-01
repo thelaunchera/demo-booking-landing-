@@ -258,3 +258,32 @@ dialog::backdrop{background:#17161697;backdrop-filter:blur(3px)}
  .yummm-prompts-bottom{display:block}
  .yummm-prompts-bottom button{margin-top:18px;max-width:100%}
 }
+
+/* Jaramillo Studio — three organized collections, not a wall of prompt cards. */
+.studio-jaramillo-prompts .yummm-prompts-hero{
+  background:linear-gradient(120deg,#f7eee8 0%,#dfc7bd 100%);
+  border:1px solid #e0c8ba;color:#42172b;
+}
+.studio-jaramillo-prompts .yummm-prompts-overline,
+.studio-jaramillo-prompts .yummm-prompts-help strong{color:#6c2540}
+.studio-prompt-group{background:#fffdfa;border:1px solid #e4d6cc;border-radius:14px;overflow:hidden;margin:13px 0}
+.studio-prompt-group>summary{
+  list-style:none;cursor:pointer;padding:20px 22px;
+  display:flex;align-items:center;justify-content:space-between;gap:17px;
+  color:#3b2630;min-height:68px;background:#fcf6ef;
+}
+.studio-prompt-group>summary::-webkit-details-marker{display:none}
+.studio-prompt-group>summary:focus-visible{outline:2px solid #a47562;outline-offset:-3px}
+.studio-prompt-group>summary::after{content:'+';font:500 24px/1 'DM Sans',sans-serif;color:#6a253e;order:3}
+.studio-prompt-group[open]>summary::after{content:'−'}
+.studio-prompt-group-heading{font:700 clamp(15px,2vw,21px)/1.3 'DM Sans',sans-serif;flex:1}
+.studio-prompt-group-count{font:700 10px/1.2 'DM Sans',sans-serif;letter-spacing:.11em;color:#89546b}
+.studio-prompt-group-description{margin:0;padding:16px 22px 3px;color:#6b5a61;font:400 12px/1.65 'DM Sans',sans-serif}
+.studio-prompt-group>.yummm-prompt-grid{padding:17px 18px 21px}
+@media(max-width:720px){
+ .studio-prompt-group>summary{padding:17px 15px;gap:10px;min-height:60px}
+ .studio-prompt-group-heading{font-size:15px}
+ .studio-prompt-group-count{font-size:9px;white-space:nowrap}
+ .studio-prompt-group-description{padding:12px 15px 0}
+ .studio-prompt-group>.yummm-prompt-grid{padding:12px 12px 17px}
+}
