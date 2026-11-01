@@ -141,6 +141,37 @@
   #collections #collectionGrid .collection-item[data-editorial-look] .look-panel-title{
     font-size:clamp(25px,3.9vw,45px)!important;
   }
+  /* Replace three cramped instructional cards with a clean numbered editorial strip. */
+  .shop-guide{padding:48px clamp(25px,4vw,58px) 58px!important}
+  .shop-guide .shop-guide-intro{grid-template-columns:1fr minmax(190px,30%)!important;gap:15px 24px!important}
+  .shop-guide .guide-steps{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:0!important;overflow:visible!important;padding:0!important}
+  .shop-guide .guide-steps article{
+    display:block!important;
+    background:transparent!important;
+    border-top:1px solid #b69d95;
+    border-right:1px solid #b69d956b;
+    padding:17px 19px 10px!important;
+    min-height:150px;
+  }
+  .shop-guide .guide-steps article:last-child{border-right:0}
+  .shop-guide .guide-steps article img{display:none!important}
+  .shop-guide .guide-step-index{
+    position:static!important;
+    display:block!important;
+    width:auto!important;
+    min-width:0!important;
+    min-height:0!important;
+    background:none!important;
+    font:700 12px/1.4 'DM Sans',Arial,sans-serif!important;
+    color:#7d3850!important;
+    margin-bottom:12px;
+  }
+  .shop-guide .guide-steps h3{
+    padding:0!important;
+    font-size:clamp(25px,3vw,37px)!important;
+    line-height:1.07!important;
+  }
+  .shop-guide .guide-steps p{padding:8px 0 0!important;font-size:12px!important;line-height:1.55!important}
   /* Designer: make the approved portrait a real fashion feature, not a small inset. */
   .designer{
     display:grid!important;
