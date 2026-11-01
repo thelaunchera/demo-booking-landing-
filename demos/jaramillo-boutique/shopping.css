@@ -1,0 +1,129 @@
+/* Jaramillo Boutique · collection bag UX. Scoped to the concept demo. */
+:root{--bag-shadow:0 16px 48px rgba(33,14,21,.16)}
+html{scroll-padding-top:135px}
+.top-shell{position:sticky;top:0;z-index:90;background:var(--ivory);box-shadow:0 7px 28px rgba(37,16,22,.075)}
+.top-shell .site-head{z-index:2}
+.top-shell .mobile-menu{position:absolute;top:100%;left:0;right:0;z-index:3}
+.head-actions{gap:10px}
+.bag-trigger{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-width:78px;min-height:44px;padding:8px 15px 8px 9px;border:1px solid #c6acaa;border-radius:0;background:transparent;color:var(--wine);font-size:10px;font-weight:800;letter-spacing:.1em}
+.bag-trigger svg{height:19px;width:19px;flex:none}
+.bag-trigger-label{font-size:10px}
+.bag-count{position:absolute;top:-8px;right:-9px;display:grid;place-items:center;min-width:23px;height:23px;padding:0 4px;border-radius:50%;background:var(--wine);color:white;font-size:10px;font-weight:800;letter-spacing:0;border:2px solid var(--ivory)}
+.bag-trigger:hover,.bag-trigger:focus-visible{background:var(--wine);color:white}
+.collection-item{min-width:0;position:relative;align-self:start}
+.collection-item[hidden]{display:none!important}
+.collection-item .collection-card{display:block}
+.collection-item .collection-card:focus-visible{outline-offset:4px}
+.quick-add{position:absolute;right:12px;bottom:61px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid #d4c7c0;background:rgba(247,244,239,.96);color:var(--wine);min-height:42px;min-width:111px;padding:10px 14px;font:800 10px 'DM Sans',Arial,sans-serif;letter-spacing:.055em;z-index:1;box-shadow:0 5px 17px #230d1320;transition:background .2s,color .2s,transform .2s}
+.quick-add:hover,.quick-add:focus-visible{background:var(--wine);color:#fff;transform:translateY(-2px)}
+.quick-add span:last-child{font-size:20px;line-height:10px;font-weight:400}
+.lightbox{width:min(92vw,890px);max-width:890px;background:#fffaf5;color:#291b1d;box-shadow:0 0 0 100vw #140609bd;overflow:auto;max-height:min(91dvh,900px)}
+.lightbox::backdrop{background:rgba(17,4,10,.7)}
+.lightbox .close-lightbox{position:sticky;display:grid;place-items:center;float:right;top:0;right:0;width:47px;height:47px;z-index:8;color:var(--wine);background:var(--ivory);font-size:26px}
+.lightbox .lightbox-inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:20px;align-items:stretch;padding:26px;max-height:none;overflow:visible;clear:both}
+.lightbox-photo{min-width:0;display:flex;flex-direction:column}
+.lightbox-photo img{width:100%!important;max-width:100%;height:min(55vh,535px);max-height:none!important;aspect-ratio:.8;object-fit:contain;background:#ede0d4}
+.lightbox-photo p{font-size:11px;letter-spacing:.14em;text-transform:uppercase;text-align:left;margin:14px 0}
+.product-options{align-self:center;padding:15px 12px 28px}
+.product-overline{color:var(--wine);font:800 10px 'DM Sans',sans-serif;letter-spacing:.18em}
+.product-options h3{margin:20px 0 12px;font:clamp(34px,4vw,54px)/1.05 'Italiana',Georgia,serif;color:#2e1c1c}
+.product-lead{line-height:1.7;color:#716266;font-size:13px}
+.product-size-label{font-size:12px;font-weight:800;letter-spacing:.03em;margin:28px 0 12px}
+.size-choices{display:flex;flex-wrap:wrap;gap:7px}
+.size-option{min-height:43px;min-width:44px;border:1px solid #d2c1bb;background:transparent;color:var(--wine);padding:9px 13px;font-size:12px;font-weight:600}
+.size-option.is-selected{background:var(--wine);border-color:var(--wine);color:#fff}
+.product-size-note{font-size:11px;color:#8c7776;line-height:1.6;margin:12px 0 24px}
+.product-action-row{display:flex;align-items:stretch;gap:9px}
+.quantity-picker{border:1px solid var(--line);display:flex;align-items:center;min-height:48px}
+.quantity-picker button{width:32px;height:48px;border:0;background:transparent;color:var(--wine);font-size:20px}
+.quantity-picker output{min-width:26px;text-align:center;font-size:13px;font-weight:800}
+.modal-add{flex:1;border:0;padding:14px 18px;min-height:48px;background:var(--wine);color:#fff;font-size:11px;font-weight:800;letter-spacing:.08em}
+.modal-add:hover{background:#791b34}
+.bag-dialog{position:fixed;inset:0 0 0 auto;margin:0 0 0 auto;padding:0;border:0;width:min(100%,465px);height:100dvh;max-height:100dvh;max-width:100%;overflow:auto;background:var(--ivory);color:var(--ink);box-shadow:-30px 0 70px rgba(29,9,17,.2)}
+.bag-dialog::backdrop{background:rgba(18,7,12,.58);backdrop-filter:blur(3px)}
+.bag-dialog-inner{display:flex;flex-direction:column;min-height:100%}
+.bag-dialog-head{position:sticky;top:0;z-index:3;background:var(--ivory);padding:30px 25px 20px;display:flex;align-items:start;justify-content:space-between;border-bottom:1px solid var(--line)}
+.bag-eyebrow{font-size:10px;font-weight:800;letter-spacing:.22em;color:var(--wine)}
+.bag-dialog-head h2{font:clamp(45px,7vw,65px)/1 'Italiana',Georgia,serif;margin:9px 0 0;font-weight:400}
+.bag-dialog-head h2::first-letter{text-transform:uppercase}
+.bag-close{width:43px;height:43px;border:1px solid var(--line);border-radius:50%;background:transparent;font-size:28px;color:var(--wine);flex:none}
+.bag-subtitle{padding:0 25px;margin:19px 0 0;font-size:13px;color:#766469;line-height:1.65}
+.bag-items{padding:13px 25px 24px;flex:1;overflow:auto}
+.bag-empty{text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:250px;gap:20px}
+.bag-empty p{font:35px/1.18 'Italiana',Georgia,serif;max-width:270px;color:var(--wine)}
+.bag-empty-link{min-height:42px;padding:12px 17px;border:1px solid var(--wine);background:transparent;color:var(--wine);font-size:11px;font-weight:800}
+.bag-item{display:grid;grid-template-columns:88px minmax(0,1fr);gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.bag-item img{width:88px;height:111px;object-fit:cover;background:#e5d4c7}
+.bag-item-info{display:flex;flex-direction:column;align-items:flex-start;min-width:0;gap:7px}
+.bag-item-info strong{font:25px/1.13 'Italiana',Georgia,serif;overflow-wrap:anywhere}
+.bag-item-info small{font-size:11px;color:#716065}
+.bag-item-controls{display:flex;align-items:center;gap:2px;margin-top:auto}
+.bag-quantity-button{min-width:33px;min-height:33px;border:1px solid #c7b4af;background:transparent;color:var(--wine);font-size:17px}
+.bag-quantity-button:disabled{opacity:.35;cursor:not-allowed}
+.bag-item-quantity{min-width:28px;text-align:center;font-size:13px;font-weight:800}
+.bag-remove{margin-left:10px;border:0;background:transparent;color:#83545d;font-size:11px;text-decoration:underline;padding:6px}
+.bag-dialog-foot{position:sticky;bottom:0;z-index:3;margin-top:auto;padding:18px 25px calc(23px + env(safe-area-inset-bottom));background:var(--ivory);border-top:1px solid var(--line);box-shadow:0 -8px 18px #f7f4efec}
+.bag-total{display:flex;align-items:center;justify-content:space-between;font-size:12px;margin-bottom:16px}
+.bag-total strong{font:27px 'Italiana',serif;color:var(--wine)}
+.bag-continue{width:100%;min-height:50px;border:0;background:var(--wine);color:white;font-size:11px;font-weight:800;letter-spacing:.11em}
+.bag-dialog-foot p{font-size:10px;line-height:1.6;color:#89777a;text-align:center;margin:13px auto 0;max-width:350px}
+@media(max-width:1100px){.collection-item:first-child{grid-column:auto}.collection-item .collection-card{width:100%}}
+@media(max-width:700px){
+ html{scroll-padding-top:112px}
+ .site-head{grid-template-columns:minmax(0,1fr) auto!important}
+ .top-shell .site-head{height:70px;padding:0 14px}
+ .wordmark{font-size:clamp(22px,6vw,28px);min-width:0}
+ .wordmark span{font-size:7px;letter-spacing:.36em}
+ .head-actions{gap:7px}
+ .language-btn{width:36px;height:38px;font-size:10px}
+ .bag-trigger{min-width:52px;min-height:40px;padding:6px 8px;gap:3px;flex-direction:column}
+ .bag-trigger svg{height:17px;width:17px}
+ .bag-trigger-label{font-size:8px;line-height:1}
+ .bag-count{right:-5px;top:-8px}
+ .menu-btn{width:34px;height:40px}
+ .top-shell .mobile-menu{top:100%}
+ .collection-item:first-child{grid-column:span 2}
+ .collection-item:first-child .card-photo{aspect-ratio:1.18}
+ .quick-add{bottom:40px;right:7px;min-width:78px;min-height:38px;padding:8px 10px;font-size:9px}
+ .quick-add span:last-child{font-size:18px}
+ .collection-item:first-child .quick-add{bottom:47px}
+ .lightbox{width:min(100vw - 22px,520px);max-height:91dvh}
+ .lightbox .lightbox-inner{display:flex;flex-direction:column;gap:0;padding:12px 15px 20px}
+ .lightbox-photo img{height:min(36dvh,280px);object-fit:contain}
+ .lightbox-photo p{margin:8px 0;font-size:9px}
+ .product-options{width:100%;padding:10px 5px 10px}
+ .product-options h3{font-size:clamp(29px,8vw,41px);margin:10px 0 7px}
+ .product-lead{margin:4px 0;font-size:11px}
+ .product-size-label{margin:17px 0 9px}
+ .product-size-note{margin:9px 0 14px}
+ .size-option{min-height:40px;min-width:42px}
+ .bag-dialog{width:100%;height:100dvh}
+ .bag-dialog-head{padding:23px 20px 16px}
+ .bag-subtitle{padding:0 20px}
+ .bag-items{padding:11px 20px 18px}
+ .bag-dialog-foot{padding-left:20px;padding-right:20px}
+}
+@media(max-width:365px){
+ .top-shell .site-head{padding:0 11px}
+ .wordmark{font-size:21px}
+ .head-actions{gap:5px}
+ .bag-trigger{min-width:48px}
+ .quick-add{font-size:8px;min-width:70px}
+}
+@media(prefers-reduced-motion:reduce){.quick-add{transition:none}}
+
+/* Boutique price display — every photographed look US$45. */
+.collection-item .card-foot{flex-wrap:wrap;align-items:center}
+.collection-item .card-foot>span:first-child{flex:1 1 65%;min-width:0}
+.collection-item .card-foot>span:nth-child(2){order:3;color:#967f7c;font-weight:400;font-size:10px}
+.collection-item .card-foot .card-price{order:2;margin-left:auto;color:#50172a;font:700 clamp(15px,1.8vw,20px) 'DM Sans',sans-serif;letter-spacing:-.02em;white-space:nowrap}
+.product-unit-price{color:#5a0f21;font:700 22px 'DM Sans',sans-serif;letter-spacing:.01em;margin:8px 0 15px}
+.bag-line-price{font-weight:700!important;color:#5a0f21!important;font-size:12px!important}
+.bag-subtotal-row{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:-3px 0 18px;border-top:1px solid #d9c5c0;padding-top:12px;color:#4a242d;font-size:13px}
+.bag-subtotal-row strong{font-size:19px;font-weight:800}
+@media(max-width:700px){
+ .collection-item .card-foot .card-price{font-size:17px}
+ .collection-item .card-foot{min-height:72px!important}
+ .collection-item .quick-add{bottom:88px!important}
+ .product-unit-price{font-size:20px}
+}

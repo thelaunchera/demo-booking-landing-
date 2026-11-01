@@ -1,0 +1,37 @@
+/* Jaramillo Boutique · editorial reading hierarchy, Nov 2026.
+   Visual refinements only; preserve the designer image, catalog and boutique UI. */
+.hero .hero-text {max-width:680px;min-width:0;}
+.hero .hero-text .eyebrow {letter-spacing:.12em;line-height:1.55;margin-bottom:clamp(12px,1.5vw,18px);}
+.hero .hero-text h1 {
+  max-width:15ch;
+  font-size:clamp(48px,5.5vw,89px);
+  line-height:1.075;
+  letter-spacing:-.043em;
+  text-wrap:balance;
+  overflow-wrap:break-word;
+}
+.hero .hero-text .hero-body {
+  max-width:45ch;
+  font-size:clamp(15px,1.27vw,17px);
+  line-height:1.6;
+}
+.hero .hero-text .button-ivory {
+  min-height:52px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 25px;
+  font-size:14px;
+  font-weight:700;
+  text-align:center;
+  white-space:normal;
+}
+.hero .hero-text .hero-footnote {margin-top:clamp(16px,2vw,25px);}
+.hero .hero-text .button-ivory:focus-visible {outline:3px solid #efdbc6;outline-offset:4px;}
+@media(max-width:760px){
+  .hero .hero-text .eyebrow {font-size:10px;margin-bottom:10px;}
+  .hero .hero-text h1 {font-size:clamp(37px,9vw,57px);line-height:1.1;max-width:100%;}
+  .hero .hero-text .hero-body {font-size:14px;line-height:1.54;max-width:36ch;}
+  .hero .hero-text .button-ivory {min-height:48px;padding:12px 19px;font-size:13px;max-width:100%;}
+}
+@media(prefers-reduced-motion:reduce){.hero .hero-text .button-ivory{transition:none;}}

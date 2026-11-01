@@ -1,0 +1,17 @@
+/* Interactive Jaramillo brand chapters — not a stock ticker */
+.brand-story-banner{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:25px;min-height:114px;padding:22px clamp(23px,6vw,94px);background:#f9f0e7;color:#3d1925;border-bottom:1px solid #b8a093;position:relative;overflow:hidden}
+.brand-story-banner::after{content:"";position:absolute;bottom:0;left:0;height:2px;width:100%;transform-origin:left;background:#7c3045;animation:storyTimer 7s linear infinite}
+.brand-story-banner.is-paused::after{animation-play-state:paused}
+@keyframes storyTimer{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.story-banner-seal{font:40px Italiana,Georgia,serif;color:#6b2b3e;border:1px solid #c7aa99;border-radius:50%;height:64px;width:64px;display:grid;place-items:center;letter-spacing:-.1em;padding-right:6px}
+.story-banner-copy{display:flex;flex-direction:column;gap:8px;min-width:0}
+.story-banner-overline{font:700 9px 'DM Sans',sans-serif;letter-spacing:.18em;color:#926b6d}
+.story-banner-title{font:clamp(24px,3vw,42px)/1.13 Italiana,Georgia,serif;display:block;max-width:100%;transition:opacity .2s}
+.story-banner-title.is-changing{opacity:.22}
+.story-banner-title:hover{color:#7a233c}
+.story-banner-tabs{display:flex;gap:7px}
+.story-tab{min-width:40px;min-height:40px;display:grid;place-items:center;border:1px solid #d1b9ab;background:transparent;color:#694350;font:700 10px 'DM Sans',sans-serif}
+.story-tab.is-current,.story-tab:hover{background:#5a0f21;color:white;border-color:#5a0f21}
+.story-tab:focus-visible,.story-banner-title:focus-visible{outline:2px solid #a17455;outline-offset:3px}
+@media(max-width:700px){.brand-story-banner{grid-template-columns:minmax(0,1fr) auto;gap:12px;padding:19px 20px;min-height:122px}.story-banner-seal{display:none}.story-banner-title{font-size:clamp(25px,6vw,32px);line-height:1.1}.story-banner-overline{font-size:8px}.story-banner-tabs{flex-direction:column;gap:4px}.story-tab{min-width:30px;min-height:27px;font-size:9px}}
+@media(prefers-reduced-motion:reduce){.brand-story-banner::after{animation:none!important}}

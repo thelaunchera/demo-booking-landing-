@@ -1,0 +1,54 @@
+/* Fashion lookbook with image-first touch browsing */
+.collections-section{background:linear-gradient(#fcf8f2,#f7f4ef 65%)}
+.intro-row{align-items:center;gap:35px}
+.intro-row h2{max-width:780px}
+.intro-row p{max-width:440px;color:#544747;font-size:14px}
+.filters{gap:8px;margin-top:34px}
+.filter{min-height:44px;border-radius:2px;padding:11px 19px;letter-spacing:.035em}
+.collection-grid{gap:32px 20px}
+.collection-item{position:relative;min-width:0;align-self:stretch}
+.collection-item[hidden]{display:none!important}
+.collection-item .collection-card{display:flex!important;flex-direction:column;height:100%;min-width:0}
+.collection-item .card-photo,.collection-item:first-child .card-photo{aspect-ratio:4/5;background:radial-gradient(ellipse at 50% 40%,#fbf2e8,#e8d6c7 82%,#ddc7b6);border:1px solid #e4d2c5;display:grid;place-items:center;overflow:hidden}
+.collection-item .card-photo img{width:100%;height:100%;object-fit:contain!important;object-position:center!important;transform:none!important;transition:transform .4s ease;filter:drop-shadow(0 8px 14px #472b2018)}
+.collection-item .collection-card:hover .card-photo img{transform:scale(1.025)!important}
+.collection-item .collection-card:active .card-photo img{transform:scale(.99)!important}
+.collection-item .card-foot{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;min-height:68px;padding:14px 2px;border-bottom:1px solid #bba89c;color:#432b32;font:700 11px/1.5 'DM Sans',sans-serif;letter-spacing:.065em}
+.collection-item .card-foot span:last-child{color:#8d5664;font-weight:500}
+.collection-item .quick-add{bottom:83px;right:11px;min-height:42px;box-shadow:0 4px 18px #1e071e25}
+.catalog-note{border-top:1px solid #dec9bb;padding-top:16px}
+.lightbox-photo-stage{position:relative;display:grid;place-items:center;min-height:285px;background:linear-gradient(140deg,#faf1e9,#e5d3c5)}
+.lightbox-photo-stage img{width:100%!important;height:min(65vh,625px)!important;max-height:70dvh!important;object-fit:contain!important;object-position:center!important;cursor:zoom-in;touch-action:pan-y}
+.photo-zoom-toggle{position:absolute;left:12px;bottom:12px;min-height:42px;padding:10px 14px;border:1px solid #cfb7ad;background:#fff9f2f0;color:#542437;font-size:10px;font-weight:700;letter-spacing:.07em}
+.photo-zoom-toggle:hover{background:#542437;color:white}
+.photo-swipe-hint{margin:3px 0 0;font-size:10px;letter-spacing:0;text-align:left;color:#8b7875;text-transform:none}
+.lightbox.photo-expanded{width:min(98vw,1120px);max-width:1120px}
+.lightbox.photo-expanded .lightbox-inner{display:block}
+.lightbox.photo-expanded .lightbox-photo-stage img{height:77dvh!important;max-height:77dvh!important;cursor:zoom-out}
+.lightbox.photo-expanded .product-options{display:none}
+@media(max-width:700px){
+ .collections-section{padding:72px 0}
+ .collections-section .intro-row{margin:0 22px 12px;display:block}
+ .intro-row h2{font-size:clamp(50px,11vw,70px);line-height:1.05;margin:15px 0}
+ .intro-row p{font-size:13px;line-height:1.72}
+ .filters{margin:21px 0 12px;padding:0 22px 10px;overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}
+ .filters::-webkit-scrollbar{display:none}
+ .filter{flex:none;white-space:nowrap;min-height:43px;padding:11px 16px}
+ .collection-grid{display:flex!important;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding:0 22px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#a3787d transparent;padding:5px 22px 27px}
+ .collection-item,.collection-item:first-child{grid-column:auto!important;flex:0 0 min(82vw,390px);height:auto;scroll-snap-align:start}
+ .collection-item .card-photo,.collection-item:first-child .card-photo{aspect-ratio:4/5!important;min-height:0}
+ .collection-item .card-photo img{object-fit:contain!important}
+ .collection-item .card-foot{font-size:12px;min-height:76px;padding:15px 2px}
+ .collection-item .quick-add,.collection-item:first-child .quick-add{right:9px;bottom:91px;min-width:94px;min-height:43px;padding:10px 12px}
+ .catalog-note{margin:0 22px;font-size:11px}
+ .lightbox{width:calc(100vw - 12px);max-height:94dvh}
+ .lightbox .lightbox-inner{padding:10px 13px 23px}
+ .lightbox-photo-stage{min-height:0}
+ .lightbox-photo-stage img{height:min(56dvh,520px)!important;max-height:56dvh!important}
+ .lightbox.photo-expanded .lightbox-photo-stage img{height:74dvh!important;max-height:74dvh!important}
+ .lightbox-photo p{font-size:11px;margin:8px 0}
+ .photo-zoom-toggle{font-size:9px;min-height:40px}
+ .photo-swipe-hint{font-size:10px}
+}
+@media(max-width:390px){.collection-item{flex-basis:87vw}}
+@media(prefers-reduced-motion:reduce){.collection-item .card-photo img{transition:none!important}}
