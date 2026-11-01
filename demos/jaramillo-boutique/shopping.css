@@ -111,3 +111,19 @@ html{scroll-padding-top:135px}
  .quick-add{font-size:8px;min-width:70px}
 }
 @media(prefers-reduced-motion:reduce){.quick-add{transition:none}}
+
+/* Boutique price display — every photographed look US$45. */
+.collection-item .card-foot{flex-wrap:wrap;align-items:center}
+.collection-item .card-foot>span:first-child{flex:1 1 65%;min-width:0}
+.collection-item .card-foot>span:nth-child(2){order:3;color:#967f7c;font-weight:400;font-size:10px}
+.collection-item .card-foot .card-price{order:2;margin-left:auto;color:#50172a;font:700 clamp(15px,1.8vw,20px) 'DM Sans',sans-serif;letter-spacing:-.02em;white-space:nowrap}
+.product-unit-price{color:#5a0f21;font:700 22px 'DM Sans',sans-serif;letter-spacing:.01em;margin:8px 0 15px}
+.bag-line-price{font-weight:700!important;color:#5a0f21!important;font-size:12px!important}
+.bag-subtotal-row{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:-3px 0 18px;border-top:1px solid #d9c5c0;padding-top:12px;color:#4a242d;font-size:13px}
+.bag-subtotal-row strong{font-size:19px;font-weight:800}
+@media(max-width:700px){
+ .collection-item .card-foot .card-price{font-size:17px}
+ .collection-item .card-foot{min-height:72px!important}
+ .collection-item .quick-add{bottom:88px!important}
+ .product-unit-price{font-size:20px}
+}
