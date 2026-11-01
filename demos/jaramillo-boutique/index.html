@@ -9,9 +9,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20261101-bag-v1">
+  <link rel="stylesheet" href="shopping.css?v=20261101-bag-v1">
 </head>
 <body>
+  <div class="top-shell" id="topShell">
   <div class="announcement"><span data-i18n="announce">A DESIGNER'S EYE. A NEW YORK STATE OF MIND.</span></div>
   <header class="site-head">
     <a class="wordmark" href="#top" aria-label="Jaramillo Boutique home">JARAMILLO<span>BOUTIQUE</span></a>
@@ -22,6 +24,11 @@
     </nav>
     <div class="head-actions">
       <button class="language-btn" id="languageBtn" type="button" aria-label="Switch language">ES</button>
+      <button class="bag-trigger" id="bagTrigger" type="button" aria-label="Open bag, 0 pieces" aria-haspopup="dialog" aria-controls="bagDialog">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16l-1.4 12H5.4L4 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg>
+        <span class="bag-trigger-label" id="bagTriggerLabel">BAG</span>
+        <span class="bag-count" id="bagCount" aria-live="polite">0</span>
+      </button>
       <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false"><span></span><span></span></button>
     </div>
   </header>
@@ -30,6 +37,7 @@
     <a href="#story" data-i18n="navDesigner">The designer</a>
     <a href="#boutiques" data-i18n="navBoutiques">Our boutiques</a>
   </nav>
+  </div>
   <main id="top">
     <section class="hero" aria-labelledby="heroTitle">
       <div class="hero-text">
@@ -56,15 +64,15 @@
         <button type="button" class="filter" data-filter="essentials" data-i18n="filterEssentials" aria-pressed="false">Essentials</button>
       </div>
       <div class="collection-grid" id="collectionGrid">
-        <a class="collection-card large-card" href="assets/corse.webp" data-group="clothing" data-label-en="The signature look" data-label-es="El look insignia"><div class="card-photo"><img src="assets/corse.webp" alt="Burgundy tailored corset and trousers" loading="lazy"></div><div class="card-foot"><span data-i18n="cardCorse">THE SIGNATURE LOOK</span><span>01 <span aria-hidden="true">↗</span></span></div></a>
-        <a class="collection-card" href="assets/colombian-jeans.webp" data-group="clothing" data-label-en="Colombian jeans" data-label-es="Pantalones colombianos"><div class="card-photo"><img src="assets/colombian-jeans.webp" alt="High-waisted blue Colombian-inspired jeans and white top" loading="lazy"></div><div class="card-foot"><span data-i18n="cardJeans">COLOMBIAN JEANS</span><span>02 <span aria-hidden="true">↗</span></span></div></a>
-        <a class="collection-card" href="assets/noche.webp" data-group="clothing" data-label-en="After dark" data-label-es="Vestidos de noche"><div class="card-photo"><img src="assets/noche.webp" alt="Wine satin evening gown" loading="lazy"></div><div class="card-foot"><span data-i18n="cardNight">AFTER DARK</span><span>03 <span aria-hidden="true">↗</span></span></div></a>
-        <a class="collection-card" href="assets/fajas.webp" data-group="essentials" data-label-en="Shapewear edit" data-label-es="Colección de fajas"><div class="card-photo"><img src="assets/fajas.webp" alt="Neutral structured shapewear look" loading="lazy"></div><div class="card-foot"><span data-i18n="cardFajas">SHAPEWEAR EDIT</span><span>04 <span aria-hidden="true">↗</span></span></div></a>
-        <a class="collection-card" href="assets/plataformas.webp" data-group="shoes" data-label-en="Shoes for every entrance" data-label-es="Plataformas y tacones"><div class="card-photo"><img src="assets/plataformas.webp" alt="Premium shoe display with platform heels in different styles" loading="lazy"></div><div class="card-foot"><span data-i18n="cardPlats">PLATFORMS & HEELS</span><span>05 <span aria-hidden="true">↗</span></span></div></a>
-        <a class="collection-card" href="assets/sandalias.webp" data-group="shoes" data-label-en="Sandal collection" data-label-es="Sandalias colombianas"><div class="card-photo"><img src="assets/sandalias.webp" alt="Display of glamorous women's sandals" loading="lazy"></div><div class="card-foot"><span data-i18n="cardSandals">THE SANDAL EDIT</span><span>06 <span aria-hidden="true">↗</span></span></div></a>
-        <a class="collection-card" href="assets/blusas.webp" data-group="clothing" data-label-en="Blouses and beautiful details" data-label-es="Blusas y detalles femeninos"><div class="card-photo"><img src="assets/blusas.webp" alt="Elegant white blouse and burgundy tailored trousers" loading="lazy"></div><div class="card-foot"><span data-i18n="cardBlouses">BLOUSES & DETAILS</span><span>07 <span aria-hidden="true">↗</span></span></div></a>
-        <a class="collection-card" href="assets/winter.webp" data-group="clothing" data-label-en="Cold-weather style" data-label-es="Moda otoño e invierno"><div class="card-photo"><img src="assets/winter.webp" alt="Camel trench coat and dark winter outfit" loading="lazy"></div><div class="card-foot"><span data-i18n="cardWinter">FALL / WINTER</span><span>08 <span aria-hidden="true">↗</span></span></div></a>
-        <a class="collection-card" href="assets/summer.webp" data-group="clothing" data-label-en="Spring and summer" data-label-es="Primavera y verano"><div class="card-photo"><img src="assets/summer.webp" alt="Feminine floral summer dress" loading="lazy"></div><div class="card-foot"><span data-i18n="cardSummer">SPRING / SUMMER</span><span>09 <span aria-hidden="true">↗</span></span></div></a>
+        <article class="collection-item" data-group="clothing"><a class="collection-card large-card" href="assets/corse.webp" data-group="clothing" data-label-en="The signature look" data-label-es="El look insignia"><div class="card-photo"><img src="assets/corse.webp" alt="Burgundy tailored corset and trousers" loading="lazy"></div><div class="card-foot"><span data-i18n="cardCorse">THE SIGNATURE LOOK</span><span>01 <span aria-hidden="true">↗</span></span></div></a><button class="quick-add" type="button" data-product-index="0" aria-label="Choose The signature look and add to bag"><span class="quick-add-word">CHOOSE</span><span aria-hidden="true">+</span></button></article>
+        <article class="collection-item" data-group="clothing"><a class="collection-card" href="assets/colombian-jeans.webp" data-group="clothing" data-label-en="Colombian jeans" data-label-es="Pantalones colombianos"><div class="card-photo"><img src="assets/colombian-jeans.webp" alt="High-waisted blue Colombian-inspired jeans and white top" loading="lazy"></div><div class="card-foot"><span data-i18n="cardJeans">COLOMBIAN JEANS</span><span>02 <span aria-hidden="true">↗</span></span></div></a><button class="quick-add" type="button" data-product-index="1" aria-label="Choose Colombian jeans and add to bag"><span class="quick-add-word">CHOOSE</span><span aria-hidden="true">+</span></button></article>
+        <article class="collection-item" data-group="clothing"><a class="collection-card" href="assets/noche.webp" data-group="clothing" data-label-en="After dark" data-label-es="Vestidos de noche"><div class="card-photo"><img src="assets/noche.webp" alt="Wine satin evening gown" loading="lazy"></div><div class="card-foot"><span data-i18n="cardNight">AFTER DARK</span><span>03 <span aria-hidden="true">↗</span></span></div></a><button class="quick-add" type="button" data-product-index="2" aria-label="Choose After dark and add to bag"><span class="quick-add-word">CHOOSE</span><span aria-hidden="true">+</span></button></article>
+        <article class="collection-item" data-group="essentials"><a class="collection-card" href="assets/fajas.webp" data-group="essentials" data-label-en="Shapewear edit" data-label-es="Colección de fajas"><div class="card-photo"><img src="assets/fajas.webp" alt="Neutral structured shapewear look" loading="lazy"></div><div class="card-foot"><span data-i18n="cardFajas">SHAPEWEAR EDIT</span><span>04 <span aria-hidden="true">↗</span></span></div></a><button class="quick-add" type="button" data-product-index="3" aria-label="Choose Shapewear edit and add to bag"><span class="quick-add-word">CHOOSE</span><span aria-hidden="true">+</span></button></article>
+        <article class="collection-item" data-group="shoes"><a class="collection-card" href="assets/plataformas.webp" data-group="shoes" data-label-en="Shoes for every entrance" data-label-es="Plataformas y tacones"><div class="card-photo"><img src="assets/plataformas.webp" alt="Premium shoe display with platform heels in different styles" loading="lazy"></div><div class="card-foot"><span data-i18n="cardPlats">PLATFORMS & HEELS</span><span>05 <span aria-hidden="true">↗</span></span></div></a><button class="quick-add" type="button" data-product-index="4" aria-label="Choose Shoes for every entrance and add to bag"><span class="quick-add-word">CHOOSE</span><span aria-hidden="true">+</span></button></article>
+        <article class="collection-item" data-group="shoes"><a class="collection-card" href="assets/sandalias.webp" data-group="shoes" data-label-en="Sandal collection" data-label-es="Sandalias colombianas"><div class="card-photo"><img src="assets/sandalias.webp" alt="Display of glamorous women's sandals" loading="lazy"></div><div class="card-foot"><span data-i18n="cardSandals">THE SANDAL EDIT</span><span>06 <span aria-hidden="true">↗</span></span></div></a><button class="quick-add" type="button" data-product-index="5" aria-label="Choose Sandal collection and add to bag"><span class="quick-add-word">CHOOSE</span><span aria-hidden="true">+</span></button></article>
+        <article class="collection-item" data-group="clothing"><a class="collection-card" href="assets/blusas.webp" data-group="clothing" data-label-en="Blouses and beautiful details" data-label-es="Blusas y detalles femeninos"><div class="card-photo"><img src="assets/blusas.webp" alt="Elegant white blouse and burgundy tailored trousers" loading="lazy"></div><div class="card-foot"><span data-i18n="cardBlouses">BLOUSES & DETAILS</span><span>07 <span aria-hidden="true">↗</span></span></div></a><button class="quick-add" type="button" data-product-index="6" aria-label="Choose Blouses and beautiful details and add to bag"><span class="quick-add-word">CHOOSE</span><span aria-hidden="true">+</span></button></article>
+        <article class="collection-item" data-group="clothing"><a class="collection-card" href="assets/winter.webp" data-group="clothing" data-label-en="Cold-weather style" data-label-es="Moda otoño e invierno"><div class="card-photo"><img src="assets/winter.webp" alt="Camel trench coat and dark winter outfit" loading="lazy"></div><div class="card-foot"><span data-i18n="cardWinter">FALL / WINTER</span><span>08 <span aria-hidden="true">↗</span></span></div></a><button class="quick-add" type="button" data-product-index="7" aria-label="Choose Cold-weather style and add to bag"><span class="quick-add-word">CHOOSE</span><span aria-hidden="true">+</span></button></article>
+        <article class="collection-item" data-group="clothing"><a class="collection-card" href="assets/summer.webp" data-group="clothing" data-label-en="Spring and summer" data-label-es="Primavera y verano"><div class="card-photo"><img src="assets/summer.webp" alt="Feminine floral summer dress" loading="lazy"></div><div class="card-foot"><span data-i18n="cardSummer">SPRING / SUMMER</span><span>09 <span aria-hidden="true">↗</span></span></div></a><button class="quick-add" type="button" data-product-index="8" aria-label="Choose Spring and summer and add to bag"><span class="quick-add-word">CHOOSE</span><span aria-hidden="true">+</span></button></article>
       </div>
       <p class="catalog-note" data-i18n="catalogNote">Editorial concept images. Final styles, sizes and availability will be confirmed with the boutique.</p>
     </section>
@@ -74,7 +82,30 @@
     <section class="boutiques" id="boutiques"><div class="boutique-header"><span class="eyebrow wine" data-i18n="storesKicker">03 / VISIT IN PERSON</span><h2 data-i18n="storesTitle">Three boutiques.<br><i>One signature style.</i></h2><p data-i18n="storesIntro">Jaramillo Boutique has three New York locations. Individual addresses and hours will be added when confirmed.</p></div><div class="boutique-list"><div class="boutique-item"><span>01</span><strong data-i18n="storeOne">Boutique location 01</strong><small data-i18n="storePending">Address coming soon</small></div><div class="boutique-item"><span>02</span><strong data-i18n="storeTwo">Boutique location 02</strong><small data-i18n="storePending">Address coming soon</small></div><div class="boutique-item"><span>03</span><strong data-i18n="storeThree">Boutique location 03</strong><small data-i18n="storePending">Address coming soon</small></div></div></section>
   </main>
   <footer class="footer"><div class="footer-wordmark">JARAMILLO <span>BOUTIQUE</span></div><p data-i18n="footerCaption">Colombian roots. New York confidence.</p><div class="footer-end"><span>© <span id="year"></span> Jaramillo Boutique</span><span data-i18n="previewDisclaimer">Private concept preview · No online checkout</span></div></footer>
-  <dialog class="lightbox" id="lightbox"><form method="dialog"><button aria-label="Close image" class="close-lightbox" type="submit">×</button></form><div class="lightbox-inner"><img id="lightboxImg" src="" alt=""><p id="lightboxCaption"></p></div></dialog>
-  <script src="main.js" defer></script>
+  <dialog class="lightbox" id="lightbox" aria-labelledby="lightboxCaption">
+    <form method="dialog"><button aria-label="Close product details" class="close-lightbox" type="submit">×</button></form>
+    <div class="lightbox-inner">
+      <div class="lightbox-photo"><img id="lightboxImg" src="" alt=""><p id="lightboxCaption"></p></div>
+      <div class="product-options">
+        <span class="product-overline" id="productOverline">JARAMILLO / THE COLLECTION</span>
+        <h3 id="productTitle">Selected look</h3>
+        <p class="product-lead" id="productLead">Discover the look and add it to your preview bag.</p>
+        <p class="product-size-label" id="productSizeLabel">Size to ask about</p>
+        <div id="productSizeChoices" class="size-choices" role="group" aria-label="Select a sample size"></div>
+        <p class="product-size-note" id="productSizeNote">Sizes are for preview only. Availability is not confirmed.</p>
+        <div class="product-action-row"><div class="quantity-picker" aria-label="Quantity"><button type="button" id="productQtyMinus" aria-label="Decrease quantity">−</button><output id="productQtyValue">1</output><button type="button" id="productQtyPlus" aria-label="Increase quantity">+</button></div><button class="modal-add" id="productAddToBag" type="button">ADD TO BAG</button></div>
+      </div>
+    </div>
+  </dialog>
+  <dialog class="bag-dialog" id="bagDialog" aria-labelledby="bagTitle">
+    <div class="bag-dialog-inner">
+      <header class="bag-dialog-head"><div><span class="bag-eyebrow" id="bagEyebrow">YOUR EDIT</span><h2 id="bagTitle">Your bag<span>.</span></h2></div><button type="button" class="bag-close" id="bagClose" aria-label="Close bag">×</button></header>
+      <p class="bag-subtitle" id="bagSubtitle">Collect the looks you love in one place.</p>
+      <div class="bag-items" id="bagItems" aria-live="polite"></div>
+      <footer class="bag-dialog-foot"><div class="bag-total"><span id="bagPiecesLabel">Pieces selected</span><strong id="bagPiecesValue">0</strong></div><button type="button" id="bagContinue" class="bag-continue">CONTINUE EXPLORING</button><p id="bagDisclaimer">This is a visual selection only. No order or payment is placed; styles and sizes are unconfirmed.</p></footer>
+    </div>
+  </dialog>
+  <script src="main.js?v=20261101-bag-v1" defer></script>
+  <script src="shopping.js?v=20261101-bag-v1" defer></script>
 </body>
 </html>
