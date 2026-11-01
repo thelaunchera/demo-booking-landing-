@@ -108,6 +108,13 @@ jobs:
           ! grep -q 'jaramilloHaloFix' _site/jaramillo-boutique/index.html
           grep -q 'V6: photography fills' _site/jaramillo-boutique/editorial-type-v5.css
           node --check _site/jaramillo-boutique/shopping.js
+          node --check _site/jaramillo-boutique/boutique-real.js
+          test -s _site/jaramillo-boutique/boutique-real.css
+          grep -q 'id="inquiryForm"' _site/jaramillo-boutique/index.html
+          grep -q 'id="bagShare"' _site/jaramillo-boutique/index.html
+          grep -q 'id="shopGuide"' _site/jaramillo-boutique/index.html
+          grep -q 'id="help"' _site/jaramillo-boutique/index.html
+          grep -q 'id="contact"' _site/jaramillo-boutique/index.html
           grep -q 'UNIT_PRICE = 45' _site/jaramillo-boutique/shopping.js
           grep -q 'productUnitPrice' _site/jaramillo-boutique/index.html
           grep -q 'bagSubtotal' _site/jaramillo-boutique/index.html
