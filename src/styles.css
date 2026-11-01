@@ -1,5 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Bebas+Neue&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900;1000&family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Bebas+Neue&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -225,3 +225,36 @@ dialog::backdrop{background:#17161697;backdrop-filter:blur(3px)}
 }
 @media print{.board-application-tools,.board-application-header,.board-application-empty button,
  .board-layer-handle{display:none!important}.board-application-layer{outline:0!important}}
+
+/* YUMMM Creative Prompt Library: an independent Studio view */
+.workspace-grid.prompt-mode{display:block!important}
+.workspace-grid.prompt-mode .left-stage{width:100%;max-width:none;min-width:0}
+.yummm-prompt-library{padding:0 0 34px;min-width:0}
+.yummm-prompts-hero{background:#fbf3e8;border:1px solid #e9d4c3;border-radius:20px;padding:38px 42px;display:flex;align-items:center;justify-content:space-between;gap:25px;color:#39251e}
+.yummm-prompts-hero h2{font:700 clamp(27px,3.4vw,44px)/1.12 'DM Serif Display',Georgia,serif;letter-spacing:-.035em;margin:11px 0}
+.yummm-prompts-hero p{max-width:680px;color:#715a4e;font:400 14px/1.7 'DM Sans',sans-serif;margin:10px 0 0}
+.yummm-prompts-overline{font:800 11px 'DM Sans',sans-serif;letter-spacing:.16em;color:#992b2b}
+.yummm-prompts-help{display:grid;grid-template-columns:auto 1fr;gap:16px;padding:22px 5px;align-items:center;color:#5d493c;font-size:12px;line-height:1.7}
+.yummm-prompts-help strong{font-weight:800;color:#992b2b}
+.yummm-prompt-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}
+.yummm-prompt-card{background:#fff;border:1px solid #e5d9cf;border-radius:16px;padding:24px;min-width:0}
+.yummm-prompt-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#9b2b2a;font-size:11px;letter-spacing:.03em}
+.yummm-prompt-meta small{font-size:10px;font-weight:800;text-transform:uppercase}
+.yummm-prompt-card h3{font:400 26px/1.14 'DM Serif Display',Georgia,serif;margin:13px 0;color:#34201c;letter-spacing:-.035em}
+.yummm-prompt-card>p{font-size:12px;line-height:1.7;color:#69564d;margin:0 0 18px}
+.yummm-prompt-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.yummm-prompt-actions details{font-size:11px;flex:1;min-width:120px}
+.yummm-prompt-actions summary{cursor:pointer;color:#992b2b;font-weight:800;white-space:nowrap}
+.yummm-prompt-actions details[open]{flex-basis:100%;order:5}
+.yummm-prompt-actions pre{max-height:260px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.7 'DM Sans',sans-serif;background:#fcf7f0;border-radius:10px;padding:15px;border:1px solid #ead5c7;margin:12px 0 0}
+.yummm-prompts-bottom{background:#f5ede2;border-radius:15px;padding:24px;margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.yummm-prompts-bottom p{max-width:620px;margin:0;font-size:12px;line-height:1.65;color:#69554a}
+@media(max-width:780px){
+ .yummm-prompts-hero{display:block;padding:25px}
+ .yummm-prompts-hero a{display:inline-flex;margin-top:19px}
+ .yummm-prompts-help{display:block}
+ .yummm-prompts-help strong{display:block;margin-bottom:7px}
+ .yummm-prompt-grid{grid-template-columns:1fr}
+ .yummm-prompts-bottom{display:block}
+ .yummm-prompts-bottom button{margin-top:18px;max-width:100%}
+}
