@@ -1,0 +1,126 @@
+/* Jaramillo Boutique: editorial storytelling through real-life occasions.
+   Preserve all approved photo assets, the accessible gallery and bag flow. */
+:root{--jb-cream:#f7f4ef;--jb-wine:#5a0f21;--jb-ink:#231b1d}
+.announcement{font:600 9px/1.4 'DM Sans',Arial,sans-serif;letter-spacing:.2em;padding:10px 14px}
+.site-head{box-shadow:0 2px 0 #e6d7ca66}
+.hero .hero-text{gap:0}
+.hero h1{font-family:'Italiana',Georgia,serif;font-size:clamp(53px,5.1vw,75px);line-height:1;letter-spacing:-.04em;white-space:normal;max-width:560px;margin:26px 0 20px}
+.hero h1 em{font-family:'Playfair Display',Georgia,serif;font-weight:600;font-style:italic;letter-spacing:-.055em;font-size:.74em;margin-top:6px;line-height:1.1}
+.hero .hero-body{max-width:400px;font-size:14px;line-height:1.65;margin:0 0 28px;color:#f7e9e2}
+.hero .button-ivory{min-height:49px;padding:14px 23px;font:700 11px/1.4 'DM Sans',Arial,sans-serif;letter-spacing:.09em;gap:25px}
+.hero .cta-endmark{font-size:12px}
+.hero .hero-footnote{margin-top:30px}
+#brandStoryBanner .story-banner-title{letter-spacing:-.052em!important}
+#brandStoryBanner .jb-banner-description{max-width:430px}
+.collections-section{padding-top:87px;padding-bottom:72px}
+.collections-section .intro-row{align-items:end;gap:28px;margin-bottom:25px}
+.collections-section .intro-row>div{flex:1 1 auto;min-width:0}
+.collections-section .intro-row h2{font-family:'Italiana',Georgia,serif;max-width:840px;font-size:clamp(60px,5.9vw,94px);line-height:1.02;letter-spacing:-.048em}
+.collections-section .intro-row h2 i{display:inline-block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:.69em;letter-spacing:-.05em;color:#6e2540}
+.collections-section .intro-row p{flex:0 1 315px;max-width:315px;font-size:13px;line-height:1.7}
+.filters{margin-top:23px}
+.collections-section .catalog-note{margin-top:14px!important;color:#8d777b;max-width:560px}
+.collections-section .collection-next{margin-top:18px;gap:15px;padding:15px 0}
+.collections-section .collection-bag-cta{font-size:10px;min-height:46px;box-shadow:none}
+.shop-guide{padding-top:66px;padding-bottom:66px}
+.shop-guide-intro{margin-bottom:27px}
+.shop-guide h2{font-size:clamp(49px,5.3vw,74px);line-height:1.05}
+.shop-guide-intro p{font-size:13px}
+.guide-steps{gap:12px}
+.guide-steps article{background:#faf8f3}
+.guide-steps article img{height:clamp(170px,16vw,238px);object-position:50% 35%;filter:saturate(.94)}
+.guide-steps h3{font:400 clamp(30px,3vw,39px)/1.1 'Italiana',serif;padding:18px 17px 5px}
+.guide-steps p{padding:0 17px;font-size:12px;line-height:1.6}
+.guide-steps article{padding-bottom:18px}
+.designer{min-height:620px;grid-template-columns:47% 53%;background:#eee3d9}
+.designer .designer-visual{padding:48px clamp(22px,5vw,80px);background:radial-gradient(ellipse at 32% 22%,#e8c7b6,#bda798 65%,#978179 100%)}
+.designer .designer-photo{max-width:470px;aspect-ratio:.79;box-shadow:16px 16px 0 #f9ead538;border:0;overflow:hidden}
+.designer .designer-photo img{object-position:50% 38%}
+.designer .designer-copy{padding:65px clamp(24px,6vw,95px) 60px}
+.designer .designer-copy h2{font-size:clamp(46px,5vw,76px);letter-spacing:-.045em;line-height:1.08;margin:22px 0 10px}
+.designer .designer-copy h2 i{font-family:'Playfair Display',Georgia,serif;font-size:.75em;letter-spacing:-.055em}
+.designer .designer-copy p{font-size:13px;line-height:1.75;max-width:430px;margin:13px 0}
+.designer .designer-copy .text-link{font-size:11px;letter-spacing:.04em;max-width:330px;margin-top:17px;padding:15px 0;min-height:44px}
+.sizes-banner{min-height:175px;grid-template-columns:72% 28%;background:linear-gradient(110deg,#5a0f21,#792e44)}
+.sizes-banner .sizes-line{padding:26px clamp(24px,7vw,100px)}
+.sizes-banner .sizes-line h2{font-family:'Italiana',serif;font-size:clamp(56px,7vw,95px);line-height:1;margin:7px 0 4px;letter-spacing:.1em}
+.sizes-banner .sizes-line p{font-size:10px;line-height:1.45;max-width:440px}
+.sizes-banner>img{height:175px;max-height:175px;object-fit:cover;object-position:center 22%}
+.boutiques{padding-top:80px;padding-bottom:65px}
+.boutique-header{text-align:center}
+.boutique-header h2{font-size:clamp(53px,5vw,78px);line-height:1.06;letter-spacing:-.05em}
+.boutique-header p{line-height:1.65}
+.boutique-city-reason{margin:22px auto 12px;max-width:560px;text-align:center;color:#5d444d;font:500 12px/1.7 'DM Sans',Arial,sans-serif}
+.boutiques .city-photo-credits{margin-bottom:0}
+.boutique-help{padding-top:75px;padding-bottom:76px}
+.boutique-help-heading{gap:13px}
+.boutique-help h2{font-size:clamp(48px,5vw,75px)}
+.contact-inquiry-visual{min-height:495px}
+.contact-inquiry-content{padding-top:52px;padding-bottom:52px}
+.contact-inquiry-content h2{font-size:clamp(44px,5vw,68px)}
+.footer{padding-top:54px;padding-bottom:23px}
+.footer .footer-wordmark{font-size:clamp(52px,8vw,113px)}
+.footer>p{margin:20px auto 20px}
+.footer .footer-quick-links{margin-top:9px;padding-top:17px}
+.footer .footer-end{gap:16px;flex-wrap:wrap;line-height:1.5}
+@media(max-width:900px){
+ .hero h1{font-size:clamp(44px,5.2vw,69px)}
+ .designer{grid-template-columns:46% 54%;min-height:550px}
+ .designer .designer-copy{padding:40px 28px}
+ .designer .designer-visual{padding:35px}
+ .designer .designer-copy h2{font-size:clamp(42px,5.8vw,62px)}
+}
+@media(max-width:700px){
+ .announcement{padding:9px 14px;font-size:8px;letter-spacing:.14em}
+ .hero .hero-text{padding:31px 24px 38px}
+ .hero h1{font-size:clamp(51px,12.7vw,73px);max-width:340px;line-height:.97;margin:15px 0 16px}
+ .hero h1 em{font-size:.67em;line-height:1.12;margin-top:7px}
+ .hero .hero-body{font-size:12px;line-height:1.55;margin-bottom:19px;max-width:310px}
+ .hero .button-ivory{min-height:46px;padding:12px 16px;letter-spacing:.05em;gap:14px}
+ .hero .hero-footnote{font-size:8px;margin-top:17px}
+ #brandStoryBanner .story-banner-title{font-size:clamp(22px,6vw,28px)!important;line-height:1.04!important}
+ #brandStoryBanner .jb-banner-description{font-size:10px!important;line-height:1.35!important}
+ .collections-section{padding-top:58px!important;padding-bottom:47px!important}
+ .collections-section .intro-row{margin:0 22px 10px;display:block}
+ .collections-section .intro-row h2{font-size:clamp(54px,11vw,75px);line-height:1.06;margin:12px 0 15px;letter-spacing:-.05em}
+ .collections-section .intro-row h2 i{font-size:.63em}
+ .collections-section .intro-row p{font-size:12px;line-height:1.6;max-width:420px;margin:0 0 10px}
+ .collections-section .filters{margin-top:17px;padding-bottom:7px}
+ .collections-section .collection-next{margin:11px 21px 0;padding:14px 0}
+ .shop-guide{padding:48px 20px 53px}
+ .shop-guide-intro{margin-bottom:18px}
+ .shop-guide h2{font-size:clamp(54px,11.6vw,69px)}
+ .shop-guide-intro p{line-height:1.55;font-size:12px}
+ .guide-steps{gap:11px;padding-bottom:11px}
+ .guide-steps article{flex:0 0 min(73vw,292px)}
+ .guide-steps article img{height:178px}
+ .guide-steps h3{font-size:30px;padding:14px 15px 4px}
+ .guide-steps p{font-size:11px;line-height:1.5;padding:0 15px}
+ .designer{display:flex;flex-direction:column;min-height:0}
+ .designer .designer-visual{padding:24px 27px 37px;min-height:0;max-height:400px}
+ .designer .designer-photo{width:min(78%,315px);aspect-ratio:.85}
+ .designer .designer-visual>span{bottom:12px;font-size:8px}
+ .designer .designer-copy{padding:39px 24px 45px}
+ .designer .designer-copy h2{font-size:clamp(52px,11.2vw,73px);margin:12px 0}
+ .designer .designer-copy p{font-size:12px;line-height:1.62;margin:9px 0}
+ .designer .designer-copy .text-link{margin-top:10px}
+ .sizes-banner{display:grid;grid-template-columns:minmax(0,1fr) 30%;min-height:130px}
+ .sizes-banner .sizes-line{padding:19px 13px 19px 22px}
+ .sizes-banner .sizes-line h2{font-size:clamp(41px,9vw,62px);white-space:nowrap;letter-spacing:.035em;margin:5px 0}
+ .sizes-banner .sizes-line .eyebrow{font-size:8px;letter-spacing:.08em}
+ .sizes-banner .sizes-line p{font-size:9px;line-height:1.42;margin-top:3px}
+ .sizes-banner>img{height:100%;max-height:180px;object-position:center 30%}
+ .boutiques{padding-top:61px;padding-bottom:46px}
+ .boutique-header h2{font-size:clamp(54px,11vw,72px)}
+ .boutique-city-reason{margin:14px 20px 12px;font-size:11px;line-height:1.6}
+ .boutique-help{padding-top:53px;padding-bottom:55px}
+ .boutique-help h2{font-size:clamp(51px,11vw,65px)}
+ .contact-inquiry-visual{height:270px;min-height:0}
+ .contact-inquiry-content{padding-top:35px;padding-bottom:45px}
+ .contact-inquiry-content h2{font-size:clamp(48px,11vw,62px)}
+ .footer{padding-top:40px}
+ .footer>p{margin:17px auto 12px;font-size:12px}
+ .footer .footer-end{justify-content:center;font-size:9px}
+}
+@media(max-width:375px){.sizes-banner .sizes-line h2{font-size:39px}.hero h1{font-size:50px}}
+@media(prefers-reduced-motion:reduce){.hero .button-ivory{transition:none}}
