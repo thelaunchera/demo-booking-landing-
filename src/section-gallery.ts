@@ -88,6 +88,13 @@ export function ensureGallery(brand) {
   }
   for (const section of SECTION_DEFS) {
     if (!Array.isArray(brand.sectionPhotos[section.id])) brand.sectionPhotos[section.id] = [];
+    // Curated demo photographs are public, versioned GitHub assets. Unlike user uploads,
+    // they are available on every device and should not require IndexedDB seeding.
+    for (const photo of brand.sectionPhotos[section.id]) {
+      if (photo && typeof photo.id === 'string' && typeof photo.src === 'string' && /^https:\/\//i.test(photo.src)) {
+        cache.set(photo.id, photo.src);
+      }
+    }
   }
   return brand.sectionPhotos;
 }
