@@ -121,7 +121,7 @@
           var price = button.getAttribute('data-price');
           selectedInterest = planInterest[plan];
           document.getElementById('dialogPlan').textContent = plan;
-          document.getElementById('dialogPrice').innerHTML = '$' + price + ' <small>/month</small>';
+          document.getElementById('dialogPrice').textContent = String.fromCharCode(36) + price + ' per month';
           dialog.showModal();
         });
       });
