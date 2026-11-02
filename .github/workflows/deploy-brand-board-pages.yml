@@ -7,6 +7,7 @@ on:
     paths:
       - .github/workflows/deploy-brand-board-pages.yml
       - demos/yummm/**
+      - demos/soluna-yoga/**
   workflow_run:
     workflows:
       - Build Brand Board Studio
@@ -78,6 +79,9 @@ jobs:
           rm -rf _site/yummm
           mkdir -p _site/yummm
           cp -R demos/yummm/. _site/yummm/
+          rm -rf _site/soluna-yoga
+          mkdir -p _site/soluna-yoga
+          cp -R demos/soluna-yoga/. _site/soluna-yoga/
           rm -rf _site/jaramillo-boutique
           mkdir -p _site/jaramillo-boutique
           cp -R boutique-source/demos/jaramillo-boutique/. _site/jaramillo-boutique/
@@ -93,6 +97,9 @@ jobs:
           grep -q 'id="headerBox"' _site/yummm/index.html
           grep -q 'id="headerBoxCount"' _site/yummm/index.html
           ! grep -Fq '$$$(' _site/yummm/script.js
+          test -f _site/soluna-yoga/index.html
+          grep -q 'id="signupForm"' _site/soluna-yoga/index.html
+          grep -q 'data-plan="Flow"' _site/soluna-yoga/index.html
           test -f _site/jaramillo-boutique/index.html
           test -f _site/jaramillo-boutique/styles.css
           test -f _site/jaramillo-boutique/main.js
