@@ -30,6 +30,113 @@
     @media(max-width:700px){.wrap{width:calc(100% - 36px)}.topbar .inner{min-height:70px}.wordmark{font-size:25px}.desktop-nav,.nav-cta{display:none}.menu-btn{display:block}.mobile-menu:not([hidden]){display:flex;flex-direction:column;gap:0;padding:5px 18px 16px;background:var(--cream);border-top:1px solid var(--line)}.mobile-menu a{padding:15px 8px;font-size:13px;border-bottom:1px solid var(--line)}.announcement{font-size:10px;padding:8px 10px}.hero{display:flex;flex-direction:column;min-height:unset}.hero-copy{padding:65px 22px 55px}.hero h1{font-size:clamp(58px,13vw,82px);margin:18px 0}.hero p.lead{font-size:13px;max-width:330px}.hero-visual{min-height:420px;height:440px}.hero-note{margin-top:33px}.hero-visual-caption{bottom:23px;left:22px}.editorial-stamp{right:20px;top:22px;width:95px;height:95px}.mini-strip .wrap{gap:10px;justify-content:center;text-align:center}.mini-strip span{font-size:8px}.mini-strip b{font-size:18px}.intro{padding:68px 0 75px}.intro h2{font-size:clamp(39px,10vw,57px)}.approach-grid,.class-grid,.plans{grid-template-columns:1fr}.approach-grid{margin-top:43px;gap:10px}.approach{padding:24px}.approach .number{margin-bottom:15px}.approach h3{font-size:25px}.classes,.memberships,.waitlist,.faq{padding:68px 0}.section-top{display:block}.section-top h2{font-size:45px;margin-bottom:18px}.section-top p{max-width:420px}.class{min-height:270px}.class-grid{gap:12px}.offer{padding:57px 0}.offer .wrap{gap:22px}.offer h2{font-size:36px}.discount-seal{width:112px}.discount-seal strong{font-size:38px}.discount-seal span{font-size:8px}.plan{min-height:330px}.wait-layout{grid-template-columns:1fr;gap:35px}.wait-copy h2{font-size:58px}.signup{padding:26px 20px}.footer .wrap{display:block}.footer .right{text-align:left;margin-top:25px}.mobile-bottom{display:block;position:fixed;bottom:0;left:0;right:0;z-index:15;padding:9px 18px calc(9px + env(safe-area-inset-bottom));background:#FFFEF9F3;border-top:1px solid var(--line);backdrop-filter:blur(12px)}.mobile-bottom .btn{width:100%}.footer{padding-bottom:110px}}
     @media(max-width:375px){.hero h1{font-size:55px}.hero-visual{min-height:370px;height:370px}.offer .wrap{gap:10px}.offer h2{font-size:32px}.discount-seal{width:93px}.discount-seal strong{font-size:31px}.form-row{grid-template-columns:1fr;gap:0}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+  
+    /* Editorial hierarchy refresh: clear CTAs, strong type, no icons or arrows. */
+    :root{--ink:#252B26;--deep:#35493D;--cream:#FBF8F1;--sage:#DDE7DB;--rose:#EACDBA;--line:rgba(40,54,44,.17)}
+    .announcement{min-height:38px;background:#E4D6C7;color:#303E32;font-size:11px;font-weight:600;gap:12px}
+    .announcement b{color:#364C3C;font-size:10px}.announcement a{font-weight:700}
+    .topbar{background:#FBF8F1}.topbar .inner{min-height:80px}
+    .wordmark{font-size:29px;letter-spacing:.105em}
+    .nav-cta{padding:12px 17px;border-radius:8px;background:#35483C;color:white;border-color:#35483C;font-size:10px;letter-spacing:.04em}
+    .nav-cta:hover{background:#22382A;color:white}
+    .btn,.btn.ghost{border-radius:8px;min-height:46px;padding:13px 21px;gap:0;font-size:12px;letter-spacing:.015em}
+    .btn:hover{transform:translateY(-1px)}
+    .hero{grid-template-columns:53% 47%;min-height:610px;background:#F3F1E9}
+    .hero-copy{padding-top:100px;padding-bottom:92px;padding-right:26px}
+    .hero-copy .overline{font-size:10px;line-height:1.8;font-weight:700;letter-spacing:.15em;color:#4B6450}
+    .hero-copy .overline:before{width:18px}
+    .hero h1{font-size:clamp(65px,6.9vw,105px);letter-spacing:-.061em;line-height:1.06;margin:22px 0 26px;max-width:660px;color:#28352C}
+    .hero h1 em{color:#6B7D6A}
+    .hero p.lead{font-size:15px;line-height:1.85;max-width:420px;color:#515D53;margin-bottom:28px}
+    .hero-note{font-size:10px;font-weight:700;letter-spacing:.105em;margin-top:42px}
+    .hero-note:before{content:none}
+    .hero-visual{min-height:610px;background:#D5DDCF}
+    .hero-visual .arch{inset:12% 12% -7%;background:linear-gradient(148deg,#E7DBCA,#D9BCA5 59%,#B99379)}
+    .sun{width:58%;top:13%;left:26%;box-shadow:0 0 90px 20px rgba(255,232,186,.37)}
+    .floor{background:#9EAD98}.line-art{opacity:.33}
+    .hero-visual-caption{font-size:31px;bottom:45px;left:35px;max-width:230px}
+    .editorial-stamp{display:none}
+    .mini-strip{background:#D6E0D4;padding:15px 0}
+    .mini-strip b{font-size:23px;color:#354B3A}.mini-strip span{color:#536B58;font-size:9px}
+    .offer{padding:55px 0;background:#E8D5C4}
+    .offer .wrap{align-items:center;gap:36px}
+    .offer .wrap>div:first-child{max-width:615px}
+    .offer h2{font-size:clamp(42px,4.7vw,68px);line-height:1.08;letter-spacing:-.045em;margin:13px 0 20px}
+    .offer h2 em{color:#7D715E}
+    .offer p{max-width:450px;font-size:12px;line-height:1.75}
+    .discount-seal{transform:none;border:0;border-radius:0;flex-direction:column;align-items:flex-start;justify-content:center;gap:0;width:auto;max-width:42%;aspect-ratio:auto;text-align:left}
+    .discount-seal strong{font:400 clamp(87px,11vw,166px)/.96 "Playfair Display",serif;letter-spacing:-.095em;color:#374E3D;white-space:nowrap}
+    .discount-seal span{font-size:10px;font-weight:700;letter-spacing:.1em;margin-top:12px;color:#536354}
+    .intro{padding:98px 0 92px}.intro h2{font-size:clamp(41px,4.7vw,66px);max-width:780px;margin:18px auto 24px}
+    .intro>p:last-of-type{font-size:14px;line-height:1.85}
+    .approach-grid{gap:22px;margin-top:60px}
+    .approach{padding:27px 6px 20px 0;background:none;border-radius:0;border-top:1px solid #A7B7A5}
+    .approach .number{font-size:18px;color:#668169;margin-bottom:28px}
+    .approach h3{font-size:26px;margin-bottom:13px;color:#354539}
+    .approach p{font-size:12px;max-width:300px}
+    .classes{background:#385044;padding:90px 0 93px}
+    .section-top{margin-bottom:36px;align-items:end}
+    .section-top h2{font-size:clamp(44px,4.5vw,66px);letter-spacing:-.045em;line-height:1.12}
+    .section-top p{max-width:310px;font-size:12px;line-height:1.85}
+    .class-grid{gap:14px}.class{min-height:370px;border-radius:8px;padding:18px}
+    .class:before{display:none}
+    .class-content{background:rgba(251,250,245,.94);padding:20px 20px 18px;border-radius:5px}
+    .class h3{font-size:32px}.class p{font-size:12px}
+    .memberships{padding:100px 0 100px}.memberships .section-top{margin-bottom:42px}
+    .plans{display:flex;flex-direction:column;gap:10px}
+    .plan,.plan.featured{border:1px solid #C9D3C7;border-radius:8px;background:#FFFEFA;padding:25px 31px;min-height:0;display:flex;flex-direction:row;justify-content:space-between;align-items:center;gap:28px}
+    .plan.featured{background:#DFE8DB;border-color:#B5C9B2}
+    .plan .overline{font-size:9px;color:#768773}
+    .plan h3{font-size:36px;line-height:1.12;margin:7px 0}
+    .plan p{margin:0;color:#617063;max-width:410px}
+    .plan-main{flex:1;min-width:0}
+    .plan-side{display:flex;align-items:center;justify-content:flex-end;gap:35px;flex-shrink:0}
+    .plan .price{font:400 45px/1 "Playfair Display",serif;min-width:95px;white-space:nowrap}
+    .plan .price span{font-size:11px;display:block;margin:9px 0 0}
+    .plan .btn{margin:0;width:auto;min-width:145px;min-height:44px}
+    .plan .tag,.plan .rule,.plan .detail{display:none}
+    .fine{max-width:690px;margin-top:24px}
+    .waitlist{padding:100px 0;background:#E2E9E0}
+    .wait-copy h2{font-size:clamp(49px,6vw,86px)}
+    .signup{border-radius:9px;padding:36px;box-shadow:0 15px 36px rgba(34,65,43,.05)}
+    .signup h3{font-size:36px}
+    .field input,.field select{height:47px;border-radius:6px}
+    .faq{padding:90px 0}.faq h2{font-size:52px}
+    .mobile-bottom .btn{border-radius:8px}
+    .menu-btn{line-height:1}
+    .menu-lines{display:flex;flex-direction:column;gap:6px;padding:6px 2px}
+    .menu-lines i{display:block;width:24px;height:2px;background:#293A2F}
+    @media(min-width:1100px){.hero-copy{padding-left:max(32px,calc((100vw - 1180px)/2))}}
+    @media(max-width:950px){.hero h1{font-size:clamp(56px,6.7vw,80px)}.hero-copy{padding-left:26px;padding-right:20px}.plan-side{gap:18px}}
+    @media(max-width:700px){
+      .announcement{min-height:39px;padding:8px 14px;gap:5px;flex-wrap:wrap;font-size:10px}.announcement b{font-size:9px}
+      .topbar .inner{min-height:66px}.wordmark{font-size:25px}
+      .hero{display:flex;flex-direction:column;min-height:0}.hero-copy{padding:56px 20px 49px}
+      .hero-copy .overline{font-size:9px;letter-spacing:.12em}
+      .hero h1{font-size:clamp(58px,12.5vw,79px);line-height:1.05;margin:22px 0 20px}
+      .hero p.lead{font-size:13px;line-height:1.82;margin-bottom:22px}
+      .hero-note{margin-top:30px;font-size:9px;letter-spacing:.08em}
+      .hero-visual{height:355px;min-height:355px}
+      .hero-visual-caption{font-size:25px;bottom:29px;left:24px}
+      .visual-label{max-width:130px;right:18px;bottom:21px;font-size:8px}
+      .mini-strip{padding:17px 0}.mini-strip .wrap{justify-content:space-between;gap:8px}
+      .mini-strip span{font-size:8px}.mini-strip b{font-size:18px}
+      .offer{padding:51px 0}.offer .wrap{display:flex;flex-direction:column-reverse;align-items:flex-start;gap:20px}
+      .discount-seal{max-width:none}.discount-seal strong{font-size:102px;line-height:1}.discount-seal span{font-size:9px;margin-top:0}
+      .offer h2{font-size:clamp(37px,10vw,53px);margin:15px 0}
+      .intro{padding:72px 0}.intro h2{font-size:clamp(39px,10vw,55px)}.intro>p:last-of-type{font-size:13px}
+      .approach-grid{margin-top:38px;gap:5px}.approach{padding:19px 3px 22px 0}.approach .number{margin-bottom:14px}
+      .classes,.memberships,.waitlist,.faq{padding:70px 0}.section-top h2{font-size:clamp(40px,11vw,55px)}
+      .class-grid{gap:12px}.class{min-height:290px;padding:15px}
+      .plans{gap:10px}.plan,.plan.featured{padding:25px 20px;display:block}
+      .plan h3{font-size:35px;margin:8px 0}.plan-side{justify-content:space-between;gap:14px;margin-top:23px}
+      .plan .price{min-width:0;font-size:42px}.plan .price span{font-size:10px;margin-top:5px}
+      .plan .btn{min-width:0;padding:12px 17px}
+      .wait-copy h2{font-size:clamp(55px,12vw,75px)}.signup{padding:26px 20px}.signup h3{font-size:32px}.faq h2{font-size:41px}
+    }
+    @media(max-width:375px){.hero h1{font-size:54px}.hero-visual{height:330px;min-height:330px}.plan .btn{font-size:11px;padding:11px 12px}.discount-seal strong{font-size:92px}}
+    @media(prefers-reduced-motion:no-preference){.hero-copy h1{animation:solunaEnter .8s ease-out both}@keyframes solunaEnter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}}
+
   </style>
 </head>
 <body>
@@ -39,50 +146,51 @@
     <div class="wrap inner"><a class="wordmark" href="#top" aria-label="Soluna Yoga Home">SOLUNA<small>YOGA STUDIO</small></a>
       <nav class="desktop-nav" aria-label="Main navigation"><a href="#about">Our approach</a><a href="#classes">The practice</a><a href="#memberships">Memberships</a></nav>
       <a href="#waitlist" class="nav-cta">JOIN THE EARLY LIST</a>
-      <button id="menuBtn" type="button" class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+      <button id="menuBtn" type="button" class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span class="menu-lines" aria-hidden="true"><i></i><i></i></span></button>
     </div>
     <nav class="mobile-menu" id="mobileMenu" hidden aria-label="Mobile navigation"><a href="#about">Our approach</a><a href="#classes">The practice</a><a href="#memberships">Memberships</a><a href="#waitlist">Join the early list</a></nav>
   </header>
   <main id="main">
     <section class="hero">
-      <div class="hero-copy"><span class="overline">A NEW YOGA SPACE · FORT LAUDERDALE</span>
-        <h1 class="serif">Find your<br><em>own rhythm.</em></h1>
-        <p class="lead">A welcoming new space to move, breathe and feel like yourself again. SOLUNA Yoga is opening soon in Fort Lauderdale — and your mat is waiting.</p>
-        <div class="buttons"><a href="#waitlist" class="btn">Get early access <span aria-hidden="true">↗</span></a><a href="#memberships" class="btn ghost">View memberships</a></div>
-        <span class="hero-note">NO EXPERIENCE NEEDED · ALL LEVELS WELCOME</span>
+      <div class="hero-copy"><span class="overline">FORT LAUDERDALE · NEW YOGA STUDIO · OPENING SOON</span>
+        <h1 class="serif">Yoga that feels<br><em>like you.</em></h1>
+        <p class="lead">A new, beginner-friendly yoga studio is coming to Fort Lauderdale. Move at your pace, find your people, and be first to experience SOLUNA.</p>
+        <div class="buttons"><a href="#waitlist" class="btn">Join the early list</a><a href="#memberships" class="btn ghost">View memberships</a></div>
+        <span class="hero-note">BEGINNERS WELCOME · NO EXPERIENCE NEEDED</span>
       </div>
       <div class="hero-visual" role="img" aria-label="Original abstract sunlight-inspired art for SOLUNA Yoga; studio photography will be added later">
         <div class="arch"></div><div class="sun"></div><div class="floor"></div><div class="line-art"></div>
-        <div class="editorial-stamp">MOVE<br><strong>slowly</strong>LIVE FULLY</div><span class="hero-visual-caption">A little space, just for you.</span><span class="visual-label">SOLUNA / 01</span>
+        <span class="hero-visual-caption">Your practice. Your pace.</span><span class="visual-label">SOLUNA / 01</span>
       </div>
     </section>
     <div class="mini-strip"><div class="wrap"><span>GENTLE BEGINNINGS</span><b>Move. Breathe. Belong.</b><span>FORT LAUDERDALE, FL</span></div></div>
+    <section class="offer"><div class="wrap"><div><span class="overline">A WELCOME GIFT</span><h2>New here?<br><em>We have something for you.</em></h2><p>New to SOLUNA? Enjoy an introductory 30% welcome offer for first-time guests. Full offer terms and availability will be confirmed before opening.</p><div style="margin-top:24px"><a href="#waitlist" class="btn">Get your welcome offer </a></div></div><div class="discount-seal" aria-label="Thirty percent off for first-time guests"><strong>30%</strong><span>WELCOME OFFER</span></div></div></section>
     <section class="intro wrap" id="about"><span class="overline muted">YOUR PRACTICE, YOUR PACE</span>
-      <h2>Wellness feels better when<br><em>you feel at home.</em></h2><p>Whether yoga is brand new to you or already part of your life, we're creating a place where showing up is enough.</p>
+      <h2>Come for the movement.<br><em>Stay for how it feels.</em></h2><p>Whether it's your first yoga class or your fiftieth, you belong here. This is your time to breathe, move, and reconnect.</p>
       <div class="approach-grid"><article class="approach"><span class="number">01.</span><h3>Come as you are.</h3><p>No perfect poses or pressure to keep up. Start exactly where you are today.</p></article><article class="approach"><span class="number">02.</span><h3>Move with intention.</h3><p>Thoughtful movement, a slower breath and room to reconnect with yourself.</p></article><article class="approach"><span class="number">03.</span><h3>Find your people.</h3><p>A welcoming space to build a practice and feel part of something good.</p></article></div>
     </section>
-    <section class="classes" id="classes"><div class="wrap"><div class="section-top"><div><span class="overline">EXPLORE THE POSSIBILITIES</span><h2>There is a practice<br><em>for every season.</em></h2></div><p>A preview of the experiences we envision. The final class schedule will be shared closer to opening.</p></div>
+    <section class="classes" id="classes"><div class="wrap"><div class="section-top"><div><span class="overline">THE PRACTICE</span><h2>Find your kind<br><em>of movement.</em></h2></div><p>A preview of the experiences we envision. The final class schedule will be shared closer to opening.</p></div>
       <div class="class-grid"><article class="class" data-photo-slot="slow-flow"><div class="class-content"><span class="overline">MOVE & RESET</span><h3>Slow Flow</h3><p>Mindful movement with time to find your breath.</p></div></article><article class="class" data-photo-slot="restore"><div class="class-content"><span class="overline">REST & RESTORE</span><h3>Deep Rest</h3><p>A quiet moment to recharge and soften.</p></div></article><article class="class" data-photo-slot="sunrise"><div class="class-content"><span class="overline">BEGIN AGAIN</span><h3>Morning Ritual</h3><p>Set a grounded tone for the day ahead.</p></div></article></div>
     </div></section>
-    <section class="offer"><div class="wrap"><div><span class="overline">A WELCOME GIFT</span><h2>Your first hello<br><em>comes with 30% off.</em></h2><p>New to SOLUNA? Enjoy an introductory 30% welcome offer for first-time guests. Full offer terms and availability will be confirmed before opening.</p><div style="margin-top:24px"><a href="#waitlist" class="btn">Be first to know <span aria-hidden="true">↗</span></a></div></div><div class="discount-seal" aria-label="Thirty percent off for first-time guests"><strong>30%</strong><span>WELCOME OFFER</span></div></div></section>
-    <section class="memberships wrap" id="memberships"><div class="section-top"><div><span class="overline muted">MAKE SPACE FOR YOURSELF</span><h2>A little ritual,<br><em>a lot of good.</em></h2></div><p>Three monthly price points, one simple invitation: choose the rhythm that feels right. Membership inclusions are being finalized.</p></div>
+
+    <section class="memberships wrap" id="memberships"><div class="section-top"><div><span class="overline muted">MAKE SPACE FOR YOURSELF</span><h2>A membership<br><em>on your terms.</em></h2></div><p>Explore three founding membership price points. Choose what feels right; exact class access and billing terms will be announced before opening.</p></div>
       <div class="plans">
-        <article class="plan"><span class="overline">YOUR FIRST STEP</span><h3>Breathe</h3><div class="price">$10<span>/ month</span></div><p>For those ready to begin making more room for themselves.</p><div class="rule"></div><div class="detail">Founding membership interest</div><div class="detail">First access to launch updates</div><button type="button" class="btn ghost plan-button" data-plan="Breathe" data-price="10">Choose Breathe <span aria-hidden="true">↗</span></button></article>
-        <article class="plan featured"><span class="tag">POPULAR PREVIEW</span><span class="overline">FIND YOUR FLOW</span><h3>Flow</h3><div class="price">$15<span>/ month</span></div><p>For those building a feel-good movement routine.</p><div class="rule"></div><div class="detail">Founding membership interest</div><div class="detail">First access to launch updates</div><button type="button" class="btn plan-button" data-plan="Flow" data-price="15">Choose Flow <span aria-hidden="true">↗</span></button></article>
-        <article class="plan"><span class="overline">MAKE IT A RITUAL</span><h3>Rise</h3><div class="price">$25<span>/ month</span></div><p>For those ready to make more time for their practice.</p><div class="rule"></div><div class="detail">Founding membership interest</div><div class="detail">First access to launch updates</div><button type="button" class="btn ghost plan-button" data-plan="Rise" data-price="25">Choose Rise <span aria-hidden="true">↗</span></button></article>
-      </div><p class="fine">Demo pricing: $10 / $15 / $25 per month. Class access, billing details and the real checkout will be finalized before launch. Selecting a membership in this demo does not charge a card.</p>
+<article class="plan"><div class="plan-main"><span class="overline">01 / START HERE</span><h3>Breathe</h3><p>An easy beginning for a new wellness ritual.</p></div><div class="plan-side"><div class="price">$10<span>/ month</span></div><button type="button" class="btn ghost plan-button" data-plan="Breathe" data-price="10">Explore Breathe</button></div></article>
+<article class="plan featured"><div class="plan-main"><span class="overline">02 / FIND YOUR FLOW</span><h3>Flow</h3><p>A little more room to build your regular practice.</p></div><div class="plan-side"><div class="price">$15<span>/ month</span></div><button type="button" class="btn plan-button" data-plan="Flow" data-price="15">Explore Flow</button></div></article>
+<article class="plan"><div class="plan-main"><span class="overline">03 / MAKE IT YOURS</span><h3>Rise</h3><p>For those ready to make movement a personal priority.</p></div><div class="plan-side"><div class="price">$25<span>/ month</span></div><button type="button" class="btn ghost plan-button" data-plan="Rise" data-price="25">Explore Rise</button></div></article></div>
+<p class="fine">Demo pricing: $10 / $15 / $25 per month. Class access, billing details and the real checkout will be finalized before launch. Selecting a membership in this demo does not charge a card.</p>
     </section>
-    <section class="waitlist" id="waitlist"><div class="wrap wait-layout"><div class="wait-copy"><span class="overline">SOMETHING GOOD IS COMING</span><h2>Let's begin<br><em>together.</em></h2><p>Be among the first to hear when SOLUNA opens, preview our launch schedule and learn how to claim your first-time welcome offer.</p><div class="location"><span class="dot"></span> COMING SOON · FORT LAUDERDALE, FL</div></div>
+    <section class="waitlist" id="waitlist"><div class="wrap wait-layout"><div class="wait-copy"><span class="overline">THE EARLY ACCESS LIST</span><h2>Be first<br><em>on the mat.</em></h2><p>Be among the first to hear when SOLUNA opens, preview our launch schedule and learn how to claim your first-time welcome offer.</p><div class="location"><span class="dot"></span> COMING SOON · FORT LAUDERDALE, FL</div></div>
       <form class="signup" id="signupForm"><h3>Join the early list.</h3><p class="sub">A simple first step. We'll keep your place in this interactive demo.</p>
         <div class="form-row"><div class="field"><label for="firstName">First name</label><input id="firstName" name="firstName" autocomplete="given-name" maxlength="60" placeholder="Your name" required></div><div class="field"><label for="lastName">Last name <span class="muted">(optional)</span></label><input id="lastName" name="lastName" autocomplete="family-name" maxlength="60" placeholder="Last name"></div></div>
         <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" maxlength="180" placeholder="you@example.com" required></div>
         <div class="field"><label for="interest">What sounds good to you?</label><select id="interest" name="interest"><option value="Opening updates">Opening updates</option><option value="First class">Trying my first class</option><option value="Breathe — $10/month">Breathe — $10/month</option><option value="Flow — $15/month">Flow — $15/month</option><option value="Rise — $25/month">Rise — $25/month</option></select></div>
         <label class="check"><input type="checkbox" id="consent" required><span>I agree to receive launch updates from SOLUNA Yoga when the real sign-up service is connected. I understand this demo does not send my information to a business.</span></label>
-        <button type="submit" class="btn" id="submitBtn">Join the early list <span aria-hidden="true">↗</span></button>
+        <button type="submit" class="btn" id="submitBtn">Join the early list </button>
         <p class="demo-note">DEMO MODE · Your entry stays in this browser only. No email is sent and no real registration is recorded.</p><div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
       </form>
     </div></section>
-    <section class="faq wrap" id="faq"><span class="overline muted" style="display:block;text-align:center;margin-bottom:12px">GOOD TO KNOW</span><h2>A few little questions.</h2><div class="faq-grid">
+    <section class="faq wrap" id="faq"><span class="overline muted" style="display:block;text-align:center;margin-bottom:12px">GOOD TO KNOW</span><h2>Before we open.</h2><div class="faq-grid">
       <details><summary>When is SOLUNA opening?</summary><p>We're preparing for launch in Fort Lauderdale. The opening date and studio address will be announced once confirmed. Join the early list for updates.</p></details>
       <details><summary>Is SOLUNA good for yoga beginners?</summary><p>Yes. This concept is designed to feel welcoming for first-timers as well as people returning to yoga.</p></details>
       <details><summary>How does the 30% welcome offer work?</summary><p>The introductory offer is for first-time guests. Exactly which services qualify, any exclusions, and the offer's validity period will be confirmed before launch.</p></details>
@@ -90,7 +198,7 @@
     </div></section>
   </main>
   <footer class="footer"><div class="wrap"><div><a class="wordmark" href="#top">SOLUNA<small>YOGA STUDIO</small></a><p>Move gently. Live fully.<br>Fort Lauderdale, Florida</p><small>© 2026 SOLUNA Yoga · Creative concept demo. Not a real studio or payment service.</small></div><div class="right"><a href="#about">Our approach</a> &nbsp; · &nbsp; <a href="#memberships">Memberships</a> &nbsp; · &nbsp; <a href="#waitlist">Early list</a><small>Created as a portfolio demonstration by The Launch Era.</small></div></div></footer>
-  <div class="mobile-bottom"><a href="#waitlist" class="btn">Join the early list <span aria-hidden="true">↗</span></a></div>
+  <div class="mobile-bottom"><a href="#waitlist" class="btn">Join the early list </a></div>
   <dialog id="planDialog" aria-labelledby="dialogTitle"><div class="modal-inner"><div class="modal-top"><span class="overline muted">SOLUNA · MEMBERSHIP PREVIEW</span><button class="modal-close" type="button" id="closeDialog" aria-label="Close membership preview">×</button></div><h2 id="dialogTitle">Your rhythm begins here.</h2><p>You selected the <strong id="dialogPlan">Flow</strong> membership.</p><div class="modal-price" id="dialogPrice">$15 <small>/month</small></div><p>Live recurring payments aren't enabled in this demo yet. Leave your name on the early list and we'll show this membership as your interest.</p><div class="modal-buttons"><button type="button" class="btn" id="modalWaitlist">Join the early list</button><button type="button" class="btn ghost" id="modalClose2">Not now</button></div><div class="modal-foot">No card requested. No payment or reservation is processed.</div></div></dialog>
   <script>
     (function () {
