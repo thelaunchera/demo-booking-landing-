@@ -9,28 +9,34 @@ Demo público de lanzamiento de un nuevo estudio de yoga, preparado para portfol
 - **Oferta:** 30% de descuento de bienvenida para nuevos clientes; condiciones por definir
 - **Estado:** demo visual; sin pagos reales, sin emails enviados y sin registros en servidor.
 
-## Fotografías finales (8 originales optimizadas en WebP)
+## Fotografías originales de la versión final (13 imágenes en uso)
 
-Las ocho fotografías **ya están subidas**, se muestran en la web y se guardan individualmente en `demos/soluna-yoga/images/`. Se conservaron las versiones PNG originales fuera del repositorio.
+Las fotos de la web están en `demos/soluna-yoga/images/`, cada una como **fotografía individual**, sin collages. El hero final usa `soluna-hero-editorial.webp` y la fotografía anterior de la mujer en cuatro apoyos se muestra en la historia de la página.
 
-| Ubicación | Imagen | Uso |
-|---|---|---|
-| Hero | `images/hero.webp` | Mujer en Tabletop Pose |
-| Our Studio · exterior | `images/studio-exterior.webp` | Fachada SOLUNA ficticia |
-| Our Studio · interior | `images/studio-interior.webp` | Estudio vacío |
-| The Practice · grupo | `images/group-class.webp` | Mujeres en Warrior II |
-| Slow Flow | `images/slow-flow.webp` | Low Lunge |
-| Deep Rest | `images/deep-rest.webp` | Restaurativa |
-| Morning Ritual | `images/morning-ritual.webp` | Mountain Pose |
-| Lista de espera | `images/floral.webp` | Flores en recepción |
+| Sección de la web | Archivo aprobado |
+|---|---|
+| Hero cinematográfico | `images/soluna-hero-editorial.webp` |
+| Fotografía secundaria: Tabletop | `images/hero.webp` |
+| Our Studio · fachada | `images/studio-exterior.webp` |
+| Our Studio · interior | `images/studio-interior.webp` |
+| The Practice · clase de grupo | `images/group-class.webp` |
+| Slow Flow | `images/slow-flow.webp` |
+| Deep Rest | `images/deep-rest.webp` |
+| Morning Ritual | `images/morning-ritual.webp` |
+| Recepción · flores | `images/floral.webp` |
+| Shop · bebida individual | `images/soluna-matcha-single.webp` |
+| Shop · modelo con ropa deportiva | `images/soluna-apparel-model.webp` |
+| Shop · conjunto de yoga | `images/soluna-apparel-set.webp` |
+| Shop · ropa en perchas | `images/soluna-apparel-rack.webp` |
 
-**Web pública en GitHub Pages:** https://thelaunchera.github.io/demo-booking-landing-/soluna-yoga/
+### Prompts y uso educativo
 
-**Vista publicada también en AppDeploy:** https://soluna-yoga-fort-lauderdale-uc686i.v2.appdeploy.ai/
+- **[Master Prompts y guía del demo](./PROMPTS.md)**: los 13 prompts fotográficos completos, ubicación de cada imagen y pasos de reconstrucción.
+- **Studio privado:** https://podcast.thelaunchera.com/estudio/ → «Demos de la clase» → «Demos terminados» → «SOLUNA Yoga». Incluye una galería de las 13 fotos individuales, enlaces para copiarlas y 10 pasos con prompts y explicación para grabar la clase.
+- **Web publicada en GitHub Pages:** https://thelaunchera.github.io/demo-booking-landing-/soluna-yoga/
+- **Vista AppDeploy:** https://soluna-yoga-fort-lauderdale-uc686i.v2.appdeploy.ai/
 
-Las fotos son generadas para el concepto ficticio. No representan una dirección, una sede o instructores reales. El código usa URLs públicas de la carpeta del repositorio para que las imágenes funcionen tanto en GitHub Pages como en AppDeploy. Evitar reemplazarlas por fotos privadas o con derechos de uso no confirmados.
-
-**Guía y ocho prompts del Studio:** `thelaunchera/todavia-estoy-a-tiempo/estudio-control/src/soluna-rebuild-prompts.ts` — aparecen bajo «Demos terminados» junto con el enlace a este repositorio.
+Se trata de escenas generadas para un estudio ficticio, no de fotografías ni productos de un negocio abierto. No asumir dirección ni horario reales. Si alguna imagen antigua permanece en el repositorio por historial de edición, consultar esta tabla para saber cuáles utiliza la versión final.
 
 ## Para convertirlo en un sitio comercial real
 
