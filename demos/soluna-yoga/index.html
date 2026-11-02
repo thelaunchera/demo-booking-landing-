@@ -172,6 +172,21 @@
       .plan-side{align-items:end}
     }
 
+
+/* Photo slots ready for exact generated SOLUNA photography */
+.studio-gallery{padding-top:95px;padding-bottom:95px}
+.studio-gallery .section-top p{color:#66756a}
+.studio-gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.studio-image{position:relative;margin:0;min-height:360px;border-radius:8px;overflow:hidden;background-size:cover;background-position:center}
+.studio-exterior{background-image:linear-gradient(135deg,#e5e4d8,#bccbb9)}
+.studio-interior{background-image:linear-gradient(145deg,#e7d6c6,#c8d6c9)}
+.studio-image:before{content:"";position:absolute;left:19%;right:19%;top:17%;bottom:0;border-radius:47% 47% 0 0;border:2px solid rgba(255,255,255,.58)}
+.studio-image figcaption{position:absolute;left:23px;bottom:21px;font-size:10px;letter-spacing:.16em;font-weight:700;color:#364c3d;background:rgba(250,248,241,.9);padding:11px 13px;border-radius:4px}
+.location-floral{width:100%;height:195px;margin-top:27px;background:linear-gradient(130deg,#e8d8c5,#ceddcc);border-radius:8px;position:relative;overflow:hidden;background-size:cover;background-position:center}
+.location-floral:before{content:"";position:absolute;width:72px;height:100px;border:2px solid rgba(255,255,255,.7);border-radius:48% 48% 10px 10px;top:40px;right:25%}
+.location-floral span{position:absolute;bottom:16px;left:17px;font-size:9px;letter-spacing:.16em;color:#3d5945}
+.studio-image.has-photo:before,.location-floral.has-photo:before{display:none}
+@media(max-width:700px){.studio-gallery{padding-top:70px;padding-bottom:70px}.studio-gallery-grid{grid-template-columns:1fr;gap:13px}.studio-image{min-height:300px}.location-floral{height:170px}}
 </style>
 </head>
 <body>
@@ -204,6 +219,7 @@
       <h2>Come for the movement.<br><em>Stay for how it feels.</em></h2><p>Whether it's your first yoga class or your fiftieth, you belong here. This is your time to breathe, move, and reconnect.</p>
       <div class="approach-grid"><article class="approach"><span class="number">01.</span><h3>Come as you are.</h3><p>No perfect poses or pressure to keep up. Start exactly where you are today.</p></article><article class="approach"><span class="number">02.</span><h3>Move with intention.</h3><p>Thoughtful movement, a slower breath and room to reconnect with yourself.</p></article><article class="approach"><span class="number">03.</span><h3>Find your people.</h3><p>A welcoming space to build a practice and feel part of something good.</p></article></div>
     </section>
+<section class="studio-gallery wrap" id="our-studio"><div class="section-top"><div><span class="overline muted">A FIRST LOOK AT SOLUNA</span><h2>A space to<br><em>feel at home.</em></h2></div><p>Explore our vision for a welcoming yoga studio in Fort Lauderdale. These are conceptual images, not photographs of an operating location.</p></div><div class="studio-gallery-grid"><figure class="studio-image studio-exterior" data-photo-slot="exterior"><figcaption>01 / The outside</figcaption></figure><figure class="studio-image studio-interior" data-photo-slot="interior"><figcaption>02 / The practice room</figcaption></figure></div></section>
     <section class="classes" id="classes"><div class="wrap"><div class="section-top"><div><span class="overline">THE PRACTICE</span><h2>Find your kind<br><em>of movement.</em></h2></div><p>Three ways to imagine your practice at SOLUNA. Class names and the final schedule will be confirmed before opening.</p></div>
       <div class="class-grid"><article class="class" data-photo-slot="slow-flow"><div class="class-content"><span class="overline">MOVE & RESET</span><h3>Slow Flow</h3><p>Mindful movement with time to find your breath.</p></div></article><article class="class" data-photo-slot="restore"><div class="class-content"><span class="overline">REST & RESTORE</span><h3>Deep Rest</h3><p>A quiet moment to recharge and soften.</p></div></article><article class="class" data-photo-slot="sunrise"><div class="class-content"><span class="overline">BEGIN AGAIN</span><h3>Morning Ritual</h3><p>Set a grounded tone for the day ahead.</p></div></article></div>
     </div></section>
@@ -215,7 +231,7 @@
 <article class="plan"><div class="plan-main"><span class="overline">03 / MAKE IT YOURS</span><h3>Rise</h3><p>For those ready to make movement a personal priority.</p></div><div class="plan-side"><div class="price">$25<span>/ month</span></div><button type="button" class="btn ghost plan-button" data-plan="Rise" data-price="25">Explore Rise</button></div></article></div>
 <p class="fine">Demo pricing: $10 / $15 / $25 per month. Class access, billing details and the real checkout will be finalized before launch. Selecting a membership in this demo does not charge a card.</p>
     </section>
-    <section class="waitlist" id="waitlist"><div class="wrap wait-layout"><div class="wait-copy"><span class="overline">THE EARLY ACCESS LIST</span><h2>Be first<br><em>on the mat.</em></h2><p>Be among the first to hear when SOLUNA opens, preview our launch schedule and learn how to claim your first-time welcome offer.</p><div class="location"><span class="dot"></span> COMING SOON · FORT LAUDERDALE, FL</div></div>
+    <section class="waitlist" id="waitlist"><div class="wrap wait-layout"><div class="wait-copy"><span class="overline">THE EARLY ACCESS LIST</span><h2>Be first<br><em>on the mat.</em></h2><p>Be among the first to hear when SOLUNA opens, preview our launch schedule and learn how to claim your first-time welcome offer.</p><div class="location"><span class="dot"></span> COMING SOON · FORT LAUDERDALE, FL</div><div class="location-floral" data-photo-slot="floral" role="img" aria-label="Floral still life photo placeholder"><span>THE LITTLE DETAILS</span></div></div>
       <form class="signup" id="signupForm"><h3>Join the early list.</h3><p class="sub">A simple first step. We'll keep your place in this interactive demo.</p>
         <div class="form-row"><div class="field"><label for="firstName">First name</label><input id="firstName" name="firstName" autocomplete="given-name" maxlength="60" placeholder="Your name" required></div><div class="field"><label for="lastName">Last name <span class="muted">(optional)</span></label><input id="lastName" name="lastName" autocomplete="family-name" maxlength="60" placeholder="Last name"></div></div>
         <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" maxlength="180" placeholder="you@example.com" required></div>
