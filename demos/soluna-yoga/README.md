@@ -9,18 +9,28 @@ Demo público de lanzamiento de un nuevo estudio de yoga, preparado para portfol
 - **Oferta:** 30% de descuento de bienvenida para nuevos clientes; condiciones por definir
 - **Estado:** demo visual; sin pagos reales, sin emails enviados y sin registros en servidor.
 
-## Fotos que añadiremos
+## Fotografías finales (8 originales optimizadas en WebP)
 
-Recomendada fotografía vertical/alta calidad web (WebP, JPG o PNG optimizado):
+Las ocho fotografías **ya están subidas**, se muestran en la web y se guardan individualmente en `demos/soluna-yoga/images/`. Se conservaron las versiones PNG originales fuera del repositorio.
 
-| Slot visual | Archivo futuro | Foto sugerida |
+| Ubicación | Imagen | Uso |
 |---|---|---|
-| Hero principal | `images/hero.webp` | Persona en pose de yoga en estudio luminoso, recorte flexible |
-| Slow Flow | `images/slow-flow.webp` | Movimiento suave de yoga |
-| Deep Rest | `images/deep-rest.webp` | Persona relajándose sobre el mat |
-| Morning Ritual | `images/morning-ritual.webp` | Luz de mañana, práctica suave |
+| Hero | `images/hero.webp` | Mujer en Tabletop Pose |
+| Our Studio · exterior | `images/studio-exterior.webp` | Fachada SOLUNA ficticia |
+| Our Studio · interior | `images/studio-interior.webp` | Estudio vacío |
+| The Practice · grupo | `images/group-class.webp` | Mujeres en Warrior II |
+| Slow Flow | `images/slow-flow.webp` | Low Lunge |
+| Deep Rest | `images/deep-rest.webp` | Restaurativa |
+| Morning Ritual | `images/morning-ritual.webp` | Mountain Pose |
+| Lista de espera | `images/floral.webp` | Flores en recepción |
 
-El diseño muestra ilustración CSS original y degradados mientras no haya imágenes. Al recibir las fotografías hay que subirlas a esa carpeta y enlazarlas mediante las variables CSS `--hero-photo` y `--class-photo` en `index.html`, luego actualizar también la versión de AppDeploy. NO se deben enlazar imágenes privadas sin autorización.
+**Web pública en GitHub Pages:** https://thelaunchera.github.io/demo-booking-landing-/soluna-yoga/
+
+**Vista publicada también en AppDeploy:** https://soluna-yoga-fort-lauderdale-uc686i.v2.appdeploy.ai/
+
+Las fotos son generadas para el concepto ficticio. No representan una dirección, una sede o instructores reales. El código usa URLs públicas de la carpeta del repositorio para que las imágenes funcionen tanto en GitHub Pages como en AppDeploy. Evitar reemplazarlas por fotos privadas o con derechos de uso no confirmados.
+
+**Guía y ocho prompts del Studio:** `thelaunchera/todavia-estoy-a-tiempo/estudio-control/src/soluna-rebuild-prompts.ts` — aparecen bajo «Demos terminados» junto con el enlace a este repositorio.
 
 ## Para convertirlo en un sitio comercial real
 
