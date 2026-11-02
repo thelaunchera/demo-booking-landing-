@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#F7F3EC">
-  <link rel="preload" as="image" href="https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/hero.webp">
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/soluna-hero-new.webp">
   <meta name="description" content="SOLUNA Yoga, a new movement and mindfulness studio coming soon to Fort Lauderdale. Join the early list, explore memberships and discover your first-visit welcome offer.">
   <meta property="og:title" content="SOLUNA Yoga — Find your own rhythm">
   <meta property="og:description" content="A fresh yoga space is coming to Fort Lauderdale. Join the early list.">
@@ -213,6 +213,88 @@
  .studio-image.studio-exterior.has-photo{background-position:center}
  .class.has-photo:after{background-position:center 37%}
 }
+
+/* Mobile-first SOLUNA image visibility, discovery, offer and shop */
+.hero-visual.has-photo:before{background-position:center 44%;filter:saturate(.92)}
+.hero-visual.has-photo:after{background:none!important}
+.hero-visual{background:#e6ddcd}
+.intro{padding-top:68px;padding-bottom:65px}
+.approach-grid{margin-top:32px}
+.approach{padding-top:18px;padding-bottom:15px}
+.approach .number{margin-bottom:10px}
+.studio-gallery{padding-top:56px;padding-bottom:64px}
+.studio-gallery .section-top{margin-bottom:25px}
+.classes{padding-top:65px;padding-bottom:72px}
+.group-photo{height:clamp(240px,29vw,370px)}
+.group-photo figcaption{font-size:clamp(21px,2.6vw,30px);bottom:18px;left:22px;max-width:420px}
+.class{padding:0!important;display:flex;flex-direction:column;min-height:0!important;justify-content:flex-end;background:transparent!important;overflow:hidden;border-radius:12px}
+.class:after{position:relative!important;display:block;inset:auto!important;height:230px;flex:none;background-size:cover;background-position:center 37%;order:0}
+.class-content{position:relative;order:1;background:#faf8f3!important;box-shadow:none!important;border-radius:0!important;padding:17px 18px 18px!important;min-height:155px}
+.class h3{font-size:27px;margin:5px 0}
+.class p{font-size:12px}
+.class-more,.shop-more,.offer-reveal{appearance:none;display:inline-flex;align-items:center;justify-content:space-between;gap:12px;min-height:42px;border:0;border-top:1px solid #cbd5c9;background:transparent;color:#344d3d;font-size:12px;font-weight:700;cursor:pointer;text-align:left;padding:12px 0 0;margin-top:13px;width:100%}
+.class-more:after,.shop-more:after{content:"+";font-size:20px;line-height:1}
+.class-more[aria-expanded=true]:after,.shop-more[aria-expanded=true]:after{content:"−"}
+.class .class-extra,.shop-extra{margin-top:10px!important;font-size:12px!important;line-height:1.7!important;color:#5c7060!important}
+.class .class-extra[hidden],.shop-extra[hidden]{display:none}
+.offer{background:#e8d9cb;padding:60px 0}
+.offer .wrap{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:45px}
+.offer .wrap>div:first-child{max-width:none}
+.offer-action{padding:28px 30px;background:#405b49;border-radius:16px;color:#fff;min-width:0}
+.offer-action .overline{color:#e5ede3;font-size:10px}
+.offer-number{display:block;font:400 clamp(64px,8vw,108px)/1.15 "Playfair Display",Georgia,serif;white-space:nowrap;letter-spacing:-.065em;margin:12px 0}
+.offer-number em{font:italic clamp(28px,3.5vw,50px) "Playfair Display",Georgia,serif;letter-spacing:-.04em}
+.offer .offer-qualifier{color:#e4e9df;font-size:12px;line-height:1.7}
+.offer-reveal{color:#fff;border-color:#8ca38d}
+.offer-details{font-size:12px;line-height:1.8;color:#eff3ed;padding:14px 0 0}
+.soluna-shop{padding-top:85px;padding-bottom:88px}
+.shop-head{max-width:640px;margin-bottom:27px}
+.shop-head h2{font:400 clamp(40px,5vw,66px)/1.15 "Playfair Display",Georgia,serif;letter-spacing:-.04em;margin:12px 0}
+.shop-head h2 em{color:#748b76}
+.shop-head p{font-size:13px;line-height:1.8;color:#667268;max-width:550px}
+.shop-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.shop-card{border:1px solid #d4d9ce;background:#fffdf8;border-radius:14px;overflow:hidden}
+.shop-card img{width:100%;height:290px;object-fit:cover;display:block;background:#e4d7c8}
+.shop-copy{padding:22px 25px 24px}
+.shop-copy h3{font:400 33px/1.2 "Playfair Display",Georgia,serif;margin:8px 0}
+.shop-copy p{font-size:12px;line-height:1.8;color:#617065;margin:0}
+.shop-bottom{margin-top:24px;padding-top:22px;border-top:1px solid #cdd5ca;display:flex;justify-content:space-between;align-items:center;gap:20px;font-size:13px}
+.shop-bottom .btn{flex-shrink:0}
+@media(max-width:700px){
+ .hero-visual{height:355px!important;min-height:355px!important}
+ .hero-visual.has-photo:before{background-position:center 42%!important}
+ .intro{padding-top:49px;padding-bottom:40px}
+ .intro h2{font-size:39px}
+ .approach-grid{margin-top:24px}
+ .approach{padding:15px 2px}
+ .approach .number{margin-bottom:8px}
+ .approach h3{font-size:24px;margin-bottom:5px}
+ .studio-gallery{padding-top:40px;padding-bottom:50px}
+ .studio-gallery .section-top{margin-bottom:22px}
+ .studio-image{min-height:250px}
+ .classes{padding:54px 0 58px}
+ .class{min-height:0!important}
+ .class:after{height:245px}
+ .class-content{min-height:0;padding:17px 18px 18px!important}
+ .group-photo{height:235px}
+ .group-photo figcaption{font-size:22px;max-width:250px}
+ .offer{padding:38px 0}
+ .offer .wrap{display:flex;flex-direction:column;align-items:stretch;gap:25px}
+ .offer h2{font-size:clamp(35px,9vw,48px)}
+ .offer-action{padding:22px 24px}
+ .offer-number{font-size:clamp(63px,17vw,90px);margin:7px 0}
+ .offer-number em{font-size:30px}
+ .soluna-shop{padding-top:58px;padding-bottom:58px}
+ .shop-head h2{font-size:45px}
+ .shop-grid{grid-template-columns:1fr;gap:15px}
+ .shop-card img{height:255px}
+ .shop-copy{padding:17px 20px 20px}
+ .shop-bottom{align-items:flex-start;flex-direction:column;gap:12px}
+ .shop-bottom .btn{width:100%}
+ .mobile-bottom{padding:7px 18px calc(7px + env(safe-area-inset-bottom))}
+ .mobile-bottom .btn{min-height:44px}
+}
+
 </style>
 </head>
 <body>
@@ -220,11 +302,11 @@
   <div class="announcement"><b>NEW STUDIO · COMING SOON</b><span>First-time guests receive 30% off.</span><a href="#waitlist">Get early access</a></div>
   <header class="topbar" id="top">
     <div class="wrap inner"><a class="wordmark" href="#top" aria-label="Soluna Yoga Home">SOLUNA<small>YOGA STUDIO</small></a>
-      <nav class="desktop-nav" aria-label="Main navigation"><a href="#about">Our approach</a><a href="#classes">The practice</a><a href="#memberships">Memberships</a></nav>
+      <nav class="desktop-nav" aria-label="Main navigation"><a href="#about">Our approach</a><a href="#classes">The practice</a><a href="#memberships">Memberships</a><a href="#shop">Shop preview</a></nav>
       <a href="#waitlist" class="nav-cta">JOIN THE EARLY LIST</a>
       <button id="menuBtn" type="button" class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span class="menu-lines" aria-hidden="true"><i></i><i></i></span></button>
     </div>
-    <nav class="mobile-menu" id="mobileMenu" hidden aria-label="Mobile navigation"><a href="#about">Our approach</a><a href="#classes">The practice</a><a href="#memberships">Memberships</a><a href="#waitlist">Join the early list</a></nav>
+    <nav class="mobile-menu" id="mobileMenu" hidden aria-label="Mobile navigation"><a href="#about">Our approach</a><a href="#classes">The practice</a><a href="#memberships">Memberships</a><a href="#shop">Shop preview</a><a href="#waitlist">Join the early list</a></nav>
   </header>
   <main id="main">
     <section class="hero">
@@ -234,13 +316,13 @@
         <div class="buttons"><a href="#waitlist" class="btn">Join the early list</a><a href="#memberships" class="btn ghost">View memberships</a></div>
         <span class="hero-note">BEGINNERS WELCOME · NO EXPERIENCE NEEDED</span>
       </div>
-      <div class="hero-visual has-photo" data-photo-slot="hero" style="--hero-photo:url('https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/hero.webp')" role="img" aria-label="Woman in sage green yoga outfit practicing tabletop pose in the SOLUNA studio">
+      <div class="hero-visual has-photo" data-photo-slot="hero" style="--hero-photo:url('https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/hero.webp')" role="img" aria-label="Woman in sage yoga outfit meditating peacefully in the sunlit SOLUNA studio">
         <div class="arch"></div><div class="sun"></div><div class="floor"></div><div class="line-art"></div>
-        <span class="hero-visual-caption">Your practice. Your pace.</span><span class="visual-label">SOLUNA / 01</span>
+        
       </div>
     </section>
     <div class="mini-strip"><div class="wrap"><span>GENTLE BEGINNINGS</span><b>Move. Breathe. Belong.</b><span>FORT LAUDERDALE, FL</span></div></div>
-    <section class="offer"><div class="wrap"><div><span class="overline">A WELCOME GIFT</span><h2>New here?<br><em>We have something for you.</em></h2><p>New to SOLUNA? Enjoy an introductory 30% welcome offer for first-time guests. Full offer terms and availability will be confirmed before opening.</p><div style="margin-top:24px"><a href="#waitlist" class="btn">Get your welcome offer </a></div></div><div class="discount-seal" aria-label="Thirty percent off for first-time guests"><strong>30%</strong><span>WELCOME OFFER</span></div></div></section>
+    <section class="offer"><div class="wrap"><div><span class="overline">A WELCOME GIFT</span><h2>New here?<br><em>We have something for you.</em></h2><p>New to SOLUNA? Enjoy an introductory 30% welcome offer for first-time guests. Full offer terms and availability will be confirmed before opening.</p><div style="margin-top:24px"><a href="#waitlist" class="btn">Join for welcome updates</a></div></div><div class="offer-action"><span class="overline">FOR FIRST-TIME GUESTS</span><strong class="offer-number">30% <em>OFF</em></strong><p class="offer-qualifier">An introductory welcome offer. Exact eligible purchase and terms will be confirmed before opening.</p><button class="offer-reveal" type="button" aria-expanded="false" aria-controls="offerDetails">How does the offer work? <span aria-hidden="true">+</span></button><div id="offerDetails" class="offer-details" hidden>Join the early list to express interest. The studio will confirm the launch date, eligibility, expiration and any conditions before the offer can be redeemed. No purchase or discount is applied in this demo.</div></div></div></section>
     <section class="intro wrap" id="about"><span class="overline muted">YOUR PRACTICE, YOUR PACE</span>
       <h2>Come for the movement.<br><em>Stay for how it feels.</em></h2><p>Whether it's your first yoga class or your fiftieth, you belong here. This is your time to breathe, move, and reconnect.</p>
       <div class="approach-grid"><article class="approach"><span class="number">01.</span><h3>Come as you are.</h3><p>No perfect poses or pressure to keep up. Start exactly where you are today.</p></article><article class="approach"><span class="number">02.</span><h3>Move with intention.</h3><p>Thoughtful movement, a slower breath and room to reconnect with yourself.</p></article><article class="approach"><span class="number">03.</span><h3>Find your people.</h3><p>A welcoming space to build a practice and feel part of something good.</p></article></div>
@@ -248,9 +330,10 @@
 <section class="studio-gallery wrap" id="our-studio"><div class="section-top"><div><span class="overline muted">A FIRST LOOK AT SOLUNA</span><h2>A space to<br><em>feel at home.</em></h2></div><p>Explore our vision for a welcoming yoga studio in Fort Lauderdale. These are conceptual images, not photographs of an operating location.</p></div><div class="studio-gallery-grid"><figure class="studio-image studio-exterior has-photo" data-photo-slot="exterior" style="background-image:url('https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/studio-exterior.webp')"><figcaption>01 / The outside</figcaption></figure><figure class="studio-image studio-interior has-photo" data-photo-slot="interior" style="background-image:url('https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/studio-interior.webp')"><figcaption>02 / The practice room</figcaption></figure></div></section>
     <section class="classes" id="classes"><div class="wrap"><div class="section-top"><div><span class="overline">THE PRACTICE</span><h2>Find your kind<br><em>of movement.</em></h2></div><p>Three ways to imagine your practice at SOLUNA. Class names and the final schedule will be confirmed before opening.</p></div>
       <figure class="group-photo"><img src="https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/group-class.webp" alt="Six women performing Warrior II in a sunny yoga class inside SOLUNA" loading="lazy" decoding="async" width="1440" height="811"><figcaption>Find your people. Feel your best.</figcaption></figure>
-      <div class="class-grid"><article class="class has-photo" data-photo-slot="slow-flow" style="--class-photo:url('https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/slow-flow.webp')"><div class="class-content"><span class="overline">MOVE & RESET</span><h3>Slow Flow</h3><p>Mindful movement with time to find your breath.</p></div></article><article class="class has-photo" data-photo-slot="restore" style="--class-photo:url('https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/deep-rest.webp')"><div class="class-content"><span class="overline">REST & RESTORE</span><h3>Deep Rest</h3><p>A quiet moment to recharge and soften.</p></div></article><article class="class has-photo" data-photo-slot="sunrise" style="--class-photo:url('https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/morning-ritual.webp')"><div class="class-content"><span class="overline">BEGIN AGAIN</span><h3>Morning Ritual</h3><p>Set a grounded tone for the day ahead.</p></div></article></div>
+      <div class="class-grid"><article class="class has-photo" data-photo-slot="slow-flow" style="--class-photo:url('https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/slow-flow.webp')"><div class="class-content"><span class="overline">MOVE & RESET</span><h3>Slow Flow</h3><p>Mindful movement with time to find your breath.</p><button type="button" class="class-more" aria-expanded="false" aria-controls="detailSlow">Discover this practice</button><p id="detailSlow" class="class-extra" hidden>Gentle movement, steady breathing and space to reset. Final class duration and schedule will be announced before opening.</p></div></article><article class="class has-photo" data-photo-slot="restore" style="--class-photo:url('https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/deep-rest.webp')"><div class="class-content"><span class="overline">REST & RESTORE</span><h3>Deep Rest</h3><p>A quiet moment to recharge and soften.</p><button type="button" class="class-more" aria-expanded="false" aria-controls="detailRest">Discover this practice</button><p id="detailRest" class="class-extra" hidden>Restorative postures and supported stillness. All experience levels welcome; class availability will be confirmed.</p></div></article><article class="class has-photo" data-photo-slot="sunrise" style="--class-photo:url('https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/morning-ritual.webp')"><div class="class-content"><span class="overline">BEGIN AGAIN</span><h3>Morning Ritual</h3><p>Set a grounded tone for the day ahead.</p><button type="button" class="class-more" aria-expanded="false" aria-controls="detailMorning">Discover this practice</button><p id="detailMorning" class="class-extra" hidden>A slower start with grounding postures and mindful breathing. Actual morning times will be announced at launch.</p></div></article></div>
     </div></section>
 
+<section class="soluna-shop wrap" id="shop"><div class="shop-head"><span class="overline muted">THE SOLUNA COLLECTION · CONCEPT PREVIEW</span><h2>Beyond the <em>mat.</em></h2><p>A little inspiration for your everyday rituals. These wellness drinks and studio essentials are visual concepts, not products available to purchase yet.</p></div><div class="shop-grid"><article class="shop-card"><img src="https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/soluna-drinks.webp" loading="lazy" decoding="async" alt="Two fresh smoothie drinks, one green and one strawberry, styled in warm sunlight"><div class="shop-copy"><span class="overline">SIP & RESET</span><h3>Wellness drinks</h3><p>Fresh, colorful drinks for a mindful moment.</p><button type="button" class="shop-more" aria-expanded="false" aria-controls="drinkInfo">See the concept</button><p class="shop-extra" id="drinkInfo" hidden>Concept only. Flavors, ingredients, pricing and availability are not confirmed. No orders are accepted.</p></div></article><article class="shop-card"><img src="https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/soluna-apparel.webp" loading="lazy" decoding="async" alt="Sage green yoga hoodie and leggings displayed with an ivory reusable water bottle"><div class="shop-copy"><span class="overline">MOVE IN COMFORT</span><h3>Studio essentials</h3><p>Soft layers, everyday movement and simple accessories.</p><button type="button" class="shop-more" aria-expanded="false" aria-controls="wearInfo">See the concept</button><p class="shop-extra" id="wearInfo" hidden>Concept only. Sizes, styles, materials, pricing and availability are not confirmed. No purchases are enabled.</p></div></article></div><div class="shop-bottom"><span>Interested in future studio updates?</span><a href="#waitlist" class="btn ghost">Join the early list</a></div></section>
     <section class="memberships wrap" id="memberships"><div class="section-top"><div><span class="overline muted">MAKE SPACE FOR YOURSELF</span><h2>A membership<br><em>on your terms.</em></h2></div><p>Explore three founding membership price points. Choose what feels right; exact class access and billing terms will be announced before opening.</p></div>
       <div class="plans">
 <article class="plan"><div class="plan-main"><span class="overline">01 / START HERE</span><h3>Breathe</h3><p>An easy beginning for a new wellness ritual.</p></div><div class="plan-side"><div class="price">$10<span>/ month</span></div><button type="button" class="btn ghost plan-button" data-plan="Breathe" data-price="10">Explore Breathe</button></div></article>
@@ -343,5 +426,19 @@
       });
     }());
   </script>
+<script>
+(function(){
+  document.querySelectorAll('.class-more,.shop-more,.offer-reveal').forEach(function(button){
+    button.addEventListener('click',function(){
+      var target=document.getElementById(button.getAttribute('aria-controls'));
+      if(!target)return;
+      var expanded=button.getAttribute('aria-expanded')==='true';
+      button.setAttribute('aria-expanded',String(!expanded));
+      target.hidden=expanded;
+      if(button.classList.contains('offer-reveal'))button.querySelector('span').textContent=expanded?'+':'−';
+    });
+  });
+})();
+</script>
 </body>
 </html>
