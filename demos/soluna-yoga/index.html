@@ -137,7 +137,42 @@
     @media(max-width:375px){.hero h1{font-size:54px}.hero-visual{height:330px;min-height:330px}.plan .btn{font-size:11px;padding:11px 12px}.discount-seal strong{font-size:92px}}
     @media(prefers-reduced-motion:no-preference){.hero-copy h1{animation:solunaEnter .8s ease-out both}@keyframes solunaEnter{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}}
 
-  </style>
+  
+    /* Photo-free art direction: CSS only, light to load, replaceable with actual photos later. */
+    .hero-visual{background:linear-gradient(150deg,#C8D6C8 0%,#DDE2D4 53%,#B5C7B5 100%)}
+    .hero-visual:after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(0deg,rgba(27,52,35,.3),transparent 30%)}
+    .hero-visual .arch{box-shadow:0 12px 60px rgba(68,84,63,.14);border:1px solid rgba(255,255,255,.23)}
+    .hero-visual .sun{background:radial-gradient(circle at 30% 29%,#FFF5DE,#EBC3AA 72%,#C6A18C);filter:blur(.2px)}
+    .hero-visual .floor{background:linear-gradient(100deg,#A3B69F,#8FA88F)}
+    .class{isolation:isolate}
+    .class:nth-child(1){background:linear-gradient(130deg,#D3DCCF,#A8BEAE)}
+    .class:nth-child(2){background:linear-gradient(140deg,#E8D6C9,#CBAA96)}
+    .class:nth-child(3){background:linear-gradient(135deg,#D9DED4,#A3B9B3)}
+    .class:before{display:block;content:"";position:absolute;top:-17%;right:-15%;width:82%;height:87%;border:1px solid rgba(255,255,255,.62);border-radius:48% 48% 8% 8%;transform:rotate(-17deg);z-index:0}
+    .class:nth-child(2):before{top:-27%;right:15%;border-radius:50%;transform:none}
+    .class:nth-child(3):before{top:-34%;right:-18%;border-radius:50% 50% 8% 8%;transform:rotate(25deg)}
+    .class:after{background-image:var(--class-photo,none);z-index:0}
+    .class-content{z-index:1;box-shadow:0 8px 30px rgba(40,50,42,.06)}
+    .hero-visual.has-photo:after{background:linear-gradient(0deg,rgba(27,52,35,.35),transparent 34%)}
+    .hero-visual.has-photo .sun,.hero-visual.has-photo .arch,.hero-visual.has-photo .floor,.hero-visual.has-photo .line-art{opacity:0}
+    .class.has-photo:before{display:none}
+    .offer .btn{background:#344A3A;border-color:#344A3A}
+    .signup .btn{background:#354B3B}
+    .plan .btn.ghost{border-color:#829787}
+    .plan .btn:hover,.signup .btn:hover{transform:none;filter:brightness(.94)}
+    @media(max-width:700px){
+      .hero-visual{height:340px;min-height:340px}
+      .hero-visual-caption{max-width:195px}
+      .class{min-height:270px}
+      .plan-side{flex-wrap:wrap}
+      .plan .btn{min-height:44px}
+    }
+    @media(max-width:375px){
+      .hero-visual{height:315px;min-height:315px}
+      .plan-side{align-items:end}
+    }
+
+</style>
 </head>
 <body>
   <a href="#main" class="skip">Skip to content</a>
@@ -158,7 +193,7 @@
         <div class="buttons"><a href="#waitlist" class="btn">Join the early list</a><a href="#memberships" class="btn ghost">View memberships</a></div>
         <span class="hero-note">BEGINNERS WELCOME · NO EXPERIENCE NEEDED</span>
       </div>
-      <div class="hero-visual" role="img" aria-label="Original abstract sunlight-inspired art for SOLUNA Yoga; studio photography will be added later">
+      <div class="hero-visual" data-photo-slot="hero" role="img" aria-label="Original abstract sunlight-inspired art for SOLUNA Yoga; studio photography will be added later">
         <div class="arch"></div><div class="sun"></div><div class="floor"></div><div class="line-art"></div>
         <span class="hero-visual-caption">Your practice. Your pace.</span><span class="visual-label">SOLUNA / 01</span>
       </div>
@@ -169,7 +204,7 @@
       <h2>Come for the movement.<br><em>Stay for how it feels.</em></h2><p>Whether it's your first yoga class or your fiftieth, you belong here. This is your time to breathe, move, and reconnect.</p>
       <div class="approach-grid"><article class="approach"><span class="number">01.</span><h3>Come as you are.</h3><p>No perfect poses or pressure to keep up. Start exactly where you are today.</p></article><article class="approach"><span class="number">02.</span><h3>Move with intention.</h3><p>Thoughtful movement, a slower breath and room to reconnect with yourself.</p></article><article class="approach"><span class="number">03.</span><h3>Find your people.</h3><p>A welcoming space to build a practice and feel part of something good.</p></article></div>
     </section>
-    <section class="classes" id="classes"><div class="wrap"><div class="section-top"><div><span class="overline">THE PRACTICE</span><h2>Find your kind<br><em>of movement.</em></h2></div><p>A preview of the experiences we envision. The final class schedule will be shared closer to opening.</p></div>
+    <section class="classes" id="classes"><div class="wrap"><div class="section-top"><div><span class="overline">THE PRACTICE</span><h2>Find your kind<br><em>of movement.</em></h2></div><p>Three ways to imagine your practice at SOLUNA. Class names and the final schedule will be confirmed before opening.</p></div>
       <div class="class-grid"><article class="class" data-photo-slot="slow-flow"><div class="class-content"><span class="overline">MOVE & RESET</span><h3>Slow Flow</h3><p>Mindful movement with time to find your breath.</p></div></article><article class="class" data-photo-slot="restore"><div class="class-content"><span class="overline">REST & RESTORE</span><h3>Deep Rest</h3><p>A quiet moment to recharge and soften.</p></div></article><article class="class" data-photo-slot="sunrise"><div class="class-content"><span class="overline">BEGIN AGAIN</span><h3>Morning Ritual</h3><p>Set a grounded tone for the day ahead.</p></div></article></div>
     </div></section>
 
