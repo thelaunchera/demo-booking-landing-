@@ -7,6 +7,8 @@ import { JARAMILLO_BOARD } from './jaramillo-board';
 import { JARAMILLO_ALL_PROMPTS } from './jaramillo-prompts';
 import { FINISHED_DEMO_BOARDS, FINISHED_DEMO_IDS } from './finished-demo-boards';
 import { FINISHED_DEMO_PROMPTS } from './finished-demo-prompts';
+import { ADDITIONAL_DEMO_BOARDS } from './additional-demo-boards';
+import { ADDITIONAL_DEMO_PROMPTS } from './additional-demo-prompts';
 import {
   SECTION_DEFS,
   ensureGallery,
@@ -76,7 +78,8 @@ const DEMOS=[
   }
 ];
 // Add Jaramillo as a curated, fully editable demo just like YUMMM.
-DEMOS.push(JARAMILLO_BOARD);
+Object.assign(DEMOS.find(demo => demo.id === JARAMILLO_BOARD.id), JARAMILLO_BOARD);
+DEMOS.push(...ADDITIONAL_DEMO_BOARDS);
 // Expand official demo boards with their approved photo collections and current brand identities.
 // Only the three completed demos are migrated; YUMMM keeps its existing curated setup.
 for (const demo of DEMOS) {
@@ -92,7 +95,7 @@ const OFFICIAL_DEMO_SITES={
   'aftr':'https://thelaunchera.com/demos/aftr/',
   'yummm':'https://thelaunchera.github.io/demo-booking-landing-/yummm/',
   'jaramillo-boutique':'https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/',
-  'jaramillo-boutique':'https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/'
+  ...Object.fromEntries(ADDITIONAL_DEMO_BOARDS.map(demo => [demo.id, demo.site]))
 };
 function publishedSite(brand){
   if(OFFICIAL_DEMO_SITES[brand.id])return OFFICIAL_DEMO_SITES[brand.id];
@@ -105,7 +108,7 @@ function publishedSite(brand){
   }catch{return '';}
 }
 const TYPES=['Coffee & Bakery · Demo','Bakery · Demo','Cookie Shop · Demo','Nightclub · Demo','Boutique · Demo','Beauty · Demo','Wellness · Demo','Restaurante · Demo','Otra categoría'];
-const FONTS=['Nunito','Bodoni Moda','DM Serif Display','Cormorant Garamond','Bebas Neue','Barlow Condensed','Italiana','Georgia','Manrope','DM Sans','Arial'];
+const FONTS=['Anton','Playfair Display','Nunito','Bodoni Moda','DM Serif Display','Cormorant Garamond','Bebas Neue','Barlow Condensed','Italiana','Georgia','Manrope','DM Sans','Arial'];
 const clone=x=>JSON.parse(JSON.stringify(x));
 const $=id=>document.getElementById(id);
 const html=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','&#39;':'&#39;'}[c]||'&#39;'));
@@ -113,8 +116,10 @@ const cssUrl=x=>'url('+JSON.stringify(x||'')+')';
 const hex=(v,f='#FFFFFF')=>/^#[0-9a-fA-F]{6}$/.test(v||'')?v:f;
 const FONT_MAP={Nunito:"'Nunito',sans-serif",'Bodoni Moda':"'Bodoni Moda',Georgia,serif",'DM Serif Display':"'DM Serif Display',Georgia,serif",'Cormorant Garamond':"'Cormorant Garamond',Georgia,serif",'Bebas Neue':"'Bebas Neue',Arial,sans-serif",'Barlow Condensed':"'Barlow Condensed',Arial,sans-serif",Italiana:"'Italiana',Georgia,serif",Georgia:'Georgia,serif',Manrope:"Manrope,sans-serif",'DM Sans':"'DM Sans',sans-serif",Arial:'Arial,sans-serif'};
 const font=v=>FONT_MAP[v]||FONT_MAP['DM Sans'];
+FONT_MAP.Anton = "'Anton',Arial,sans-serif";
+FONT_MAP['Playfair Display'] = "'Playfair Display',Georgia,serif";
 
-function promptItems(b){return b.id==='yummm' ? YUMMM_ALL_PROMPTS : b.id==='jaramillo-boutique' ? JARAMILLO_ALL_PROMPTS : (FINISHED_DEMO_PROMPTS[b.id]||[]);}
+function promptItems(b){return b.id==='yummm' ? YUMMM_ALL_PROMPTS : b.id==='jaramillo-boutique' ? JARAMILLO_ALL_PROMPTS : (ADDITIONAL_DEMO_PROMPTS[b.id]||FINISHED_DEMO_PROMPTS[b.id]||[]);}
 function promptsView(b){
   const items=promptItems(b);
   if(!items.length)return guide(b);
@@ -156,6 +161,7 @@ function hydrate(){
   if(!Array.isArray(previous))previous=[];
   const base=clone(DEMOS);
   if(!previous.length)return base;
+  previous=previous.filter((brand,index,list)=>brand && typeof brand.id==='string' && list.findIndex(item=>item?.id===brand.id)===index);
   const hydrated=previous.map(b=>{
     const d=base.find(x=>x.id===b.id)||base[0];
     const merged={...clone(d),...b};
@@ -233,6 +239,7 @@ let brands=hydrate();
 let activeId=localStorage.getItem(KEY+'-active')||brands[0].id;
 if(!brands.some(x=>x.id===activeId))activeId=brands[0].id;
 let view='board',tab='identity',focused=false,toastId;
+let brandsOpen = false;
 let uploadSection = 'identity';
 let replacementPhotoId = '';
 let draggedGallery = null;
@@ -419,19 +426,21 @@ function render(){
     ?'<div class="stage"><div class="stage-top"><strong>Vista previa · Identidad completa</strong><div class="stage-controls"><span>Brand Board 01</span><button class="microbtn" data-action="focus">'+(focused?'Mostrar editor':'Ampliar vista')+'</button></div></div>'+board(b)+'</div>'
     :view==='mockups'?mockups(b):view==='prompts'?promptsView(b):guide(b);
   $('app').innerHTML=
-    '<div class="shell"><aside class="sidebar">'+
+    '<button class="brand-menu-toggle" data-action="toggle-brands" aria-expanded="'+brandsOpen+'" aria-controls="brands-sidebar">Marcas ('+brands.length+')</button>'+
+    (brandsOpen?'<button class="brand-menu-backdrop" data-action="toggle-brands" aria-label="Cerrar menú de marcas"></button>':'')+
+    '<div class="shell"><aside id="brands-sidebar" class="sidebar '+(brandsOpen?'is-open':'')+'">'+
       '<div class="brandlock"><span class="brandlock-icon">L.</span><span><strong>The Launch Era</strong><small>BRAND BOARD STUDIO</small></span></div>'+
-      '<div class="sidebar-caption">Mis marcas demo</div><div class="sidebar-navgroup"><nav class="brandlist" aria-label="Marcas">'+
-      brands.map(x=>'<button class="brandnav '+(x.id===b.id?'active':'')+'" data-brand="'+html(x.id)+'"><span class="navlogo" style="background:'+hex(x.colors[1])+';color:'+hex(x.colors[0])+'">'+html(x.monogram.slice(0,3))+'</span><span class="navinfo"><strong>'+html(x.name)+'</strong><small>'+html(x.category)+'</small></span><span class="navarrow">›</span></button>').join('')+
+      '<div class="sidebar-caption">Mis marcas ('+brands.length+')</div><div class="sidebar-navgroup"><nav class="brandlist" aria-label="Marcas">'+
+      brands.map(x=>'<button class="brandnav '+(x.id===b.id?'active':'')+'" data-brand="'+html(x.id)+'"><span class="navlogo" style="background:'+hex(x.colors[1])+';color:'+hex(x.colors[0])+'">'+html(x.monogram.slice(0,3))+'</span><span class="navinfo"><strong>'+html(x.name)+'</strong><small>'+html(x.category)+'</small></span></button>').join('')+
       '</nav><button class="newbrand" data-action="new">＋ Nueva marca</button></div>'+
-      '<div class="sidefoot"><a href="'+html(publishedSite(b)||'#')+'" '+(publishedSite(b)?'target="_blank" rel="noopener noreferrer"':'')+'>↗ Abrir demo de GitHub</a><a href="#" data-action="backup">↓ Respaldo de mis marcas</a><a href="#" data-action="import">↑ Importar respaldo</a><span>Área de trabajo creativa de The Launch Era. Los cambios se guardan solo en este navegador.</span></div>'+
+      '<div class="sidefoot">'+(publishedSite(b)?'<a href="'+html(publishedSite(b))+'" target="_blank" rel="noopener noreferrer">Abrir demo</a>':'')+'<a href="#" data-action="backup">Respaldo de mis marcas</a><a href="#" data-action="import">Importar respaldo</a><span>Powered by The Launch Era</span></div>'+
     '</aside><div class="content"><header class="header"><div class="breadcrumb">The Launch Era &nbsp; / &nbsp; Demo Studio &nbsp; / &nbsp; <b>Brand Boards</b></div>'+
       '<div class="header-end"><span class="savepoint"></span><span class="savetext">Guardado local</span><span class="head-avatar">L</span></div></header>'+
       '<main class="workspace"><div class="page-intro"><div><div class="kicker">Creative direction · Brand identity</div><h1>'+html(b.name)+'</h1><p>'+html(b.category)+' &nbsp; · &nbsp; Una identidad lista para llevar al siguiente diseño.</p></div>'+
       '<div class="main-actions"><button class="btn" data-action="backup">↓ Respaldo</button><button class="btn" data-action="print">PDF</button><button class="btn dark" data-action="png">↓ Exportar PNG</button></div></div>'+
       '<div class="switcher"><button class="viewtab '+(view==='board'?'active':'')+'" data-view="board">✦ Brand Board</button>'+
       '<button class="viewtab '+(view==='mockups'?'active':'')+'" data-view="mockups">Aplicaciones</button>'+
-      '<button class="viewtab '+(view==='guide'?'active':'')+'" data-view="guide">Guía de marca</button>'+ (b.id==='yummm'?'<button class="viewtab '+(view==='prompts'?'active':'')+'" data-view="prompts">Prompts (13)</button>':'')+
+      '<button class="viewtab '+(view==='guide'?'active':'')+'" data-view="guide">Guía de marca</button>'+ (promptItems(b).length?'<button class="viewtab '+(view==='prompts'?'active':'')+'" data-view="prompts">Prompts ('+promptItems(b).length+')</button>':'')+
       '<span class="viewspacer"></span>'+(publishedSite(b)?'<a class="btn ghost" href="'+html(publishedSite(b))+'" target="_blank" rel="noopener noreferrer">↗ Ver demo en GitHub</a>':'')+'</div>'+
       '<div class="workspace-grid '+(focused?'focus':'')+(view==='prompts'?' prompt-mode':'')+'"><div class="left-stage">'+content+
       '<p class="workspace-hint">El tablero se actualiza al editar. Puedes cargar nuevas fotos y exportar el resultado sin modificar tus demos.</p></div>'+
@@ -640,6 +649,7 @@ async function openPhotoReview(section,id){
 }
 
 function perform(action,button){
+  if(action==='toggle-brands'){brandsOpen=!brandsOpen;render();return;}
   const b=active();
   if(action==='new')openNew();
   if(action==='cancel-new')$('new-dialog')?.close();
@@ -723,11 +733,14 @@ function perform(action,button){
     b[key]='';save();render();notify('Imagen quitada.');
   }
 }
+document.addEventListener('keydown', event => {
+  if(event.key === 'Escape' && brandsOpen){brandsOpen=false;render();}
+});
 document.addEventListener('click',event=>{
   const promptBtn=event.target.closest('[data-demo-prompt]');
   if(promptBtn){const item=promptItems(active())[Number(promptBtn.dataset.demoPrompt)];if(item){if(navigator.clipboard?.writeText){navigator.clipboard.writeText(item.text).then(()=>notify('Prompt copiado: '+item.title)).catch(()=>prompt('Copia el prompt:',item.text));}else prompt('Copia el prompt:',item.text);}return;}
   const nav=event.target.closest('[data-brand]');
-  if(nav){activeId=nav.dataset.brand;save();view='board';tab='identity';focused=false;render();return;}
+  if(nav){activeId=nav.dataset.brand;brandsOpen=false;save();view='board';tab='identity';focused=false;render();return;}
   const viewBtn=event.target.closest('[data-view]');
   if(viewBtn){view=viewBtn.dataset.view;render();return;}
   const tabBtn=event.target.closest('[data-tab]');

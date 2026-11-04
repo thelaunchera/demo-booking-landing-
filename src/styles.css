@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:wght@400;500;600;700&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900;1000&family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Bebas+Neue&family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Italiana&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&display=swap');
 @tailwind base;
@@ -287,3 +288,26 @@ dialog::backdrop{background:#17161697;backdrop-filter:blur(3px)}
  .studio-prompt-group-description{padding:12px 15px 0}
  .studio-prompt-group>.yummm-prompt-grid{padding:12px 12px 17px}
 }
+
+/* The full brand list stays reachable on desktop and in an iPhone drawer. */
+.sidebar { min-height: 0; }
+.sidebar-navgroup { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+.sidefoot { flex-shrink: 0; margin-top: 14px; }
+.brand-menu-toggle, .brand-menu-backdrop { display: none; }
+@media (max-width: 740px) {
+  .brand-menu-toggle { display: block; position: fixed; top: 9px; left: 12px; z-index: 22; min-height: 40px; padding: 9px 14px; border: 1px solid #ddd8cc; border-radius: 10px; background: #faf8f3; color: #191919; font-size: 12px; font-weight: 700; }
+  .brand-menu-backdrop { display: block; position: fixed; inset: 0; z-index: 20; border: 0; background: #19191980; }
+  .sidebar { position: fixed; top: 0; left: 0; bottom: 0; z-index: 21; height: 100dvh; width: min(300px, 85vw); padding: 70px 14px 18px; transform: translateX(-105%); visibility: hidden; transition: transform .18s ease, visibility .18s; }
+  .sidebar.is-open { transform: translateX(0); visibility: visible; }
+  .brandlock { display: flex; flex-shrink: 0; }
+  .sidebar-caption { display: block; padding: 18px 12px 12px; }
+  .sidebar-navgroup { display: block; width: 100%; overflow-y: auto; }
+  .brandlist { display: grid; overflow: visible; padding-bottom: 3px; }
+  .brandnav { min-width: 0; max-width: none; width: 100%; }
+  .newbrand { width: calc(100% - 12px); margin: 14px 6px; }
+  .sidefoot { display: grid; }
+  .header { padding-left: 120px; }
+  .breadcrumb { font-size: 10px; }
+  .header-end { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .sidebar { transition: none; } }
