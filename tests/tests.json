@@ -156,5 +156,26 @@
       "Recargar página"
     ],
     "expected": "Las imágenes de Jaramillo permanecen, las cuatro marcas previas siguen disponibles, y no hay desbordamientos horizontales."
+  },
+  {
+    "name": "Seleccionar demos desde el sidebar móvil",
+    "viewport": "mobile",
+    "covers": [
+      "sidebar con las doce marcas",
+      "selección de SOVA",
+      "enlace al demo GitHub",
+      "cierre del menú móvil",
+      "conservación de la marca activa"
+    ],
+    "description": "Verifica que las marcas faltantes y sus enlaces se puedan encontrar desde iPhone.",
+    "steps": [
+      "Pulsa Marcas (12)",
+      "Selecciona SOVA Headphones",
+      "Comprueba el título y el enlace Ver demo en GitHub",
+      "Recarga",
+      "Abre Marcas (12) y selecciona La Vie in Pink",
+      "Abre Marcas (12) y selecciona Golden Grid"
+    ],
+    "expected": "El sidebar permite acceder a las doce marcas, se cierra después de elegir, conserva la marca activa al recargar y cada demo abre su URL oficial."
   }
 ]
