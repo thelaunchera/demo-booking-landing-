@@ -150,25 +150,16 @@ function freshId() {
 async function fileToDataURL(file) {
   if (!file.type.startsWith('image/')) throw new Error('Selecciona una foto o imagen compatible.');
   if (file.size > 25 * 1024 * 1024) throw new Error('Cada archivo debe pesar menos de 25 MB.');
-  const src = URL.createObjectURL(file);
-  try {
-    const image = new Image();
-    await new Promise((resolve, reject) => {
-      image.onload = resolve;
-      image.onerror = () => reject(new Error('No se pudo abrir esta imagen.'));
-      image.src = src;
-    });
-    const scale = Math.min(1, 1150 / Math.max(image.width, image.height));
-    const canvas = document.createElement('canvas');
-    canvas.width = Math.max(1, Math.round(image.width * scale));
-    canvas.height = Math.max(1, Math.round(image.height * scale));
-    canvas.getContext('2d').drawImage(image, 0, 0, canvas.width, canvas.height);
-    const asPNG = file.type === 'image/png' && file.size < 4000000;
-    return canvas.toDataURL(asPNG ? 'image/png' : 'image/jpeg', 0.79);
-  } finally {
-    URL.revokeObjectURL(src);
-  }
+  // Retain the source file byte-for-byte. The previous canvas conversion
+  // shrank files to 1150px and introduced lossy JPEG compression (0.79).
+  return await new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error('No se pudo leer la imagen original.'));
+    reader.onload = () => resolve(String(reader.result || ''));
+    reader.readAsDataURL(file);
+  });
 }
+
 export async function addFiles(brand, section, files, persist, replacementId = '') {
   if (!sectionNames.has(section)) throw new Error('Sección no válida.');
   const gallery = ensureGallery(brand);
