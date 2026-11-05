@@ -8,6 +8,7 @@ on:
       - .github/workflows/deploy-brand-board-pages.yml
       - demos/yummm/**
       - demos/soluna-yoga/**
+      - demos/lavender-edit/**
   workflow_run:
     workflows:
       - Build Brand Board Studio
@@ -82,6 +83,9 @@ jobs:
           rm -rf _site/soluna-yoga
           mkdir -p _site/soluna-yoga
           cp -R demos/soluna-yoga/. _site/soluna-yoga/
+          rm -rf _site/lavender-edit
+          mkdir -p _site/lavender-edit
+          cp -R demos/lavender-edit/. _site/lavender-edit/
           rm -rf _site/jaramillo-boutique
           mkdir -p _site/jaramillo-boutique
           cp -R boutique-source/demos/jaramillo-boutique/. _site/jaramillo-boutique/
@@ -100,6 +104,10 @@ jobs:
           test -f _site/soluna-yoga/index.html
           grep -q 'id="signupForm"' _site/soluna-yoga/index.html
           grep -q 'data-plan="Flow"' _site/soluna-yoga/index.html
+          test -s _site/lavender-edit/index.html
+          test -s _site/lavender-edit/assets/01_Soft_Lavender_Hero.png
+          test -s _site/lavender-edit/assets/08_After_Hours.png
+          grep -q 'The Lavender Edit' _site/lavender-edit/index.html
           test -f _site/jaramillo-boutique/index.html
           test -f _site/jaramillo-boutique/styles.css
           test -f _site/jaramillo-boutique/main.js
