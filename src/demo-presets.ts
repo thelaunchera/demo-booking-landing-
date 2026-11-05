@@ -97,12 +97,19 @@ export const EDITORIAL_PHOTO_SETS = {
     "https://thelaunchera.com/demos/casa-brownie/assets/regalos-bolsa-y-cajas.webp"
   ],
   "crumb": [
-    "https://thelaunchera.com/demos/crumb/assets/hero.webp",
-    "https://thelaunchera.com/demos/crumb/assets/brand-gifts.webp",
-    "https://thelaunchera.com/demos/crumb/assets/brand-storefront.webp",
-    "https://thelaunchera.com/demos/crumb/assets/brand-maker.webp",
-    "https://thelaunchera.com/demos/crumb/assets/brand-packaging.webp"
-  ],
+    "https://thelaunchera.com/demos/crumb/assets/CRUMB_Storefront_Approved_20261030.webp",
+    "https://thelaunchera.com/demos/crumb/assets/CRUMB_Our_Story_Approved_20261030.webp",
+    "https://thelaunchera.com/demos/crumb/assets/CRUMB_03_Gift_Box_Azul.png",
+    "https://thelaunchera.com/demos/crumb/assets/CRUMB_Inside_Cookie_Moment_Blue.svg",
+    "https://thelaunchera.com/demos/crumb/assets/CRUMB_Inside_Made_With_Care_Blue.svg",
+    "https://thelaunchera.com/demos/crumb/assets/CRUMB_02_Bolsa_Azul.png",
+    "https://thelaunchera.com/demos/crumb/assets/classic.webp",
+    "https://thelaunchera.com/demos/crumb/assets/double.webp",
+    "https://thelaunchera.com/demos/crumb/assets/caramel.webp",
+    "https://thelaunchera.com/demos/crumb/assets/raspberry.webp",
+    "https://thelaunchera.com/demos/crumb/assets/nutty.webp",
+    "https://thelaunchera.com/demos/crumb/assets/brownie.webp"
+],
   "aftr": [
     "https://thelaunchera.com/demos/aftr/assets/hero-real-20261031.webp"
   ],
