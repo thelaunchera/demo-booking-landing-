@@ -12,6 +12,7 @@ import {
   galleryHTML,
   galleryManagerHTML,
   loadGallery,
+  getGalleryPhotoSource,
   addFiles,
   removePhoto,
   movePhoto,
@@ -35,11 +36,11 @@ const DEMOS=[
   },
   {
     id:'crumb',name:'CRUMB Cookies',category:'Cookie Shop · Demo',description:'Cookies oversized, horneadas frescas y llenas de personalidad.',tagline:'The good stuff, fresh from the oven.',
-    monogram:'C',symbol:'✺',titleFont:'Cormorant Garamond',bodyFont:'DM Sans',tone:'Suave · apetitosa · acogedora',style:'cookies',
-    colors:['#392720','#BA8E6A','#E9DBCA','#FAF7F0','#B9AB8F','#DFC2A4'],
+    monogram:'C',symbol:'✺',titleFont:'Manrope',bodyFont:'DM Sans',tone:'Azul · artesanal · cookies reales',style:'cookies',
+    colors:['#24547D','#477BB3','#C9E2F4','#FAF8F3','#E5F1F9','#191919'],
     heroPhoto:'https://thelaunchera.com/demos/crumb/assets/CRUMB_Storefront_Approved_20261030.webp',
-    detailPhoto:'https://thelaunchera.com/demos/crumb/assets/brand-packaging.webp',
-    site:'https://crumb-cookies-animated-demo-w1fcop.v2.appdeploy.ai/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
+    detailPhoto:'https://thelaunchera.com/demos/crumb/assets/CRUMB_Our_Story_Approved_20261030.webp',
+    site:'https://thelaunchera.com/demos/crumb/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
   },
   {
     id:'aftr',name:'AFTR Las Vegas',category:'Nightclub · Demo',description:'Nightlife de alta energía, música y experiencias después del anochecer.',tagline:'After dark. Beyond ordinary.',
@@ -432,6 +433,14 @@ function hydrate(){
       ]
     }[b.id]||[];
     for(const [oldValue,key] of legacy){if(b[key]===oldValue)merged[key]=d[key];}
+    // Migrate historical default CRUMB imagery/palette only; preserve custom edits.
+    if(b.id==='crumb'){
+      const brown=['#392720','#BA8E6A','#E9DBCA','#FAF7F0','#B9AB8F','#DFC2A4'];
+      const hadBrown=Array.isArray(b.colors)&&b.colors.length===6&&b.colors.every((value,i)=>String(value).toLowerCase()===brown[i].toLowerCase());
+      if(hadBrown){merged.colors=d.colors;if(b.titleFont==='Cormorant Garamond')merged.titleFont=d.titleFont;}
+      if(b.detailPhoto==='https://thelaunchera.com/demos/crumb/assets/brand-packaging.webp')merged.detailPhoto=d.detailPhoto;
+      if(b.site==='https://crumb-cookies-animated-demo-w1fcop.v2.appdeploy.ai/')merged.site=d.site;
+    }
     if(!b.heroPhoto)merged.heroPhoto=d.heroPhoto;
     if(!b.detailPhoto)merged.detailPhoto=b.referenceImage||d.detailPhoto;
     if(!b.titleFont||b.titleFont==='Georgia')merged.titleFont=d.titleFont;
@@ -506,7 +515,7 @@ function board(b){
     :'<div class="pkg-box" style="background:'+c[0]+';color:'+c[3]+';font-family:'+font(b.titleFont)+'">'+html(b.monogram)+'</div><div class="pkg-cup" style="background:'+c[3]+';color:'+c[0]+'">'+html(graphic)+'</div>';
   const block=(text,section)=>'<div class="art-label"><span>'+text+'</span>'+
     addControl(section)+'</div>';
-  return '<div class="artboard" id="artboard" style="'+cssVars+'">'+
+  return '<div class="artboard" id="artboard" data-brand="'+html(b.id)+'" style="'+cssVars+'">'+
     '<header class="art-head" style="background:'+c[0]+';color:'+c[3]+'">'+
       '<div class="head-copy"><div class="art-meta"><span>THE LAUNCH ERA / CREATIVE STUDIO</span><span>IDENTITY 001</span></div>'+
       '<div class="wordmark '+html(b.style==='nightclub'?'aftr':'')+'">'+wordmark(b)+'</div><div class="hero-small">'+html(b.tagline)+'</div></div>'+
@@ -618,11 +627,9 @@ function render(){
     '<div class="shell"><aside class="sidebar">'+
       '<div class="brandlock"><span class="brandlock-icon">L.</span><span><strong>The Launch Era</strong><small>BRAND BOARD STUDIO</small></span></div>'+
       '<div class="sidebar-caption">Mis marcas demo</div><div class="sidebar-navgroup">'+
-      '<label class="mobile-brand-select"><span>Seleccionar marca</span><select id="mobile-brand-selector" aria-label="Seleccionar un Brand Board">'+
-      brands.map(x=>'<option value="'+html(x.id)+'"'+(x.id===b.id?' selected':'')+'>'+html(x.name)+'</option>').join('')+
-      '</select></label><nav class="brandlist" aria-label="Marcas">'+
+      '<div class="brand-drawer"><button type="button" class="brand-drawer-toggle" data-toggle-brand-drawer aria-expanded="false" aria-controls="brandlist-panel"><span>Mis Brand Boards <small>'+brands.length+' marcas individuales</small></span><span class="brand-drawer-chevron" aria-hidden="true">⌄</span></button><nav class="brandlist" id="brandlist-panel" aria-label="Marcas separadas">'+
       brands.map(x=>'<button class="brandnav '+(x.id===b.id?'active':'')+'" data-brand="'+html(x.id)+'"><span class="navlogo" style="background:'+hex(x.colors[1])+';color:'+contrastText(x.colors[1])+'">'+html(x.monogram.slice(0,3))+'</span><span class="navinfo"><strong>'+html(x.name)+'</strong><small>'+html(x.category)+'</small></span><span class="navarrow">›</span></button>').join('')+
-      '</nav><button class="newbrand" data-action="new">＋ Nueva marca</button></div>'+
+      '</nav></div><button class="newbrand" data-action="new">＋ Nueva marca</button></div>'+
       '<div class="sidefoot"><a href="'+html(b.site||'#')+'" '+(b.site?'target="_blank" rel="noopener noreferrer"':'')+'>↗ Abrir demo actual</a><a href="#" data-action="backup">↓ Respaldo de mis marcas</a><a href="#" data-action="import">↑ Importar respaldo</a><span>Área de trabajo creativa de The Launch Era. Los cambios se guardan solo en este navegador.</span></div>'+
     '</aside><div class="content"><header class="header"><div class="breadcrumb">The Launch Era &nbsp; / &nbsp; Demo Studio &nbsp; / &nbsp; <b>Brand Boards</b></div>'+
       '<div class="header-end"><span class="savepoint"></span><span class="savetext">Guardado local</span><span class="head-avatar">L</span></div></header>'+
@@ -682,10 +689,12 @@ async function loadImage(src){
   if(!src)return null;
   return new Promise(resolve=>{const img=new Image();img.crossOrigin='anonymous';img.onload=()=>resolve(img);img.onerror=()=>resolve(null);img.src=src;});
 }
-function canvasImage(ctx,img,x,y,w,h,pX=50,pY=50,scale=1){
+function canvasImage(ctx,img,x,y,w,h,pX=50,pY=50,scale=1,mode='cover'){
   if(!img)return false;
-  const fit=Math.max(w/img.width,h/img.height)*scale,iw=img.width*fit,ih=img.height*fit;
-  const dx=x-(iw-w)*(pX/100),dy=y-(ih-h)*(pY/100);
+  const fit=(mode==='contain'?Math.min(w/img.width,h/img.height):Math.max(w/img.width,h/img.height))*scale;
+  const iw=img.width*fit,ih=img.height*fit;
+  const dx=mode==='contain'?x+(w-iw)/2:x-(iw-w)*(pX/100);
+  const dy=mode==='contain'?y+(h-ih)/2:y-(ih-h)*(pY/100);
   ctx.save();ctx.beginPath();ctx.rect(x,y,w,h);ctx.clip();ctx.drawImage(img,dx,dy,iw,ih);ctx.restore();return true;
 }
 function write(ctx,s,x,y,size,color,fontName='Arial',weight='normal'){
@@ -815,6 +824,44 @@ function addBrand(name,type){
   Object.assign(starter,clone(fallback),{id,name,category:type,tagline:'Una marca con una historia propia.',description:'Una nueva identidad creada para un proyecto demo.',monogram:name.trim().split(/\s+/).map(x=>x[0]).slice(0,2).join('').toUpperCase(),site:'',logoImage:'',patternImage:'',heroPhoto:'',detailPhoto:'',imageY:50,imageX:50,imageScale:1});
   brands.push(starter);activeId=id;save();tab='identity';view='board';focused=false;render();notify('Nueva marca creada. Ahora puedes darle identidad.');
 }
+async function openPhotoReview(section,id){
+  const source=await getGalleryPhotoSource(id);
+  if(!source){notify('No se pudo cargar la imagen para revisarla.');return;}
+  document.querySelector('#gallery-photo-review')?.remove();
+  const dialog=document.createElement('dialog');
+  dialog.id='gallery-photo-review';
+  dialog.className='gallery-photo-review-dialog';
+  const heading=document.createElement('h3');
+  heading.textContent='Revisa la fotografía antes de usarla';
+  const image=document.createElement('img');
+  image.src=source;image.alt='Vista ampliada de la foto seleccionada';
+  const note=document.createElement('p');
+  note.textContent='Especialmente si la hiciste con IA: revisa pies, manos, rostro, proporciones y detalles de fondo. La aplicación no puede garantizar automáticamente que una foto generada sea correcta.';
+  const bar=document.createElement('div');bar.className='gallery-review-buttons';
+  const close=document.createElement('button');close.type='button';close.textContent='Conservar foto';
+  close.addEventListener('click',()=>dialog.close());
+  const replace=document.createElement('button');replace.type='button';replace.textContent='Reemplazar foto';
+  replace.addEventListener('click',()=>{
+    dialog.close();
+    uploadSection=section;replacementPhotoId=id;
+    const input=$('section-upload');
+    if(input){input.value='';input.multiple=false;input.click();}
+  });
+  const remove=document.createElement('button');remove.type='button';remove.textContent='Eliminar foto';
+  remove.addEventListener('click',()=>{
+    dialog.close();
+    if(!confirm('¿Eliminar esta foto del Brand Board?'))return;
+    removePhoto(active(),section,id,save).then(()=>{
+      render();notify('Foto eliminada. Puedes reemplazarla por una versión corregida.');
+    }).catch(e=>notify(e.message));
+  });
+  bar.append(close,replace,remove);
+  dialog.append(heading,image,note,bar);
+  document.body.append(dialog);
+  dialog.addEventListener('close',()=>dialog.remove(),{once:true});
+  dialog.showModal();
+}
+
 function perform(action,button){
   const b=active();
   if(action==='new')openNew();
@@ -840,6 +887,7 @@ function perform(action,button){
     if (input) { input.value='';input.multiple=!replacementPhotoId;input.click(); }
     return;
   }
+  if(action==='gallery-review') {void openPhotoReview(button.dataset.section,button.dataset.id);return;}
   if(action==='gallery-delete') {
     removePhoto(b,button.dataset.section,button.dataset.id,save).then(()=>{
       render();notify('Foto eliminada.');
@@ -996,4 +1044,13 @@ document.addEventListener('pointerup',event=>{
   if(pointerStart&&event.pointerId===pointerStart.id){pointerStart=null;save();}
 });
 document.addEventListener('pointercancel',()=>{pointerStart=null;});
+// Mobile vertical list of every brand; no dropdown with hidden projects.
+document.addEventListener('click',event=>{
+  const toggle=event.target.closest('[data-toggle-brand-drawer]');
+  if(!toggle)return;
+  const drawer=toggle.closest('.brand-drawer');
+  if(!drawer)return;
+  const open=drawer.classList.toggle('is-open');
+  toggle.setAttribute('aria-expanded',String(open));
+});
 render();
