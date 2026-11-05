@@ -52,13 +52,13 @@
 .curated-frame img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
 .curated-frame figcaption{position:absolute;bottom:8px;left:8px;right:8px;padding:8px 10px;background:#f9f7f1ea;color:#28202a;font:700 9px/1.3 'DM Sans',sans-serif;letter-spacing:.06em;max-width:max-content}
 .gallery-photo-card{aspect-ratio:4/5;background:var(--soft)}
-.gallery-photo-card img{object-fit:contain!important}
+.gallery-photo-card img{object-fit:contain}
 .gallery-photo-actions button{min-width:34px;min-height:34px;width:34px;height:34px;font-size:15px;border-radius:7px;box-shadow:0 1px 6px #0002}
 .gallery-photo-actions{gap:5px;flex-wrap:wrap}
 .gallery-photo-bar{position:static;background:#f7f3ec;border-top:1px solid #e0d9d0;padding:8px 6px;opacity:1;align-items:center}
 .gallery-photo-number{color:#39293b}
 .gallery-photo-card{overflow:visible;display:flex;flex-direction:column;aspect-ratio:auto}
-.gallery-photo-card img{aspect-ratio:4/5;object-fit:contain!important;min-height:0}
+.gallery-photo-card img{aspect-ratio:4/5;object-fit:contain;min-height:0}
 .gallery-add-control{font-size:11px;min-height:38px;padding:7px 13px;letter-spacing:0}
 .formbody .field{font-size:12px}
 .formbody .field input,.formbody .field textarea,.formbody .field select{font-size:14px;min-height:44px}
