@@ -158,3 +158,14 @@
  .curated-frame figcaption{font-size:9px}
  .gallery-photo-bar,.gallery-add-control{display:none!important}
 }
+
+/* Direct brand picker: 15+ brands should never require tedious horizontal scrolling. */
+.mobile-brand-select{display:none}
+@media(max-width:740px){
+  .sidebar-navgroup{gap:9px}
+  .sidebar-navgroup .brandlist{display:none!important}
+  .sidebar-navgroup .mobile-brand-select{min-width:0;flex:1;display:grid;gap:5px;color:#e9e5dd}
+  .mobile-brand-select span{font:700 9px/1.2 'DM Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#d1c9bb}
+  .mobile-brand-select select{appearance:auto;max-width:100%;width:100%;height:43px;border:1px solid #55544e;border-radius:8px;background:#2c2d2b;color:#fff;padding:0 7px;font:700 13px 'DM Sans',sans-serif}
+  .sidebar-navgroup .newbrand{flex:0 0 auto;min-width:106px;padding:12px 10px;margin:13px 0 0;min-height:43px;text-align:center}
+}
