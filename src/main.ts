@@ -2,6 +2,8 @@
 // @ts-nocheck
 import './styles.css';
 import './section-gallery.css';
+import './editorial.css';
+import {curatedGallery} from './demo-presets';
 import {
   SECTION_DEFS,
   ensureGallery,
@@ -465,6 +467,10 @@ function wordmark(b,variant=''){
   if(b.style==='nightclub'&&b.name.toLowerCase()==='aftr las vegas')return '<span style="'+style+'">AFTR</span>';
   return '<span style="'+style+'">'+html(b.name)+'</span>';
 }
+function galleryPreview(brand, section) {
+  const uploads = ensureGallery(brand)[section] || [];
+  return uploads.length ? galleryHTML(brand, section) : curatedGallery(brand, section);
+}
 function board(b){
   const c=b.colors.map((v,i)=>hex(v,DEMOS[0].colors[i]));
   const cssVars='--ink:'+c[0]+';--accent:'+c[1]+';--soft:'+c[2]+';--paper:'+c[3]+';--extra:'+c[4]+';--detail:'+c[5]+';--muted:'+c[0]+'99;';
@@ -487,7 +493,7 @@ function board(b){
       '<span class="photo-hint">↕ Arrastra para ajustar</span>'+
       addControl('hero', '＋ Fotos') + '</div>'+
     '</header>'+
-    '<div class="gallery-hero-wrap">'+galleryHTML(b,'hero')+'</div>'+
+    '<div class="gallery-hero-wrap">'+galleryPreview(b,'hero')+'</div>'+
     '<section class="art-body">'+
       block('01 &nbsp; Elementos de identidad','identity')+
       '<div class="elements">'+
@@ -495,27 +501,27 @@ function board(b){
         '<div class="element monogram-cell" style="background:'+c[1]+';color:'+c[3]+';font-family:'+font(b.titleFont)+'"><small>Monograma</small>'+html(b.monogram)+'</div>'+
         '<div class="element mark-cell" style="background:'+c[2]+';color:'+c[0]+'"><small>Símbolo / pattern</small>'+html(graphic)+'</div>'+
       '</div>'+
-      galleryHTML(b,'identity')+
+      galleryPreview(b,'identity')+
       '<div class="art-section">'+block('02 &nbsp; Paleta de color','palette')+
         '<div class="palettes">'+c.map((col,i)=>'<div class="coloritem"><div class="colorcircle" style="background:'+col+'"></div><div class="colorname">'+['Principal','Acento','Suave','Fondo','Extra','Detalle'][i]+'</div><div class="colorcode">'+col.toUpperCase()+'</div></div>').join('')+'</div>'+
-      galleryHTML(b,'palette')+'</div>'+
+      galleryPreview(b,'palette')+'</div>'+
       '<div class="art-section">'+block('03 &nbsp; Tipografías y voz','typography')+
         '<div class="typeboard" style="background:'+c[0]+';color:'+c[3]+'">'+
         '<div class="bigtype"><div class="type-char" style="font-family:'+font(b.titleFont)+'">Aa</div><div class="type-meta">Titulares · '+html(b.titleFont)+'</div></div>'+
         '<div class="type-samples"><div class="typequote" style="font-family:'+font(b.titleFont)+'">'+html(b.tagline)+'</div>'+
         '<div class="sample-sub" style="font-family:'+font(b.bodyFont)+'">'+html(b.description||b.tone)+'</div><div class="type-meta">Texto · '+html(b.bodyFont)+'</div></div></div>'+
-        galleryHTML(b,'typography')+
+        galleryPreview(b,'typography')+
       '</div>'+
       '<div class="art-section double">'+
-        '<div>'+block('04 &nbsp; Patrón','pattern')+'<div class="pattern-preview" data-pattern="'+html(graphic+'  '+graphic+'  '+graphic+'  '+graphic+'  '+graphic+'  '+graphic)+'" style="background:'+c[2]+';color:'+c[0]+'">'+paintPattern+'</div>'+galleryHTML(b,'pattern')+'</div>'+
-        '<div>'+block('05 &nbsp; Packaging / aplicación','applications')+'<div class="package-area" style="background:'+c[4]+'">'+packageMark+'</div>'+galleryHTML(b,'applications')+'</div>'+
+        '<div>'+block('04 &nbsp; Patrón','pattern')+'<div class="pattern-preview" data-pattern="'+html(graphic+'  '+graphic+'  '+graphic+'  '+graphic+'  '+graphic+'  '+graphic)+'" style="background:'+c[2]+';color:'+c[0]+'">'+paintPattern+'</div>'+galleryPreview(b,'pattern')+'</div>'+
+        '<div>'+block('05 &nbsp; Packaging / aplicación','applications')+'<div class="package-area" style="background:'+c[4]+'">'+packageMark+'</div>'+galleryPreview(b,'applications')+'</div>'+
       '</div>'+
       '<div class="art-section">'+block('06 &nbsp; Universo visual','universe')+
         '<div class="mood-strip">'+
           '<div class="mood-photo">'+imageMarkup(b.detailPhoto,'',b.name+' referencia secundaria')+'</div>'+
           '<div class="mood-photo">'+imageMarkup(b.heroPhoto,'',b.name+' fotografía de referencia')+'</div>'+
           '<div class="mood-photo" style="background:'+c[1]+';color:'+c[3]+';font-family:'+font(b.titleFont)+'">'+html(graphic)+'</div>'+
-        '</div>'+galleryHTML(b,'universe')+
+        '</div>'+galleryPreview(b,'universe')+
       '</div>'+
       '<div class="art-footer"><span>'+html(b.tone)+'</span><span>CONCEPT BRAND  /  THE LAUNCH ERA</span></div>'+
     '</section></div>';
