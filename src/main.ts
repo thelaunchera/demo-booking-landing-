@@ -29,24 +29,24 @@ const DEMOS=[
     id:'casa-brownie',name:'Casa Brownie',category:'Bakery · Demo',description:'Brownies horneados para hacer especial cualquier momento.',tagline:'Small moments, made sweeter.',
     monogram:'CB',symbol:'✳',titleFont:'Bodoni Moda',bodyFont:'DM Sans',tone:'Cálida · artesanal · deliciosa',style:'bakery',
     colors:['#422419','#BC7658','#E5D3A9','#FCF3E9','#A5AB91','#DEAF95'],
-    heroPhoto:'https://www.amummytoo.co.uk/wp-content/uploads/2025/04/big-batch-brownies-SQUARE.jpg',
-    detailPhoto:'https://images.ctfassets.net/brcxfsm84vq2/3XfvKaeEjct7Rjgweuzp5r/174011d220376e0cf240558c79796251/Fudge_Brownies_Salted_Caramel.jpg?w=600',
+    heroPhoto:'https://thelaunchera.com/demos/casa-brownie/assets/hero-brownies.webp',
+    detailPhoto:'https://thelaunchera.com/demos/casa-brownie/assets/regalo-lazo-rosa.webp',
     site:'https://casa-brownie-demo-miami-ltg7rb.v2.appdeploy.ai/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
   },
   {
     id:'crumb',name:'CRUMB Cookies',category:'Cookie Shop · Demo',description:'Cookies oversized, horneadas frescas y llenas de personalidad.',tagline:'The good stuff, fresh from the oven.',
     monogram:'C',symbol:'✺',titleFont:'Cormorant Garamond',bodyFont:'DM Sans',tone:'Suave · apetitosa · acogedora',style:'cookies',
     colors:['#392720','#BA8E6A','#E9DBCA','#FAF7F0','#B9AB8F','#DFC2A4'],
-    heroPhoto:'https://d2ol7oe51mr4n9.cloudfront.net/user_3FC9GcVebQE6WAxiCP5Hh9w95GF/e5bb099c-dc60-4ebe-884c-2c33dccfab62.jpg',
-    detailPhoto:'https://d2ol7oe51mr4n9.cloudfront.net/user_3FC9GcVebQE6WAxiCP5Hh9w95GF/678a8c92-21bd-410c-b72f-18e051b620c8.jpg',
+    heroPhoto:'https://thelaunchera.com/demos/crumb/assets/CRUMB_Storefront_Approved_20261030.webp',
+    detailPhoto:'https://thelaunchera.com/demos/crumb/assets/brand-packaging.webp',
     site:'https://crumb-cookies-animated-demo-w1fcop.v2.appdeploy.ai/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
   },
   {
     id:'aftr',name:'AFTR Las Vegas',category:'Nightclub · Demo',description:'Nightlife de alta energía, música y experiencias después del anochecer.',tagline:'After dark. Beyond ordinary.',
     monogram:'A',symbol:'✦',titleFont:'Bebas Neue',bodyFont:'Manrope',tone:'Nocturna · eléctrica · sofisticada',style:'nightclub',
     colors:['#0B0911','#9A6AFF','#FF3F9D','#F3F0F7','#D9FF52','#C6C9D4'],
-    heroPhoto:'https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/aftr-nightclub/assets/hero.webp',
-    detailPhoto:'https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/aftr-nightclub/assets/dj.webp',
+    heroPhoto:'https://thelaunchera.com/demos/aftr/assets/hero-real-20261031.webp',
+    detailPhoto:'https://thelaunchera.com/demos/aftr/assets/dj-real-20261031.webp',
     site:'https://aftr-las-vegas-nightclub-fwv6yu.v2.appdeploy.ai/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
   },
   {
@@ -416,6 +416,22 @@ function hydrate(){
   const existing=previous.map(b=>{
     const d=base.find(x=>x.id===b.id)||base[0];
     const merged={...clone(d),...b};
+    // Replace only historical placeholder images, never uploaded or customised assets.
+    const legacy={
+      'casa-brownie':[
+        ['https://www.amummytoo.co.uk/wp-content/uploads/2025/04/big-batch-brownies-SQUARE.jpg','heroPhoto'],
+        ['https://images.ctfassets.net/brcxfsm84vq2/3XfvKaeEjct7Rjgweuzp5r/174011d220376e0cf240558c79796251/Fudge_Brownies_Salted_Caramel.jpg?w=600','detailPhoto']
+      ],
+      crumb:[
+        ['https://d2ol7oe51mr4n9.cloudfront.net/user_3FC9GcVebQE6WAxiCP5Hh9w95GF/e5bb099c-dc60-4ebe-884c-2c33dccfab62.jpg','heroPhoto'],
+        ['https://d2ol7oe51mr4n9.cloudfront.net/user_3FC9GcVebQE6WAxiCP5Hh9w95GF/678a8c92-21bd-410c-b72f-18e051b620c8.jpg','detailPhoto']
+      ],
+      aftr:[
+        ['https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/aftr-nightclub/assets/hero.webp','heroPhoto'],
+        ['https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/aftr-nightclub/assets/dj.webp','detailPhoto']
+      ]
+    }[b.id]||[];
+    for(const [oldValue,key] of legacy){if(b[key]===oldValue)merged[key]=d[key];}
     if(!b.heroPhoto)merged.heroPhoto=d.heroPhoto;
     if(!b.detailPhoto)merged.detailPhoto=b.referenceImage||d.detailPhoto;
     if(!b.titleFont||b.titleFont==='Georgia')merged.titleFont=d.titleFont;
@@ -689,7 +705,8 @@ async function exportPNG(){
   can.width=W;can.height=H;const g=can.getContext('2d');
   g.fillStyle=c[3];g.fillRect(0,0,W,H);g.fillStyle=c[0];g.fillRect(0,0,W,410);
   const [hero,detail,logo,pattern]=await Promise.all([loadImage(b.heroPhoto),loadImage(b.detailPhoto),loadImage(b.logoImage),loadImage(b.patternImage)]);
-  canvasImage(g,hero,700,0,700,410,b.imageX,b.imageY,b.imageScale);
+  g.fillStyle=c[2];g.fillRect(700,0,700,410);
+  canvasImage(g,hero,700,0,700,410,b.imageX,b.imageY,b.imageScale,'contain');
   g.fillStyle=c[3];g.fillRect(40,38,12,12);write(g,'THE LAUNCH ERA / CREATIVE STUDIO',72,49,15,c[3],'Arial','bold');
   const display=b.titleFont==='Bebas Neue'?'Impact':b.titleFont==='Cormorant Garamond'||b.titleFont==='Bodoni Moda'||b.titleFont==='DM Serif Display'?'Georgia':'Arial';
   if(b.style==='bakery'&&b.name.toLowerCase()==='casa brownie'){write(g,'casa',69,225,118,c[3],display);write(g,'brownie.',69,332,113,c[3],display);}
