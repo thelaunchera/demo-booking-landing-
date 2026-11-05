@@ -504,7 +504,7 @@ function board(b){
       block('01 &nbsp; Elementos de identidad','identity')+
       '<div class="elements">'+
         '<div class="element logo-cell" style="background:'+c[0]+';color:'+c[3]+';font-family:'+font(b.titleFont)+'"><small>Wordmark</small>'+wordmark(b,'element')+'</div>'+
-        '<div class="element monogram-cell" style="background:'+c[1]+';color:'+c[3]+';font-family:'+font(b.titleFont)+'"><small>Monograma</small>'+html(b.monogram)+'</div>'+
+        '<div class="element monogram-cell" style="background:'+c[1]+';color:'+contrastText(c[1])+';font-family:'+font(b.titleFont)+'"><small>Monograma</small>'+html(b.monogram)+'</div>'+
         '<div class="element mark-cell" style="background:'+c[2]+';color:'+c[0]+'"><small>Símbolo / pattern</small>'+html(graphic)+'</div>'+
       '</div>'+
       galleryPreview(b,'identity')+
@@ -526,7 +526,7 @@ function board(b){
         '<div class="mood-strip">'+
           '<div class="mood-photo">'+imageMarkup(b.detailPhoto,'',b.name+' referencia secundaria')+'</div>'+
           '<div class="mood-photo">'+imageMarkup(b.heroPhoto,'',b.name+' fotografía de referencia')+'</div>'+
-          '<div class="mood-photo" style="background:'+c[1]+';color:'+c[3]+';font-family:'+font(b.titleFont)+'">'+html(graphic)+'</div>'+
+          '<div class="mood-photo" style="background:'+c[1]+';color:'+contrastText(c[1])+';font-family:'+font(b.titleFont)+'">'+html(graphic)+'</div>'+
         '</div>'+galleryPreview(b,'universe')+
       '</div>'+
       '<div class="art-footer"><span>'+html(b.tone)+'</span><span>CONCEPT BRAND  /  THE LAUNCH ERA</span></div>'+
