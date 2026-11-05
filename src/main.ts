@@ -3,7 +3,7 @@
 import './styles.css';
 import './section-gallery.css';
 import './editorial.css';
-import {curatedGallery} from './demo-presets';
+import {curatedGallery, EDITORIAL_PHOTO_SETS} from './demo-presets';
 import {
   SECTION_DEFS,
   ensureGallery,
@@ -698,17 +698,33 @@ function wrap(ctx,s,x,y,maxw,sz,color,f='Georgia',leading=1.14){
 }
 async function exportPNG(){
   const b=active(),c=b.colors.map(v=>hex(v)),W=1400;
+  // Export approved brand photography alongside user-supplied images without changing stored projects.
   const galleryRows=await appendixRows(b);
-  const appendixHeight=galleryRows.reduce((sum,row)=>sum+92+Math.ceil(row.photos.length/3)*288+25,0);
+  const published=EDITORIAL_PHOTO_SETS[b.id]||[];
+  const included=new Set(galleryRows.flatMap(row=>row.photos.map(photo=>photo.src)));
+  const campaign=published.slice(1).filter(src=>src&&!included.has(src)).slice(0,9);
+  if(campaign.length && galleryRows.length<=2){
+    galleryRows.push({
+      title:'Campaña original de la marca',
+      photos:campaign.map(src=>({src,fit:'contain',x:50,y:50}))
+    });
+  }
+  const photoHeight=418,rowStep=440;
+  const appendixHeight=galleryRows.reduce((sum,row)=>sum+92+Math.ceil(row.photos.length/3)*rowStep+25,0);
   const H=1900+appendixHeight;
+  const pixelRatio=Math.max(1,Math.min(2,15000/H,Math.sqrt(32000000/(W*H))));
   const can=document.createElement('canvas');
-  can.width=W;can.height=H;const g=can.getContext('2d');
+  can.width=Math.round(W*pixelRatio);
+  can.height=Math.round(H*pixelRatio);
+  const g=can.getContext('2d');
+  if(!g){notify('No se pudo preparar el PNG.');return;}
+  g.scale(pixelRatio,pixelRatio);
   g.fillStyle=c[3];g.fillRect(0,0,W,H);g.fillStyle=c[0];g.fillRect(0,0,W,410);
   const [hero,detail,logo,pattern]=await Promise.all([loadImage(b.heroPhoto),loadImage(b.detailPhoto),loadImage(b.logoImage),loadImage(b.patternImage)]);
   g.fillStyle=c[2];g.fillRect(700,0,700,410);
   canvasImage(g,hero,700,0,700,410,b.imageX,b.imageY,b.imageScale,'contain');
   g.fillStyle=c[3];g.fillRect(40,38,12,12);write(g,'THE LAUNCH ERA / CREATIVE STUDIO',72,49,15,c[3],'Arial','bold');
-  const display=b.titleFont==='Bebas Neue'?'Impact':b.titleFont==='Cormorant Garamond'||b.titleFont==='Bodoni Moda'||b.titleFont==='DM Serif Display'?'Georgia':'Arial';
+  const display=b.titleFont==='Italiana'?'Italiana':b.titleFont==='Bebas Neue'?'Impact':b.titleFont==='Cormorant Garamond'||b.titleFont==='Bodoni Moda'||b.titleFont==='DM Serif Display'?'Georgia':'Arial';
   if(b.style==='bakery'&&b.name.toLowerCase()==='casa brownie'){write(g,'casa',69,225,118,c[3],display);write(g,'brownie.',69,332,113,c[3],display);}
   else if(b.style==='cookies'&&b.name.toLowerCase()==='crumb cookies'){write(g,'crumb.',65,266,139,c[3],display);}
   else if(b.style==='nightclub'&&b.name.toLowerCase()==='aftr las vegas'){write(g,'AFTR',65,275,179,c[3],display,'bold');}
@@ -749,20 +765,26 @@ async function exportPNG(){
   if(hero)canvasImage(g,hero,287,1815,224,64);
   write(g,b.tone,553,1857,19,c[0],'Arial');
   write(g,'THE LAUNCH ERA / CONCEPT BRAND',1068,1865,15,c[0],'Arial');
-  let galleryY=1900;
-  for (const row of galleryRows) {
+  let galleryY=1900,missingImages=0;
+  for(const row of galleryRows){
     g.fillStyle=c[3];g.fillRect(0,galleryY,W,92);
-    write(g,'GALERÍA  /  '+row.title.toUpperCase(),52,galleryY+56,26,c[0],'Arial','bold');
+    write(g,'GALERÍA / '+row.title.toUpperCase(),52,galleryY+56,26,c[0],'Arial','bold');
     galleryY+=92;
-    for (let i=0;i<row.photos.length;i++) {
-      const col=i%3, r=Math.floor(i/3),x=52+col*438,y=galleryY+r*288;
-      g.fillStyle=c[2];g.fillRect(x,y,418,264);
+    for(let i=0;i<row.photos.length;i++){
+      const col=i%3,r=Math.floor(i/3),x=52+col*438,y=galleryY+r*rowStep;
+      g.fillStyle=c[2];g.fillRect(x,y,418,photoHeight);
       const photo=await loadImage(row.photos[i].src);
-      if(photo)canvasImage(g,photo,x,y,418,264,row.photos[i].x,row.photos[i].y);
+      if(photo){
+        canvasImage(g,photo,x,y,418,photoHeight,row.photos[i].x,row.photos[i].y,1,row.photos[i].fit||'contain');
+      }else{
+        missingImages++;
+        write(g,'Imagen no disponible en este PNG',x+18,y+208,16,c[0],'Arial');
+        write(g,'Revisar enlace del original',x+18,y+232,14,c[0],'Arial');
+      }
     }
-    galleryY+=Math.ceil(row.photos.length/3)*288+25;
+    galleryY+=Math.ceil(row.photos.length/3)*rowStep+25;
   }
-  can.toBlob(blob=>{if(blob){download(blob,'brand-board-'+tokenName(b.name)+'.png');notify(!hero&&b.heroPhoto?'PNG descargado. Una foto externa no permitió exportación; súbela desde tu dispositivo para incluirla.':'PNG HD descargado.');}else notify('No se pudo generar el PNG.');},'image/png');
+  can.toBlob(blob=>{if(blob){download(blob,'brand-board-'+tokenName(b.name)+'.png');notify(missingImages||(!hero&&b.heroPhoto)?'PNG descargado con avisos: algunas fotos externas no pudieron exportarse. Revisa las imágenes antes de publicar.':'PNG editorial HD descargado con fotografías de campaña.');}else notify('No se pudo generar el PNG.');},'image/png');
 }
 async function resizeFile(file){
   if(!['image/jpeg','image/png','image/webp'].includes(file.type))throw Error('Formato no permitido');
