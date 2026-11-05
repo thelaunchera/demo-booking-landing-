@@ -46,9 +46,357 @@ const DEMOS=[
     heroPhoto:'https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/aftr-nightclub/assets/hero.webp',
     detailPhoto:'https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/aftr-nightclub/assets/dj.webp',
     site:'https://aftr-las-vegas-nightclub-fwv6yu.v2.appdeploy.ai/',logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1
+  },
+  {
+    id: "lavender-edit",
+    name: "The Lavender Edit",
+    category: "Beauty · Demo",
+    description: "Belleza editorial conceptual en tonos lavanda: ritual, texturas y campaña de regalo.",
+    tagline: "A softer state of mind.",
+    monogram: "LE",
+    symbol: "✦",
+    titleFont: "Cormorant Garamond",
+    bodyFont: "DM Sans",
+    tone: "Suave · editorial · sensorial",
+    style: "beauty",
+    colors: [
+      "#3E2B43",
+      "#9C73A4",
+      "#E9DDEC",
+      "#FAF7F6",
+      "#C3A5CB",
+      "#F5EEE9"
+    ],
+    heroPhoto: "https://thelaunchera.com/demos/lavender-edit/photos/01_Soft_Lavender_Hero.png",
+    detailPhoto: "https://thelaunchera.com/demos/lavender-edit/photos/02_Lavender_Mood_Macro.png",
+    site: "https://thelaunchera.com/demos/lavender-edit/",
+    logoImage: "",
+    patternImage: "",
+    imageY: 50,
+    imageX: 50,
+    imageScale: 1
+  },
+  {
+    id: "havana-19",
+    name: "Havana 19",
+    category: "Restaurante · Demo",
+    description: "Concepto editorial de restaurante cubano en Boston, con atmósfera burdeos y gastronomía.",
+    tagline: "A Cuban story, beautifully served.",
+    monogram: "H19",
+    symbol: "✦",
+    titleFont: "Cormorant Garamond",
+    bodyFont: "DM Sans",
+    tone: "Cálida · clásica · gastronómica",
+    style: "restaurant",
+    colors: [
+      "#241713",
+      "#AE8061",
+      "#E9CFC3",
+      "#F6EFE7",
+      "#471E20",
+      "#DAC0AC"
+    ],
+    heroPhoto: "https://thelaunchera.com/demos/havana-19/photos/HAVANA19_Hero_Fachada_Borgona.jpeg",
+    detailPhoto: "https://thelaunchera.com/demos/umbral/photos/UMBRAL_03_Ropa_Vieja.jpeg",
+    site: "https://thelaunchera.com/demos/havana-19/",
+    logoImage: "",
+    patternImage: "",
+    imageY: 50,
+    imageX: 50,
+    imageScale: 1
+  },
+  {
+    id: "marea-wigs-miami",
+    name: "Marea Wigs · Miami",
+    category: "Beauty · Demo",
+    description: "Concepto de boutique de pelucas editorial con colección de looks y galería.",
+    tagline: "Your next look starts here.",
+    monogram: "MW",
+    symbol: "✺",
+    titleFont: "Cormorant Garamond",
+    bodyFont: "DM Sans",
+    tone: "Miami · luminosa · sofisticada",
+    style: "beauty",
+    colors: [
+      "#1D2528",
+      "#7BBFC0",
+      "#C7E7E3",
+      "#FAF9F5",
+      "#E8A5A0",
+      "#D4BAA1"
+    ],
+    heroPhoto: "https://thelaunchera.com/demos/marea-wigs-miami/resources/01-hero.png",
+    detailPhoto: "https://thelaunchera.com/demos/marea-wigs-miami/resources/02-long.png",
+    site: "https://thelaunchera.com/demos/marea-wigs-miami/",
+    logoImage: "",
+    patternImage: "",
+    imageY: 50,
+    imageX: 50,
+    imageScale: 1
+  },
+  {
+    id: "sova",
+    name: "SOVA Headphones",
+    category: "Audio · Demo",
+    description: "Marca conceptual de audífonos con campaña editorial y colección de colores.",
+    tagline: "Tune into your world.",
+    monogram: "S",
+    symbol: "✳",
+    titleFont: "DM Serif Display",
+    bodyFont: "DM Sans",
+    tone: "Moderna · acústica · audaz",
+    style: "audio",
+    colors: [
+      "#171F35",
+      "#3772DD",
+      "#C1D6F0",
+      "#F6F8FA",
+      "#91A8DA",
+      "#ECECF4"
+    ],
+    heroPhoto: "https://thelaunchera.com/demos/sova/resources/01-hero.png",
+    detailPhoto: "https://thelaunchera.com/demos/sova/resources/02-product.png",
+    site: "https://thelaunchera.com/demos/sova/",
+    logoImage: "",
+    patternImage: "",
+    imageY: 50,
+    imageX: 50,
+    imageScale: 1
+  },
+  {
+    id: "golden-grid",
+    name: "Golden Grid · Waffle Co.",
+    category: "Food · Demo",
+    description: "Waffles, desayunos y empaques en un universo visual colorido.",
+    tagline: "Morning, but golden.",
+    monogram: "GG",
+    symbol: "✳",
+    titleFont: "Bebas Neue",
+    bodyFont: "DM Sans",
+    tone: "Divertida · colorida · deliciosa",
+    style: "food",
+    colors: [
+      "#173E57",
+      "#D93624",
+      "#F4D776",
+      "#FDFBF4",
+      "#BCE8EE",
+      "#F6E7B1"
+    ],
+    heroPhoto: "https://thelaunchera.com/demos/golden-grid/resources/golden-1.png",
+    detailPhoto: "https://thelaunchera.com/demos/golden-grid/resources/golden-2.png",
+    site: "https://thelaunchera.com/demos/golden-grid/",
+    logoImage: "",
+    patternImage: "",
+    imageY: 50,
+    imageX: 50,
+    imageScale: 1
+  },
+  {
+    id: "jaramillo-boutique",
+    name: "Jaramillo Boutique",
+    category: "Boutique · Demo",
+    description: "Moda femenina editorial con colecciones, tallas y selección de looks.",
+    tagline: "Made to be noticed.",
+    monogram: "JB",
+    symbol: "✧",
+    titleFont: "Cormorant Garamond",
+    bodyFont: "DM Sans",
+    tone: "Femenina · burdeos · editorial",
+    style: "fashion",
+    colors: [
+      "#331C23",
+      "#8B384F",
+      "#DFB3B1",
+      "#FAF7F3",
+      "#EAD9CB",
+      "#8D6C6F"
+    ],
+    heroPhoto: "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/hero-editorial-user.jpg",
+    detailPhoto: "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/assets/colombian-jeans.webp",
+    site: "https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/",
+    logoImage: "",
+    patternImage: "",
+    imageY: 50,
+    imageX: 50,
+    imageScale: 1
+  },
+  {
+    id: "yummm",
+    name: "YUMMM · Coffee & Sweets",
+    category: "Food · Demo",
+    description: "Cafetería creativa, bakery y dulces en una experiencia visual interactiva.",
+    tagline: "A little joy in every bite.",
+    monogram: "Y",
+    symbol: "✳",
+    titleFont: "DM Serif Display",
+    bodyFont: "DM Sans",
+    tone: "Joven · dulce · cálida",
+    style: "food",
+    colors: [
+      "#43241D",
+      "#D65441",
+      "#F5D8BE",
+      "#FDF7EE",
+      "#C5A380",
+      "#E5E0C9"
+    ],
+    heroPhoto: "https://thelaunchera.github.io/demo-booking-landing-/yummm/images/10.webp",
+    detailPhoto: "https://thelaunchera.github.io/demo-booking-landing-/yummm/images/02.webp",
+    site: "https://thelaunchera.github.io/demo-booking-landing-/yummm/",
+    logoImage: "",
+    patternImage: "",
+    imageY: 50,
+    imageX: 50,
+    imageScale: 1
+  },
+  {
+    id: "la-vie-in-pink",
+    name: "La Vie in Pink",
+    category: "Bakery · Demo",
+    description: "Croissants gourmet, desayunos europeos y boutique pâtisserie bilingüe.",
+    tagline: "A little Europe, every day.",
+    monogram: "LV",
+    symbol: "✦",
+    titleFont: "Cormorant Garamond",
+    bodyFont: "DM Sans",
+    tone: "Europea · artesanal · romántica",
+    style: "bakery",
+    colors: [
+      "#3D2E26",
+      "#7C2228",
+      "#E8C6BB",
+      "#FAF8F3",
+      "#667650",
+      "#D8C6B3"
+    ],
+    heroPhoto: "https://thelaunchera.com/demos/la-vie-in-pink/resources/36a1bfe5-3660-4b7e-964d-8031fe824941.png",
+    detailPhoto: "https://thelaunchera.com/demos/la-vie-in-pink/resources/8572492e-4032-4e82-a5d3-7e087ec38613.png",
+    site: "https://thelaunchera.com/demos/la-vie-in-pink/",
+    logoImage: "",
+    patternImage: "",
+    imageY: 50,
+    imageX: 50,
+    imageScale: 1
+  },
+  {
+    id: "soluna-yoga",
+    name: "SOLUNA Yoga",
+    category: "Wellness · Demo",
+    description: "Estudio de yoga conceptual con clases, comunidad y bienestar sin pagos reales.",
+    tagline: "Find your softer rhythm.",
+    monogram: "SY",
+    symbol: "✧",
+    titleFont: "Cormorant Garamond",
+    bodyFont: "DM Sans",
+    tone: "Serena · orgánica · luminosa",
+    style: "wellness",
+    colors: [
+      "#3C4338",
+      "#829681",
+      "#D2DDC9",
+      "#F8F5EB",
+      "#C8B29E",
+      "#E6D9CA"
+    ],
+    heroPhoto: "https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/soluna-hero-editorial.webp",
+    detailPhoto: "https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/studio-interior.webp",
+    site: "https://thelaunchera.github.io/demo-booking-landing-/soluna-yoga/",
+    logoImage: "",
+    patternImage: "",
+    imageY: 50,
+    imageX: 50,
+    imageScale: 1
+  },
+  {
+    id: "ivory-bloom",
+    name: "IVORY & BLOOM",
+    category: "Bakery · Demo",
+    description: "Atelier ficticio de pasteles de boda con campañas editoriales y galería.",
+    tagline: "Beautifully made for the moment.",
+    monogram: "IB",
+    symbol: "✿",
+    titleFont: "Cormorant Garamond",
+    bodyFont: "DM Sans",
+    tone: "Nupcial · floral · elegante",
+    style: "bakery",
+    colors: [
+      "#2D2832",
+      "#B47789",
+      "#EEDADE",
+      "#FAF8F3",
+      "#A6B09C",
+      "#D2BDA9"
+    ],
+    heroPhoto: "https://raw.githubusercontent.com/thelaunchera/the-launch-era-new-website-/main/public/demos/ivory-and-bloom/images/hero-cake-artist.webp",
+    detailPhoto: "https://raw.githubusercontent.com/thelaunchera/the-launch-era-new-website-/main/public/demos/ivory-and-bloom/images/hero-detail.webp",
+    site: "https://thelaunchera.com/demos/ivory-and-bloom/",
+    logoImage: "",
+    patternImage: "",
+    imageY: 50,
+    imageX: 50,
+    imageScale: 1
+  },
+  {
+    id: "cb-depot",
+    name: "CB Depot",
+    category: "Cliente real",
+    description: "Proyecto de cliente de detailing móvil y solicitud de reservas; preservar sus imágenes aprobadas.",
+    tagline: "Professional detailing, on your schedule.",
+    monogram: "CB",
+    symbol: "✧",
+    titleFont: "Manrope",
+    bodyFont: "DM Sans",
+    tone: "Automotriz · precisa · profesional",
+    style: "detailing",
+    colors: [
+      "#202428",
+      "#E1B985",
+      "#CBD6DD",
+      "#F7F6F1",
+      "#58636C",
+      "#C4D4CC"
+    ],
+    heroPhoto: "https://thelaunchera.com/assets/clients/cb-depot/photos/hero-desktop.webp",
+    detailPhoto: "https://thelaunchera.com/assets/clients/cb-depot/photos/exterior.webp",
+    site: "https://cb-depot-booking.pages.dev/",
+    logoImage: "",
+    patternImage: "",
+    imageY: 50,
+    imageX: 50,
+    imageScale: 1
+  },
+  {
+    id: "experience-cleaning",
+    name: "Experience Cleaning",
+    category: "Cleaning · Demo",
+    description: "Demostración de reserva residencial y cotización comercial, sin reservas reales.",
+    tagline: "A simpler way to book.",
+    monogram: "EC",
+    symbol: "✳",
+    titleFont: "DM Serif Display",
+    bodyFont: "DM Sans",
+    tone: "Clara · confiable · profesional",
+    style: "cleaning",
+    colors: [
+      "#191919",
+      "#6EABC8",
+      "#DBE8EF",
+      "#FAF8F3",
+      "#F2D85B",
+      "#CED7DE"
+    ],
+    heroPhoto: "https://thelaunchera.com/assets/cleaning-demo/hero-cleaner-original.jpg",
+    detailPhoto: "https://thelaunchera.com/assets/drive-house-gallery/whole-home.png",
+    site: "https://thelaunchera.com/experience-cleaning/",
+    logoImage: "",
+    patternImage: "",
+    imageY: 50,
+    imageX: 50,
+    imageScale: 1
   }
 ];
-const TYPES=['Bakery · Demo','Cookie Shop · Demo','Nightclub · Demo','Boutique · Demo','Beauty · Demo','Wellness · Demo','Restaurante · Demo','Otra categoría'];
+const TYPES=['Bakery · Demo','Cookie Shop · Demo','Nightclub · Demo','Boutique · Demo','Beauty · Demo','Wellness · Demo','Restaurante · Demo','Audio · Demo','Food · Demo','Cleaning · Demo','Cliente real','Otra categoría'];
 const FONTS=['Bodoni Moda','DM Serif Display','Cormorant Garamond','Bebas Neue','Georgia','Manrope','DM Sans','Arial'];
 const clone=x=>JSON.parse(JSON.stringify(x));
 const $=id=>document.getElementById(id);
@@ -63,7 +411,7 @@ function hydrate(){
   if(!Array.isArray(previous))previous=[];
   const base=clone(DEMOS);
   if(!previous.length)return base;
-  return previous.map(b=>{
+  const existing=previous.map(b=>{
     const d=base.find(x=>x.id===b.id)||base[0];
     const merged={...clone(d),...b};
     if(!b.heroPhoto)merged.heroPhoto=d.heroPhoto;
@@ -77,6 +425,15 @@ function hydrate(){
     if(!Number.isFinite(Number(merged.imageScale)))merged.imageScale=1;
     return merged;
   });
+  // Preserve edits and user-created boards, and append only missing official demos.
+  const known=new Set(existing.map(b=>b.id));
+  for(const demo of base){
+    if(!known.has(demo.id)){
+      ensureGallery(demo);
+      existing.push(demo);
+    }
+  }
+  return existing;
 }
 let brands=hydrate();
 let activeId=localStorage.getItem(KEY+'-active')||brands[0].id;
