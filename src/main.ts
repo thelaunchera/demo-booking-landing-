@@ -601,7 +601,10 @@ function render(){
   $('app').innerHTML=
     '<div class="shell"><aside class="sidebar">'+
       '<div class="brandlock"><span class="brandlock-icon">L.</span><span><strong>The Launch Era</strong><small>BRAND BOARD STUDIO</small></span></div>'+
-      '<div class="sidebar-caption">Mis marcas demo</div><div class="sidebar-navgroup"><nav class="brandlist" aria-label="Marcas">'+
+      '<div class="sidebar-caption">Mis marcas demo</div><div class="sidebar-navgroup">'+
+      '<label class="mobile-brand-select"><span>Seleccionar marca</span><select id="mobile-brand-selector" aria-label="Seleccionar un Brand Board">'+
+      brands.map(x=>'<option value="'+html(x.id)+'"'+(x.id===b.id?' selected':'')+'>'+html(x.name)+'</option>').join('')+
+      '</select></label><nav class="brandlist" aria-label="Marcas">'+
       brands.map(x=>'<button class="brandnav '+(x.id===b.id?'active':'')+'" data-brand="'+html(x.id)+'"><span class="navlogo" style="background:'+hex(x.colors[1])+';color:'+contrastText(x.colors[1])+'">'+html(x.monogram.slice(0,3))+'</span><span class="navinfo"><strong>'+html(x.name)+'</strong><small>'+html(x.category)+'</small></span><span class="navarrow">›</span></button>').join('')+
       '</nav><button class="newbrand" data-action="new">＋ Nueva marca</button></div>'+
       '<div class="sidefoot"><a href="'+html(b.site||'#')+'" '+(b.site?'target="_blank" rel="noopener noreferrer"':'')+'>↗ Abrir demo actual</a><a href="#" data-action="backup">↓ Respaldo de mis marcas</a><a href="#" data-action="import">↑ Importar respaldo</a><span>Área de trabajo creativa de The Launch Era. Los cambios se guardan solo en este navegador.</span></div>'+
@@ -858,6 +861,17 @@ document.addEventListener('input',event=>{
 });
 document.addEventListener('change',async event=>{
   const t=event.target;
+  if(t.id==='mobile-brand-selector'){
+    if(brands.some(x=>x.id===t.value)){
+      activeId=t.value;
+      save();
+      view='board';
+      tab='identity';
+      focused=false;
+      render();
+    }
+    return;
+  }
   if(t.dataset.upload&&t.files?.[0])await assignImage(t.files[0],t.dataset.upload);
   if(t.id==='section-upload' && t.files?.length) {
     const current=activeId;
