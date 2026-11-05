@@ -169,3 +169,33 @@
   .mobile-brand-select select{appearance:auto;max-width:100%;width:100%;height:43px;border:1px solid #55544e;border-radius:8px;background:#2c2d2b;color:#fff;padding:0 7px;font:700 13px 'DM Sans',sans-serif}
   .sidebar-navgroup .newbrand{flex:0 0 auto;min-width:106px;padding:12px 10px;margin:13px 0 0;min-height:43px;text-align:center}
 }
+
+/* Vertical sidebar — each brand always has its own complete item. */
+.sidebar{overflow:hidden}
+.sidebar-navgroup{display:flex;flex-direction:column;min-height:0;flex:1;gap:8px}
+.brand-drawer{display:flex;flex-direction:column;min-height:0;flex:1}
+.brand-drawer-toggle{display:none}
+.sidebar .brandlist{display:flex;flex-direction:column;gap:8px;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;scrollbar-width:thin;padding:3px 4px 9px;min-height:0}
+.sidebar .brandnav{flex:0 0 auto;width:100%;max-width:none;min-width:0;min-height:63px;display:flex;align-items:center;gap:11px;border:1px solid #41433e;background:#232522;border-radius:12px;padding:10px}
+.sidebar .brandnav:hover{background:#333631;border-color:#68665e}
+.sidebar .brandnav.active{background:#373c39;border-color:#c7c3b4;color:#fff}
+.sidebar .navlogo{width:40px;height:40px;min-width:40px;border-radius:7px}
+.sidebar .brandnav .navinfo strong{font-size:12px;white-space:normal;line-height:1.3}
+.sidebar .brandnav .navinfo small{font-size:10px;white-space:normal;line-height:1.35}
+.sidebar .newbrand{margin:4px 3px 7px;min-height:42px;flex:0 0 auto}
+.artboard[data-brand="crumb"] .wordmark,.artboard[data-brand="crumb"] .logo-cell{font-family:'Manrope',sans-serif!important;font-weight:800;letter-spacing:-.07em}
+@media(max-width:740px){
+ .sidebar{overflow:visible}
+ .sidebar-caption{display:block;padding:10px 2px 8px;color:#c2bfb4}
+ .sidebar-navgroup{display:flex!important;flex-direction:column;align-items:stretch;gap:10px;flex:initial}
+ .sidebar-navgroup .brand-drawer{display:block;flex:initial;width:100%}
+ .brand-drawer-toggle{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:48px;padding:10px 14px;background:#282b29;color:#fff;border:1px solid #5a5d58;border-radius:10px;text-align:left;font-weight:700;font-size:13px}
+ .brand-drawer-toggle small{display:block;margin-top:3px;font-size:10px;letter-spacing:.03em;color:#d8d3c9;font-weight:400}
+ .brand-drawer-chevron{font-size:24px;line-height:1;transition:transform .2s}
+ .brand-drawer.is-open .brand-drawer-chevron{transform:rotate(180deg)}
+ .sidebar-navgroup .brandlist{display:none!important}
+ .sidebar-navgroup .brand-drawer.is-open .brandlist{display:flex!important;flex-direction:column;max-height:min(61dvh,570px);overflow-y:auto;overscroll-behavior:contain;margin-top:8px;padding:4px;gap:6px}
+ .sidebar .brandnav{min-height:57px;max-width:none!important;width:100%;padding:8px 11px}
+ .sidebar .newbrand{margin:0 0 3px;min-width:0;width:100%;min-height:43px}
+}
+@media print{.brand-drawer-toggle{display:none!important}}
