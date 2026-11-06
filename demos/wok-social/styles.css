@@ -270,3 +270,22 @@ img[loading="lazy"] { background:#25221e; }
   .moments h2{font-size:42px}
   .last-call h2{font-size:43px}
 }
+
+
+/* 2026-11-06 visual QA: preserve the complete hibachi scene without
+   showing the white collage divider or the neighbouring photograph. */
+.dish-photo:has(img[src*="12-hibachi-steak"]) { overflow:hidden; }
+.dish-photo img[src*="12-hibachi-steak"] {
+  object-fit:cover;
+  object-position:50% 50%;
+}
+.dish:hover .dish-photo img[src*="12-hibachi-steak"] { transform:scale(1.025); }
+/* The previous decorative star rendered as a bright green emoji on iOS.
+   It is intentionally gone; these declarations prevent stale DOM copies. */
+.big-asterisk, .doodle-star { display:none !important; }
+.last-call { isolation:isolate; }
+.last-call h2 { position:relative;z-index:1; }
+/* iPhone Safari otherwise defaults a button's '+' to system link blue. */
+.round-more { color:var(--ink); }
+.round-more:hover { color:var(--white); }
+.footer-brand { letter-spacing:-.05em; }
