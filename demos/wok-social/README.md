@@ -63,6 +63,14 @@ The [WOK SOCIAL mobile and desktop QA workflow](https://github.com/thelaunchera/
 
 **Scope of verification:** Chromium mobile emulation and desktop, not a signed-off physical iPhone Safari test. Live publication must be rechecked following the latest deployment when the Brand Board catalog is updated.
 
+## iPhone Safari corrections — November 6, 2026
+
+- **Hibachi Steak:** corrected the photo `assets/12-hibachi-steak.webp` from a 1152×1242 collage crop to a clean 1079×1242 image. Only the adjacent image sliver and white dividers were removed.
+- **No green emoji:** removed all 15 visible `✳` decorative glyphs, including the oversized closing motif that iOS rendered green. The site now relies on the red/cream/yellow palette and editorial typography, not emoji decoration.
+- **Buttons:** the dish detail plus sign uses dark ink (`#171615`) instead of system blue.
+- **Automated checks:** [QA run 42264405176](https://github.com/thelaunchera/demo-booking-landing-/actions/runs/42264405176) passed on the repaired source. It also verifies the cleaned photo dimensions, absence of star glyphs, dark plus color, seven viewport sizes, and interactions.
+- **Publishing caveat:** source validation is separate from Github Pages. The older blocking Pages deployment now reports `succeed`; a clean new Pages publish still needs confirmation.
+
 ## Technology and constraints
 
 Static HTML/CSS/JS, local image assets, GitHub/GitHub Pages. No AppDeploy, Cloudflare, paid Figma Make, external live restaurant API, fabricated business facts or changes to other demo brands. For the original construction brief and complete file-by-file rebuild documentation, use the private Drive kit above.
