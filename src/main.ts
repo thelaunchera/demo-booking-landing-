@@ -398,6 +398,24 @@ const DEMOS=[
     imageX: 50,
     imageScale: 1
   }
+  {
+    id: 'wok-social',
+    name: 'WOK SOCIAL',
+    category: 'Restaurante · Demo',
+    description: 'Chinese Street Kitchen — concepto editorial con noodles, hibachi y escenas originales.',
+    tagline: 'Good Food. Loud Flavor.',
+    monogram: 'WS',
+    symbol: '✳',
+    titleFont: 'Caprasimo',
+    bodyFont: 'DM Sans',
+    tone: 'Energética · editorial · gastronómica',
+    style: 'restaurant',
+    colors: ['#E32620','#171615','#FFE400','#F6F1E7','#AB1B16','#F9EACF'],
+    heroPhoto: 'https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/hero-storefront.webp',
+    detailPhoto: 'https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/01-noodle-signature.webp',
+    site: 'https://thelaunchera.github.io/demo-booking-landing-/wok-social/',
+    logoImage: '', patternImage: '', imageY: 50, imageX: 50, imageScale: 1
+  },
 ];
 const TYPES=['Bakery · Demo','Cookie Shop · Demo','Nightclub · Demo','Boutique · Demo','Beauty · Demo','Wellness · Demo','Restaurante · Demo','Audio · Demo','Food · Demo','Cleaning · Demo','Cliente real','Otra categoría'];
 const FONTS=['Italiana','Bodoni Moda','DM Serif Display','Cormorant Garamond','Bebas Neue','Georgia','Manrope','DM Sans','Arial'];
