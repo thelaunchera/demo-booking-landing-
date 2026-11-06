@@ -947,5 +947,211 @@ export const ADDITIONAL_DEMO_BOARDS = [
         }
       ]
     }
+  },
+  {
+    "id": "seasonal-brew",
+    "name": "Seasonal Brew",
+    "category": "Coffee & Bakery · Demo",
+    "description": "Cafetería conceptual de temporada: sitio responsive con seis sabores, fotografía original individual, empaque y menú de demostración. No recibe pedidos reales.",
+    "tagline": "A season in every sip.",
+    "monogram": "SB",
+    "symbol": "✳",
+    "titleFont": "Cormorant Garamond",
+    "bodyFont": "DM Sans",
+    "tone": "Cálida · estacional · artesanal · editorial",
+    "colors": [
+      "#372216",
+      "#4A3020",
+      "#F7F1E7",
+      "#BA7247",
+      "#D1A273",
+      "#666D4F"
+    ],
+    "style": "bakery",
+    "site": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/",
+    "heroPhoto": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/storefront.webp",
+    "detailPhoto": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/seasonal-drinks.webp",
+    "logoImage": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/logo-approved.png",
+    "patternImage": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/snickerdoodle.webp",
+    "imageY": 50,
+    "imageX": 50,
+    "imageScale": 1,
+    "sectionPhotos": {
+      "hero": [
+        {
+          "id": "photo-seasonal-brew-hero-01",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/storefront.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        },
+        {
+          "id": "photo-seasonal-brew-hero-02",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/seasonal-drinks.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        }
+      ],
+      "identity": [
+        {
+          "id": "photo-seasonal-brew-identity-01",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/logo-approved.png",
+          "fit": "contain",
+          "x": 50,
+          "y": 50
+        },
+        {
+          "id": "photo-seasonal-brew-identity-02",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/packaging.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        }
+      ],
+      "palette": [
+        {
+          "id": "photo-seasonal-brew-palette-01",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/sugar-cookie.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        },
+        {
+          "id": "photo-seasonal-brew-palette-02",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/chestnut-praline.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        }
+      ],
+      "typography": [
+        {
+          "id": "photo-seasonal-brew-typography-01",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/gingerbread.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        },
+        {
+          "id": "photo-seasonal-brew-typography-02",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/logo-approved.png",
+          "fit": "contain",
+          "x": 50,
+          "y": 50
+        }
+      ],
+      "pattern": [
+        {
+          "id": "photo-seasonal-brew-pattern-01",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/snickerdoodle.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        },
+        {
+          "id": "photo-seasonal-brew-pattern-02",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/toasted-marshmallow.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        }
+      ],
+      "applications": [
+        {
+          "id": "photo-seasonal-brew-applications-01",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/packaging.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        },
+        {
+          "id": "photo-seasonal-brew-applications-02",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/seasonal-drinks.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        },
+        {
+          "id": "photo-seasonal-brew-applications-03",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/storefront.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        }
+      ],
+      "universe": [
+        {
+          "id": "photo-seasonal-brew-universe-01",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/storefront.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        },
+        {
+          "id": "photo-seasonal-brew-universe-02",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/interior.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        },
+        {
+          "id": "photo-seasonal-brew-universe-03",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/packaging.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        },
+        {
+          "id": "photo-seasonal-brew-universe-04",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/sugar-cookie.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        },
+        {
+          "id": "photo-seasonal-brew-universe-05",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/gingerbread.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        },
+        {
+          "id": "photo-seasonal-brew-universe-06",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/toasted-marshmallow.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        },
+        {
+          "id": "photo-seasonal-brew-universe-07",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/snickerdoodle.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        },
+        {
+          "id": "photo-seasonal-brew-universe-08",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/chestnut-praline.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        },
+        {
+          "id": "photo-seasonal-brew-universe-09",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/peppermint-mocha.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        },
+        {
+          "id": "photo-seasonal-brew-universe-10",
+          "src": "https://thelaunchera.github.io/demo-booking-landing-/seasonal-brew/assets/seasonal-drinks.webp",
+          "fit": "cover",
+          "x": 50,
+          "y": 50
+        }
+      ]
+    }
   }
 ];
