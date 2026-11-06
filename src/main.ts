@@ -80,6 +80,20 @@ const DEMOS=[
 // Add Jaramillo as a curated, fully editable demo just like YUMMM.
 Object.assign(DEMOS.find(demo => demo.id === JARAMILLO_BOARD.id), JARAMILLO_BOARD);
 DEMOS.push(...ADDITIONAL_DEMO_BOARDS);
+// WOK SOCIAL — one canonical photo set, no cross-brand copies or separate Studio project.
+DEMOS.push({
+  id:'wok-social',name:'WOK SOCIAL',category:'Restaurante · Demo',
+  description:'Chinese Street Kitchen conceptual con noodles, hibachi y personas. Imágenes originales para esta demo.',
+  tagline:'Good Food. Loud Flavor.',monogram:'WS',symbol:'✳',
+  titleFont:'Caprasimo',bodyFont:'DM Sans',tone:'Editorial · cálida · audaz · gastronómica',style:'restaurant',
+  colors:['#E32620','#171615','#FFE400','#F6F1E7','#AE1B16','#F9EACF'],
+  heroPhoto:'https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/hero-storefront.webp',
+  detailPhoto:'https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/01-noodle-signature.webp',
+  site:'https://thelaunchera.github.io/demo-booking-landing-/wok-social/',
+  logoImage:'',patternImage:'',imageY:50,imageX:50,imageScale:1,
+  sectionPhotos:{"hero":[{"src":"https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/hero-storefront.webp","id":"photo-wok-social-hero-01","fit":"cover","x":50,"y":50},{"src":"https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/01-noodle-signature.webp","id":"photo-wok-social-hero-02","fit":"cover","x":50,"y":50}],"identity":[],"palette":[{"src":"https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/02-noodle-braised-beef.webp","id":"photo-wok-social-palette-01","fit":"cover","x":50,"y":50},{"src":"https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/10-beef-noodle-hero-bowl.webp","id":"photo-wok-social-palette-02","fit":"cover","x":50,"y":50}],"typography":[],"pattern":[{"src":"https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/05-chili-oil-macro.webp","id":"photo-wok-social-pattern-01","fit":"cover","x":50,"y":50}],"applications":[{"src":"https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/07-noodle-table-spread.webp","id":"photo-wok-social-applications-01","fit":"cover","x":50,"y":50},{"src":"https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/08-wok-toss-in-action.webp","id":"photo-wok-social-applications-02","fit":"cover","x":50,"y":50},{"src":"https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/11-hibachi-shrimp.webp","id":"photo-wok-social-applications-03","fit":"cover","x":50,"y":50},{"src":"https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/12-hibachi-steak.webp","id":"photo-wok-social-applications-04","fit":"cover","x":50,"y":50},{"src":"https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/13-hibachi-vegetables.webp","id":"photo-wok-social-applications-05","fit":"cover","x":50,"y":50}],"universe":[{"src":"https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/03-diners-noodle-date.webp","id":"photo-wok-social-universe-01","fit":"cover","x":50,"y":50},{"src":"https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/04-chef-preparing-bowl.webp","id":"photo-wok-social-universe-02","fit":"cover","x":50,"y":50},{"src":"https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/06-woman-eating-noodles.webp","id":"photo-wok-social-universe-03","fit":"cover","x":50,"y":50},{"src":"https://thelaunchera.github.io/demo-booking-landing-/wok-social/assets/09-friends-noodle-toast.webp","id":"photo-wok-social-universe-04","fit":"cover","x":50,"y":50}]}
+});
+
 // Expand official demo boards with their approved photo collections and current brand identities.
 // Only the three completed demos are migrated; YUMMM keeps its existing curated setup.
 for (const demo of DEMOS) {
@@ -95,6 +109,7 @@ const OFFICIAL_DEMO_SITES={
   'aftr':'https://thelaunchera.com/demos/aftr/',
   'yummm':'https://thelaunchera.github.io/demo-booking-landing-/yummm/',
   'jaramillo-boutique':'https://thelaunchera.github.io/demo-booking-landing-/jaramillo-boutique/',
+  'wok-social':'https://thelaunchera.github.io/demo-booking-landing-/wok-social/',
   ...Object.fromEntries(ADDITIONAL_DEMO_BOARDS.map(demo => [demo.id, demo.site]))
 };
 function publishedSite(brand){
@@ -108,13 +123,13 @@ function publishedSite(brand){
   }catch{return '';}
 }
 const TYPES=['Coffee & Bakery · Demo','Bakery · Demo','Cookie Shop · Demo','Nightclub · Demo','Boutique · Demo','Beauty · Demo','Wellness · Demo','Restaurante · Demo','Otra categoría'];
-const FONTS=['Anton','Playfair Display','Nunito','Bodoni Moda','DM Serif Display','Cormorant Garamond','Bebas Neue','Barlow Condensed','Italiana','Georgia','Manrope','DM Sans','Arial'];
+const FONTS=['Caprasimo','Anton','Playfair Display','Nunito','Bodoni Moda','DM Serif Display','Cormorant Garamond','Bebas Neue','Barlow Condensed','Italiana','Georgia','Manrope','DM Sans','Arial'];
 const clone=x=>JSON.parse(JSON.stringify(x));
 const $=id=>document.getElementById(id);
 const html=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','&#39;':'&#39;'}[c]||'&#39;'));
 const cssUrl=x=>'url('+JSON.stringify(x||'')+')';
 const hex=(v,f='#FFFFFF')=>/^#[0-9a-fA-F]{6}$/.test(v||'')?v:f;
-const FONT_MAP={Nunito:"'Nunito',sans-serif",'Bodoni Moda':"'Bodoni Moda',Georgia,serif",'DM Serif Display':"'DM Serif Display',Georgia,serif",'Cormorant Garamond':"'Cormorant Garamond',Georgia,serif",'Bebas Neue':"'Bebas Neue',Arial,sans-serif",'Barlow Condensed':"'Barlow Condensed',Arial,sans-serif",Italiana:"'Italiana',Georgia,serif",Georgia:'Georgia,serif',Manrope:"Manrope,sans-serif",'DM Sans':"'DM Sans',sans-serif",Arial:'Arial,sans-serif'};
+const FONT_MAP={Caprasimo:"'Caprasimo',Georgia,serif",Nunito:"'Nunito',sans-serif",'Bodoni Moda':"'Bodoni Moda',Georgia,serif",'DM Serif Display':"'DM Serif Display',Georgia,serif",'Cormorant Garamond':"'Cormorant Garamond',Georgia,serif",'Bebas Neue':"'Bebas Neue',Arial,sans-serif",'Barlow Condensed':"'Barlow Condensed',Arial,sans-serif",Italiana:"'Italiana',Georgia,serif",Georgia:'Georgia,serif',Manrope:"Manrope,sans-serif",'DM Sans':"'DM Sans',sans-serif",Arial:'Arial,sans-serif'};
 const font=v=>FONT_MAP[v]||FONT_MAP['DM Sans'];
 FONT_MAP.Anton = "'Anton',Arial,sans-serif";
 FONT_MAP['Playfair Display'] = "'Playfair Display',Georgia,serif";
