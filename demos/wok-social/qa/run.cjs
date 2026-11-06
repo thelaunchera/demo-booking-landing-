@@ -42,6 +42,23 @@ const check=(condition,message)=>{ if(!condition){report.failures.push(message);
       check(m.heading.height>35,width+"px: hero headline has visible height");
       if(width<=900) check(m.filters.every(f=>f.height>=43),width+"px: filter touch targets are at least ~44px");
       if([375,390,768,1440].includes(width)) {
+        // Headless full-page capture does not always paint offscreen lazy images.
+        // Scroll and decode each real picture, then capture both a scrolled card
+        // (the actual phone experience) and the complete page.
+        if(width===390||width===1440) {
+          for(const image of await page.locator("img").all()) {
+            await image.scrollIntoViewIfNeeded();
+            await image.evaluate(img=>img.decode().catch(()=>undefined));
+            await page.waitForTimeout(125);
+          }
+          if(width===390){
+            await page.locator(".dish").first().scrollIntoViewIfNeeded();
+            await page.waitForTimeout(280);
+            await page.screenshot({path:path.join(out,"wok-social-390-menu-visible.png"),animations:"disabled"});
+          }
+          await page.evaluate(()=>window.scrollTo(0,0));
+          await page.waitForTimeout(350);
+        }
         await page.screenshot({path:path.join(out,"wok-social-"+width+"-viewport.png"),animations:"disabled"});
         if(width===390||width===1440)await page.screenshot({path:path.join(out,"wok-social-"+width+"-full.png"),fullPage:true,animations:"disabled"});
       }
