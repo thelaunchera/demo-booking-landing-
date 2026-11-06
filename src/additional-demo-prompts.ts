@@ -373,5 +373,115 @@ export const ADDITIONAL_DEMO_PROMPTS = {
       "group": "Reconstrucción del website",
       "text": "Compila y prueba la web en móvil375px y desktop1440px. Verifica las10 imágenes, descarga PNG original, cambio de color, persistencia y eliminación de bolsa, estado vacío, español/inglés, menú, FAQ y enlace de consulta. No debe haber overflow horizontal ni errores de página. Solo publica el hero con el retrato en una URL pública después de recibir autorización explícita. Después verifica estado ready, guarda URL real y fuente, y vincula el kit completo en Studio → Demos terminados."
     }
+  ],
+  "seasonal-brew": [
+    {
+      "id": "seasonal-brew-master-01",
+      "title": "Asymmetric Editorial",
+      "group": "Master prompts · 8 composiciones",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Fachada o café en el tercio derecho, titular A season in every sip en la columna izquierda; luz cálida y jerarquía serif editorial."
+    },
+    {
+      "id": "seasonal-brew-master-02",
+      "title": "Monumental Center",
+      "group": "Master prompts · 8 composiciones",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Una taza Seasonal Brew a escala protagonista, composición central heroica con respiro alrededor, texto grande sobre negativo."
+    },
+    {
+      "id": "seasonal-brew-master-03",
+      "title": "Type Behind Subject",
+      "group": "Master prompts · 8 composiciones",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Titular de fondo parcialmente oculto tras la silueta de una bebida realista, sin ocultar el logotipo impreso en el vaso."
+    },
+    {
+      "id": "seasonal-brew-master-04",
+      "title": "Side-Cropped Close-Up",
+      "group": "Master prompts · 8 composiciones",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Macro lateral de crema y caramelo que entra desde la derecha, textura auténtica, margen izquierdo libre para titular."
+    },
+    {
+      "id": "seasonal-brew-master-05",
+      "title": "Offset Negative Space",
+      "group": "Master prompts · 8 composiciones",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Flat lay de ingredientes de temporada alrededor del marco dejando centro limpio para headline del sabor."
+    },
+    {
+      "id": "seasonal-brew-master-06",
+      "title": "Diagonal Visual Flow",
+      "group": "Master prompts · 8 composiciones",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Ingredientes y migas en trayectoria diagonal controlada de inferior izquierda a superior derecha, café protagonista en foco."
+    },
+    {
+      "id": "seasonal-brew-master-07",
+      "title": "Vertical Editorial Stack",
+      "group": "Master prompts · 8 composiciones",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Composición apilada: sello microtipográfico, producto grande, descripción breve y marca discreta, con aire de revista."
+    },
+    {
+      "id": "seasonal-brew-master-08",
+      "title": "Magazine Column Split",
+      "group": "Master prompts · 8 composiciones",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Columna editorial tipográfica izquierda y fotografía de café/producto derecha con proporciones generosas y contraste alto."
+    },
+    {
+      "id": "seasonal-brew-photo-01",
+      "title": "01 · Fachada hero",
+      "group": "Fotografía · 10 originales (recreación)",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Storefront of a boutique coffee shop with cream awning, brown Seasonal Brew logo, warm interior glow, autumn leaves, walnut door, planters and woven café chairs."
+    },
+    {
+      "id": "seasonal-brew-photo-02",
+      "title": "02 · Interior",
+      "group": "Fotografía · 10 originales (recreación)",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Single wide interior photo with warm ivory walls, cognac leather banquette, marble tables, walnut counter, pendant lamps and leafy plants."
+    },
+    {
+      "id": "seasonal-brew-photo-03",
+      "title": "03 · Packaging",
+      "group": "Fotografía · 10 originales (recreación)",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Still life of branded ivory takeaway cups, dessert box, cinnamon pastry and coffee beans on a walnut café counter."
+    },
+    {
+      "id": "seasonal-brew-photo-04",
+      "title": "04 · Sugar Cookie",
+      "group": "Fotografía · 10 originales (recreación)",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Top-down macro with sugar cookie crumbs, frosted star cookies, colorful sprinkles and piped whipped cream around an open center."
+    },
+    {
+      "id": "seasonal-brew-photo-05",
+      "title": "05 · Gingerbread",
+      "group": "Fotografía · 10 originales (recreación)",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Top-down macro with iced gingerbread cookies, snowflakes, cinnamon sticks, star anise and browned crumbs around blank center."
+    },
+    {
+      "id": "seasonal-brew-photo-06",
+      "title": "06 · Toasted Marshmallow",
+      "group": "Fotografía · 10 originales (recreación)",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Top-down macro of torched melty marshmallows, warm cocoa surface, sticky cheese-free stretch and biscuit crumbs, open center."
+    },
+    {
+      "id": "seasonal-brew-photo-07",
+      "title": "07 · Snickerdoodle",
+      "group": "Fotografía · 10 originales (recreación)",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Top-down macro of cinnamon sugar snickerdoodle cookies, crumbs and cinnamon sticks on burnt terracotta backdrop, open center."
+    },
+    {
+      "id": "seasonal-brew-photo-08",
+      "title": "08 · Chestnut Praline",
+      "group": "Fotografía · 10 originales (recreación)",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Top-down macro of whipped cream, glossy caramel, chestnut pieces, praline crumbs and pecans framing a beige center."
+    },
+    {
+      "id": "seasonal-brew-photo-09",
+      "title": "09 · Peppermint Mocha",
+      "group": "Fotografía · 10 originales (recreación)",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Top-down macro of cocoa, whipped cream, peppermint candy pieces, dark chocolate curls and syrup around deep brown open space."
+    },
+    {
+      "id": "seasonal-brew-photo-10",
+      "title": "10 · Seasonal Drinks",
+      "group": "Fotografía · 10 originales (recreación)",
+      "text": "Prompt de recreación, no transcripción literal del original. Seasonal Brew — Coffee Flavors, cafetería ficticia. Fotografía comercial editorial hiperrealista, una sola escena 4:5, marfil #F7F1E7, espresso #372216, terracota #BA7247 y oliva #666D4F. Mantener logo aprobado serif de taza con hojas cuando exista material de referencia. No collage, no interfaz social, no precios, reservas ni testimonios inventados. Tipografía Cormorant Garamond y cuerpo DM Sans. Three branded hot drinks in clear glass mugs: toasted marshmallow, chestnut praline, peppermint mocha, each realistic garnish in warm cafe bokeh."
+    }
   ]
 };
