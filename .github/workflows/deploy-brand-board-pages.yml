@@ -90,6 +90,11 @@ jobs:
           rm -rf _site/wok-social
           mkdir -p _site/wok-social
           cp -R demos/wok-social/. _site/wok-social/
+          # Shared The Launch Era footer/focus layer, kept separate from each demo's visual identity
+          mkdir -p _site/assets
+          cp assets/tle-company-system-20261106.css _site/assets/tle-company-system-20261106.css
+          test -s _site/assets/tle-company-system-20261106.css
+          grep -q '../assets/tle-company-system-20261106.css' _site/wok-social/index.html
           rm -rf _site/jaramillo-boutique
           mkdir -p _site/jaramillo-boutique
           cp -R boutique-source/demos/jaramillo-boutique/. _site/jaramillo-boutique/
