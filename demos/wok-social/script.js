@@ -9,12 +9,12 @@
   const dialogText = document.getElementById("dialogText");
   let lastTrigger = null;
   const details = {
-    "Spicy Scallion Noodles": "A steaming bowl of noodles in a chili-spiced broth with fresh scallions and fragrant herbs.",
-    "Lucky Little Dumplings": "Tender steamed dumplings with a juicy filling and a shareable spirit. Best enjoyed with good company.",
-    "Garlic Wok Green Beans": "Fresh green beans tossed in a hot wok for their signature snappy texture and richly savory flavor.",
-    "Beef Noodle Soup": "Tender beef, noodles, bok choy and aromatic broth: a hearty bowl built for comfort.",
-    "Street-Style Wonton Soup": "Delicate wontons in warm savory broth, finished with bright, fresh green onions.",
-    "Crispy Scallion Pancakes": "Flaky, pan-fried layers with golden edges and fragrant green onions."
+    "Signature Chili Beef Noodles": "Slow-cooked beef, rich chili broth, springy noodles, scallions, bok choy and a jammy egg.",
+    "Slow-Braised Beef Bowl": "Tender braised beef with noodles and a deep savory broth.",
+    "Chili Oil Noodles": "Hand-lifted noodles coated with fragrant chili oil, sesame and fresh scallions.",
+    "Wok-Tossed Noodles": "Golden noodles tossed with vegetables in a blazing hot wok for an irresistible wok-fired finish.",
+    "Hibachi Shrimp": "Juicy shrimp quickly seared on a hot flat-top grill with crisp vegetables.",
+    "Hibachi Steak": "Tender bite-size steak seared over high heat, finished right on the hibachi flat-top."
   };
   function closeMobileMenu() {
     toggle.setAttribute("aria-expanded", "false");
