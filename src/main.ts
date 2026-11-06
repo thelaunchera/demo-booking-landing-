@@ -397,7 +397,7 @@ const DEMOS=[
     imageY: 50,
     imageX: 50,
     imageScale: 1
-  }
+  },
   {
     id: 'wok-social',
     name: 'WOK SOCIAL',
