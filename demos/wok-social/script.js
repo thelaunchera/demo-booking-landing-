@@ -9,12 +9,12 @@
   const dialogText = document.getElementById("dialogText");
   let lastTrigger = null;
   const details = {
-    "Chili Crunch Noodles": "A vibrant bowl of springy noodles, fragrant chili oil, crisp scallions, and a satisfying savory finish.",
+    "Spicy Scallion Noodles": "A steaming bowl of noodles in a chili-spiced broth with fresh scallions and fragrant herbs.",
     "Lucky Little Dumplings": "Tender steamed dumplings with a juicy filling and a shareable spirit. Best enjoyed with good company.",
-    "Wok-Tossed Greens": "Fresh greens flash-fried with garlic for charred edges, bright crunch, and an irresistible savory aroma.",
-    "Firecracker Beef Noodles": "Wok-seared beef meets comforting noodles and a lively sweet-heat glaze.",
-    "Chili Oil Wontons": "Silky wontons with chili oil, a fragrant sesame note, and a little delicious drama.",
-    "Scallion Pancake Bites": "Crispy, flaky golden bites with scallions and a savory dipping sauce."
+    "Garlic Wok Green Beans": "Fresh green beans tossed in a hot wok for their signature snappy texture and richly savory flavor.",
+    "Beef Noodle Soup": "Tender beef, noodles, bok choy and aromatic broth: a hearty bowl built for comfort.",
+    "Street-Style Wonton Soup": "Delicate wontons in warm savory broth, finished with bright, fresh green onions.",
+    "Crispy Scallion Pancakes": "Flaky, pan-fried layers with golden edges and fragrant green onions."
   };
   function closeMobileMenu() {
     toggle.setAttribute("aria-expanded", "false");
