@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#E32620">
+  <meta name="description" content="WOK SOCIAL — an original Chinese street-kitchen concept website and brand demo by The Launch Era.">
+  <meta property="og:title" content="WOK SOCIAL | Big flavor. Good company.">
+  <meta property="og:description" content="An original restaurant brand and responsive website concept by The Launch Era.">
+  <title>WOK SOCIAL — Chinese Street Kitchen | Concept Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <script defer src="./script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="announcement"><span>FRESH FROM THE WOK</span><i aria-hidden="true">✳</i><span>MADE TO SHARE</span><i aria-hidden="true">✳</i><span>BIG FLAVOR ONLY</span></div>
+  <header class="site-header" id="top">
+    <a href="#top" class="logo" aria-label="Wok Social, home"><span class="logo-symbol" aria-hidden="true">✳</span><span>WOK<br><b>SOCIAL</b></span></a>
+    <nav class="desktop-nav" aria-label="Main navigation"><a href="#story">OUR VIBE</a><a href="#menu">THE MENU</a><a href="#experience">THE EXPERIENCE</a></nav>
+    <a class="nav-cta" href="#menu">WHAT'S COOKING <span aria-hidden="true">↗</span></a>
+    <button id="menuToggle" class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobileNav"><span></span><span></span></button>
+  </header>
+  <nav id="mobileNav" class="mobile-nav" aria-label="Mobile navigation" hidden><a href="#story">OUR VIBE</a><a href="#menu">THE MENU</a><a href="#experience">THE EXPERIENCE</a></nav>
+  <main id="main">
+    <section class="hero red-grid" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-line"></span> CHINESE STREET KITCHEN <span class="tiny-asterisk">✳</span></div>
+        <h1 id="heroTitle">GOOD FOOD.<br><span>LOUD</span><br>FLAVOR.</h1>
+        <p>Hot woks. Bold sauces. Noodles worth making plans for. Pull up a chair, bring your people, and dig in.</p>
+        <div class="hero-actions"><a class="btn btn-yellow" href="#menu">EXPLORE THE MENU <span aria-hidden="true">↗</span></a><span class="handwritten">Come hungry. Leave happy.</span></div>
+      </div>
+      <div class="hero-art">
+        <div class="hero-photo-frame"><img class="hero-photo" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1300&q=86" alt="A generous bowl of richly flavored noodles with colorful garnishes" fetchpriority="high"></div>
+        <div class="floating-label hero-label-yellow">NOODLE<br>OBSESSION</div>
+        <div class="floating-label hero-label-black">MADE WITH<br>GOOD ENERGY ✳</div>
+        <div class="round-stamp" aria-hidden="true"><span>WOK<br>SOCIAL</span><small>EST. IN OUR IMAGINATION</small></div>
+        <span class="doodle-star" aria-hidden="true">✳</span>
+      </div>
+      <div class="hero-bottom"><span>01 / WELCOME TO THE WOK</span><span>SCROLL FOR THE GOOD STUFF ↓</span></div>
+    </section>
+    <div class="ticker" aria-hidden="true"><div class="ticker-track">NOODLES ✳ DUMPLINGS ✳ BIG FLAVOR ✳ GOOD COMPANY ✳ NOODLES ✳ DUMPLINGS ✳ BIG FLAVOR ✳ GOOD COMPANY ✳</div></div>
+    <section class="intro section-pad" id="story">
+      <div class="section-index">01 / THE VIBE</div>
+      <div class="intro-main"><p class="little-label">NOT YOUR EVERYDAY TAKEOUT</p><h2>Some like it hot.<br><em>We like it unforgettable.</em></h2><p>Inspired by the energy of Chinese street kitchens: fast-moving woks, bright ingredients, generous plates, and the kind of meal you keep talking about after it's gone.</p><div class="tag-cloud"><span class="mini-tag yellow tilt-neg">GOOD MOOD FOOD</span><span class="mini-tag red tilt-pos">ALWAYS FRESH</span><span class="mini-tag ink tilt-neg">EXTRA SAUCE, PLEASE</span></div></div>
+    </section>
+    <section class="menu-section section-pad" id="menu">
+      <div class="menu-heading"><div><div class="section-index">02 / THE GOOD STUFF</div><h2>Pick your<br><span>craving.</span></h2></div><p>A little something for every kind of appetite. These are sample dishes for our creative concept.</p></div>
+      <div class="filters" role="group" aria-label="Filter dishes"><button class="filter active" type="button" data-filter="all" aria-pressed="true">ALL THE GOOD STUFF</button><button class="filter" type="button" data-filter="noodles" aria-pressed="false">NOODLES</button><button class="filter" type="button" data-filter="dumplings" aria-pressed="false">DUMPLINGS</button><button class="filter" type="button" data-filter="small-plates" aria-pressed="false">SMALL PLATES</button></div>
+      <div class="menu-grid">
+        <article class="dish" data-category="noodles"><div class="dish-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=950&q=82" alt="Noodles served in a bowl"><span class="food-sticker yellow">FAN FAVORITE ✳</span></div><div class="dish-line"><div><small>01 / NOODLES</small><h3>Chili Crunch Noodles</h3><p>Springy noodles, chili oil, scallions, a whole lot of attitude.</p></div><button class="round-more" type="button" data-dish="Chili Crunch Noodles" aria-label="Learn more about Chili Crunch Noodles">+</button></div></article>
+        <article class="dish" data-category="dumplings"><div class="dish-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=950&q=82" alt="Steamed dumplings ready to share"><span class="food-sticker red">SHARE ME</span></div><div class="dish-line"><div><small>02 / DUMPLINGS</small><h3>Lucky Little Dumplings</h3><p>Steamed, juicy, and made for one more round.</p></div><button class="round-more" type="button" data-dish="Lucky Little Dumplings" aria-label="Learn more about Lucky Little Dumplings">+</button></div></article>
+        <article class="dish" data-category="small-plates"><div class="dish-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=950&q=82" alt="Fresh savory dish with colorful vegetables"><span class="food-sticker yellow">CRUNCH TIME</span></div><div class="dish-line"><div><small>03 / SMALL PLATES</small><h3>Wok-Tossed Greens</h3><p>A little char, lots of crunch, serious garlic energy.</p></div><button class="round-more" type="button" data-dish="Wok-Tossed Greens" aria-label="Learn more about Wok-Tossed Greens">+</button></div></article>
+        <article class="dish" data-category="noodles"><div class="dish-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1569058242252-62343cd3f7d3?auto=format&fit=crop&w=950&q=82" alt="Asian-inspired noodles and toppings"><span class="food-sticker ink">SPICY PICK</span></div><div class="dish-line"><div><small>04 / NOODLES</small><h3>Firecracker Beef Noodles</h3><p>Wok-seared beef, sweet heat, noodles that do the most.</p></div><button class="round-more" type="button" data-dish="Firecracker Beef Noodles" aria-label="Learn more about Firecracker Beef Noodles">+</button></div></article>
+        <article class="dish" data-category="dumplings"><div class="dish-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=950&q=82" alt="A serving of fresh dumplings"><span class="food-sticker yellow">MORE, PLEASE</span></div><div class="dish-line"><div><small>05 / DUMPLINGS</small><h3>Chili Oil Wontons</h3><p>Soft wontons, punchy chili sauce, sesame finish.</p></div><button class="round-more" type="button" data-dish="Chili Oil Wontons" aria-label="Learn more about Chili Oil Wontons">+</button></div></article>
+        <article class="dish" data-category="small-plates"><div class="dish-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=950&q=82" alt="Colorful shareable restaurant plate"><span class="food-sticker red">TABLE FAVORITE</span></div><div class="dish-line"><div><small>06 / SMALL PLATES</small><h3>Scallion Pancake Bites</h3><p>Golden, crispy edges with a savory dipping sauce.</p></div><button class="round-more" type="button" data-dish="Scallion Pancake Bites" aria-label="Learn more about Scallion Pancake Bites">+</button></div></article>
+      </div>
+      <p class="menu-footnote">* This is an illustrative design menu, not a real restaurant offering. Food photography is conceptual stock imagery.</p>
+    </section>
+    <section class="experience" id="experience"><div class="experience-photo"><img loading="lazy" src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=85" alt="A colorful freshly prepared meal"><span class="mini-tag yellow experience-label">THE WOK IS CALLING</span></div><div class="experience-copy"><div class="section-index">03 / THE EXPERIENCE</div><h2>LESS<br>FORMAL.<br><span>MORE</span><br>FLAVOR.</h2><p>Good food should feel like a celebration — whether you're dropping in for noodles or bringing the whole crew.</p><a class="btn btn-red" href="#menu">FIND YOUR FAVORITE <span aria-hidden="true">↗</span></a></div></section>
+    <section class="last-call red-grid"><span class="section-index">04 / LAST CALL</span><div class="big-asterisk" aria-hidden="true">✳</div><h2>THE GOOD<br>STUFF <i>STARTS</i><br>HERE.</h2><div class="last-call-bottom"><span class="mini-tag yellow tilt-neg">COME FOR THE NOODLES</span><span class="mini-tag ink tilt-pos">STAY FOR THE VIBE</span></div></section>
+  </main>
+  <footer class="footer"><a class="footer-brand" href="#top">WOK SOCIAL <span>✳</span></a><p>AN ORIGINAL CHINESE STREET-KITCHEN BRAND CONCEPT.<br>NOT A REAL RESTAURANT OR LIVE ORDERING SERVICE.</p><a href="#top" class="back-top">BACK TO THE TOP ↑</a><div class="credit">Concept design &amp; website by <strong>The Launch Era</strong> · 2026</div></footer>
+  <div id="detailDialog" class="dialog-backdrop" hidden><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle"><button id="closeDialog" class="dialog-close" aria-label="Close dish details">×</button><span class="mini-tag yellow">GOOD CHOICE!</span><h2 id="dialogTitle"></h2><p id="dialogText"></p><p class="dialog-disclaimer">Creative demo only — ordering is not enabled.</p><button id="dialogDone" class="btn btn-red" type="button">BACK TO MENU <span aria-hidden="true">↗</span></button></div></div>
+</body>
+</html>
