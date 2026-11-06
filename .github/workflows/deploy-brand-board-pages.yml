@@ -9,6 +9,7 @@ on:
       - demos/yummm/**
       - demos/soluna-yoga/**
       - demos/lavender-edit/**
+      - demos/wok-social/**
   workflow_run:
     workflows:
       - Build Brand Board Studio
@@ -86,6 +87,9 @@ jobs:
           rm -rf _site/lavender-edit
           mkdir -p _site/lavender-edit
           cp -R demos/lavender-edit/. _site/lavender-edit/
+          rm -rf _site/wok-social
+          mkdir -p _site/wok-social
+          cp -R demos/wok-social/. _site/wok-social/
           rm -rf _site/jaramillo-boutique
           mkdir -p _site/jaramillo-boutique
           cp -R boutique-source/demos/jaramillo-boutique/. _site/jaramillo-boutique/
@@ -108,6 +112,13 @@ jobs:
           test -s _site/lavender-edit/assets/01_Soft_Lavender_Hero.png
           test -s _site/lavender-edit/assets/08_After_Hours.png
           grep -q 'The Lavender Edit' _site/lavender-edit/index.html
+          test -s _site/wok-social/index.html
+          test -s _site/wok-social/styles.css
+          test -s _site/wok-social/script.js
+          test -s _site/wok-social/favicon.svg
+          test -s _site/wok-social/food-placeholder.svg
+          node --check _site/wok-social/script.js
+          grep -q 'WOK SOCIAL' _site/wok-social/index.html
           test -f _site/jaramillo-boutique/index.html
           test -f _site/jaramillo-boutique/styles.css
           test -f _site/jaramillo-boutique/main.js
