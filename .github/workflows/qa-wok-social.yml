@@ -1,0 +1,53 @@
+name: WOK SOCIAL mobile and desktop QA
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'demos/wok-social/**'
+      - '.github/workflows/qa-wok-social.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wok-social-visual-qa
+  cancel-in-progress: true
+
+jobs:
+  test-wok-social:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated browser QA dependencies
+        run: |
+          npm install --prefix demos/wok-social --no-save --no-audit --no-fund playwright@1.56.1
+          cd demos/wok-social
+          npx playwright install --with-deps chromium
+      - name: Start local static preview
+        run: |
+          python3 -m http.server 8765 --directory demos >/tmp/wok-social-http.log 2>&1 &
+          for i in $(seq 1 25); do
+            if curl -fsS http://127.0.0.1:8765/wok-social/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/wok-social-http.log
+          exit 1
+      - name: Verify eight images, responsive layouts and UI interactions
+        env:
+          WOK_QA_URL: http://127.0.0.1:8765/wok-social/
+        run: node demos/wok-social/qa/run.cjs
+      - name: Upload QA report and viewport screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wok-social-responsive-QA
+          path: demos/wok-social/qa-artifacts/
+          if-no-files-found: warn
+          retention-days: 14
