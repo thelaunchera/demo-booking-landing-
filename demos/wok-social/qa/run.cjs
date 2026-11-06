@@ -30,6 +30,17 @@ const check=(condition,message)=>{ if(!condition){report.failures.push(message);
     check(new Set(photos.map(p=>p.src.split("?")[0])).size===14,"All fourteen photo URLs are different");
     check(photos.every(p=>p.complete&&p.width>=280&&p.height>=180),"All local brand photographs load at usable resolution");
     check(photos.every(p=>p.alt&&p.alt.length>15),"All food photographs have descriptive alt text");
+
+    const hibachiSteak=photos.find(p=>p.src.includes("/12-hibachi-steak.webp"));
+    check(hibachiSteak?.width===1079 && hibachiSteak?.height===1242,
+      "Hibachi Steak source photo is repaired: no white divider or adjacent image fragment");
+    check(!(await page.locator(".big-asterisk").count()),
+      "Large iOS green decorative emoji has been removed from the closing section");
+    check(!(await page.locator("body").innerText()).includes("✳"),
+      "No decorative star glyph is left to render as a green emoji on iPhone");
+    const plusColor=await page.locator(".round-more").first().evaluate(el=>getComputedStyle(el).color);
+    check(plusColor==="rgb(23, 22, 21)", "Dish-detail plus buttons use dark brand ink rather than default iOS blue");
+
     for(const width of sizes){
       const height=width>=1024?950:width>=768?1024:844;
       await page.setViewportSize({width,height});
@@ -57,6 +68,9 @@ const check=(condition,message)=>{ if(!condition){report.failures.push(message);
             await page.locator(".dish").first().scrollIntoViewIfNeeded();
             await page.waitForTimeout(280);
             await page.screenshot({path:path.join(out,"wok-social-390-menu-visible.png"),animations:"disabled"});
+            await page.locator('img[src*="12-hibachi-steak"]').scrollIntoViewIfNeeded();
+            await page.waitForTimeout(200);
+            await page.screenshot({path:path.join(out,"wok-social-390-hibachi-steak-fixed.png"),animations:"disabled"});
           }
           await page.evaluate(()=>window.scrollTo(0,0));
           await page.waitForTimeout(350);
