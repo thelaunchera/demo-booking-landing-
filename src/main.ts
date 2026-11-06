@@ -27,6 +27,16 @@ import {
 const KEY='tle-brand-board-studio-v1';
 const DEMOS=[
   {
+    id:'seasonal-brew',name:'Seasonal Brew · Coffee Flavors',category:'Coffee Shop · Demo',
+    description:'Cafetería boutique de sabores estacionales con fotografías originales y un universo editorial cálido.',
+    tagline:'A little season in every sip.',monogram:'SB',symbol:'☕',
+    titleFont:'Bodoni Moda',bodyFont:'DM Sans',tone:'Cálida · caramelo · especias · editorial',style:'coffee',
+    colors:['#412210','#A86131','#D58B43','#FAF4E9','#85865A','#DDBD91'],
+    heroPhoto:'https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/seasonal-brew/assets/storefront.webp',
+    detailPhoto:'https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/seasonal-brew/assets/seasonal-drinks.webp',
+    site:'',logoImage:'https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/seasonal-brew/assets/logo-approved.png',patternImage:'',imageY:50,imageX:50,imageScale:1
+  },
+  {
     id:'casa-brownie',name:'Casa Brownie',category:'Bakery · Demo',description:'Brownies horneados para hacer especial cualquier momento.',tagline:'Small moments, made sweeter.',
     monogram:'CB',symbol:'✳',titleFont:'Bodoni Moda',bodyFont:'DM Sans',tone:'Cálida · artesanal · deliciosa',style:'bakery',
     colors:['#422419','#BC7658','#E5D3A9','#FCF3E9','#A5AB91','#DEAF95'],
