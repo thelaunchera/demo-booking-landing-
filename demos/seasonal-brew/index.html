@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f7f1e7" />
+  <meta name="description" content="Seasonal Brew — coffee flavors made for moments worth slowing down. Explore a cozy collection of inspired seasonal flavors." />
+  <meta property="og:title" content="Seasonal Brew — A season in every sip" />
+  <meta property="og:description" content="Warm drinks, nostalgic flavors and a little more time for the good stuff." />
+  <meta property="og:image" content="assets/storefront-wide.webp" />
+  <title>Seasonal Brew — Coffee Flavors</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="announcement"><span class="ann-star">✳</span> Good things come with the season <span class="ann-star">✳</span></div>
+  <header class="site-header" id="top">
+    <div class="header-inner container">
+      <a class="brand" href="#top" aria-label="Seasonal Brew — Home">
+        <svg class="brand-mark" viewBox="0 0 65 58" fill="none" aria-hidden="true"><path d="M19 7c-8 8 6 11-2 18M35 3c-8 8 6 12-2 22M46 10c-8 8 6 10-1 15" stroke="currentColor" stroke-width="2.7" stroke-linecap="round"/><path d="M9 29h40v11c0 9-9 15-20 15-11 0-20-6-20-15V29Zm40 4h5c12 0 8 16-5 15M11 55h44" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 45c-6-4-7-8-5-11 5 0 10 5 8 12M31 46c0-8 4-12 10-12 2 6-3 11-10 12" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <span class="brand-words"><span>Seasonal Brew</span><small>COFFEE FLAVORS</small></span>
+      </a>
+      <nav class="nav" id="site-nav" aria-label="Main navigation">
+        <a href="#flavors">Our flavors</a>
+        <a href="#about">Our café</a>
+        <a href="#moments">Little moments</a>
+        <a class="mobile-nav-cta" href="#flavors">Explore the menu</a>
+      </nav>
+      <a class="header-cta" href="#flavors">Explore menu <span aria-hidden="true">↗</span></a>
+      <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-rule"></span> THE SEASONAL COFFEEHOUSE</div>
+        <h1 id="hero-title">A season<br />in <em>every</em><br />sip<span class="period">.</span></h1>
+        <p class="hero-subtitle">The kind of coffee that tastes like your favorite time of year.</p>
+        <div class="hero-actions"><a class="button button-dark" href="#flavors">Discover the flavors <span aria-hidden="true">↗</span></a><a class="text-link" href="#about">Step inside</a></div>
+        <div class="hero-bottom"><span class="tiny-flower" aria-hidden="true">✳</span><span>COZY SIPS. SLOW MOMENTS.<br />A LITTLE SOMETHING SPECIAL.</span></div>
+      </div>
+      <div class="hero-media">
+        <img src="assets/storefront.webp" alt="Autumn sunlight on the Seasonal Brew café storefront, with a cream awning, coffee signage and outdoor bistro chairs" fetchpriority="high" width="1122" height="1402" />
+        <div class="hero-ribbon" aria-hidden="true"><span>Fall in love with the little things</span></div>
+        <div class="hero-seal" aria-hidden="true"><span>FRESH<br />SEASONAL<br />FEELINGS</span><span class="seal-spark">✳</span></div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>YOUR NEW FAVORITE RITUAL</span><i>✦</i><span>THE SEASON IS SERVED</span><i>✦</i><span>SIP SOMETHING SPECIAL</span><i>✦</i><span>YOUR NEW FAVORITE RITUAL</span><i>✦</i><span>THE SEASON IS SERVED</span><i>✦</i><span>SIP SOMETHING SPECIAL</span><i>✦</i></div></div>
+
+    <section class="flavors-section" id="flavors" aria-labelledby="flavor-heading">
+      <div class="container">
+        <div class="section-intro">
+          <div><div class="eyebrow"><span class="eyebrow-rule"></span> THE FLAVOR EDIT / 01</div><h2 id="flavor-heading">Made for <em>this</em><br />kind of season.</h2></div>
+          <div class="intro-aside"><p>Some flavors just feel like a warm hug. Find the one you're craving today.</p><span class="small-stamp">✳ &nbsp; THE GOOD STUFF &nbsp; ✳</span></div>
+        </div>
+        <div class="flavor-controls" role="group" aria-label="Filter flavors"><button class="filter is-active" type="button" data-filter="all" aria-pressed="true">All flavors <span>06</span></button><button class="filter" type="button" data-filter="bakery" aria-pressed="false">Bakery inspired</button><button class="filter" type="button" data-filter="cozy" aria-pressed="false">Extra cozy</button><button class="filter" type="button" data-filter="holiday" aria-pressed="false">Holiday mood</button></div>
+        <div class="flavor-grid" id="flavor-grid">
+          <button type="button" class="flavor-card flavor-light" data-flavor="sugar-cookie" data-category="bakery holiday"><img loading="lazy" src="assets/sugar-cookie.webp" alt="Iced sugar cookies with festive sprinkles on a bed of golden cookie crumbs" width="1122" height="1402" /><span class="flavor-top">01 <span>THE FLAVOR EDIT</span></span><strong>Sugar<br />Cookie</strong><span class="flavor-foot">Sweet & nostalgic <span>Explore flavor +</span></span></button>
+          <button type="button" class="flavor-card flavor-light" data-flavor="gingerbread" data-category="bakery holiday cozy"><img loading="lazy" src="assets/gingerbread.webp" alt="Gingerbread cookies shaped like smiling figures and snowflakes with cinnamon and spices" width="1122" height="1402" /><span class="flavor-top">02 <span>THE FLAVOR EDIT</span></span><strong>Gingerbread</strong><span class="flavor-foot">Spiced & comforting <span>Explore flavor +</span></span></button>
+          <button type="button" class="flavor-card flavor-dark" data-flavor="toasted-marshmallow" data-category="cozy holiday"><img loading="lazy" src="assets/toasted-marshmallow.webp" alt="Golden toasted marshmallows and graham cracker crumbs on a cocoa-colored surface" width="1122" height="1402" /><span class="flavor-top">03 <span>THE FLAVOR EDIT</span></span><strong>Toasted<br />Marshmallow</strong><span class="flavor-foot">Soft & dreamy <span>Explore flavor +</span></span></button>
+          <button type="button" class="flavor-card flavor-dark" data-flavor="snickerdoodle" data-category="bakery cozy"><img loading="lazy" src="assets/snickerdoodle.webp" alt="Cinnamon-dusted snickerdoodle cookies on a warm terracotta background" width="1122" height="1402" /><span class="flavor-top">04 <span>THE FLAVOR EDIT</span></span><strong>Snicker-<br />doodle</strong><span class="flavor-foot">Cinnamon & comfort <span>Explore flavor +</span></span></button>
+          <button type="button" class="flavor-card flavor-light" data-flavor="chestnut-praline" data-category="cozy"><img loading="lazy" src="assets/chestnut-praline.webp" alt="Whipped cream, caramel ribbons, pecans and chestnut praline on a cream-colored background" width="1122" height="1402" /><span class="flavor-top">05 <span>THE FLAVOR EDIT</span></span><strong>Chestnut<br />Praline</strong><span class="flavor-foot">Rich & golden <span>Explore flavor +</span></span></button>
+          <button type="button" class="flavor-card flavor-dark" data-flavor="peppermint-mocha" data-category="holiday cozy"><img loading="lazy" src="assets/peppermint-mocha.webp" alt="Dark cocoa powder with whipped cream, chocolate flakes and crushed peppermint candies" width="1122" height="1402" /><span class="flavor-top">06 <span>THE FLAVOR EDIT</span></span><strong>Peppermint<br />Mocha</strong><span class="flavor-foot">Chocolate & cheer <span>Explore flavor +</span></span></button>
+        </div>
+        <p class="flavor-count" aria-live="polite">Showing all 6 seasonal flavors</p>
+      </div>
+    </section>
+
+    <section class="story-section" id="about" aria-labelledby="story-title">
+      <div class="story-image"><img loading="lazy" src="assets/interior.webp" width="1122" height="1402" alt="Cozy Seasonal Brew coffeehouse interior with caramel leather seating, round marble tables and golden pendant lights" /></div>
+      <div class="story-copy"><div class="eyebrow"><span class="eyebrow-rule"></span> THE COFFEEHOUSE / 02</div><div class="story-flower" aria-hidden="true">✳</div><h2 id="story-title">Coffee tastes<br />better when<br />you <em>slow down.</em></h2><p>Welcome to our kind of cozy. A place imagined for unhurried mornings, long conversations, and drinks that feel a little like tradition.</p><a href="#moments" class="button button-outline">Take a little look around <span aria-hidden="true">↗</span></a><div class="story-note">— YOUR SEASON. YOUR RITUAL.</div></div>
+    </section>
+
+    <section class="highlight-section container" aria-labelledby="highlight-title"><div class="highlight-label">THIS SEASON, SOMETHING GOOD IS BREWING</div><div class="highlight-body"><div class="highlight-copy"><span class="eyebrow">THE PERFECT PAIRING / 03</span><h2 id="highlight-title">A little<br /><em>sweetness</em><br />goes a long way.</h2><p>Fluffy toppings, warm spices, and every cozy detail in between. Meet the drinks that make an ordinary day feel like an occasion.</p><a class="text-link" href="#flavors">Explore our seasonal favorites</a></div><div class="highlight-photo"><img loading="lazy" src="assets/seasonal-drinks.webp" width="1122" height="1402" alt="Three Seasonal Brew signature drinks with chestnut praline, toasted marshmallow and peppermint mocha toppings" /><div class="photo-label">THE SEASONAL LINEUP <span>✳</span></div></div></div></section>
+
+    <section class="moments-section" id="moments" aria-labelledby="moments-heading"><div class="container"><div class="moments-header"><div><div class="eyebrow"><span class="eyebrow-rule"></span> THE LITTLE DETAILS / 04</div><h2 id="moments-heading">Stay for the <em>feeling.</em></h2></div><p>It's not just a cup of coffee. It's the whole little moment around it.</p></div><div class="moments-gallery"><figure class="moment-main"><img loading="lazy" src="assets/packaging.webp" width="1122" height="1402" alt="Branded Seasonal Brew takeaway coffee cups, gift box and cinnamon pastry in the coffeehouse" /><figcaption>GOOD THINGS, WRAPPED UP.</figcaption></figure><figure class="moment-secondary"><img loading="lazy" src="assets/storefront-wide.webp" width="1672" height="941" alt="Warm Seasonal Brew façade with café seating and fall leaves" /><figcaption>COME ON IN. GET COMFORTABLE.</figcaption></figure><div class="moment-text"><span class="moment-spark" aria-hidden="true">✳</span><p>Take the<br />season<br /><em>with you.</em></p><span>ONE COZY CUP AT A TIME.</span></div></div></div></section>
+
+    <section class="closing-section" aria-labelledby="closing-title"><div class="closing-circle" aria-hidden="true">✳</div><div class="eyebrow">YOUR NEXT FAVORITE SIP IS WAITING</div><h2 id="closing-title">Whatever the season,<br /><em>make it yours.</em></h2><p>Which flavor feels like you today?</p><a href="#flavors" class="button button-cream">Find your flavor <span aria-hidden="true">↗</span></a><div class="closing-edge" aria-hidden="true">✳ &nbsp; BREWED FOR THE MOMENT &nbsp; ✳</div></section>
+  </main>
+  <footer class="footer"><div class="footer-inner container"><a href="#top" class="footer-brand">Seasonal Brew <span>COFFEE FLAVORS</span></a><p>Good coffee. Good company. Good seasons.</p><div class="footer-bottom"><span>© <span id="year"></span> Seasonal Brew — Concept demo</span><span>Powered by The Launch Era</span></div></div></footer>
+  <dialog class="flavor-dialog" id="flavor-dialog" aria-labelledby="dialog-title"><button class="dialog-close" id="dialog-close" type="button" aria-label="Close flavor details">×</button><div class="dialog-layout"><div class="dialog-photo"><img id="dialog-img" src="assets/sugar-cookie.webp" alt="" /></div><div class="dialog-body"><div class="eyebrow">SEASONAL BREW / FLAVOR PROFILE</div><h2 id="dialog-title">Sugar Cookie</h2><p class="dialog-kicker" id="dialog-kicker">A little sweetness.</p><p id="dialog-desc">All the cozy sweetness of your favorite frosted cookie, imagined as a coffee moment.</p><button type="button" class="button button-dark" id="dialog-back">Back to flavors</button><span class="dialog-note">This is a visual concept menu. No orders or payments are collected.</span></div></div></dialog>
+</body>
+</html>
