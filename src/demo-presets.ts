@@ -3,6 +3,18 @@
  * User-uploaded gallery photos always take priority; these references are
  * editorial fallback only and never count against storage. */
 export const EDITORIAL_PHOTO_SETS = {
+  "seasonal-brew": [
+    "https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/seasonal-brew/assets/storefront.webp",
+    "https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/seasonal-brew/assets/interior.webp",
+    "https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/seasonal-brew/assets/packaging.webp",
+    "https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/seasonal-brew/assets/sugar-cookie.webp",
+    "https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/seasonal-brew/assets/gingerbread.webp",
+    "https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/seasonal-brew/assets/toasted-marshmallow.webp",
+    "https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/seasonal-brew/assets/snickerdoodle.webp",
+    "https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/seasonal-brew/assets/chestnut-praline.webp",
+    "https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/seasonal-brew/assets/peppermint-mocha.webp",
+    "https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/seasonal-brew/assets/seasonal-drinks.webp"
+  ],
   "lavender-edit": [
     "https://thelaunchera.com/demos/lavender-edit/photos/01_Soft_Lavender_Hero.png",
     "https://thelaunchera.com/demos/lavender-edit/photos/02_Lavender_Mood_Macro.png",
