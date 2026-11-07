@@ -35,3 +35,31 @@
   .hero .hero-text .button-ivory {min-height:48px;padding:12px 19px;font-size:13px;max-width:100%;}
 }
 @media(prefers-reduced-motion:reduce){.hero .hero-text .button-ivory{transition:none;}}
+
+/* JARAMILLO / elegant but readable Bodoni Moda + DM Sans, 7 Nov 2026. */
+.site-head .wordmark{font-family:'Bodoni Moda',Georgia,serif;font-weight:500;letter-spacing:-.052em;line-height:1.05}
+.site-head .wordmark span{font:600 10px/1.45 'DM Sans',Arial,sans-serif;letter-spacing:.25em}
+.hero .hero-text h1,.collections-section .intro-row h2,
+.shop-guide #guideHeading,.shop-guide h2,.guide-steps h3,
+.designer-copy h2,.boutique-header h2,.boutique-help h2,
+.contact-inquiry-content h2,.story-break h2,.footer-wordmark{
+ font-family:'Bodoni Moda',Georgia,serif!important;font-weight:600!important;
+ letter-spacing:-.048em;line-height:1.09;text-wrap:balance;
+}
+.hero .hero-text h1 em,.collections-section .intro-row h2 i,
+.shop-guide #guideHeading i,.designer-copy h2 i,.story-break h2 em{
+ font-family:'Bodoni Moda',Georgia,serif!important;font-weight:500!important;font-style:italic;letter-spacing:-.04em;
+}
+.shop-guide-intro p,.guide-steps p,.collections-section .intro-row p,
+.designer-copy>p,.boutique-header>p{font-family:'DM Sans',Arial,sans-serif;font-weight:500;line-height:1.7;color:#5b4c50}
+.eyebrow,.announcement{font-family:'DM Sans',Arial,sans-serif;font-weight:700;letter-spacing:.13em}
+@media(max-width:700px){
+ .site-head .wordmark{font-size:clamp(25px,6.7vw,34px);letter-spacing:-.055em}
+ .site-head .wordmark span{font-size:9px;letter-spacing:.2em}
+ .shop-guide #guideHeading{font-size:clamp(49px,11.5vw,65px);line-height:1.08}
+ .guide-steps h3{font-size:clamp(30px,7.3vw,39px);line-height:1.14;padding:15px 16px 4px}
+ .guide-steps p{font-size:14px;line-height:1.62;color:#62565a}
+ .shop-guide-intro p{font-size:14px;line-height:1.65;color:#62565a}
+ .collections-section .intro-row h2,.designer-copy h2{line-height:1.09}
+ .shop-guide .eyebrow,.collections-section .eyebrow{font-size:11px}
+}
