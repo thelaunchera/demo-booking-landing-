@@ -1,0 +1,86 @@
+/* Jaramillo Boutique — finished customer-facing concept. Uses existing editorial photography. */
+html{scroll-padding-top:118px}
+#shopGuide,#help,#contact{scroll-margin-top:115px}
+.collections-section .collection-next{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:25px;padding:20px 0;border-top:1px solid #dcc8bd;color:#604e52;font:400 13px/1.6 'DM Sans',sans-serif}
+.collection-bag-cta{border:1px solid #5a0f21;background:#5a0f21;color:#fff;min-height:47px;padding:13px 19px;letter-spacing:.09em;display:flex;align-items:center;justify-content:center;gap:15px;font:700 11px 'DM Sans',sans-serif;white-space:nowrap}
+.collection-bag-cta:hover,.collection-bag-cta:focus-visible{background:#793247}
+.shop-guide{padding:90px clamp(22px,6vw,105px) 96px;background:#ede2d8}
+.shop-guide-intro{display:grid;grid-template-columns:1fr minmax(240px,30%);gap:20px 32px;align-items:end;margin-bottom:34px}
+.shop-guide-intro .eyebrow{grid-column:1/-1}
+.shop-guide h2,.boutique-help h2,.contact-inquiry h2{font:400 clamp(49px,5.6vw,86px)/.98 'Italiana',Georgia,serif;color:#24181d;letter-spacing:-.042em}
+.shop-guide h2 i,.boutique-help h2 i{color:#752d43}
+.shop-guide-intro p{font:400 14px/1.8 'DM Sans',sans-serif;color:#736368}
+.guide-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.guide-steps article{position:relative;background:#faf7f2;padding:0 0 27px;min-width:0}
+.guide-steps article img{display:block;width:100%;height:clamp(220px,28vw,355px);object-fit:cover;object-position:center 35%}
+.guide-steps article:nth-child(2) img{object-position:center 40%}
+.guide-steps article:nth-child(3) img{object-position:center 48%}
+.guide-step-index{position:absolute;z-index:2;top:12px;left:13px;background:#fff8edee;color:#5a0f21;min-width:35px;min-height:35px;display:grid;place-items:center;font:700 11px 'DM Sans',sans-serif}
+.guide-steps h3{font:400 clamp(29px,3vw,42px)/1 'Italiana',Georgia,serif;color:#3c1b29;padding:23px 20px 8px}
+.guide-steps p{font:400 12px/1.7 'DM Sans',sans-serif;color:#74646b;padding:0 20px}
+.boutique-help{padding:90px clamp(22px,6vw,105px);background:#faf6f0;display:grid;grid-template-columns:34% 1fr;gap:45px}
+.boutique-help-heading{display:flex;flex-direction:column;gap:20px}
+.boutique-help-heading p{font:400 14px/1.6 'DM Sans',sans-serif;color:#77656d}
+.boutique-faq{border-top:1px solid #cfbdb5}
+.boutique-faq details{border-bottom:1px solid #d8c6bc}
+.boutique-faq summary{position:relative;list-style:none;cursor:pointer;padding:25px 39px 25px 2px;min-height:62px;font:600 14px/1.5 'DM Sans',sans-serif;color:#3b232e}
+.boutique-faq summary::-webkit-details-marker{display:none}
+.boutique-faq summary::after{content:"+";position:absolute;right:5px;top:22px;font:400 24px/1 'DM Sans',sans-serif;color:#6e3446}
+.boutique-faq details[open] summary::after{content:"−"}
+.boutique-faq details p{font:400 13px/1.75 'DM Sans',sans-serif;color:#76656a;padding:0 30px 26px 2px}
+.boutique-faq summary:focus-visible{outline:2px solid #a87758;outline-offset:3px}
+.contact-inquiry{display:grid;grid-template-columns:47% minmax(0,53%);background:#ead9cc}
+.contact-inquiry-visual{position:relative;overflow:hidden;min-height:590px;background:#622b3d}
+.contact-inquiry-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,#200d1b99)}
+.contact-inquiry-visual img{width:100%;height:100%;display:block;object-fit:cover;object-position:center 36%;position:absolute;inset:0}
+.contact-inquiry-visual>span{z-index:2;position:absolute;left:30px;bottom:28px;color:#fff;letter-spacing:.2em;font-size:10px}
+.contact-inquiry-content{display:flex;flex-direction:column;justify-content:center;padding:clamp(37px,6vw,85px);min-width:0}
+.contact-inquiry-content .eyebrow{margin-bottom:16px}
+.contact-inquiry-content h2{font-size:clamp(46px,5.6vw,79px)}
+.contact-inquiry-content>p{font:400 13px/1.7 'DM Sans',sans-serif;color:#65555a;max-width:520px;margin:17px 0 25px}
+.inquiry-form{display:flex;flex-direction:column;gap:9px;max-width:490px}
+.inquiry-form label{font:700 10px/1.35 'DM Sans',sans-serif;letter-spacing:.09em;color:#4c2535;text-transform:uppercase}
+.inquiry-form select,.inquiry-form textarea{box-sizing:border-box;width:100%;border:1px solid #c7a99e;background:#faf6f0;color:#291d21;min-height:48px;padding:13px 14px;border-radius:0;font:400 13px/1.5 'DM Sans',sans-serif;appearance:auto}
+.inquiry-form textarea{resize:vertical;min-height:96px;margin-bottom:10px}
+.inquiry-form input:focus-visible,.inquiry-form textarea:focus-visible,.inquiry-form select:focus-visible{outline:2px solid #8b5369;outline-offset:2px}
+.inquiry-submit,.bag-share{background:#591b32;color:#fff;border:1px solid #591b32;display:flex;justify-content:space-between;align-items:center;min-height:49px;padding:14px 17px;gap:12px;font:700 11px/1.3 'DM Sans',sans-serif;letter-spacing:.1em}
+.inquiry-submit:hover,.bag-share:hover{background:#7b3148}
+.inquiry-note,.inquiry-status,.share-status{color:#765e68;font:400 11px/1.6 'DM Sans',sans-serif;margin-top:6px}
+.inquiry-status,.share-status{min-height:16px;color:#5d3145}
+.bag-share{width:100%;margin:5px 0 8px}
+.bag-share:disabled{opacity:.45;cursor:not-allowed}
+.product-detail-meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0;font:700 10px/1.4 'DM Sans',sans-serif;color:#7e4d5e;letter-spacing:.09em;text-transform:uppercase}
+.product-stock-note{border-top:1px solid #e2d4cc;padding:10px 0;margin:11px 0;color:#74636b;font:400 12px/1.6 'DM Sans',sans-serif}
+.footer .footer-quick-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;padding:20px 0 17px;margin:18px 0 0;font:600 11px 'DM Sans',sans-serif;color:#60434b}
+.footer .footer-quick-links a{padding:7px 0}
+.footer .footer-quick-links a:hover{text-decoration:underline}
+@media(max-width:900px){
+ .shop-guide{padding:65px 25px}
+ .boutique-help{padding:75px 25px;grid-template-columns:1fr;gap:35px}
+ .contact-inquiry-content{padding:44px 30px}
+ .contact-inquiry-visual{min-height:540px}
+}
+@media(max-width:700px){
+ .collections-section .collection-next{margin:14px 20px 0;display:grid;gap:13px;font-size:12px;padding-top:17px}
+ .collection-bag-cta{width:100%;min-height:50px}
+ .shop-guide{padding:65px 20px 73px}
+ .shop-guide-intro{display:block;margin-bottom:24px}
+ .shop-guide h2{margin:15px 0;font-size:clamp(53px,12vw,72px)}
+ .shop-guide-intro p{font-size:12px;max-width:460px}
+ .guide-steps{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:16px;scrollbar-width:thin;align-items:stretch}
+ .guide-steps article{flex:0 0 min(78vw,320px);scroll-snap-align:start}
+ .guide-steps article img{height:270px}
+ .guide-steps h3{font-size:37px}
+ .boutique-help{padding:70px 23px;gap:28px}
+ .boutique-help-heading{gap:14px}
+ .boutique-help h2{font-size:clamp(52px,12vw,73px)}
+ .boutique-faq summary{font-size:13px;padding:23px 32px 23px 0}
+ .contact-inquiry{grid-template-columns:1fr}
+ .contact-inquiry-visual{min-height:0;height:330px}
+ .contact-inquiry-visual img{object-position:center 39%}
+ .contact-inquiry-content{padding:41px 23px 59px}
+ .contact-inquiry-content h2{font-size:clamp(47px,12vw,67px)}
+ .inquiry-form{max-width:none}
+ .footer .footer-quick-links{gap:13px 23px}
+}
+@media(prefers-reduced-motion:reduce){.guide-steps{scroll-behavior:auto}}

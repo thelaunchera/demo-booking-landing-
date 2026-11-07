@@ -1,0 +1,154 @@
+/* Jaramillo Boutique · mobile-first editorial fixes, Nov 2026 */
+/* A single, predictable lookbook card height means one tall portrait can no
+   longer reserve hundreds of empty pixels below shorter landscape images. */
+.collections-section #collectionGrid{align-items:stretch!important;align-content:start!important}
+.collections-section #collectionGrid .collection-item,
+.collections-section #collectionGrid .collection-item:first-child{
+  min-height:0!important;height:auto!important;align-self:stretch!important;display:flex;flex-direction:column
+}
+.collections-section #collectionGrid .collection-card{
+  height:100%!important;min-height:0!important;display:flex!important;flex-direction:column
+}
+.collections-section #collectionGrid .collection-item .card-photo,
+.collections-section #collectionGrid .collection-item:first-child .card-photo,
+.collections-section #collectionGrid .collection-item[data-photo-shape="landscape"] .card-photo,
+.collections-section #collectionGrid .collection-item[data-photo-shape="portrait"] .card-photo{
+  aspect-ratio:4/5!important;width:100%;height:auto!important;min-height:0!important;flex:none;
+  background:#b99891!important;overflow:hidden!important
+}
+/* Keep garments whole. The blurred photographic underlay fills any extra
+   margin without a blank beige frame or misleading crop. */
+.collections-section #collectionGrid .collection-item .card-photo img,
+.collections-section #collectionGrid .collection-item[data-photo-shape="landscape"] .card-photo img,
+.collections-section #collectionGrid .collection-item[data-photo-shape="portrait"] .card-photo img{
+  display:block;width:100%!important;height:100%!important;object-fit:contain!important;
+  object-position:center!important;margin:0!important;max-width:100%;
+  mask-image:none!important;-webkit-mask-image:none!important
+}
+.collections-section #collectionGrid .card-photo::before{opacity:.86;filter:blur(24px) saturate(.9) brightness(.82)}
+.collections-section #collectionGrid .card-foot{flex:1 0 auto;min-height:71px!important}
+.collections-section #collectionGrid .collection-item .quick-add{bottom:85px!important}
+.collections-section .catalog-note{margin:14px 0 0!important;padding:12px 0 0!important;font-size:11px;line-height:1.5;border-top:1px solid #d8c5ba}
+@media(max-width:700px){
+  .collections-section #collectionGrid{display:flex!important;align-items:stretch!important;
+    overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:18px;
+    gap:14px!important;padding:5px 20px 8px!important;height:auto!important;
+    min-height:0!important;max-height:none!important;margin:0!important;
+    -webkit-overflow-scrolling:touch}
+  .collections-section #collectionGrid .collection-item,
+  .collections-section #collectionGrid .collection-item:first-child,
+  .collections-section #collectionGrid .collection-item[data-photo-shape]{
+    flex:0 0 min(78vw,342px)!important;width:min(78vw,342px)!important;
+    align-self:stretch!important;scroll-snap-align:start;min-height:0!important;
+    height:auto!important;margin:0!important
+  }
+  .collections-section #collectionGrid .collection-item .card-photo{aspect-ratio:4/5!important}
+  .collections-section #collectionGrid .card-foot{min-height:75px!important;padding:11px 3px!important}
+  .collections-section #collectionGrid .collection-item .quick-add{bottom:87px!important}
+  .collections-section .catalog-note{margin:12px 21px 0!important}
+}
+@media(max-width:375px){
+  .collections-section #collectionGrid .collection-item{flex-basis:82vw!important;width:82vw!important}
+}
+
+/* Interactive brand editorial is immediately after the hero. */
+#brandStoryBanner.jb-editorial-banner{
+  display:grid!important;grid-template-columns:minmax(230px,33%) minmax(0,1fr) 172px;
+  grid-template-rows:minmax(295px,auto);gap:0!important;min-height:295px;
+  padding:0!important;margin:0!important;align-items:stretch!important;
+  background:#f0e4d8!important;overflow:hidden!important;border:0;
+  border-top:1px solid #dec9bb;border-bottom:1px solid #d1b9b0;
+  color:#4b182a;isolation:isolate
+}
+#brandStoryBanner::after{z-index:5;height:3px;background:#671b36}
+#brandStoryBanner .jb-banner-art{position:relative;grid-row:1;grid-column:1;overflow:hidden;
+  min-height:295px;background:#703a4a}
+#brandStoryBanner .jb-banner-art::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,#360e231b,transparent 72%);pointer-events:none
+}
+#brandStoryBanner .jb-banner-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 36%;transition:opacity .35s ease,transform .7s ease}
+#brandStoryBanner .jb-banner-art .jb-banner-watermark{
+  position:absolute;left:7px;bottom:-50px;font:700 280px/.9 'Playfair Display',Georgia,serif;
+  color:#fff7ea39;pointer-events:none
+}
+#brandStoryBanner .story-banner-copy{
+  grid-column:2;grid-row:1;padding:clamp(24px,3.6vw,50px);
+  display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+  gap:12px!important;min-width:0;overflow-wrap:normal
+}
+#brandStoryBanner .story-banner-overline{font:700 10px 'DM Sans',sans-serif;
+  letter-spacing:.2em;color:#93536c}
+#brandStoryBanner .story-banner-title{
+  font:700 clamp(31px,3.6vw,56px)/1.04 'Playfair Display',Georgia,serif;
+  letter-spacing:-.055em;color:#511d2e;transition:opacity .25s ease;
+  max-width:650px;word-break:normal;overflow-wrap:normal
+}
+#brandStoryBanner .jb-banner-description{max-width:470px;font:400 13px/1.6 'DM Sans',sans-serif;
+  color:#776066;margin:0}
+#brandStoryBanner .jb-banner-action{display:inline-flex;gap:14px;align-items:center;
+  margin-top:5px;padding:13px 17px;background:#5a0f21;color:#fff6ee;
+  font:700 10px 'DM Sans',sans-serif;letter-spacing:.11em;min-height:45px;
+  transition:background .2s ease,transform .2s ease}
+#brandStoryBanner .jb-banner-action:hover{background:#762b40;transform:translateY(-2px)}
+#brandStoryBanner .jb-banner-action span{font-size:11px;color:#e8ccac}
+#brandStoryBanner .story-banner-tabs{
+  grid-column:3;grid-row:1;display:flex;flex-direction:column;justify-content:stretch;
+  gap:0!important;background:#5a182b;padding:0!important;min-width:0
+}
+#brandStoryBanner .story-tab{
+  width:100%!important;min-width:0!important;min-height:0!important;flex:1;
+  display:flex;justify-content:flex-start;align-items:center;gap:10px;
+  border:0!important;border-bottom:1px solid #ffffff30!important;
+  padding:22px 16px!important;border-radius:0;
+  background:transparent;color:#ecd6d2;
+  text-align:left;transition:background .2s ease,color .2s ease
+}
+#brandStoryBanner .story-tab:last-child{border-bottom:0!important}
+#brandStoryBanner .story-tab.is-current,#brandStoryBanner .story-tab:hover{
+  background:#76344b!important;color:white!important
+}
+#brandStoryBanner .story-tab-number{font:700 10px 'DM Sans',sans-serif;opacity:.7;min-width:17px}
+#brandStoryBanner .story-tab-name{font:600 11px 'DM Sans',sans-serif;letter-spacing:.015em;line-height:1.2}
+#brandStoryBanner a:focus-visible,#brandStoryBanner button:focus-visible{
+  outline:2px solid #bd9668;outline-offset:-4px
+}
+@media(max-width:900px){
+ #brandStoryBanner.jb-editorial-banner{grid-template-columns:34% minmax(0,1fr) 115px}
+ #brandStoryBanner .story-banner-copy{padding:23px}
+ #brandStoryBanner .story-banner-title{font-size:clamp(27px,3.8vw,38px)}
+ #brandStoryBanner .story-tab{padding:12px!important;gap:7px}
+ #brandStoryBanner .story-tab-name{font-size:10px}
+}
+@media(max-width:700px){
+ #brandStoryBanner.jb-editorial-banner{
+  grid-template-columns:40% minmax(0,60%)!important;
+  grid-template-rows:255px 62px!important;min-height:0!important;
+ }
+ #brandStoryBanner .jb-banner-art{grid-column:1;grid-row:1;min-height:0}
+ #brandStoryBanner .jb-banner-art .jb-banner-watermark{font-size:200px;bottom:-25px}
+ #brandStoryBanner .story-banner-copy{grid-column:2;grid-row:1;padding:17px 14px!important;
+  justify-content:center;gap:9px!important}
+ #brandStoryBanner .story-banner-overline{font-size:8px;letter-spacing:.12em}
+ #brandStoryBanner .story-banner-title{font-size:clamp(25px,6.5vw,34px);line-height:1.03}
+ #brandStoryBanner .jb-banner-description{font-size:10px;line-height:1.35}
+ #brandStoryBanner .jb-banner-action{margin-top:3px;padding:9px 10px;min-height:38px;
+  font-size:8px;gap:5px;letter-spacing:.055em}
+ #brandStoryBanner .story-banner-tabs{grid-column:1/-1;grid-row:2;flex-direction:row;
+  background:#592438;min-height:62px}
+ #brandStoryBanner .story-tab{flex:1;justify-content:center;padding:8px 5px!important;
+  gap:6px;border-bottom:0!important;border-right:1px solid #ffffff30!important}
+ #brandStoryBanner .story-tab:last-child{border-right:0!important}
+ #brandStoryBanner .story-tab-name{font-size:9px}
+ #brandStoryBanner .story-tab-number{font-size:9px;min-width:12px}
+}
+@media(max-width:365px){
+ #brandStoryBanner.jb-editorial-banner{grid-template-columns:36% minmax(0,64%);grid-template-rows:265px 60px!important}
+ #brandStoryBanner .story-banner-title{font-size:24px}
+ #brandStoryBanner .jb-banner-description{font-size:9px}
+}
+@media(prefers-reduced-motion:reduce){
+ #brandStoryBanner .jb-banner-art img,
+ #brandStoryBanner .story-banner-title,#brandStoryBanner .jb-banner-action{transition:none!important}
+ #brandStoryBanner::after{animation:none!important}
+}

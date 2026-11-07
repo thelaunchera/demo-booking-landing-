@@ -1,0 +1,103 @@
+
+/* Jaramillo Boutique — distinctive editorial type behind the model, v5 */
+.hero-scene{position:relative;isolation:isolate;background:radial-gradient(ellipse at 58% 36%,#ead0b8 0%,#c99c98 61%,#65253c 100%)!important}
+.hero-scene::after{opacity:.38!important;inset:15% 12% 0 14%!important}
+.hero-scene .arch{opacity:.14!important}
+.hero-scene .arch-two{display:none}
+.hero-scene .scene-word{display:none}
+.scene-typography{position:absolute;inset:5% 0 0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;pointer-events:none;mix-blend-mode:multiply;opacity:.46}
+.scene-typography span{display:block;font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:clamp(145px,18vw,320px);line-height:.68;white-space:nowrap;letter-spacing:-.095em;color:#651e39;text-shadow:none}
+.scene-typography span:first-child{transform:translateX(-7%)}.scene-typography span:last-child{transform:translateX(4%)}
+.hero-model{filter:drop-shadow(11px 17px 19px rgba(47,16,34,.26))!important;z-index:5}
+.scene-label{z-index:7}
+@media(min-width:701px){.hero-scene{overflow:visible}.scene-typography span{font-size:clamp(140px,17vw,310px)}}
+@media(max-width:700px){
+ .hero-scene{overflow:visible}
+ .scene-typography{inset:10% 0 0;justify-content:center}
+ .scene-typography span{font-size:clamp(115px,27vw,190px);line-height:.79;letter-spacing:-.075em}
+ .scene-typography span:first-child{transform:translateX(-6%)}.scene-typography span:last-child{transform:translateX(1%)}
+ .hero-model{z-index:5}
+}
+
+/* Every garment gets a deliberate photographic composition; no empty oversized beige cards. */
+.collection-grid{align-items:start!important}
+.collection-item,.collection-item:first-child{align-self:start!important;height:auto!important}
+.collection-card{height:auto!important;min-height:0!important}
+.card-photo,.collection-item .card-photo{position:relative;isolation:isolate;overflow:hidden!important;background:#d6b9ae!important;border:0!important;aspect-ratio:1.13!important}
+.card-photo::before{content:"";position:absolute;inset:-22px;z-index:0;background-image:var(--look-image);background-size:cover;background-position:center;filter:blur(22px) saturate(.85) brightness(.86);transform:scale(1.10);opacity:.65}
+.card-photo::after{content:attr(data-editorial);position:absolute;z-index:1;top:8%;left:4%;right:4%;font:400 clamp(42px,5.9vw,120px)/.86 'Italiana',Georgia,serif;text-align:center;letter-spacing:-.075em;overflow-wrap:anywhere;color:#fff8ed94;text-transform:uppercase;pointer-events:none}
+.collection-item .card-photo img{position:relative;z-index:2;display:block;height:100%!important;width:100%!important;object-fit:contain!important;object-position:center!important;filter:drop-shadow(0 8px 18px #33111d33)!important}
+.collection-item[data-photo-shape="portrait"] .card-photo{aspect-ratio:.57!important}
+.collection-item[data-photo-shape="portrait"] .card-photo img{width:96%!important;height:100%!important;margin:auto}
+.collection-item[data-photo-shape="landscape"] .card-photo img{width:100%!important;height:100%!important}
+.card-foot{background:#f7f4ef}
+.collection-item .quick-add,.collection-item:first-child .quick-add{bottom:82px!important}
+.collection-card:hover .card-photo img{transform:scale(1.014)!important}
+@media(max-width:700px){
+ .collection-grid{align-items:flex-start!important}
+ .collection-item,.collection-item:first-child{align-self:flex-start!important;flex:0 0 min(79vw,372px)!important}
+ .collection-item[data-photo-shape="portrait"] .card-photo{aspect-ratio:.57!important}
+ .collection-item[data-photo-shape="landscape"] .card-photo{aspect-ratio:1.13!important}
+ .card-photo::after{font-size:clamp(58px,16vw,100px);top:8%;color:#fff8edbd}
+ .collection-item .card-foot{min-height:64px!important;padding:12px 3px!important}
+ .collection-item .quick-add,.collection-item:first-child .quick-add{bottom:76px!important;right:10px!important}
+ .collection-item .card-photo img{filter:drop-shadow(0 10px 15px #35151e3b)!important}
+}
+@media(prefers-reduced-motion:reduce){.card-photo img{transition:none!important}}
+
+/* V6: photography fills its editorial space without generic empty mats. */
+.collection-item[data-photo-shape="portrait"] .card-photo{aspect-ratio:.52!important}
+.collection-item[data-photo-shape="portrait"] .card-photo img{
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  mask-image:linear-gradient(to bottom,transparent 0%,black 2.8%,black 100%);
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 2.8%,black 100%);
+}
+.collection-item[data-photo-shape="landscape"] .card-photo{
+  aspect-ratio:1.25!important;
+  background:#e9d3c0!important
+}
+.collection-item[data-photo-shape="landscape"] .card-photo img{max-width:100%;width:100%!important;height:100%!important;object-fit:cover!important}
+/* Art direction changes from one fashion story to another. */
+.collection-item:nth-child(1) .card-photo::after{top:5%;left:5%;right:auto;text-align:left;font-size:clamp(49px,6vw,115px);color:#fff0d4b5}
+.collection-item:nth-child(2) .card-photo::after{top:auto;bottom:5%;left:3%;right:3%;text-align:center;font-size:clamp(52px,7vw,125px);color:#fff6eac8}
+.collection-item:nth-child(3) .card-photo::after{top:4%;right:5%;left:auto;text-align:right;font-style:italic}
+.collection-item:nth-child(4) .card-photo::after{top:36%;left:4%;right:4%;font-size:clamp(42px,5.2vw,95px);letter-spacing:-.07em}
+.collection-item:nth-child(5) .card-photo::after{top:12%;left:5%;text-align:left}
+.collection-item:nth-child(6) .card-photo::after{top:auto;bottom:6%;text-align:center}
+.collection-item:nth-child(7) .card-photo::after{top:23%;left:2%;right:2%;text-align:center;color:#fff3e9a3;font-style:italic}
+.collection-item:nth-child(8) .card-photo::after{top:auto;bottom:11%;left:0;right:0;font-size:clamp(46px,6vw,92px);text-align:center}
+.collection-item:nth-child(9) .card-photo::after{top:13%;left:4%;right:auto;text-align:left;font-style:italic}
+@media(max-width:700px){
+ .collection-item[data-photo-shape="landscape"] .card-photo{aspect-ratio:1.25!important}
+ .collection-item[data-photo-shape="portrait"] .card-photo{aspect-ratio:.52!important}
+ .collection-item:nth-child(1) .card-photo::after,
+ .collection-item:nth-child(2) .card-photo::after,
+ .collection-item:nth-child(3) .card-photo::after,
+ .collection-item:nth-child(4) .card-photo::after,
+ .collection-item:nth-child(5) .card-photo::after,
+ .collection-item:nth-child(6) .card-photo::after,
+ .collection-item:nth-child(7) .card-photo::after,
+ .collection-item:nth-child(8) .card-photo::after,
+ .collection-item:nth-child(9) .card-photo::after{font-size:clamp(44px,13vw,92px)}
+}
+
+/* Couture masthead: strong lettering behind the model, never over her face. */
+.hero-scene .scene-typography{mix-blend-mode:normal!important;opacity:1!important;z-index:2!important;top:4%!important}
+.hero-scene .scene-typography span{
+  font-family:'Playfair Display',Georgia,serif!important;
+  font-weight:700!important;
+  letter-spacing:-.088em!important;
+  color:rgba(87,27,48,.46)!important;
+  text-shadow:none!important;
+  font-size:clamp(124px,17.4vw,315px)!important;
+  line-height:.83!important;
+}
+.hero-model{filter:drop-shadow(9px 14px 19px rgba(40,12,26,.24))!important}
+@media(max-width:700px){
+  .hero-scene .scene-typography{top:10%!important}
+  .hero-scene .scene-typography span{font-size:clamp(102px,27vw,195px)!important;letter-spacing:-.095em!important;line-height:.95!important;color:rgba(94,30,51,.48)!important}
+  .hero-model{max-width:none}
+}
+@media(prefers-reduced-motion:reduce){.hero-model{animation:none!important}}
