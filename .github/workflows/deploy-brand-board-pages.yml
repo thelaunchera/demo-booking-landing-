@@ -1,4 +1,5 @@
 name: Deploy Brand Board Studio, AFTR and Jaramillo to GitHub Pages
+# Jaramillo Boutique: publish current approved Bodoni Moda/DM Sans typography from demo/jaramillo-boutique (2026-11-07).
 
 on:
   push:
