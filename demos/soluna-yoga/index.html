@@ -369,6 +369,20 @@
  .soluna-shop .shop-copy h3{font-size:20px}
 }
 
+
+/* 2026-11-07 — Responsive waitlist form, no extra data transfer. */
+.signup .field,.signup .form-row{min-width:0;max-width:100%}
+.signup .field :is(input,select){box-sizing:border-box;font-size:16px;min-width:0;max-width:100%;transition:border-color .2s ease,box-shadow .2s ease}
+.signup .field :is(input,select):focus-visible{outline:2px solid #526b57;outline-offset:2px;box-shadow:0 0 0 4px #526b571f}
+.signup .field input:not(:placeholder-shown):valid{border-color:#748575;background:#fff}
+.signup .field [aria-invalid=true]{border-color:#b06154;outline-color:#b06154}
+.soluna-form-progress{margin:-5px 0 22px;padding-bottom:15px;border-bottom:1px solid #d9dfd5}
+.soluna-form-progress-copy{display:flex;justify-content:space-between;gap:12px;font-size:10px;letter-spacing:.13em;margin-bottom:10px;color:#59695d}
+.soluna-form-progress-copy strong{font-size:11px;letter-spacing:0;white-space:nowrap}
+.soluna-progress-track{display:block;height:3px;background:#dce3d8;overflow:hidden}
+.soluna-progress-track>span{display:block;width:0;height:100%;background:#526b57;transition:width .2s ease}
+@media(max-width:680px){.signup .form-row{grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){.signup .field :is(input,select),.soluna-progress-track>span{transition:none}}
 </style>
 <link rel="stylesheet" href="../assets/tle-company-system-20261106.css?v=1"><link rel="stylesheet" href="../assets/tle-demo-mobile-ux-20261107.css?v=1">
 </head>
@@ -419,6 +433,7 @@
     </section>
     <section class="waitlist" id="waitlist"><div class="wrap wait-layout"><div class="wait-copy"><span class="overline">THE EARLY ACCESS LIST</span><h2>Be first<br><em>on the mat.</em></h2><p>Be among the first to hear when SOLUNA opens, preview our launch schedule and learn how to claim your first-time welcome offer.</p><div class="location"><span class="dot"></span> COMING SOON · FORT LAUDERDALE, FL</div><div class="location-floral has-photo" data-photo-slot="floral" style="background-image:url('https://raw.githubusercontent.com/thelaunchera/demo-booking-landing-/main/demos/soluna-yoga/images/floral.webp')" role="img" aria-label="White flowers in ivory vase in the studio reception"><span>THE LITTLE DETAILS</span></div></div>
       <form class="signup" id="signupForm"><h3>Join the early list.</h3><p class="sub">A simple first step. We'll keep your place in this interactive demo.</p>
+        <div class="soluna-form-progress" aria-live="polite"><div class="soluna-form-progress-copy"><span>YOUR FIRST STEP</span><strong id="soluna-progress-count">0 / 3 ready</strong></div><span class="soluna-progress-track"><span id="soluna-progress-fill"></span></span></div>
         <div class="form-row"><div class="field"><label for="firstName">First name</label><input id="firstName" name="firstName" autocomplete="given-name" maxlength="60" placeholder="Your name" required></div><div class="field"><label for="lastName">Last name <span class="muted">(optional)</span></label><input id="lastName" name="lastName" autocomplete="family-name" maxlength="60" placeholder="Last name"></div></div>
         <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" maxlength="180" placeholder="you@example.com" required></div>
         <div class="field"><label for="interest">What sounds good to you?</label><select id="interest" name="interest"><option value="Opening updates">Opening updates</option><option value="First class">Trying my first class</option><option value="Breathe — $10/month">Breathe — $10/month</option><option value="Flow — $15/month">Flow — $15/month</option><option value="Rise — $25/month">Rise — $25/month</option></select></div>
@@ -516,6 +531,29 @@
       if(button.classList.contains('offer-reveal'))button.querySelector('span').textContent=expanded?'+':'−';
     });
   });
+})();
+</script>
+<script>
+/* Live progress for the SOLUNA concept waitlist; original preview-only submit remains unchanged. */
+(() => {
+ const form=document.getElementById('signupForm');
+ if(!form)return;
+ const required=[document.getElementById('firstName'),document.getElementById('email'),document.getElementById('consent')];
+ const count=document.getElementById('soluna-progress-count');
+ const fill=document.getElementById('soluna-progress-fill');
+ const good=el=>el.type==='checkbox'?el.checked:!!el.value.trim()&&el.checkValidity();
+ function update(){
+   const done=required.filter(good).length;
+   count.textContent=done+' / 3 ready';
+   fill.style.width=(done/3*100)+'%';
+   required.forEach(el=>{if(el.type!=='checkbox'&&el.dataset.visited==='yes'){
+     if(el.checkValidity())el.removeAttribute('aria-invalid');else el.setAttribute('aria-invalid','true');
+   }});
+ }
+ required.forEach(el=>{el.addEventListener('change',update);el.addEventListener('input',update);
+   el.addEventListener('blur',()=>{el.dataset.visited='yes';update()})});
+ form.addEventListener('reset',()=>requestAnimationFrame(()=>{required.forEach(el=>{delete el.dataset.visited;el.removeAttribute('aria-invalid')});update()}));
+ update();
 })();
 </script>
 </body>
