@@ -1,0 +1,89 @@
+/* The Launch Era — mobile-first editorial demos | 2026-11-07
+   Scoped to existing demo documents, keeps each brand typography and photos.
+   Motion Studio: clear press feedback, no motion for reduced-motion users. */
+@media(max-width:767px){
+ html{scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+ body[data-tle-demo-mobile]{max-width:100%;overflow-x:clip}
+ body[data-tle-demo-mobile] :is(main,section,.container,.wrap,.hero,.hero-copy,.hero-media,.hero-art,.hero-content,.section-heading){min-width:0;max-width:100%}
+ body[data-tle-demo-mobile] img,body[data-tle-demo-mobile] video,body[data-tle-demo-mobile] picture{max-width:100%}
+ body[data-tle-demo-mobile] :is(h1,h2,h3){text-wrap:balance;overflow-wrap:break-word}
+ body[data-tle-demo-mobile] :is(p,li){overflow-wrap:break-word}
+ body[data-tle-demo-mobile] :is(input,textarea,select){font-size:16px!important;min-width:0;max-width:100%;box-sizing:border-box}
+ body[data-tle-demo-mobile] :is(button,a,[role="button"]){touch-action:manipulation}
+ body[data-tle-demo-mobile] :is(button,a,input,textarea,select,[role="button"]):focus-visible{outline:3px solid currentColor;outline-offset:3px}
+ body[data-tle-demo-mobile] :is(.hero-actions a,.hero-actions button,.btn,.button,.nav-cta,.header-cta,.header-box,.filter,.menu-toggle,.menu-btn,.round-more,.choose-item){min-height:44px;max-width:100%;box-sizing:border-box}
+}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+ body[data-tle-demo-mobile] :is(.btn,.button,.header-cta):active{transform:scale(.985);transition:transform .16s ease}
+}
+/* WOK SOCIAL — denser two-column photo menu, native red/cream, Caprasimo + DM Sans. */
+@media(min-width:360px) and (max-width:767px){
+ body[data-tle-demo-mobile="wok-social"] .menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+ body[data-tle-demo-mobile="wok-social"] .dish-photo{aspect-ratio:1 / 1.02}
+ body[data-tle-demo-mobile="wok-social"] .dish{min-width:0}
+ body[data-tle-demo-mobile="wok-social"] .dish-line{flex-wrap:wrap;align-items:flex-start;gap:5px}
+ body[data-tle-demo-mobile="wok-social"] .dish :is(h3,h4){font-size:clamp(18px,4.9vw,24px);line-height:1.12}
+}
+@media(max-width:767px){
+ body[data-tle-demo-mobile="wok-social"] .storefront-hero h1,
+ body[data-tle-demo-mobile="wok-social"] .hero h1{font-size:clamp(42px,10.7vw,60px);line-height:1.07}
+ body[data-tle-demo-mobile="wok-social"] :is(.hero-copy>p,.story-copy>p,.menu-heading p){font-size:15px;line-height:1.58}
+ body[data-tle-demo-mobile="wok-social"] :is(.round-more,.dialog-close){min-width:44px;min-height:44px}
+ body[data-tle-demo-mobile="wok-social"] .dish-photo img{object-position:center}
+}
+/* SEASONAL BREW — bring enormous mobile serif and tall product previews to readable scale. */
+@media(max-width:767px){
+ body[data-tle-demo-mobile="seasonal-brew"] .hero h1{font-size:clamp(43px,11vw,63px)!important;line-height:1.07}
+ body[data-tle-demo-mobile="seasonal-brew"] .hero-subtitle{font-size:16px;line-height:1.6}
+ body[data-tle-demo-mobile="seasonal-brew"] .hero-media{height:clamp(310px,89vw,430px);min-height:0}
+ body[data-tle-demo-mobile="seasonal-brew"] .flavor-card strong{font-size:clamp(25px,6.7vw,35px);line-height:1.06}
+ body[data-tle-demo-mobile="seasonal-brew"] .flavor-card :is(p,small){font-size:13px;line-height:1.5}
+ body[data-tle-demo-mobile="seasonal-brew"] .dialog-body h2{font-size:clamp(37px,9.8vw,51px);line-height:1.1}
+ body[data-tle-demo-mobile="seasonal-brew"] .dialog-body #dialog-desc{font-size:15px;line-height:1.65}
+ body[data-tle-demo-mobile="seasonal-brew"] :is(.section-intro h2,.story-copy h2,.highlight-copy h2){font-size:clamp(39px,10.3vw,57px);line-height:1.1}
+ body[data-tle-demo-mobile="seasonal-brew"] .flavor-grid{gap:13px}
+}
+/* SOLUNA — prioritize class/offer clarity over massive decorative visual spaces. */
+@media(max-width:767px){
+ body[data-tle-demo-mobile="soluna-yoga"] .hero h1{font-size:clamp(38px,10vw,55px);line-height:1.1}
+ body[data-tle-demo-mobile="soluna-yoga"] :is(.lead,.hero-note,.hero-copy>p){font-size:15px;line-height:1.62}
+ body[data-tle-demo-mobile="soluna-yoga"] .hero-visual{max-height:clamp(300px,95vw,440px);min-height:0}
+ body[data-tle-demo-mobile="soluna-yoga"] :is(.plans,.class-grid,.approach-grid){grid-template-columns:minmax(0,1fr)}
+ body[data-tle-demo-mobile="soluna-yoga"] :is(.plan,.offer,.shop-card){min-width:0}
+ body[data-tle-demo-mobile="soluna-yoga"] :is(.offer-reveal,.class-more,.shop-more){min-height:44px}
+ body[data-tle-demo-mobile="soluna-yoga"] :is(.hero .buttons .btn,.plan .btn){min-height:48px}
+}
+/* YUMMM — keep all food images, reduce card dominance, make controls thumb-sized. */
+@media(max-width:767px){
+ body[data-tle-demo-mobile="yummm"] .hero h1{font-size:clamp(41px,10.8vw,58px);line-height:1.09}
+ body[data-tle-demo-mobile="yummm"] .hero-summary{font-size:16px;line-height:1.58}
+ body[data-tle-demo-mobile="yummm"] .section-heading>p{font-size:15px;line-height:1.58}
+ body[data-tle-demo-mobile="yummm"] :is(.product-grid,.process-grid){gap:13px}
+ body[data-tle-demo-mobile="yummm"] .product-card{min-width:0}
+ body[data-tle-demo-mobile="yummm"] .product-photo{max-height:min(65vw,290px);overflow:hidden}
+ body[data-tle-demo-mobile="yummm"] .product-details :is(p,small){font-size:13px;line-height:1.5}
+ body[data-tle-demo-mobile="yummm"] :is(.choose-item,.header-box,.menu-toggle){min-height:46px}
+}
+/* Lavender Edit — heavier editorial title in small print, original soft palette. */
+@media(max-width:767px){
+ body[data-tle-demo-mobile="lavender-edit"] .hero h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(41px,10.4vw,58px);line-height:1.09;font-weight:600}
+ body[data-tle-demo-mobile="lavender-edit"] :is(.section-title,.section-head h2){font-family:Georgia,'Times New Roman',serif;font-weight:600;line-height:1.13}
+ body[data-tle-demo-mobile="lavender-edit"] :is(.hero-desc,.section-note,.editorial-copy p){font-size:15px;line-height:1.65}
+ body[data-tle-demo-mobile="lavender-edit"] :is(.frame-btn,.lightbox-close,.menu-toggle){min-height:44px;min-width:44px}
+ body[data-tle-demo-mobile="lavender-edit"] :is(.campaign-grid,.ritual-grid){gap:14px}
+}
+/* Jaramillo — keep approved hero, shop-and-save behavior, readable Bodoni + DM Sans. */
+@media(max-width:767px){
+ body[data-tle-demo-mobile="jaramillo-boutique"] .shop-guide h2{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(44px,11vw,62px);line-height:1.11}
+ body[data-tle-demo-mobile="jaramillo-boutique"] .guide-steps h3{font-family:'Bodoni Moda',Georgia,serif;font-weight:600;font-size:clamp(28px,7vw,38px);line-height:1.13}
+ body[data-tle-demo-mobile="jaramillo-boutique"] .guide-steps p{font:500 14px/1.6 'DM Sans',Arial,sans-serif;color:#61545a}
+ body[data-tle-demo-mobile="jaramillo-boutique"] .shop-guide-intro p{font:500 15px/1.65 'DM Sans',Arial,sans-serif}
+ body[data-tle-demo-mobile="jaramillo-boutique"] .guide-steps{scroll-snap-type:x proximity;overscroll-behavior-inline:contain}
+ body[data-tle-demo-mobile="jaramillo-boutique"] .guide-steps article{scroll-snap-align:start;min-width:0}
+ body[data-tle-demo-mobile="jaramillo-boutique"] :is(.language-btn,.bag-trigger,.menu-btn){min-width:44px;min-height:44px}
+ body[data-tle-demo-mobile="jaramillo-boutique"] :is(.intro-row p,.designer-copy p){font-size:15px;line-height:1.62}
+}
+@media(prefers-reduced-motion:reduce){
+ body[data-tle-demo-mobile] :is(.hero h1,.hero h2,.hero img,.ticker-track,.ribbon-track){animation:none!important;transition:none!important}
+ body[data-tle-demo-mobile]{scroll-behavior:auto}
+}

@@ -7,6 +7,7 @@ on:
       - main
     paths:
       - .github/workflows/deploy-brand-board-pages.yml
+      - assets/tle-demo-mobile-ux-20261107.css
       - demos/yummm/**
       - demos/soluna-yoga/**
       - demos/lavender-edit/**
@@ -98,6 +99,8 @@ jobs:
           # Shared The Launch Era footer/focus layer, kept separate from each demo's visual identity
           mkdir -p _site/assets
           cp assets/tle-company-system-20261106.css _site/assets/tle-company-system-20261106.css
+          cp assets/tle-demo-mobile-ux-20261107.css _site/assets/tle-demo-mobile-ux-20261107.css
+          test -s _site/assets/tle-demo-mobile-ux-20261107.css
           test -s _site/assets/tle-company-system-20261106.css
           grep -q '../assets/tle-company-system-20261106.css' _site/wok-social/index.html
           rm -rf _site/jaramillo-boutique
@@ -138,6 +141,12 @@ jobs:
           node --check _site/wok-social/script.js
           grep -q 'WOK SOCIAL' _site/wok-social/index.html
           test -f _site/jaramillo-boutique/index.html
+          grep -q 'tle-demo-mobile-ux-20261107.css' _site/jaramillo-boutique/index.html
+          grep -q 'tle-demo-mobile-ux-20261107.css' _site/wok-social/index.html
+          grep -q 'tle-demo-mobile-ux-20261107.css' _site/seasonal-brew/index.html
+          grep -q 'tle-demo-mobile-ux-20261107.css' _site/soluna-yoga/index.html
+          grep -q 'tle-demo-mobile-ux-20261107.css' _site/lavender-edit/index.html
+          grep -q 'tle-demo-mobile-ux-20261107.css' _site/yummm/index.html
           test -f _site/jaramillo-boutique/styles.css
           test -f _site/jaramillo-boutique/main.js
           test -f _site/jaramillo-boutique/assets/model-cutout.webp
