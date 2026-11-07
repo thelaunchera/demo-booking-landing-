@@ -187,3 +187,18 @@
 @media(prefers-reduced-motion:reduce) {
  .hero-actions .button,.header-cta {transition:none;}
 }
+
+
+/* YUMMM editorial desktop, Nov 2026. Keep existing rotating photo
+   slideshow, active dots, controls, interactions and mobile flow. */
+@media(min-width:1100px){
+ .hero{min-height:clamp(665px,53vw,820px);height:clamp(665px,53vw,820px);background:#3c251d}
+ .hero .hero-media{position:absolute;inset:0 0 0 39%;width:61%;height:100%}
+ .hero .hero-slide img{width:100%;height:100%;object-fit:cover}
+ .hero .hero-shade{background:linear-gradient(90deg,#3c251d 0%,#3c251d 33%,rgba(60,37,29,.84) 45%,rgba(60,37,29,.05) 73%)}
+ .hero .hero-content{width:100%;max-width:none;margin:0 auto;padding:clamp(70px,6vw,105px) clamp(35px,6.5vw,112px) 48px;align-items:flex-start}
+ .hero .hero-content h1{max-width:10ch;font-size:clamp(71px,6.25vw,110px);line-height:.96;text-wrap:balance}
+ .hero .hero-summary{max-width:38ch;font-size:clamp(15px,1.2vw,19px);line-height:1.65}
+ .hero .hero-actions{justify-content:flex-start}
+ .hero .hero-bottom{max-width:42%;width:100%}
+}
