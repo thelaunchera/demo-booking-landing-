@@ -8,3 +8,15 @@
 @media(max-width:680px){.flavor-card strong{font-size:clamp(24px,6.8vw,42px);line-height:.88;padding-inline:3px}.flavor-card{min-width:0}}
 @media(max-width:680px){.hero-ribbon{display:none}.story-copy h2{white-space:normal}}
 @media(max-width:680px){.highlight-copy h2{font-size:clamp(54px,13.5vw,75px)}}
+
+
+/* Seasonal Brew desktop: larger original coffeehouse photo and spacious
+   type, with original ribbons, seals, ticker and mobile layout intact. */
+@media(min-width:1100px){
+ .hero{grid-template-columns:minmax(0,39fr) minmax(0,61fr);min-height:clamp(690px,53vw,820px);align-items:stretch}
+ .hero .hero-copy{min-width:0;justify-content:center;padding:clamp(50px,5vw,82px) clamp(24px,3vw,52px) 50px clamp(24px,3vw,52px)}
+ .hero .hero-copy h1{font-size:clamp(74px,6.5vw,120px);line-height:.95;max-width:10ch}
+ .hero .hero-subtitle{font-size:clamp(16px,1.15vw,19px);line-height:1.65;max-width:37ch}
+ .hero .hero-media{height:100%;min-height:clamp(690px,53vw,820px);overflow:hidden}
+ .hero .hero-media>img{width:100%;height:100%;object-fit:cover}
+}
