@@ -385,6 +385,19 @@
 @media(prefers-reduced-motion:reduce){.signup .field :is(input,select),.soluna-progress-track>span{transition:none}}
 </style>
 <link rel="stylesheet" href="../assets/tle-company-system-20261106.css?v=1"><link rel="stylesheet" href="../assets/tle-demo-mobile-ux-20261107.css?v=1">
+
+<style>
+/* SOLUNA desktop 2026-11-07: preserve original background photo, arch,
+   list form, sunrise effects and mobile-first presentation. */
+@media(min-width:1100px){
+ .hero{grid-template-columns:minmax(0,41fr) minmax(0,59fr);min-height:clamp(695px,55vw,840px)}
+ .hero .hero-copy{min-width:0;padding:clamp(70px,6vw,112px) 5% clamp(55px,5vw,85px) max(42px,calc((100vw - 1340px)/2))}
+ .hero .hero-copy h1{font-size:clamp(65px,5.6vw,100px);line-height:1.02;max-width:11ch;text-wrap:balance}
+ .hero .hero-copy .lead{max-width:38ch;font-size:clamp(15px,1.2vw,18px);line-height:1.68}
+ .hero .hero-visual{min-height:clamp(695px,55vw,840px)}
+ .hero .hero-visual:before{background-size:cover;background-position:52% center}
+}
+</style>
 </head>
 <body data-tle-company="demo" data-tle-demo-mobile="soluna-yoga">
   <a href="#main" class="skip">Skip to content</a>
