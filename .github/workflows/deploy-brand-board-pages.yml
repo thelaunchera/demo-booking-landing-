@@ -240,6 +240,11 @@ jobs:
           grep -q 'productUnitPrice' _site/jaramillo-boutique/index.html
           grep -q 'bagSubtotal' _site/jaramillo-boutique/index.html
           ! grep -q 'filter:url(#jaramilloHaloFix)' _site/jaramillo-boutique/editorial-type-v5.css
+          # All applicable demos must expose an end-to-end browser-only sample order flow.
+          grep -q 'tle-demo-order-journey-20261108.js' _site/jaramillo-boutique/index.html
+          grep -q 'tle-demo-order-journey-20261108.js' _site/yummm/index.html
+          grep -q 'tle-demo-order-journey-20261108.js' _site/wok-social/index.html
+          grep -q 'tle-demo-order-journey-20261108.js' _site/seasonal-brew/index.html
           test -s _site/jaramillo-boutique/shopping.css
           grep -q 'id="bagTrigger"' _site/jaramillo-boutique/index.html
           grep -q 'id="bagDialog"' _site/jaramillo-boutique/index.html
