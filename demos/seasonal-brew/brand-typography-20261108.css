@@ -108,9 +108,9 @@
   .nav a {font-size:15px}
   .hero-actions .button,.hero-actions .text-link {font-size:16px}
 }
-/* Existing tablet gallery used a 350px minimum height plus a fixed aspect
-   ratio, forcing each grid card to ~289px wide in a ~230px column. */
-@media(min-width:681px) and (max-width:900px) {
+/* Existing tablet and smaller-desktop gallery used 350–430px minimum
+   heights plus a fixed aspect ratio, forcing cards wider than their columns. */
+@media(min-width:681px) and (max-width:1200px) {
   body[data-tle-demo-mobile="seasonal-brew"] .flavor-grid {min-width:0}
   body[data-tle-demo-mobile="seasonal-brew"] .flavor-card {
     min-width:0;
