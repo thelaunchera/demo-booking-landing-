@@ -10,7 +10,7 @@ for (const engine of [chromium,webkit]){
   const context=await browser.newContext({...devices['iPhone 13'],viewport:{width:390,height:800},reducedMotion:'no-preference'});
   for(const slug of slugs){
    const page=await context.newPage();
-   const response=await page.goto(origin+'/demos/'+slug+'/',{waitUntil:'domcontentloaded'});
+   const response=await page.goto(origin+'/'+slug+'/',{waitUntil:'domcontentloaded'});
    assert.equal(response?.status(),200,engine.name()+' '+slug+' page must load');
    await page.waitForTimeout(180);
    const nodes=page.locator('[data-tle-scroll-part]');
@@ -29,7 +29,7 @@ for (const engine of [chromium,webkit]){
   await context.close();
   const reduce=await browser.newContext({...devices['iPhone 13'],viewport:{width:390,height:800},reducedMotion:'reduce'});
   const p=await reduce.newPage();
-  await p.goto(origin+'/demos/wok-social/',{waitUntil:'domcontentloaded'});
+  await p.goto(origin+'/wok-social/',{waitUntil:'domcontentloaded'});
   await p.waitForTimeout(160);
   assert.equal(await p.locator('.tle-scroll-pending').count(),0,'Reduced motion cannot hide or animate content');
   console.log('REDUCED MOTION',engine.name(),'OK');
