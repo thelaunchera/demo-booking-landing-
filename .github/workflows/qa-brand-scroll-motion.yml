@@ -13,6 +13,7 @@ on:
       - 'assets/tle-demo-footer-finale-20261108.css'
       - 'assets/tle-demo-footer-finale-20261108.js'
       - 'scripts/qa-demo-footer-menu-20261108.mjs'
+      - 'scripts/qa-demo-price-placement-20261108.mjs'
       - '.github/workflows/qa-brand-scroll-motion.yml'
   workflow_dispatch:
 permissions:
@@ -78,3 +79,5 @@ jobs:
           done
           node scripts/qa-demo-scroll-art-20261108.mjs
           node scripts/qa-demo-footer-menu-20261108.mjs
+          node --check scripts/qa-demo-price-placement-20261108.mjs
+          node scripts/qa-demo-price-placement-20261108.mjs
