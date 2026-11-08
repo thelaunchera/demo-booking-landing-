@@ -1,114 +1,38 @@
-/* Seasonal Brew · Flavor drinks, 08 Nov 2026.
-   Each background is an approved flavor still-life; the AVIF sprite is
-   made from six isolated transparent-background coffee photos. */
-.flavors-section .container {
-  width: min(calc(100% - 28px), 1480px);
+/* Seasonal Brew / 2026-11-08: six approved, self-contained flavor photographs.
+   The editorial serif names are physically behind the cups within each image.
+   Do not place the old CSS drink sprite or a second name over these posters. */
+.flavors-section .container{width:min(calc(100% - 28px),1480px)}
+.flavors-section .flavor-grid{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  column-gap:0!important;row-gap:16px!important;
 }
-.flavor-grid {
-  column-gap: 0 !important;
-  row-gap: 16px !important;
+.flavors-section .flavor-card{
+  position:relative;display:block;min-width:0;min-height:0;
+  width:100%;aspect-ratio:1122/1402;padding:0;overflow:hidden;
+  border:0;border-radius:0;background:#ad754e;isolation:isolate;
 }
-.flavor-card {
-  border: 0;
-  border-radius: 0;
-  overflow: hidden;
-  isolation: isolate;
+.flavors-section .flavor-card > img{
+  display:block;position:absolute;inset:0;z-index:1;
+  width:100%;height:100%;object-fit:cover;object-position:center;
+  transition:transform .4s ease;
 }
-.flavor-card > img {
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.flavors-section .flavor-card:hover > img,
+.flavors-section .flavor-card:focus-visible > img{transform:scale(1.018)}
+.flavors-section .flavor-card .drink-art,
+.flavors-section .flavor-card .flavor-top,
+.flavors-section .flavor-card .flavor-foot{display:none!important}
+/* Keep the real flavor name accessible to screen readers without drawing it
+   a second time on top of the photographed editorial typography. */
+.flavors-section .flavor-card strong{
+  position:absolute!important;width:1px!important;height:1px!important;
+  padding:0!important;margin:-1px!important;overflow:hidden!important;
+  clip:rect(0,0,0,0)!important;clip-path:inset(50%)!important;
+  white-space:nowrap!important;border:0!important;
 }
-.flavor-card .flavor-top {
-  display: none;
+@media(max-width:680px){
+  .flavors-section .container{width:calc(100% - 20px)}
+  .flavors-section .flavor-grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:10px!important}
 }
-.flavor-card strong {
-  position: absolute;
-  z-index: 3;
-  top: 10%;
-  left: 3%;
-  right: 3%;
-  width: 94%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  font-size: clamp(36px, 4.25vw, 70px);
-  line-height: .85;
-  letter-spacing: -.052em;
-  text-align: center;
-  pointer-events: none;
-  text-wrap: balance;
-}
-.flavor-card .drink-art {
-  position: absolute;
-  z-index: 2;
-  display: block;
-  left: 50%;
-  bottom: 7%;
-  height: 63%;
-  width: auto;
-  aspect-ratio: 250 / 307;
-  max-width: 83%;
-  background-image: url("assets/drinks-sprite.avif");
-  background-repeat: no-repeat;
-  background-size: 300% 200%;
-  background-position: 0 0;
-  pointer-events: none;
-  transform: translateX(-50%);
-  filter: drop-shadow(0 13px 8px rgba(37, 18, 7, .17));
-  transition: transform .45s cubic-bezier(.2,.7,.2,1);
-}
-.flavor-card[data-flavor="sugar-cookie"] .drink-art { background-position: 0 0; }
-.flavor-card[data-flavor="gingerbread"] .drink-art { background-position: 50% 0; }
-.flavor-card[data-flavor="toasted-marshmallow"] .drink-art { background-position: 100% 0; }
-.flavor-card[data-flavor="snickerdoodle"] .drink-art { background-position: 0 100%; }
-.flavor-card[data-flavor="chestnut-praline"] .drink-art { background-position: 50% 100%; }
-.flavor-card[data-flavor="peppermint-mocha"] .drink-art { background-position: 100% 100%; }
-.flavor-card .flavor-foot {
-  z-index: 4;
-  text-shadow: 0 1px 8px rgba(30, 14, 4, .3);
-}
-.flavor-card:hover .drink-art,
-.flavor-card:focus-visible .drink-art {
-  transform: translateX(-50%) translateY(-6px) scale(1.025);
-}
-.flavor-card:hover > img {
-  transform: scale(1.01);
-}
-@media (min-width: 681px) and (max-width: 1200px) {
-  .flavor-card strong {
-    font-size: clamp(35px, 4.5vw, 58px);
-    top: 10%;
-  }
-  .flavor-card .drink-art { height: 61%; bottom: 8%; }
-}
-@media (max-width: 680px) {
-  .flavors-section .container { width: calc(100% - 20px); }
-  .flavor-grid { column-gap: 0 !important; row-gap: 12px !important; }
-  .flavor-card strong {
-    font-size: clamp(25px, 6.3vw, 38px);
-    line-height: .88;
-    top: 11%;
-    left: 2%;
-    right: 2%;
-    width: 96%;
-    padding: 0;
-  }
-  .flavor-card .drink-art {
-    height: 58%;
-    max-width: 90%;
-    bottom: 8%;
-  }
-  .flavor-card .flavor-foot {
-    left: 8px; right: 8px; bottom: 8px;
-    font-size: 7px;
-  }
-}
-@media (max-width: 380px) {
-  .flavor-card strong { font-size: 25px; }
-  .flavor-card .drink-art { height: 55%; bottom: 9%; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .flavor-card .drink-art { transition: none !important; }
+@media(prefers-reduced-motion:reduce){
+  .flavors-section .flavor-card > img{transition:none!important}
 }
