@@ -72,9 +72,7 @@ if(storyBanner){
  storyBanner.addEventListener('mouseleave',()=>{storyPaused=false;storyBanner.classList.remove('is-paused')});
  storyBanner.addEventListener('focusin',()=>{storyPaused=true;storyBanner.classList.add('is-paused')});
  storyBanner.addEventListener('focusout',event=>{if(!storyBanner.contains(event.relatedTarget)){storyPaused=false;storyBanner.classList.remove('is-paused')}});
- if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches){
-  window.setInterval(()=>{if(!storyPaused&&!document.hidden){activeStory=(activeStory+1)%storyTabs.length;renderStory()}},7000);
- }
+ // Intentional editorial banner: manual tabs and touch swipes only. No autoplay.
  renderStory();
 }
 /* An enlarged photograph remains within the product dialog; touching or swiping is supported. */
