@@ -56,6 +56,15 @@ for (const browserType of [chromium, webkit]) {
       assert.ok(found.photoLoaded,"Original storefront hero did not load");
       assert.equal(found.ctaHref,"#flavors","CTA destination was changed");
       assert.ok(found.heroWidth > 300 && found.heroHeight > 300,"Hero collapsed");
+      if (found.bodyWidth > found.viewportWidth + 3) {
+        console.log("OVERFLOW ELEMENTS", browserType.name(), width,
+          JSON.stringify(await page.evaluate(() => Array.from(document.querySelectorAll("body *"))
+            .map(e => ({name:e.tagName.toLowerCase(), cls:typeof e.className === "string" ? e.className.slice(0,70) : "",
+              text:(e.innerText||"").slice(0,35), r:Math.round(e.getBoundingClientRect().right),
+              l:Math.round(e.getBoundingClientRect().left), w:Math.round(e.getBoundingClientRect().width)}))
+            .filter(x => x.r > innerWidth + 4 && x.w < 1500)
+            .sort((a,b) => b.r - a.r).slice(0,20))));
+      }
       assert.ok(found.bodyWidth <= found.viewportWidth + 3,
         `${browserType.name()} ${width}: unexpected horizontal page overflow (${found.bodyWidth} / ${found.viewportWidth})`);
       await page.screenshot({
