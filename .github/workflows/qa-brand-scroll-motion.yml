@@ -10,6 +10,7 @@ on:
       - 'assets/tle-demo-scroll-art-20261108.css'
       - 'assets/tle-demo-scroll-art-20261108.js'
       - 'scripts/qa-demo-scroll-art-20261108.mjs'
+      - 'scripts/qa-demo-reactive-hero-20261108.mjs'
       - 'assets/tle-demo-footer-finale-20261108.css'
       - 'assets/tle-demo-footer-finale-20261108.js'
       - 'scripts/qa-demo-footer-menu-20261108.mjs'
@@ -78,6 +79,8 @@ jobs:
             sleep 1
           done
           node scripts/qa-demo-scroll-art-20261108.mjs
+          node --check scripts/qa-demo-reactive-hero-20261108.mjs
+          node scripts/qa-demo-reactive-hero-20261108.mjs
           node scripts/qa-demo-footer-menu-20261108.mjs
           node --check scripts/qa-demo-price-placement-20261108.mjs
           node scripts/qa-demo-price-placement-20261108.mjs
