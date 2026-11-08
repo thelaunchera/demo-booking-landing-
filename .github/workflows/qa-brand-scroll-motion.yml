@@ -53,11 +53,19 @@ jobs:
           ln -sfn /tmp/tle-scroll-qa/node_modules node_modules
       - name: Check all five scroll experiences in Chromium and WebKit
         run: |
-          python3 -m http.server 4193 --bind 127.0.0.1 --directory . >/tmp/tle-scroll-qa.log 2>&1 &
+          # Match the live GitHub Pages layout: demo folders at URL root,
+          # with shared assets one directory above each demo.
+          rm -rf /tmp/tle-scroll-pages
+          mkdir -p /tmp/tle-scroll-pages
+          cp -R assets /tmp/tle-scroll-pages/assets
+          for demo in seasonal-brew soluna-yoga wok-social yummm jaramillo-boutique; do
+            cp -R "demos/$demo" "/tmp/tle-scroll-pages/$demo"
+          done
+          python3 -m http.server 4193 --bind 127.0.0.1 --directory /tmp/tle-scroll-pages >/tmp/tle-scroll-qa.log 2>&1 &
           server=$!
           trap 'kill "$server" 2>/dev/null || true' EXIT
           for n in $(seq 1 20); do
-            if curl -fsS http://127.0.0.1:4193/demos/wok-social/ >/dev/null; then break; fi
+            if curl -fsS http://127.0.0.1:4193/wok-social/ >/dev/null; then break; fi
             sleep 1
           done
           node scripts/qa-demo-scroll-art-20261108.mjs
