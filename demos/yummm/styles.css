@@ -202,3 +202,30 @@
  .hero .hero-actions{justify-content:flex-start}
  .hero .hero-bottom{max-width:42%;width:100%}
 }
+
+
+/* YUMMM video framing & original campaign editorial · 2026-11-08.
+   Keep all coffee and packaging inside the visible hero video: no forced close crop.
+   Poster/first frame, slideshow dots, buttons and reduced-motion fallback unchanged. */
+html[data-tle-one-motion="yummm"] .hero-slide[data-slide="1"]{
+  background-color:#4b2e26!important;
+  background-size:cover;
+}
+html[data-tle-one-motion="yummm"] .hero-slide[data-slide="1"] video[data-tle-cinematic-hero]{
+  object-fit:contain!important;
+  object-position:50% 50%!important;
+  scale:1!important;
+  transform:none!important;
+  width:100%!important;
+  height:100%!important;
+}
+.yummm-original-photo-story{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.85fr);gap:clamp(25px,5vw,90px);align-items:center;max-width:1340px;margin:50px auto 80px;padding:clamp(22px,4vw,48px);background:#f5e5dc;border-radius:clamp(18px,2.2vw,28px);color:#542923}
+.yummm-original-photo-story figure{margin:0;overflow:hidden;border-radius:clamp(13px,1.5vw,22px);aspect-ratio:1.15;background:#fff7f0}
+.yummm-original-photo-story img{width:100%;height:100%;object-fit:contain;display:block}
+.yummm-original-photo-copy{max-width:500px}
+.yummm-original-photo-copy>span{display:block;letter-spacing:.16em;font:800 11px/1.6 'DM Sans',Arial,sans-serif;margin-bottom:18px}
+.yummm-original-photo-copy h2{font:400 clamp(41px,4.5vw,71px)/1.04 'DM Serif Display',Georgia,serif;letter-spacing:-.035em;margin:0 0 20px}
+.yummm-original-photo-copy p{max-width:38ch;font-size:clamp(15px,1.3vw,18px);line-height:1.65;margin-bottom:26px}
+.yummm-original-photo-copy a{display:inline-flex;align-items:center;min-height:44px;color:#7b2725;border-bottom:1px solid currentColor;font-weight:700;font-size:12px}
+@media(max-width:720px){.yummm-original-photo-story{grid-template-columns:1fr;margin:32px 14px 50px;padding:20px;gap:23px}.yummm-original-photo-copy h2{font-size:clamp(36px,10vw,52px)}}
+@media(prefers-reduced-motion:reduce){html[data-tle-one-motion="yummm"] .hero-slide[data-slide="1"] video[data-tle-cinematic-hero]{display:none!important}}
