@@ -53,3 +53,58 @@
  .seasonal-menu-bottom{align-items:flex-start}
 }
 @media(prefers-reduced-motion:reduce){.seasonal-menu *{transition:none!important}}
+
+
+/* Seasonal Brew · iPhone framing fix · 2026-11-08
+   The original poster already contains large editorial lettering and a cup.
+   Preserve the full 1122 × 1402 composition instead of zoom-cropping the top. */
+@media (max-width:680px){
+  .seasonal-menu .container{width:calc(100% - 28px)}
+  .seasonal-menu .seasonal-menu-track{
+    display:flex!important;
+    gap:12px;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scroll-snap-type:x mandatory;
+    padding-bottom:12px;
+  }
+  .seasonal-menu .seasonal-menu-card{
+    flex:0 0 min(66vw,270px)!important;
+    width:min(66vw,270px)!important;
+    max-width:270px!important;
+    min-width:0!important;
+    align-self:stretch;
+    border-radius:14px;
+  }
+  .seasonal-menu .seasonal-menu-photo{
+    display:block!important;
+    position:relative!important;
+    width:100%!important;
+    height:auto!important;
+    aspect-ratio:1122 / 1402!important;
+    overflow:hidden!important;
+    background:#e5c39d;
+  }
+  .seasonal-menu .seasonal-menu-photo img{
+    display:block!important;
+    position:static!important;
+    width:100%!important;
+    height:100%!important;
+    max-width:100%!important;
+    max-height:100%!important;
+    aspect-ratio:1122 / 1402!important;
+    object-fit:contain!important;
+    object-position:center center!important;
+    transform:none!important;
+  }
+  .seasonal-menu .seasonal-menu-card-content{padding:13px 12px 15px}
+  .seasonal-menu .seasonal-menu-card-content h3{font-size:clamp(20px,5.2vw,25px);line-height:1.1;margin-bottom:9px}
+  .seasonal-menu .seasonal-menu-price-line{margin-bottom:8px}
+  .seasonal-menu .seasonal-menu-add{min-height:42px;padding:9px 12px;font-size:10px}
+  .seasonal-menu .seasonal-menu-card-foot{font-size:9px}
+  .seasonal-menu .seasonal-menu-card-actions{gap:5px;flex-wrap:wrap}
+}
+@media(max-width:360px){
+  .seasonal-menu .seasonal-menu-card{flex-basis:70vw!important;width:70vw!important}
+  .seasonal-menu .seasonal-menu-card-content h3{font-size:20px}
+}
