@@ -16,6 +16,10 @@ try {
       const v=document.querySelector('video[data-tle-cinematic-hero="'+brand+'"]');
       return !!v&&v.videoWidth>0&&v.readyState>=2;
     },brand,{timeout:20000});
+    await page.waitForFunction(name=>{
+      const v=document.querySelector('video[data-tle-cinematic-hero="'+name+'"]');
+      return !!v && !v.paused && Number(getComputedStyle(v).opacity)>.01;
+    },brand,{timeout:12000});
     const media=await page.evaluate(()=>{
       const video=document.querySelector('video[data-tle-cinematic-hero]');
       return {src:new URL(video.currentSrc).pathname,hasDepth:video.hasAttribute('data-tle-reactive-photo'),pointerEvents:getComputedStyle(video).pointerEvents,width:video.videoWidth};
