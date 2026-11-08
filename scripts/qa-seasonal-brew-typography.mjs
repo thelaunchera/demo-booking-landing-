@@ -31,8 +31,13 @@ for (const browserType of [chromium, webkit]) {
           subtitle:pick(".hero-subtitle"),
           cta:pick(".hero-actions .button"),
           nav:pick(".nav a"),
-          section:pick(".flavors-section h2"),
-          flavor:pick(".flavor-card strong"),
+          section:pick(".seasonal-menu-heading h2"),
+          flavor:pick(".seasonal-menu-card-content h3"),
+          menuCount:document.querySelectorAll("#seasonal-menu-track .seasonal-menu-card").length,
+          duplicateSection:!!document.querySelector(".flavors-section"),
+          menuColumns:getComputedStyle(document.querySelector("#seasonal-menu-track")).gridTemplateColumns.trim().split(/\s+/).length,
+          menuImageFit:getComputedStyle(document.querySelector(".seasonal-menu-photo img")).objectFit,
+          maxMenuCardHeight:Math.max(...Array.from(document.querySelectorAll("#seasonal-menu-track .seasonal-menu-card")).map(x=>x.getBoundingClientRect().height)),
           footer:pick(".footer-brand"),
           label:pick(".brand-words small"),
           photo:img?.getAttribute("src"),
@@ -44,17 +49,28 @@ for (const browserType of [chromium, webkit]) {
           heroHeight:hero?.getBoundingClientRect().height
         };
       });
-      for (const key of ["logo","title","subtitle","cta","section","flavor","footer"]) {
+      for (const key of ["logo","title","subtitle","cta","footer"]) {
         assert.ok(found[key]?.family.includes("Bodoni Moda"),
           `${browserType.name()} ${width}: ${key} must use Bodoni Moda`);
         assert.equal(found[key]?.style,"italic",
           `${browserType.name()} ${width}: ${key} should match italic coffeehouse logo`);
       }
+      for (const key of ["section","flavor"]) {
+        assert.ok(found[key]?.family.includes("Bodoni Moda"),
+          `${browserType.name()} ${width}: ${key} must preserve Bodoni Moda`);
+      }
+      assert.equal(found.menuCount,6,"The six-photo menu must contain every flavor");
+      assert.equal(found.duplicateSection,false,"Do not duplicate the menu with a second flavor gallery");
+      assert.equal(found.menuColumns,width<=390?2:3,
+        `${browserType.name()} ${width}: the compact menu must use two phone columns, three tablet/desktop columns`);
+      assert.equal(found.menuImageFit,"contain","Show each whole coffee poster and editorial flavor name");
+      assert.ok(found.maxMenuCardHeight < (width<=390?480:715),
+        `${browserType.name()} ${width}: product tiles are still oversized (${found.maxMenuCardHeight}px)`);
       assert.ok(found.nav?.family.includes("Bodoni Moda"));
       assert.ok(found.label?.family.includes("DM Sans"), "Submark should remain readable small caps");
       assert.equal(found.photo,"assets/storefront.webp","Approved hero photo was changed");
       assert.ok(found.photoLoaded,"Original storefront hero did not load");
-      assert.equal(found.ctaHref,"#flavors","CTA destination was changed");
+      assert.equal(found.ctaHref,"#seasonal-menu","CTA destination was changed");
       assert.ok(found.heroWidth > 300 && found.heroHeight > 300,"Hero collapsed");
       if (found.bodyWidth > found.viewportWidth + 3) {
         console.log("OVERFLOW ELEMENTS", browserType.name(), width,
