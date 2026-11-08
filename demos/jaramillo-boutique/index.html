@@ -122,19 +122,8 @@
         <article><span class="guide-step-index">03</span><img src="assets/plataformas.webp" loading="lazy" alt="Display of heels and platform shoes at the boutique"><h3 data-i18n="guideStep3">Ask about your picks</h3><p data-i18n="guideStep3Copy">Use your bag to share the items you're interested in. No online payment is taken here.</p></article>
       </div>
     </section>
-    <section class="designer" id="story"><div class="designer-visual"><div class="designer-photo"><img src="assets/noche.webp" alt="Jaramillo Boutique red satin evening dress from the collection" loading="lazy" width="1200" height="1000"></div><span>DESIGNED WITH A POINT OF VIEW</span></div><div class="designer-copy"><span class="eyebrow wine" data-i18n="designerKicker">02 / THE WOMAN BEHIND THE EDIT</span><h2 data-i18n="designerTitle">From Colombia.<br><i>With an eye for style.</i></h2><p data-i18n="designerBody1">Jaramillo Boutique brings together the perspective of a Colombian fashion designer living in New York and pieces for women who like to make an entrance.</p><p data-i18n="designerBody2">Colombian denim, feminine silhouettes and looks for every season. Discover the collection and the vision behind it.</p><a class="text-link" href="#boutiques"><span data-i18n="designerCTA">Discover our three boutiques</span><span aria-hidden="true">✦</span></a></div></section>
+    <section class="designer" id="story"><div class="designer-visual"><div class="designer-photo"><video id="jaramillo-story-video" src="./media/hero-motion-20261108.mp4" poster="./assets/noche.webp" width="512" height="682" muted loop playsinline preload="auto" aria-label="Jaramillo Boutique moving burgundy fashion portrait"></video></div><span>DESIGNED WITH A POINT OF VIEW</span></div><div class="designer-copy"><span class="eyebrow wine" data-i18n="designerKicker">02 / THE WOMAN BEHIND THE EDIT</span><h2 data-i18n="designerTitle">From Colombia.<br><i>With an eye for style.</i></h2><p data-i18n="designerBody1">Jaramillo Boutique brings together the perspective of a Colombian fashion designer living in New York and pieces for women who like to make an entrance.</p><p data-i18n="designerBody2">Colombian denim, feminine silhouettes and looks for every season. Discover the collection and the vision behind it.</p><a class="text-link" href="#boutiques"><span data-i18n="designerCTA">Discover our three boutiques</span><span aria-hidden="true">✦</span></a></div></section>
 
-    <section class="jaramillo-editorial-film" id="jaramillo-editorial-film-20261108" aria-label="Jaramillo Boutique moving fashion portrait">
-      <div class="jaramillo-editorial-film__copy">
-        <p class="jaramillo-editorial-film__eyebrow">JARAMILLO / IN MOTION</p>
-        <div lang="en"><h2>Style that <em>moves</em> with you.</h2><p>Discover the movement and character behind the Jaramillo edit. Made for the moments you want to remember.</p></div>
-        <div lang="es"><h2>Estilo que <em>se mueve</em> contigo.</h2><p>Descubre el movimiento y la personalidad de Jaramillo. Para los momentos que quieres recordar.</p></div>
-        <span class="jaramillo-editorial-film__mark">THE JARAMILLO EDIT · 2026</span>
-      </div>
-      <figure class="jaramillo-editorial-film__media">
-        <video id="jaramillo-film-video" src="./media/hero-motion-20261108.mp4" poster="./assets/noche.webp" width="512" height="682" muted loop playsinline preload="metadata" aria-label="Fashion portrait in burgundy, gently moving"></video>
-      </figure>
-    </section>
     <section class="sizes-banner"><div class="sizes-line"><span class="eyebrow light" data-i18n="sizeKicker">STYLE FOR YOUR SILHOUETTE</span><h2>S <span>·</span> M <span>·</span> L <span>·</span> XL</h2><p data-i18n="sizeNote">Size range is a proposed catalog display; confirm availability by style before publishing.</p></div><img src="assets/colombian-jeans.webp" loading="lazy" alt="Colombian-style jeans fashion look"></section>
     <section class="boutiques" id="boutiques">
       <div class="boutique-header">
@@ -237,17 +226,21 @@
 <script>
   (() => {
     const init = () => {
-      const video = document.getElementById("jaramillo-film-video");
+      const video = document.getElementById("jaramillo-story-video");
       if (!video) return;
       const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      let inView = false;
+      const syncPlayback = () => {
+        if (inView && !reduce.matches && !document.hidden) video.play().catch(() => {});
+        else video.pause();
+      };
       const observer = new IntersectionObserver(entries => {
-        if (entries[0].isIntersecting && !reduce.matches && !document.hidden) {
-          video.play().catch(() => {});
-        } else video.pause();
+        inView = !!entries[0]?.isIntersecting;
+        syncPlayback();
       }, {threshold: 0.18});
       observer.observe(video);
-      reduce.addEventListener?.("change", () => { if (reduce.matches) video.pause(); });
-      document.addEventListener("visibilitychange", () => { if (document.hidden) video.pause(); });
+      reduce.addEventListener?.("change", syncPlayback);
+      document.addEventListener("visibilitychange", syncPlayback);
     };
     if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init, {once: true}); else init();
   })();
