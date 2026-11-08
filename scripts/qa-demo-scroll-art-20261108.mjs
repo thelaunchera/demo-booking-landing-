@@ -2,6 +2,24 @@
 // Includes Jaramillo source branch copied into demos/jaramillo-boutique by workflow.
 import assert from 'node:assert/strict';
 import {chromium,webkit,devices} from 'playwright';
+
+async function assertReplayInBothDirections(page, node, label) {
+ const positions=await page.evaluate(el=>{
+  const rect=el.getBoundingClientRect();
+  const top=rect.top+scrollY, bottom=top+rect.height;
+  return {canExitAbove:top>innerHeight+120,
+          canExitBelow:document.documentElement.scrollHeight-bottom>innerHeight+120};
+ },node);
+ for(const [possible,where] of [[positions.canExitAbove,'top'],[positions.canExitBelow,'bottom']]){
+  if(!possible)continue;
+  await page.evaluate(where=>window.scrollTo({top:where==='top'?0:document.documentElement.scrollHeight,behavior:'instant'}),where);
+  await page.waitForFunction(el=>!el.classList.contains('tle-scroll-visible'),node,{timeout:4000});
+  await node.scrollIntoViewIfNeeded();
+  await page.waitForFunction(el=>el.classList.contains('tle-scroll-visible'),node,{timeout:4000});
+ }
+ console.log('SCROLL RE-ENTRY',label,'UP/DOWN',positions);
+}
+
 const origin='http://127.0.0.1:4193';
 const slugs=['seasonal-brew','soluna-yoga','wok-social','yummm','jaramillo-boutique'];
 for (const engine of [chromium,webkit]){
@@ -20,6 +38,7 @@ for (const engine of [chromium,webkit]){
     const el=await candidate.elementHandle();
     await el.scrollIntoViewIfNeeded();
     await page.waitForFunction(node=>node?.classList.contains('tle-scroll-visible'),el,{timeout:4000});
+    await assertReplayInBothDirections(page,el,slug);
    }
    assert.equal(await page.locator('button.tle-scroll-pending,form.tle-scroll-pending,[role=dialog].tle-scroll-pending').count(),0,
      'Interactive elements must not be masked by scroll effects');
