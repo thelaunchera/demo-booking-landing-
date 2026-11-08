@@ -9,6 +9,7 @@ on:
     paths:
       - .github/workflows/deploy-brand-board-pages.yml
       - assets/tle-demo-mobile-ux-20261107.css
+      - assets/tle-demo-single-signature-20261108.css
       # TLE multi-brand unique galleries / November 2026
       - assets/tle-unique-galleries-20261107.css
       - assets/tle-unique-galleries-20261107.js
@@ -104,11 +105,16 @@ jobs:
           mkdir -p _site/assets
           cp assets/tle-company-system-20261106.css _site/assets/tle-company-system-20261106.css
           cp assets/tle-demo-mobile-ux-20261107.css _site/assets/tle-demo-mobile-ux-20261107.css
+          cp assets/tle-demo-single-signature-20261108.css _site/assets/tle-demo-single-signature-20261108.css
           cp assets/tle-unique-galleries-20261107.css _site/assets/tle-unique-galleries-20261107.css
           cp assets/tle-unique-galleries-20261107.js _site/assets/tle-unique-galleries-20261107.js
           node --check _site/assets/tle-unique-galleries-20261107.js
           test -s _site/assets/tle-unique-galleries-20261107.css
           test -s _site/assets/tle-demo-mobile-ux-20261107.css
+          test -s _site/assets/tle-demo-single-signature-20261108.css
+          test -s _site/jaramillo-boutique/single-signature-20261108.css
+          grep -q 'data-tle-one-motion="jaramillo-boutique"' _site/jaramillo-boutique/index.html
+          for demo in yummm soluna-yoga wok-social seasonal-brew; do grep -q "data-tle-one-motion=\\\"$demo\\\"" "_site/$demo/index.html"; done
           test -s _site/assets/tle-company-system-20261106.css
           grep -q '../assets/tle-company-system-20261106.css' _site/wok-social/index.html
           rm -rf _site/jaramillo-boutique
