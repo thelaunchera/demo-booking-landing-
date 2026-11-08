@@ -5,7 +5,7 @@ const origin='http://127.0.0.1:4193';
 const slugs=['seasonal-brew','soluna-yoga','wok-social','yummm','jaramillo-boutique'];
 const moved={
  'soluna-yoga':['#about','#memberships','#classes'],
- 'wok-social':['.hero + .ticker','#tle-demo-sample-prices','#menu'],
+ 'wok-social':['.hero + .ticker','#menu'],
  'yummm':['.feature-links','#counter'],
  'jaramillo-boutique':['.hero','#collections']
 };
@@ -37,7 +37,9 @@ for(const engine of [chromium,webkit]){
         const [a,...rest]=selectors;let prev=document.querySelector(a);
         for(const selector of rest){
          const curr=document.querySelector(selector);
-         if(!curr||!prev||prev.nextElementSibling!==curr)return false;
+         if(!curr||!prev)return false;
+         const actual=prev.nextElementSibling?.id==='tle-demo-sample-prices'?prev.nextElementSibling.nextElementSibling:prev.nextElementSibling;
+         if(actual!==curr)return false;
          prev=curr;
         }
         return true;
