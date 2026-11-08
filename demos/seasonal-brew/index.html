@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="brand-typography-20261108.css?v=1">
   <link rel="preload" href="assets/drinks-sprite.avif" as="image" type="image/avif" />
   <link rel="stylesheet" href="seasonal-drinks.css?v=2" />
+  <link rel="stylesheet" href="seasonal-menu-gallery.css?v=1" />
+  <script defer src="seasonal-menu-gallery.js?v=1"></script>
 </head>
 <body data-tle-demo-mobile="seasonal-brew">
   <a class="skip" href="#main">Skip to content</a>
@@ -39,7 +41,7 @@
         <a href="#moments">Little moments</a>
         <a class="mobile-nav-cta" href="#flavors">Explore the menu</a>
       </nav>
-      <a class="header-cta" href="#flavors">Explore menu </a>
+      <a class="header-cta" href="#seasonal-menu">Explore menu </a>
       <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span></button>
     </div>
   </header>
@@ -60,6 +62,87 @@
     </section>
 
     <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>YOUR NEW FAVORITE RITUAL</span><i>✦</i><span>THE SEASON IS SERVED</span><i>✦</i><span>SIP SOMETHING SPECIAL</span><i>✦</i><span>YOUR NEW FAVORITE RITUAL</span><i>✦</i><span>THE SEASON IS SERVED</span><i>✦</i><span>SIP SOMETHING SPECIAL</span><i>✦</i></div></div>
+
+    <section class="seasonal-menu" id="seasonal-menu" aria-labelledby="seasonal-menu-title">
+      <div class="container">
+        <div class="seasonal-menu-heading">
+          <div><span class="seasonal-menu-topline">SEASONAL FAVORITES / 06</span><h2 id="seasonal-menu-title">Explore the <em>menu.</em></h2></div>
+          <p class="seasonal-menu-desc">A little something for every mood. Find your next favorite sip.</p>
+        </div>
+        <div class="seasonal-menu-toolbar">
+          <span class="seasonal-menu-hint">Swipe to explore all six flavors</span>
+          <div class="seasonal-menu-actions" role="group" aria-label="Navigate seasonal menu">
+            <button type="button" class="seasonal-menu-nav" data-seasonal-prev aria-label="Previous flavor" disabled>‹</button>
+            <span class="seasonal-menu-counter" data-seasonal-counter aria-live="off">01–03 / 06</span>
+            <button type="button" class="seasonal-menu-nav" data-seasonal-next aria-label="Next flavor">›</button>
+          </div>
+        </div>
+        <div class="seasonal-menu-track" id="seasonal-menu-track" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Seasonal coffee menu">
+          <article class="seasonal-menu-card" data-menu-name="Sugar Cookie Latte" data-price-cents="700" data-menu-flavor="sugar-cookie">
+            <button class="seasonal-menu-photo" type="button" data-menu-details="sugar-cookie" aria-label="Discover Sugar Cookie Latte">
+              <img src="assets/flavor-posters/sugar-cookie.webp" alt="Sugar Cookie Latte with its seasonal toppings" loading="lazy" width="1122" height="1402" />
+            </button>
+            <div class="seasonal-menu-card-content">
+              <h3>Sugar Cookie Latte</h3>
+              <div class="seasonal-menu-price-line"><span class="seasonal-menu-price">$7.00</span></div>
+              <div class="seasonal-menu-card-actions"><button type="button" class="seasonal-menu-add" data-menu-add="Sugar Cookie Latte" aria-label="Add Sugar Cookie Latte to bag">Add to bag +</button><span class="seasonal-menu-card-foot">Vanilla & cookie</span></div>
+            </div>
+          </article>
+          <article class="seasonal-menu-card" data-menu-name="Gingerbread Latte" data-price-cents="638" data-menu-flavor="gingerbread">
+            <button class="seasonal-menu-photo" type="button" data-menu-details="gingerbread" aria-label="Discover Gingerbread Latte">
+              <img src="assets/flavor-posters/gingerbread.webp" alt="Gingerbread Latte with its seasonal toppings" loading="lazy" width="1122" height="1402" />
+            </button>
+            <div class="seasonal-menu-card-content">
+              <h3>Gingerbread Latte</h3>
+              <div class="seasonal-menu-price-line"><span class="seasonal-menu-price">$6.38</span> <del class="seasonal-menu-was">$7.50</del> <small class="seasonal-menu-off">15% off</small></div>
+              <div class="seasonal-menu-card-actions"><button type="button" class="seasonal-menu-add" data-menu-add="Gingerbread Latte" aria-label="Add Gingerbread Latte to bag">Add to bag +</button><span class="seasonal-menu-card-foot">Warm & spiced</span></div>
+            </div>
+          </article>
+          <article class="seasonal-menu-card" data-menu-name="Toasted Marshmallow Latte" data-price-cents="725" data-menu-flavor="toasted-marshmallow">
+            <button class="seasonal-menu-photo" type="button" data-menu-details="toasted-marshmallow" aria-label="Discover Toasted Marshmallow Latte">
+              <img src="assets/flavor-posters/toasted-marshmallow.webp" alt="Toasted Marshmallow Latte with its seasonal toppings" loading="lazy" width="1122" height="1402" />
+            </button>
+            <div class="seasonal-menu-card-content">
+              <h3>Toasted Marshmallow Latte</h3>
+              <div class="seasonal-menu-price-line"><span class="seasonal-menu-price">$7.25</span></div>
+              <div class="seasonal-menu-card-actions"><button type="button" class="seasonal-menu-add" data-menu-add="Toasted Marshmallow Latte" aria-label="Add Toasted Marshmallow Latte to bag">Add to bag +</button><span class="seasonal-menu-card-foot">Soft & golden</span></div>
+            </div>
+          </article>
+          <article class="seasonal-menu-card" data-menu-name="Snickerdoodle Latte" data-price-cents="675" data-menu-flavor="snickerdoodle">
+            <button class="seasonal-menu-photo" type="button" data-menu-details="snickerdoodle" aria-label="Discover Snickerdoodle Latte">
+              <img src="assets/flavor-posters/snickerdoodle.webp" alt="Snickerdoodle Latte with its seasonal toppings" loading="lazy" width="1122" height="1402" />
+            </button>
+            <div class="seasonal-menu-card-content">
+              <h3>Snickerdoodle Latte</h3>
+              <div class="seasonal-menu-price-line"><span class="seasonal-menu-price">$6.75</span></div>
+              <div class="seasonal-menu-card-actions"><button type="button" class="seasonal-menu-add" data-menu-add="Snickerdoodle Latte" aria-label="Add Snickerdoodle Latte to bag">Add to bag +</button><span class="seasonal-menu-card-foot">Cinnamon sugar</span></div>
+            </div>
+          </article>
+          <article class="seasonal-menu-card" data-menu-name="Chestnut Praline Latte" data-price-cents="775" data-menu-flavor="chestnut-praline">
+            <button class="seasonal-menu-photo" type="button" data-menu-details="chestnut-praline" aria-label="Discover Chestnut Praline Latte">
+              <img src="assets/flavor-posters/chestnut-praline.webp" alt="Chestnut Praline Latte with its seasonal toppings" loading="lazy" width="1122" height="1402" />
+            </button>
+            <div class="seasonal-menu-card-content">
+              <h3>Chestnut Praline Latte</h3>
+              <div class="seasonal-menu-price-line"><span class="seasonal-menu-price">$7.75</span></div>
+              <div class="seasonal-menu-card-actions"><button type="button" class="seasonal-menu-add" data-menu-add="Chestnut Praline Latte" aria-label="Add Chestnut Praline Latte to bag">Add to bag +</button><span class="seasonal-menu-card-foot">Rich & nutty</span></div>
+            </div>
+          </article>
+          <article class="seasonal-menu-card" data-menu-name="Peppermint Mocha" data-price-cents="725" data-menu-flavor="peppermint-mocha">
+            <button class="seasonal-menu-photo" type="button" data-menu-details="peppermint-mocha" aria-label="Discover Peppermint Mocha">
+              <img src="assets/flavor-posters/peppermint-mocha.webp" alt="Peppermint Mocha with its seasonal toppings" loading="lazy" width="1122" height="1402" />
+            </button>
+            <div class="seasonal-menu-card-content">
+              <h3>Peppermint Mocha</h3>
+              <div class="seasonal-menu-price-line"><span class="seasonal-menu-price">$7.25</span></div>
+              <div class="seasonal-menu-card-actions"><button type="button" class="seasonal-menu-add" data-menu-add="Peppermint Mocha" aria-label="Add Peppermint Mocha to bag">Add to bag +</button><span class="seasonal-menu-card-foot">Cocoa & mint</span></div>
+            </div>
+          </article>
+        </div>
+        <div class="seasonal-menu-bottom"><p>Six seasonal sips, made for the moment.</p><button type="button" class="seasonal-menu-view-bag" data-seasonal-view-bag>View your bag</button></div>
+        <p class="seasonal-menu-notice" role="status" aria-live="polite" data-seasonal-status></p>
+      </div>
+    </section>
 
     <section class="flavors-section" id="flavors" aria-labelledby="flavor-heading">
       <div class="container">
@@ -94,7 +177,6 @@
   <footer class="footer"><div class="footer-inner container"><a href="#top" class="footer-brand">Seasonal Brew <span>COFFEE FLAVORS</span></a><p>Good coffee. Good company. Good seasons.</p><div class="footer-bottom"><span>© <span id="year"></span> Seasonal Brew — Concept demo</span><span>Powered by The Launch Era</span></div></div></footer>
   <dialog class="flavor-dialog" id="flavor-dialog" aria-labelledby="dialog-title"><button class="dialog-close" id="dialog-close" type="button" aria-label="Close flavor details">×</button><div class="dialog-layout"><div class="dialog-photo"><img id="dialog-img" src="assets/flavor-posters/sugar-cookie.webp" alt="" /></div><div class="dialog-body"><div class="eyebrow">SEASONAL BREW / FLAVOR PROFILE</div><h2 id="dialog-title">Sugar Cookie</h2><p class="dialog-kicker" id="dialog-kicker">A little sweetness.</p><p id="dialog-desc">All the cozy sweetness of your favorite frosted cookie, imagined as a coffee moment.</p><button type="button" class="button button-dark" id="dialog-back">Back to flavors</button><span class="dialog-note">This is a visual concept menu. No orders or payments are collected.</span></div></div></dialog>
 <script defer src="../assets/tle-unique-galleries-20261107.js?v=1"></script>
-<script defer src="https://thelaunchera.com/assets/tle-demo-original-prices-20261108.js?v=2" data-tle-demo-price-slug="seasonal-brew"></script>
 <script defer src="../assets/tle-demo-tactile-20261108.js?v=2"></script>
   <script defer src="../assets/tle-demo-scroll-art-20261108.js?v=4"></script>
   <script defer src="../assets/tle-demo-footer-finale-20261108.js?v=3"></script>
