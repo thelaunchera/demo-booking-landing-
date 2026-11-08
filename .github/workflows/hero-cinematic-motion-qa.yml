@@ -1,0 +1,52 @@
+name: Demo Motion Video + Cursor QA
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/hero-cinematic-motion-qa.yml'
+      - 'assets/tle-hero-cinematic-20261108.js'
+      - 'scripts/qa-motion-videos-20261108.mjs'
+      - 'demos/**/media/hero-motion-20261108.mp4'
+  workflow_run:
+    workflows: ['Deploy Brand Board Studio, AFTR and Jaramillo to GitHub Pages']
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-motion:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Validate four demo binaries and HTML wiring
+        run: |
+          for name in seasonal-brew wok-social soluna-yoga yummm; do
+            test -s "demos/$name/media/hero-motion-20261108.mp4"
+            grep -q 'tle-hero-cinematic-20261108.js' "demos/$name/index.html"
+          done
+          node --check assets/tle-hero-cinematic-20261108.js
+          node --check scripts/qa-motion-videos-20261108.mjs
+      - name: Install isolated browser
+        run: |
+          mkdir -p /tmp/tle-motion-qa
+          cd /tmp/tle-motion-qa
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.57.0
+          npx playwright install --with-deps chromium
+          cd "$GITHUB_WORKSPACE"
+          mkdir -p "$GITHUB_WORKSPACE/node_modules"
+          ln -sfn /tmp/tle-motion-qa/node_modules/playwright "$GITHUB_WORKSPACE/node_modules/playwright"
+          ln -sfn /tmp/tle-motion-qa/node_modules/playwright-core "$GITHUB_WORKSPACE/node_modules/playwright-core"
+      - name: Confirm public playback and cursor+scroll behavior
+        run: node scripts/qa-motion-videos-20261108.mjs
+      - name: Save review screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: motion-heroes-four-visual-proof
+          path: qa-screenshots/motion-20261108/
+          if-no-files-found: ignore
