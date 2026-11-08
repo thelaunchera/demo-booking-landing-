@@ -15,16 +15,8 @@ menu.addEventListener('click',()=>{const open=menu.getAttribute('aria-expanded')
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 document.addEventListener('keydown',event=>{if(event.key==='Escape')closeMenu()});
 document.addEventListener('click',event=>{if(!header.contains(event.target))closeMenu()});
-const filters=[...document.querySelectorAll('.filter')];
-const cards=[...document.querySelectorAll('.flavor-card')];
-const count=document.querySelector('.flavor-count');
-filters.forEach(button=>button.addEventListener('click',()=>{
- const chosen=button.dataset.filter;
- filters.forEach(f=>{const active=f===button;f.classList.toggle('is-active',active);f.setAttribute('aria-pressed',String(active))});
- let visible=0;
- cards.forEach(card=>{const show=chosen==='all'||card.dataset.category.split(' ').includes(chosen);card.hidden=!show;if(show)visible++});
- count.textContent=`Showing ${chosen==='all'?'all ':''}${visible} ${chosen==='all'?'seasonal flavors':`${chosen} flavors`}`;
-}));
+// The six photo menu buttons open the flavor detail panel.
+const cards=[...document.querySelectorAll('.seasonal-menu-photo[data-menu-details]')];
 const dialog=document.querySelector('#flavor-dialog');
 const dialogTitle=document.querySelector('#dialog-title');
 const dialogKicker=document.querySelector('#dialog-kicker');
@@ -32,7 +24,7 @@ const dialogDesc=document.querySelector('#dialog-desc');
 const dialogImage=document.querySelector('#dialog-img');
 let previouslyFocused=null;
 cards.forEach(card=>card.addEventListener('click',()=>{
- const d=flavors[card.dataset.flavor]; if(!d)return;
+ const d=flavors[card.dataset.menuDetails]; if(!d)return;
  previouslyFocused=card;
  dialogTitle.textContent=d.title;dialogKicker.textContent=d.kicker;dialogDesc.textContent=d.description;dialogImage.src=d.image;dialogImage.alt=d.alt;
  dialog.showModal();
