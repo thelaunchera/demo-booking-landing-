@@ -1,0 +1,57 @@
+name: Seasonal Brew brand signage typography QA
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'demos/seasonal-brew/index.html'
+      - 'demos/seasonal-brew/styles.css'
+      - 'demos/seasonal-brew/brand-typography-20261108.css'
+      - 'scripts/qa-seasonal-brew-typography.mjs'
+      - '.github/workflows/qa-seasonal-brew-typography.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'demos/seasonal-brew/index.html'
+      - 'demos/seasonal-brew/styles.css'
+      - 'demos/seasonal-brew/brand-typography-20261108.css'
+      - 'scripts/qa-seasonal-brew-typography.mjs'
+      - '.github/workflows/qa-seasonal-brew-typography.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  signage:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium and WebKit
+        run: |
+          mkdir -p /tmp/tle-seasonal-type
+          npm install --no-audit --no-fund --prefix /tmp/tle-seasonal-type playwright@1.57.0
+          /tmp/tle-seasonal-type/node_modules/.bin/playwright install --with-deps chromium webkit
+          ln -sfn /tmp/tle-seasonal-type/node_modules node_modules
+      - name: Verify type, storefront image and mobile navigation
+        run: |
+          node --check scripts/qa-seasonal-brew-typography.mjs
+          mkdir -p /tmp/tle-seasonal-pages
+          cp -R assets /tmp/tle-seasonal-pages/assets
+          cp -R demos/seasonal-brew /tmp/tle-seasonal-pages/seasonal-brew
+          python3 -m http.server 4198 --bind 127.0.0.1 --directory /tmp/tle-seasonal-pages > /tmp/tle-seasonal-type.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for n in $(seq 1 20); do
+            if curl -fsS http://127.0.0.1:4198/seasonal-brew/ > /dev/null; then break; fi
+            sleep 1
+          done
+          node scripts/qa-seasonal-brew-typography.mjs
+      - name: Save visual screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seasonal-brew-brand-typography
+          path: qa-screenshots/seasonal-brew-type/
+          if-no-files-found: ignore

@@ -1,0 +1,142 @@
+/* Seasonal Brew — storefront-signage typography
+   Brand typography: Bodoni Moda italic for high-contrast editorial type,
+   DM Sans for readable small labels, controls and extended body copy.
+   Purposefully scoped to Seasonal Brew; no other demo is affected. */
+:root {
+  --serif:"Bodoni Moda", Georgia, "Times New Roman", serif;
+  --ink:#412b20;
+}
+
+/* Match the storefront's distinctive slanted coffeehouse logotype. */
+.brand-words>span,
+.footer-brand {
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:600;
+  letter-spacing:-.065em;
+  line-height:1.03;
+}
+.brand-words>span {font-size:clamp(26px,2.6vw,34px)}
+.brand-words small,
+.footer-brand span {
+  font-family:var(--sans);
+  font-style:normal;
+  font-weight:700;
+  letter-spacing:.28em;
+}
+
+/* Editorial navigation and handwritten-feeling actions,
+   with the original focus, sizing, links and accessible click areas retained. */
+.nav {gap:clamp(18px,2.4vw,36px)}
+.nav a,
+.header-cta,
+.hero-actions :is(.button,.text-link),
+.story-copy .button,
+.highlight-copy .text-link,
+.closing-section .button,
+.dialog-body .button {
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:600;
+  letter-spacing:-.025em;
+}
+.nav a {font-size:clamp(15px,1.1vw,18px);text-transform:none}
+.header-cta {font-size:15px;text-transform:none}
+.hero-actions .button,
+.hero-actions .text-link,
+.story-copy .button,
+.highlight-copy .text-link,
+.closing-section .button,
+.dialog-body .button {font-size:clamp(16px,1.24vw,19px);line-height:1.2}
+.hero-actions .text-link {padding-block:12px}
+.hero-actions .button {min-height:54px;padding-inline:24px}
+
+/* Use one consistent warm, high-contrast storefront serif system. */
+.hero h1,
+.section-intro h2,
+.story-copy h2,
+.highlight-copy h2,
+.moments-header h2,
+.moment-text p,
+.closing-section h2,
+.dialog-body h2,
+.flavor-card strong {
+  font-family:var(--serif);
+  font-style:italic;
+  font-weight:500;
+  letter-spacing:-.058em;
+}
+.hero h1 {line-height:.94;letter-spacing:-.065em}
+.hero h1 em {font-weight:500}
+.hero-subtitle {
+  max-width:37ch;
+  font:italic 500 clamp(18px,1.43vw,22px)/1.57 var(--serif);
+  color:#5e4433;
+}
+.section-intro h2,
+.story-copy h2,
+.highlight-copy h2,
+.moments-header h2,
+.closing-section h2 {line-height:1.02}
+.section-intro h2 em,
+.story-copy h2 em,
+.highlight-copy h2 em,
+.moments-header h2 em,
+.closing-section h2 em {font-weight:500}
+.flavor-card strong {line-height:.96}
+.flavor-card .flavor-foot {font-family:var(--serif);font-style:italic;font-size:clamp(13px,1.18vw,17px);letter-spacing:0;text-transform:none}
+.dialog-kicker {font-family:var(--serif);font-weight:500}
+.footer-inner>p {font-family:var(--serif);font-weight:500}
+.filter {font-family:var(--serif);font-style:italic;font-weight:500;font-size:15px;letter-spacing:-.015em}
+
+/* Tiny product labels remain crisp, mirroring the COFFEE FLAVORS line on the awning. */
+.eyebrow,
+.hero-bottom,
+.flavor-top,
+.photo-label,
+.highlight-label {font-family:var(--sans)}
+
+/* Preserve existing split desktop hero: only adjust editorial type proportions. */
+@media(min-width:1100px) {
+  .hero .hero-copy h1 {font-size:clamp(73px,6.25vw,116px);line-height:.98}
+  .hero .hero-subtitle {font-size:clamp(19px,1.4vw,22px);line-height:1.55}
+  .hero .hero-actions {gap:clamp(15px,2vw,27px)}
+}
+@media(min-width:681px) and (max-width:1099px) {
+  .hero h1 {font-size:clamp(55px,7vw,85px);line-height:.99}
+  .hero-subtitle {font-size:clamp(16px,1.9vw,19px)}
+  .nav a {font-size:15px}
+  .hero-actions .button,.hero-actions .text-link {font-size:16px}
+}
+/* Existing tablet and smaller-desktop gallery used 350–430px minimum
+   heights plus a fixed aspect ratio, forcing cards wider than their columns. */
+@media(min-width:681px) and (max-width:1200px) {
+  body[data-tle-demo-mobile="seasonal-brew"] .flavor-grid {min-width:0}
+  body[data-tle-demo-mobile="seasonal-brew"] .flavor-card {
+    min-width:0;
+    min-height:0;
+    aspect-ratio:4/4.85;
+  }
+}
+@media(max-width:680px) {
+  .brand-words>span {font-size:25px}
+  .nav a {font-size:19px}
+  .nav .mobile-nav-cta {font-family:var(--serif);font-style:italic;font-size:19px}
+  body[data-tle-demo-mobile="seasonal-brew"] .hero h1 {
+    font-size:clamp(54px,14.6vw,70px)!important;
+    line-height:1.045!important;
+    letter-spacing:-.057em;
+  }
+  .hero-subtitle {font:italic 500 18px/1.52 var(--serif);max-width:32ch}
+  .hero-actions .button,.hero-actions .text-link {font-size:16px}
+  .hero-actions .button {padding-inline:18px}
+  .section-intro h2,.story-copy h2,.highlight-copy h2,.moments-header h2,.closing-section h2 {line-height:1.04}
+  .filter {font-size:14px}
+  .flavor-card .flavor-foot {font-size:13px}
+}
+@media(max-width:380px) {
+  .brand-words>span {font-size:23px}
+  .hero-actions {gap:12px}
+  .hero-actions .button,.hero-actions .text-link {font-size:15px}
+}
+/* Fallback fonts are defined explicitly; do not hide text while webfonts load. */
