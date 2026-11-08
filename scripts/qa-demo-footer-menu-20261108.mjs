@@ -5,7 +5,7 @@ const origin='http://127.0.0.1:4193';
 const slugs=['seasonal-brew','soluna-yoga','wok-social','yummm','jaramillo-boutique'];
 const moved={
  'soluna-yoga':['#about','#memberships','#classes'],
- 'wok-social':['.hero + .ticker','#menu'],
+ 'wok-social':['.hero + .ticker','#tle-demo-sample-prices','#menu'],
  'yummm':['.feature-links','#counter'],
  'jaramillo-boutique':['.hero','#collections']
 };
