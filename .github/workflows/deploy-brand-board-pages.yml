@@ -125,6 +125,7 @@ jobs:
           node --check _site/assets/tle-demo-scroll-art-20261108.js
           node --check _site/assets/tle-demo-footer-finale-20261108.js
           test -s _site/assets/tle-demo-footer-finale-20261108.css
+          test -s _site/assets/tle-demo-scroll-art-20261108.js
           test -s _site/assets/tle-demo-scroll-art-20261108.css
           test -s _site/assets/tle-demo-tactile-20261108.css
           test -s _site/assets/tle-unique-galleries-20261107.css
@@ -137,7 +138,7 @@ jobs:
           cp -R boutique-source/demos/jaramillo-boutique/. _site/jaramillo-boutique/
           test -s _site/jaramillo-boutique/single-signature-20261108.css
           grep -q 'tle-demo-scroll-art-20261108.css' _site/jaramillo-boutique/index.html
-          grep -q 'tle-demo-scroll-art-20261108.js' _site/jaramillo-boutique/index.html
+          grep -q 'tle-demo-scroll-art-20261108.js?v=3' _site/jaramillo-boutique/index.html
           grep -q 'tle-demo-footer-finale-20261108.css' _site/jaramillo-boutique/index.html
           grep -q 'tle-demo-footer-finale-20261108.js' _site/jaramillo-boutique/index.html
           grep -q 'tle-demo-tactile-20261108.css' _site/jaramillo-boutique/index.html
@@ -146,6 +147,7 @@ jobs:
           grep -q 'data-tle-one-motion="yummm"' _site/yummm/index.html
           grep -q 'data-tle-one-motion="soluna-yoga"' _site/soluna-yoga/index.html
           grep -q 'data-tle-one-motion="wok-social"' _site/wok-social/index.html
+          grep -q 'tle-demo-scroll-art-20261108.js?v=3' _site/wok-social/index.html
           grep -q 'data-tle-one-motion="seasonal-brew"' _site/seasonal-brew/index.html
           touch _site/.nojekyll
           test -f _site/index.html
