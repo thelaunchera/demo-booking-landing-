@@ -1,0 +1,43 @@
+/* The Launch Era — one brand-specific visual motion per canonical GitHub Pages demo.
+   2026-11-08 | A single intentional decorative reveal per brand, all earlier
+   decorative CSS keyframes retired, operational transitions and forms preserved. */
+html[data-tle-one-motion] body *,
+html[data-tle-one-motion] body *::before,
+html[data-tle-one-motion] body *::after { animation:none !important; }
+/* Seasonal Brew — seasonal photo warms from soft low-contrast to full-color. */
+html[data-tle-one-motion="seasonal-brew"] .hero img {
+  animation:tleOneSeasonal 1050ms ease-out both !important;
+}
+@keyframes tleOneSeasonal {
+  from { opacity:.76;filter:sepia(.3) brightness(.86) contrast(.88) }
+  to   { opacity:1;filter:sepia(0) brightness(1) contrast(1) }
+}
+/* SOLUNA — one calm breath in the hero typography; no constant float. */
+html[data-tle-one-motion="soluna-yoga"] .hero h1 {
+  animation:tleOneSoluna 1200ms cubic-bezier(.22,.72,.23,1) both !important;
+}
+@keyframes tleOneSoluna {
+  from {opacity:.2;transform:scale(.955)}
+  to   {opacity:1;transform:scale(1)}
+}
+/* WOK SOCIAL — storefront art has one sharp, energetic angled reveal. */
+html[data-tle-one-motion="wok-social"] .storefront-hero img {
+  animation:tleOneWok 790ms cubic-bezier(.18,.8,.2,1) both !important;
+}
+@keyframes tleOneWok {
+  from {clip-path:polygon(100% 0,100% 0,100% 100%,100% 100%)}
+  to   {clip-path:polygon(0 0,100% 0,100% 100%,0 100%)}
+}
+/* YUMMM — confectionary brand title settles gently once. */
+html[data-tle-one-motion="yummm"] .hero h1 {
+  animation:tleOneYummm 830ms cubic-bezier(.18,.84,.21,1) both !important;
+}
+@keyframes tleOneYummm {
+  from {opacity:.12;transform:translateY(17px) scale(.975)}
+  to   {opacity:1;transform:translateY(0) scale(1)}
+}
+@media(prefers-reduced-motion:reduce) {
+  html[data-tle-one-motion] body *,
+  html[data-tle-one-motion] body *::before,
+  html[data-tle-one-motion] body *::after {animation:none !important;}
+}
