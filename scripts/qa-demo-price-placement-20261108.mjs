@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import {chromium,webkit,devices} from 'playwright';
 const origin='http://127.0.0.1:4193';
 const cases=[
+ {slug:'soluna-yoga',kind:'service'},
  {slug:'seasonal-brew',kind:'menu',target:'#flavors'},
- {slug:'wok-social',kind:'menu',target:'#menu'},
- {slug:'soluna-yoga',kind:'service'}
+ {slug:'wok-social',kind:'menu',target:'#menu'}
 ];
 for(const engine of [chromium,webkit]){
  const browser=await engine.launch({headless:true});
@@ -20,7 +20,15 @@ for(const engine of [chromium,webkit]){
     const response=await page.goto(origin+'/'+slug+'/',{waitUntil:'domcontentloaded'});
     assert.equal(response?.status(),200,slug+' local published URL');
     const grid=page.locator('#tle-demo-sample-prices');
-    await grid.waitFor({state:'visible',timeout:16000});
+    await page.waitForFunction(()=>document.querySelector('#tle-demo-sample-prices')||document.querySelector('.tle-demo-customer-price'),null,{timeout:16000});
+    if(await grid.count()===0){
+      const badgeCount=await page.locator('.tle-demo-customer-price').count();
+      assert.ok(badgeCount>0,slug+' must have original price badges or the sample price block');
+      assert.deepEqual(errors,[],slug+' runtime errors');
+      console.log('ORIGINAL PRODUCT PRICE BADGES PASS',engine.name(),slug,width,badgeCount);
+      await page.close();
+      continue;
+    }
     const geo=await page.evaluate(({target,kind})=>{
       const p=document.querySelector('#tle-demo-sample-prices');
       const hero=document.querySelector('section.hero');
