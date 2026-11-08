@@ -112,14 +112,17 @@ jobs:
           test -s _site/assets/tle-unique-galleries-20261107.css
           test -s _site/assets/tle-demo-mobile-ux-20261107.css
           test -s _site/assets/tle-demo-single-signature-20261108.css
-          test -s _site/jaramillo-boutique/single-signature-20261108.css
-          grep -q 'data-tle-one-motion="jaramillo-boutique"' _site/jaramillo-boutique/index.html
-          for demo in yummm soluna-yoga wok-social seasonal-brew; do grep -q "data-tle-one-motion=\\\"$demo\\\"" "_site/$demo/index.html"; done
           test -s _site/assets/tle-company-system-20261106.css
           grep -q '../assets/tle-company-system-20261106.css' _site/wok-social/index.html
           rm -rf _site/jaramillo-boutique
           mkdir -p _site/jaramillo-boutique
           cp -R boutique-source/demos/jaramillo-boutique/. _site/jaramillo-boutique/
+          test -s _site/jaramillo-boutique/single-signature-20261108.css
+          grep -q 'data-tle-one-motion="jaramillo-boutique"' _site/jaramillo-boutique/index.html
+          grep -q 'data-tle-one-motion="yummm"' _site/yummm/index.html
+          grep -q 'data-tle-one-motion="soluna-yoga"' _site/soluna-yoga/index.html
+          grep -q 'data-tle-one-motion="wok-social"' _site/wok-social/index.html
+          grep -q 'data-tle-one-motion="seasonal-brew"' _site/seasonal-brew/index.html
           touch _site/.nojekyll
           test -f _site/index.html
           test -f _site/aftr-nightclub/index.html
