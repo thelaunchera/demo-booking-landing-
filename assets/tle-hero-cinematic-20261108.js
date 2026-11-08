@@ -17,8 +17,8 @@
  const reduce=matchMedia("(prefers-reduced-motion: reduce)");
  const slow=!!navigator.connection?.saveData;
  let host=null,video=null,queued=false;
- const source=new URL("media/hero-motion-20261108.mp4",document.baseURI).href;
- const poster=new URL("media/hero-motion-poster-hq.webp",document.baseURI).href;
+ const source=new URL("media/hero-motion-20261108.mp4",document.baseURI).href+(brand==="yummm"?"?v=yummm-fullbleed-20261108-v2":"");
+ const poster=new URL("media/hero-motion-poster-hq.webp",document.baseURI).href+(brand==="yummm"?"?v=yummm-fullbleed-20261108-v2":"");
  function visible(){
   if(!host||!video||!host.isConnected||document.hidden||reduce.matches)return false;
   const r=host.getBoundingClientRect();
