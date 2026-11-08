@@ -1,0 +1,63 @@
+name: Five Brand Scroll Motion Mobile QA
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'demos/seasonal-brew/**'
+      - 'demos/soluna-yoga/**'
+      - 'demos/wok-social/**'
+      - 'demos/yummm/**'
+      - 'assets/tle-demo-scroll-art-20261108.css'
+      - 'assets/tle-demo-scroll-art-20261108.js'
+      - 'scripts/qa-demo-scroll-art-20261108.mjs'
+      - '.github/workflows/qa-brand-scroll-motion.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: five-brand-scroll-mobile-qa
+  cancel-in-progress: true
+jobs:
+  scroll-art:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout approved Jaramillo Boutique source
+        uses: actions/checkout@v4
+        with:
+          ref: demo/jaramillo-boutique
+          path: jar-source
+      - name: Prepare Jaramillo demo and ensure shared assets
+        run: |
+          mkdir -p demos/jaramillo-boutique
+          cp -R jar-source/demos/jaramillo-boutique/. demos/jaramillo-boutique/
+          node --check assets/tle-demo-scroll-art-20261108.js
+          node --check scripts/qa-demo-scroll-art-20261108.mjs
+          test -s assets/tle-demo-scroll-art-20261108.css
+          for demo in seasonal-brew soluna-yoga wok-social yummm jaramillo-boutique; do
+            grep -q 'tle-demo-scroll-art-20261108.js' "demos/$demo/index.html"
+            grep -q 'tle-demo-scroll-art-20261108.css' "demos/$demo/index.html"
+          done
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright browsers
+        run: |
+          mkdir -p /tmp/tle-scroll-qa
+          cd /tmp/tle-scroll-qa
+          npm init -y >/dev/null
+          npm install --no-audit --no-fund playwright@1.57.0
+          npx playwright install --with-deps chromium webkit
+          cd "$GITHUB_WORKSPACE"
+          ln -sfn /tmp/tle-scroll-qa/node_modules node_modules
+      - name: Check all five scroll experiences in Chromium and WebKit
+        run: |
+          python3 -m http.server 4193 --bind 127.0.0.1 --directory . >/tmp/tle-scroll-qa.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for n in $(seq 1 20); do
+            if curl -fsS http://127.0.0.1:4193/demos/wok-social/ >/dev/null; then break; fi
+            sleep 1
+          done
+          node scripts/qa-demo-scroll-art-20261108.mjs
