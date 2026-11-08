@@ -10,6 +10,9 @@ on:
       - 'assets/tle-demo-scroll-art-20261108.css'
       - 'assets/tle-demo-scroll-art-20261108.js'
       - 'scripts/qa-demo-scroll-art-20261108.mjs'
+      - 'assets/tle-demo-footer-finale-20261108.css'
+      - 'assets/tle-demo-footer-finale-20261108.js'
+      - 'scripts/qa-demo-footer-menu-20261108.mjs'
       - '.github/workflows/qa-brand-scroll-motion.yml'
   workflow_dispatch:
 permissions:
@@ -33,11 +36,16 @@ jobs:
           mkdir -p demos/jaramillo-boutique
           cp -R jar-source/demos/jaramillo-boutique/. demos/jaramillo-boutique/
           node --check assets/tle-demo-scroll-art-20261108.js
+          node --check assets/tle-demo-footer-finale-20261108.js
+          node --check scripts/qa-demo-footer-menu-20261108.mjs
+          test -s assets/tle-demo-footer-finale-20261108.css
           node --check scripts/qa-demo-scroll-art-20261108.mjs
           test -s assets/tle-demo-scroll-art-20261108.css
           for demo in seasonal-brew soluna-yoga wok-social yummm jaramillo-boutique; do
             grep -q 'tle-demo-scroll-art-20261108.js' "demos/$demo/index.html"
             grep -q 'tle-demo-scroll-art-20261108.css' "demos/$demo/index.html"
+            grep -q 'tle-demo-footer-finale-20261108.js' "demos/$demo/index.html"
+            grep -q 'tle-demo-footer-finale-20261108.css' "demos/$demo/index.html"
           done
       - uses: actions/setup-node@v4
         with:
@@ -69,3 +77,4 @@ jobs:
             sleep 1
           done
           node scripts/qa-demo-scroll-art-20261108.mjs
+          node scripts/qa-demo-footer-menu-20261108.mjs
