@@ -41,3 +41,35 @@ html[data-tle-one-motion="yummm"] .hero h1 {
   html[data-tle-one-motion] body *::before,
   html[data-tle-one-motion] body *::after {animation:none !important;}
 }
+
+
+/* TLE brand-personality banner edit — 2026-11-08.
+   One accent below the hero only when it earns its place. */
+/* SEASONAL BREW — hero already contains an original coffeehouse ribbon;
+   the long repeating coffee slogan is unnecessary. */
+html[data-tle-one-motion="seasonal-brew"] .ticker {display:none!important}
+/* SOLUNA — space and calm, no duplicate promotional mini-strip. */
+html[data-tle-one-motion="soluna-yoga"] .mini-strip {display:none!important}
+/* WOK SOCIAL — the signature is the warm yellow street-kitchen marquee,
+   not a second image reveal competing with it. */
+html[data-tle-one-motion="wok-social"] .storefront-hero img {animation:none!important}
+html[data-tle-one-motion="wok-social"] .ticker {
+  background:#f2d85b;color:#191919;height:clamp(44px,5vw,56px);
+  border-block:1px solid #191919;
+}
+html[data-tle-one-motion="wok-social"] .ticker-track {
+  animation:slide 43s linear infinite!important;
+  font-size:clamp(17px,2vw,21px);
+}
+html[data-tle-one-motion="wok-social"] .ticker:hover .ticker-track,
+html[data-tle-one-motion="wok-social"] .ticker:focus-within .ticker-track {
+  animation-play-state:paused!important;
+}
+/* YUMMM — remove two crowded ribbon rows; its own product photography,
+   three quick product links and hero gallery already provide visual energy. */
+html[data-tle-one-motion="yummm"] .editorial-banner {display:none!important}
+@media(prefers-reduced-motion:reduce){
+ html[data-tle-one-motion="wok-social"] .ticker-track {
+   animation:none!important;transform:none!important;
+ }
+}
