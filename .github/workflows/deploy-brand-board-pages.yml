@@ -14,6 +14,7 @@ on:
       - assets/tle-demo-tactile-20261108.js
       - assets/tle-demo-scroll-art-20261108.css
       - assets/tle-demo-scroll-art-20261108.js
+      - assets/tle-hero-cinematic-20261108.js
       - assets/tle-demo-footer-finale-20261108.css
       - assets/tle-demo-footer-finale-20261108.js
       # TLE multi-brand unique galleries / November 2026
@@ -116,6 +117,7 @@ jobs:
           cp assets/tle-demo-tactile-20261108.js _site/assets/tle-demo-tactile-20261108.js
           cp assets/tle-demo-scroll-art-20261108.css _site/assets/tle-demo-scroll-art-20261108.css
           cp assets/tle-demo-scroll-art-20261108.js _site/assets/tle-demo-scroll-art-20261108.js
+          cp assets/tle-hero-cinematic-20261108.js _site/assets/tle-hero-cinematic-20261108.js
           cp assets/tle-demo-footer-finale-20261108.css _site/assets/tle-demo-footer-finale-20261108.css
           cp assets/tle-demo-footer-finale-20261108.js _site/assets/tle-demo-footer-finale-20261108.js
           cp assets/tle-unique-galleries-20261107.css _site/assets/tle-unique-galleries-20261107.css
@@ -123,6 +125,12 @@ jobs:
           node --check _site/assets/tle-unique-galleries-20261107.js
           node --check _site/assets/tle-demo-tactile-20261108.js
           node --check _site/assets/tle-demo-scroll-art-20261108.js
+          node --check _site/assets/tle-hero-cinematic-20261108.js
+          test -s _site/assets/tle-hero-cinematic-20261108.js
+          test -s _site/seasonal-brew/media/hero-motion-20261108.mp4
+          test -s _site/wok-social/media/hero-motion-20261108.mp4
+          test -s _site/soluna-yoga/media/hero-motion-20261108.mp4
+          test -s _site/yummm/media/hero-motion-20261108.mp4
           node --check _site/assets/tle-demo-footer-finale-20261108.js
           test -s _site/assets/tle-demo-footer-finale-20261108.css
           test -s _site/assets/tle-demo-scroll-art-20261108.js
