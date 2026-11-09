@@ -155,7 +155,7 @@ jobs:
           grep -q 'data-tle-one-motion="yummm"' _site/yummm/index.html
           grep -q 'data-tle-one-motion="soluna-yoga"' _site/soluna-yoga/index.html
           grep -q 'data-tle-one-motion="wok-social"' _site/wok-social/index.html
-          grep -Fq 'tle-demo-scroll-art-20261108.js?v=4' _site/wok-social/index.html
+          grep -Fq 'tle-demo-scroll-art-20261108.js?v=5' _site/wok-social/index.html
           grep -q 'data-tle-one-motion="seasonal-brew"' _site/seasonal-brew/index.html
           touch _site/.nojekyll
           test -f _site/index.html
