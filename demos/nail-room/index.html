@@ -99,13 +99,108 @@ footer{background:#271a23;color:#fff;padding:55px 0 25px}.footer-top{display:fle
 }
 @media(max-width:370px){.sticker{width:145px;padding:12px}.sticker strong{font-size:22px}.appointment-float{max-width:184px}.service{padding:14px 10px}.service h3{font-size:19px}.price-tag>span{font-size:16px}}
 
+
+/* NAIL ROOM MOBILE SAFETY + MOTION V3 — no horizontal page expansion */
+html{max-width:100%;overflow-x:clip;-webkit-text-size-adjust:100%}
+body,main,header,footer{max-width:100%;min-width:0}
+.wrap,.nav-inner,.hero-grid,.booking-grid,.services,.gallery{min-width:0}
+.booking-grid{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+.booking-grid>*{min-width:0;max-width:100%}
+.booking-card{min-width:0;max-width:100%;width:100%;overflow:hidden}
+.booking-card .date-grid{max-width:100%;width:100%;min-width:0;overflow-x:auto;overflow-y:hidden;display:flex;flex-wrap:nowrap;scrollbar-width:thin}
+.booking-card .date-grid>*{flex-shrink:0}
+.booking-card .price-tag-grid{min-width:0;max-width:100%}
+.booking-card .price-tag{min-width:0}
+.booking-card .price-tag>span{overflow-wrap:break-word}
+.booking-card .time-grid{min-width:0}
+.booking-card .time-option{min-width:0}
+.booking-card .split{min-width:0}
+.nav-inner{min-width:0}
+.hero-art,.hero-copy{min-width:0}
+.ticker{width:100%;margin-left:0;margin-right:0;transform:none}
+.gallery-item .photo{cursor:zoom-in;transition:transform .55s cubic-bezier(.23,1,.32,1),filter .4s}
+.gallery-item:where(:hover,:focus-within) .photo{transform:scale(1.055);filter:saturate(1.07)}
+.gallery-caption{cursor:zoom-in}
+.photo-open{position:absolute;top:12px;left:12px;z-index:3;display:inline-flex;align-items:center;gap:7px;background:rgba(255,249,251,.83);color:#783d5d;border:1px solid rgba(255,255,255,.94);border-radius:99px;padding:9px 12px;box-shadow:0 7px 18px #7a304020;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);font-size:11px;font-weight:800}
+.photo-open span{font-size:14px}
+.gallery-item .heart{z-index:4}
+.feature-band{width:100%;min-width:0;min-height:440px;margin:0;overflow:hidden;isolation:isolate;position:relative;display:grid;place-items:center;background:linear-gradient(100deg,#3c2630,#aa3d73);color:#fff;text-align:left;padding:60px 5%}
+.mood-photo{position:absolute;z-index:-2;inset:0;width:100%;height:100%;object-fit:cover;object-position:65% 45%;opacity:.9;transform:scale(1.02);transition:opacity .4s,transform 1.1s cubic-bezier(.22,1,.36,1)}
+.feature-band:before{content:'';position:absolute;z-index:-1;inset:0;background:linear-gradient(90deg,rgba(40,14,32,.74) 0%,rgba(93,28,65,.52) 55%,rgba(55,20,38,.2))}
+.mood-glass{width:min(1040px,100%);margin:auto;display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:30px 35px;border:1px solid rgba(255,255,255,.41);border-radius:28px;background:rgba(77,24,53,.27);-webkit-backdrop-filter:blur(17px) saturate(125%);backdrop-filter:blur(17px) saturate(125%);box-shadow:0 18px 60px rgba(24,8,18,.14)}
+.feature-band .mood-overline{font:700 11px 'DM Sans',Arial,sans-serif;letter-spacing:.18em}
+.feature-band h3{font:400 clamp(36px,5.5vw,68px)/1.05 'Playfair Display',Georgia,serif;letter-spacing:-.05em;max-width:720px;margin:5px 0}
+.feature-band h3 em{font-weight:400;font-style:italic;color:#ffb1cf}
+.feature-band .mood-glass>p{font:400 14px/1.6 'DM Sans',Arial,sans-serif;margin:0;max-width:490px;color:#ffeaf4;letter-spacing:0;text-transform:none}
+.mood-options{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px;max-width:100%}
+.mood-options button{border:1px solid rgba(255,255,255,.7);border-radius:99px;color:#fff;background:rgba(255,255,255,.12);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);padding:11px 16px;font-size:12px;font-weight:700;letter-spacing:0;transition:transform .2s,background .2s}
+.mood-options button:hover{transform:translateY(-2px)}
+.mood-options button[aria-pressed="true"]{background:#fff1f7;color:#8d2858;box-shadow:0 5px 15px rgba(64,21,43,.15)}
+.mood-link{border:1px solid #fff3f8;background:#fff3f8;color:#973466;border-radius:99px;padding:12px 17px;font-size:12px;font-weight:800;letter-spacing:0;text-transform:none}
+.mood-link span{margin-left:12px}
+.feature-band[data-mood="french"] .mood-photo{object-position:50% 30%}
+.feature-band[data-mood="chrome"] .mood-photo{object-position:50% 42%}
+.feature-band[data-mood="french"]:before{background:linear-gradient(90deg,#6f425bce,#65475c88,transparent)}
+.feature-band[data-mood="chrome"]:before{background:linear-gradient(90deg,#582047dd,#973e72a8,#8a41723b)}
+.photo-lightbox{position:fixed;inset:0;border:0;background:transparent;padding:0;width:min(100vw,990px);max-width:100vw;max-height:100dvh;height:min(96dvh,950px);overflow:hidden;color:#40263a}
+.photo-lightbox::backdrop{background:rgba(28,12,26,.88);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.lightbox-shell{display:flex;flex-direction:column;height:100%;max-height:100%;padding:16px;background:linear-gradient(145deg,#fffafd,#fceaf1);border:1px solid #fff;border-radius:25px}
+.lightbox-top,.lightbox-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.lightbox-eyebrow{font-size:10px;letter-spacing:.15em;color:#965473;font-weight:800}
+.lightbox-close,.lightbox-arrow{border-radius:100%;width:42px;height:42px;border:1px solid #efd5df;background:#fff;color:#834564;display:grid;place-items:center;font-size:25px;flex-shrink:0}
+.lightbox-close{font-size:30px}
+.lightbox-view{min-height:0;min-width:0;flex:1;display:grid;place-items:center;padding:12px 0}
+.lightbox-view img{width:auto;max-width:100%;height:auto;max-height:100%;object-fit:contain;border-radius:16px;box-shadow:0 10px 24px #54273c1c}
+.lightbox-bottom{padding:8px 4px 3px}
+.lightbox-caption{text-align:center;display:grid;gap:3px;min-width:0}
+.lightbox-caption span{font-size:10px;color:#9d6881;letter-spacing:.14em;font-weight:700}
+.lightbox-caption strong{font:500 24px 'Playfair Display',Georgia,serif;line-height:1.1}
+.lightbox-save{align-self:center;margin:9px auto 0;border-radius:100px;border:1px solid #efbbd3;color:#ab3a76;background:#ffe6f0;padding:12px 25px;font-size:12px;font-weight:800}
+.motion-in:not(.motion-visible){opacity:0;transform:translateY(25px)}
+.motion-in{transition:opacity .65s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.motion-in.motion-visible{opacity:1;transform:translateY(0)}
+@media(max-width:700px){
+html,body{width:100%;max-width:100%;overflow-x:clip}
+main{width:100%;max-width:100%;overflow-x:clip}
+.wrap{width:calc(100% - 32px);max-width:100%;margin-left:auto;margin-right:auto}
+.nav-inner{width:100%;max-width:100%;padding-left:16px;padding-right:16px}
+.booking{width:100%;padding:60px 0}
+.booking .booking-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:27px;width:100%;max-width:100%;min-width:0}
+.booking .booking-card{box-sizing:border-box;width:100%;max-width:100%;min-width:0;padding:20px 14px;overflow:hidden}
+.booking .date-grid{width:100%;max-width:100%;min-width:0;overflow-x:auto;overflow-y:hidden;display:flex;flex-wrap:nowrap}
+.booking .date-option{min-width:70px;flex:0 0 70px;scroll-snap-align:start}
+.booking .time-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.booking .price-tag-grid{grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:8px}
+.booking .price-tag{min-width:0;overflow:hidden;padding:11px}
+.booking .price-tag>span{font-size:16px}
+.booking .price-tag>b{font-size:11px;padding:7px 10px}
+.booking .split{grid-template-columns:minmax(0,1fr)}
+.booking .field input,.booking .field textarea{width:100%;min-width:0;max-width:100%;font-size:16px}
+.service .bottom b{white-space:normal;line-height:1.15}
+.feature-band{padding:35px 16px;min-height:420px}
+.mood-glass{padding:23px 18px;gap:12px;border-radius:22px}
+.feature-band h3{font-size:clamp(34px,9vw,47px)}
+.feature-band .mood-glass>p{font-size:12px}
+.mood-options{gap:6px}
+.mood-options button{font-size:11px;padding:10px 12px}
+.photo-lightbox{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0}
+.lightbox-shell{border-radius:0;padding:12px 14px 18px}
+.lightbox-view img{max-height:100%;border-radius:12px}
+.lightbox-caption strong{font-size:21px}
+.photo-open{top:7px;left:7px;font-size:10px;padding:7px 9px}
+}
+@media(prefers-reduced-motion:reduce){
+.motion-in:not(.motion-visible){opacity:1;transform:none}
+.motion-in,.mood-photo,.gallery-item .photo{transition:none!important;transform:none!important}
+}
+
 </style>
 </head>
 <body>
 <header class="nav"><nav class="nav-inner" aria-label="Main navigation"><a class="brand" href="#top" aria-label="NAIL ROOM home">nail<span>room.</span></a><div class="menu"><a href="#services">Services</a><a href="#inspo">The inspo wall</a><a href="#story">Our vibe</a></div><a class="pill" href="#book">Book your nails ↗</a></nav></header>
 <main id="top">
-<section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><span class="kicker">Nail days, but make them iconic</span><h1>It's giving <em>nail crush.</em></h1><p>Good nails, good energy, and a little time just for you. Explore fresh sets, pick your perfect service, and plan a nail date worth looking forward to.</p><div class="hero-actions"><a class="pill pink" href="#book">Find your nail date ↗</a><a class="pill outline" href="#inspo">Get inspired</a></div><div class="hero-mini"><span>THE MOOD<strong>Fresh & fearless</strong></span><span>THE DETAIL<strong>Made for you</strong></span></div></div><div class="hero-art"><img src="./media/pink-ombre-hero.png" alt="Glossy pink ombré nail set with silky pink fabric" fetchpriority="high"><div class="orbit" aria-hidden="true">✳</div><div class="appointment-float"><span class="micro">The nail date edit</span><div class="mini-line">Pretty little details ♡</div><div class="mini-row"><img src="./media/french-ivory.png" alt=""><p>Choose your shape.<br>Pick your color.<br>Make it yours.</p></div></div><div class="sticker" aria-hidden="true"><small>THE COLOR EDIT</small><strong>Pick your <em>pink.</em></strong><span class="shade-dots"><i></i><i></i><i></i><i></i></span></div></div></div></section>
-<div class="ticker" aria-hidden="true"><span>GOOD NAILS • GOOD DAYS • </span><span>NAILS FIRST, PLANS LATER ✳ </span><span>GOOD NAILS • GOOD DAYS • </span><span>NAILS FIRST, PLANS LATER ✳ </span></div>
+<section class="hero"><div class="wrap hero-grid"><div class="hero-copy"><span class="kicker">Nail days, but make them iconic</span><h1>It's giving <em>nail crush.</em></h1><p>Good nails, good energy, and a little time just for you. Explore fresh sets, pick your perfect service, and plan a nail date worth looking forward to.</p><div class="hero-actions"><a class="pill pink" href="#book">Find your nail date ↗</a><a class="pill outline" href="#inspo">Get inspired</a></div><div class="hero-mini"><span>THE MOOD<strong>Fresh & fearless</strong></span><span>THE DETAIL<strong>Made for you</strong></span></div></div><div class="hero-art"><img src="./media/pink-ombre-hero.png" alt="Glossy pink ombré nail set with silky pink fabric" fetchpriority="high"><div class="orbit" aria-hidden="true">✦</div><div class="appointment-float"><span class="micro">The nail date edit</span><div class="mini-line">Pretty little details ♡</div><div class="mini-row"><img src="./media/french-ivory.png" alt=""><p>Choose your shape.<br>Pick your color.<br>Make it yours.</p></div></div><div class="sticker" aria-hidden="true"><small>THE COLOR EDIT</small><strong>Pick your <em>pink.</em></strong><span class="shade-dots"><i></i><i></i><i></i><i></i></span></div></div></div></section>
+<div class="ticker" aria-hidden="true"><span>GOOD NAILS • GOOD DAYS • </span><span>NAILS FIRST, PLANS LATER ✦ </span><span>GOOD NAILS • GOOD DAYS • </span><span>NAILS FIRST, PLANS LATER ✦ </span></div>
 <section class="section" id="services"><div class="wrap"><div class="section-heading"><div><span class="kicker">The treatment menu / 01</span><h2>A fresh set<br>is calling.</h2></div><p>From a clean-girl classic to the kind of nail art everyone asks about. There's a set for every mood.</p></div><div class="services">
 <button class="service" type="button" data-service="french"><span class="index">01 / TIMELESS</span><div><h3>The French Edit</h3><p>A polished classic with soft, modern edges. 45 min.</p></div><div class="bottom"><b>From $48</b><span aria-hidden="true">↗</span></div></button>
 <button class="service" type="button" data-service="gel"><span class="index">02 / EVERYDAY</span><div><h3>Glossy Gel</h3><p>Your color, your shine, your everyday main character. 50 min.</p></div><div class="bottom"><b>From $58</b><span aria-hidden="true">↗</span></div></button>
@@ -113,17 +208,38 @@ footer{background:#271a23;color:#fff;padding:55px 0 25px}.footer-top{display:fle
 <button class="service" type="button" data-service="builder"><span class="index">04 / SCULPTED</span><div><h3>Builder Gel</h3><p>Structure, strength and the perfect finish. 80 min.</p></div><div class="bottom"><b>From $82</b><span aria-hidden="true">↗</span></div></button>
 </div></div></section>
 <section class="inspo" id="inspo"><div class="wrap"><div class="section-heading"><div><span class="kicker">Find your next obsession / 02</span><h2>The inspo<br>wall. ♡</h2></div><p>Save the looks you love and bring your favorite ideas to your appointment.</p></div><div class="filterbar" role="group" aria-label="Filter nail inspiration"><button type="button" class="filter active" data-filter="all" aria-pressed="true">All looks</button><button type="button" class="filter" data-filter="soft" aria-pressed="false">Soft & glossy</button><button type="button" class="filter" data-filter="art" aria-pressed="false">Nail art</button><button type="button" class="filter" data-filter="studio" aria-pressed="false">At the studio</button></div><div class="gallery">
-<article class="gallery-item" data-category="soft"><img class="photo" loading="lazy" src="./media/french-ivory.png" alt="Natural, glossy French manicure with nude and white tones"><button type="button" class="heart" data-save="French Glow" aria-pressed="false" aria-label="Save French Glow">♡</button><div class="gallery-caption"><div><h3>French Glow</h3><p>Clean, glossy, forever classic.</p></div><span class="pin">SOFT</span></div></article>
-<article class="gallery-item" data-category="art"><img class="photo" loading="lazy" src="./media/terracotta-art.png" alt="Terracotta geometric nail art with elegant rings"><button type="button" class="heart" data-save="The Art Set" aria-pressed="false" aria-label="Save The Art Set">♡</button><div class="gallery-caption"><div><h3>The Art Set</h3><p>A little more personality.</p></div><span class="pin">ART</span></div></article>
-<article class="gallery-item" data-category="soft art"><img class="photo" loading="lazy" src="./media/pink-floral-chrome.png" alt="Glossy pink chrome nails holding delicate flowers"><button type="button" class="heart" data-save="Pink Petal" aria-pressed="false" aria-label="Save Pink Petal">♡</button><div class="gallery-caption"><div><h3>Pink Petal</h3><p>Soft pink, high shine.</p></div><span class="pin">PINK</span></div></article>
-<article class="gallery-item" data-category="studio"><img class="photo" loading="lazy" src="./media/studio-service.png" alt="Nail technician working carefully on a client's manicure"><button type="button" class="heart" data-save="The Nail Date" aria-pressed="false" aria-label="Save The Nail Date">♡</button><div class="gallery-caption"><div><h3>The Nail Date</h3><p>Details from the studio.</p></div><span class="pin">STUDIO</span></div></article>
+<article class="gallery-item" data-category="soft"><img class="photo" loading="lazy" src="./media/french-ivory.png" alt="Natural, glossy French manicure with nude and white tones"><button type="button" class="photo-open" aria-label="View nail photo full size"><span aria-hidden="true">↗</span> View</button><button type="button" class="heart" data-save="French Glow" aria-pressed="false" aria-label="Save French Glow">♡</button><div class="gallery-caption"><div><h3>French Glow</h3><p>Clean, glossy, forever classic.</p></div><span class="pin">SOFT</span></div></article>
+<article class="gallery-item" data-category="art"><img class="photo" loading="lazy" src="./media/terracotta-art.png" alt="Terracotta geometric nail art with elegant rings"><button type="button" class="photo-open" aria-label="View nail photo full size"><span aria-hidden="true">↗</span> View</button><button type="button" class="heart" data-save="The Art Set" aria-pressed="false" aria-label="Save The Art Set">♡</button><div class="gallery-caption"><div><h3>The Art Set</h3><p>A little more personality.</p></div><span class="pin">ART</span></div></article>
+<article class="gallery-item" data-category="soft art"><img class="photo" loading="lazy" src="./media/pink-floral-chrome.png" alt="Glossy pink chrome nails holding delicate flowers"><button type="button" class="photo-open" aria-label="View nail photo full size"><span aria-hidden="true">↗</span> View</button><button type="button" class="heart" data-save="Pink Petal" aria-pressed="false" aria-label="Save Pink Petal">♡</button><div class="gallery-caption"><div><h3>Pink Petal</h3><p>Soft pink, high shine.</p></div><span class="pin">PINK</span></div></article>
+<article class="gallery-item" data-category="studio"><img class="photo" loading="lazy" src="./media/studio-service.png" alt="Nail technician working carefully on a client's manicure"><button type="button" class="photo-open" aria-label="View nail photo full size"><span aria-hidden="true">↗</span> View</button><button type="button" class="heart" data-save="The Nail Date" aria-pressed="false" aria-label="Save The Nail Date">♡</button><div class="gallery-caption"><div><h3>The Nail Date</h3><p>Details from the studio.</p></div><span class="pin">STUDIO</span></div></article>
 </div><p class="saved-note" id="savedNote" aria-live="polite"></p></div></section>
-<div class="feature-band"><p>Consider this your sign</p><h3>Life's too short for <span>boring nails.</span></h3></div>
+<section class="feature-band motion-in" id="nailMood" data-mood="pink" aria-label="Explore nail moods">
+ <img class="mood-photo" id="moodPhoto" src="./media/pink-ombre-hero.png" alt="" loading="lazy" decoding="async">
+ <div class="mood-glass">
+  <span class="mood-overline">THE NAIL EDIT · FIND YOUR MOOD</span>
+  <h3 id="moodHeadline" aria-live="polite">Life’s too short for <em>boring nails.</em></h3>
+  <p id="moodDescription">Which set is calling your name? Pick a mood and watch the look change.</p>
+  <div class="mood-options" role="group" aria-label="Choose nail inspiration">
+   <button type="button" data-mood-choice="pink" aria-pressed="true">Pink Ombré</button>
+   <button type="button" data-mood-choice="french" aria-pressed="false">French Glow</button>
+   <button type="button" data-mood-choice="chrome" aria-pressed="false">Pink Chrome</button>
+  </div>
+  <a class="mood-link" href="#inspo">Explore the nail looks <span aria-hidden="true">↗</span></a>
+ </div>
+</section>
 <section class="booking" id="book"><div class="wrap booking-grid"><div class="booking-intro"><span class="kicker">Your nail date / 03</span><h2>Let's make<br>it a date. ♡</h2><p>Pick a service, browse the calendar and create your appointment request. The finishing touch? Bringing your favorite nail inspiration.</p><div class="booking-details"><div><b>01</b>Choose your service</div><div><b>02</b>Pick a date and time</div><div><b>03</b>Add your details</div></div></div><form class="booking-card" id="bookingForm" novalidate><h3>Find your moment</h3><p class="card-note">Choose what works for you — the fun part starts here.</p><div class="sr-choice"><label for="service">Selected service</label><select id="service" name="service" tabindex="-1" aria-hidden="true" required><option value="french">The French Edit — from $48</option><option value="gel">Glossy Gel — from $58</option><option value="art">Nail Art Studio — from $74</option><option value="builder">Builder Gel — from $82</option></select></div><div class="field-label" id="serviceChoiceLabel">01 / Your perfect treatment ♡</div><div class="price-tag-grid" role="group" aria-labelledby="serviceChoiceLabel"><button type="button" class="price-tag" data-pick-service="french" aria-pressed="true"><span>The French Edit</span><b>from $48 <i>♡</i></b></button><button type="button" class="price-tag" data-pick-service="gel" aria-pressed="false"><span>Glossy Gel</span><b>from $58 <i>♡</i></b></button><button type="button" class="price-tag" data-pick-service="art" aria-pressed="false"><span>Nail Art Studio</span><b>from $74 <i>♡</i></b></button><button type="button" class="price-tag" data-pick-service="builder" aria-pressed="false"><span>Builder Gel</span><b>from $82 <i>♡</i></b></button></div><div class="field-label">Choose a day</div><div class="date-grid" id="dateGrid" role="group" aria-label="Choose a date"></div><div class="field-label">Choose a time</div><div class="time-grid" id="timeGrid" role="group" aria-label="Choose a time"><button type="button" class="time-option" aria-pressed="false">9:00 AM</button><button type="button" class="time-option" aria-pressed="false">11:00 AM</button><button type="button" class="time-option" aria-pressed="false">1:00 PM</button><button type="button" class="time-option" aria-pressed="false">3:30 PM</button></div><div class="split"><div class="field"><label for="guestName">Your name</label><input id="guestName" name="name" type="text" placeholder="Your name" autocomplete="name" maxlength="80" required></div><div class="field"><label for="guestEmail">Email address</label><input id="guestEmail" name="email" type="email" placeholder="you@example.com" autocomplete="email" maxlength="140" required></div></div><div class="field"><label for="requestNotes">Your nail vision <span style="font-weight:400">(optional)</span></label><textarea id="requestNotes" name="notes" maxlength="350" placeholder="A color, occasion, or little detail you love..."></textarea></div><div id="formError" class="form-error" role="alert"></div><button class="submit" type="submit">Preview my nail date ↗</button><p class="legal-note">Explore the appointment experience. No booking or payment is submitted on this concept website.</p></form></div></section>
 <section class="about" id="story"><div class="wrap about-grid"><img class="about-img" loading="lazy" src="./media/pink-editorial-model.png" alt="Expressive pink editorial beauty portrait"><div class="about-text"><span class="kicker">Nail room attitude</span><h2>Small details.<br>Big energy.</h2><p>We're here for that fresh-set feeling: the confidence boost, the playful colors, the tiny details that make the whole look yours.</p><p class="about-quote">Your nails called. They want something cute.</p><a class="pill" href="#book">Plan the next nail date ↗</a></div></div></section>
 </main>
-<footer><div class="wrap"><div class="footer-top"><h3>NAIL ROOM <span style="color:#ff83b4">✳</span></h3><a class="pill pink" href="#top">Back to top ↑</a></div><div class="footer-bottom"><span>© <span id="year"></span> NAIL ROOM. All things pretty.</span><span>Concept website · Powered by <a href="https://thelaunchera.com/" rel="noopener noreferrer">The Launch Era</a></span></div></div></footer>
+<footer><div class="wrap"><div class="footer-top"><h3>NAIL ROOM <span style="color:#ff83b4">✦</span></h3><a class="pill pink" href="#top">Back to top ↑</a></div><div class="footer-bottom"><span>© <span id="year"></span> NAIL ROOM. All things pretty.</span><span>Concept website · Powered by <a href="https://thelaunchera.com/" rel="noopener noreferrer">The Launch Era</a></span></div></div></footer>
 <div class="modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true"><div class="modal-box"><button class="close-modal" id="closeModal" type="button" aria-label="Close appointment preview">×</button><div class="kicker">Your moment, all picked out ♡</div><h3 id="modalTitle">Nail date preview</h3><p>Here's what your appointment request would look like.</p><div class="receipt" id="receipt"></div><p><strong>This is a preview only.</strong> No appointment has been booked and no email or payment has been sent.</p><button class="submit" id="doneModal" type="button">Keep exploring</button></div></div>
+<dialog id="photoLightbox" class="photo-lightbox" aria-label="Nail photography detail">
+ <div class="lightbox-shell">
+  <div class="lightbox-top"><span class="lightbox-eyebrow">THE NAIL EDIT · FULL PHOTO</span><button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close full image">×</button></div>
+  <div class="lightbox-view"><img id="lightboxImage" alt="" decoding="async"></div>
+  <div class="lightbox-bottom"><button class="lightbox-arrow" id="lightboxPrev" type="button" aria-label="Previous photo">←</button><div class="lightbox-caption"><span id="lightboxCount">01 / 04</span><strong id="lightboxTitle">Nail Inspiration</strong></div><button class="lightbox-arrow" id="lightboxNext" type="button" aria-label="Next photo">→</button></div>
+  <button class="lightbox-save" type="button" id="lightboxSave">♡ Save this look</button>
+ </div>
+</dialog>
 <script>
 (function(){
 "use strict";
@@ -141,6 +257,104 @@ const modal=document.getElementById("bookingModal");
 function closeModal(){modal.classList.remove("is-open");modal.setAttribute("aria-hidden","true");document.body.style.overflow="";if(lastFocused)lastFocused.focus();}
 document.getElementById("closeModal").addEventListener("click",closeModal);document.getElementById("doneModal").addEventListener("click",closeModal);modal.addEventListener("click",function(e){if(e.target===modal)closeModal();});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&modal.classList.contains("is-open"))closeModal();});
 form.addEventListener("submit",function(e){e.preventDefault();error.textContent="";if(!chosenDate){error.textContent="Choose your preferred date.";dateGrid.querySelector("button").focus();return;}if(!chosenTime){error.textContent="Choose your preferred time.";timeGrid.querySelector("button").focus();return;}const n=document.getElementById("guestName"),mail=document.getElementById("guestEmail");if(!n.value.trim()){error.textContent="Please add your name.";n.focus();return;}if(!mail.validity.valid||!mail.value.trim()){error.textContent="Please enter a valid email address.";mail.focus();return;}lastFocused=document.activeElement;const pairs=[["Service",services[sel.value]],["Preferred date",new Date(chosenDate+"T12:00:00").toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"})],["Preferred time",chosenTime],["Name",n.value.trim()],["Email",mail.value.trim()]];if(saved.size)pairs.push(["Saved inspiration",Array.from(saved).join(", ")]);const receipt=document.getElementById("receipt");receipt.replaceChildren();pairs.forEach(function(pair){const line=document.createElement("div");line.className="receipt-row";const key=document.createElement("span");key.textContent=pair[0];const value=document.createElement("strong");value.textContent=pair[1];line.append(key,value);receipt.append(line);});modal.classList.add("is-open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";document.getElementById("closeModal").focus();});
+})();
+</script>
+
+<script>
+/* Nail Room Motion Studio — image zoom & peek / staggered reveal / interactive mood editorial */
+(function(){
+"use strict";
+const banner=document.getElementById('nailMood');
+const moodPhoto=document.getElementById('moodPhoto');
+const moodHeadline=document.getElementById('moodHeadline');
+const moodDescription=document.getElementById('moodDescription');
+const moods={
+ pink:{src:'./media/pink-ombre-hero.png',headline:'Life’s too short for <em>boring nails.</em>',description:'A little glossy pink is always a good idea.'},
+ french:{src:'./media/french-ivory.png',headline:'A classic, with <em>a little glow.</em>',description:'The effortless French set you’ll want to wear on repeat.'},
+ chrome:{src:'./media/pink-floral-chrome.png',headline:'A soft look with <em>major shine.</em>',description:'Chrome, florals, and all the pretty little details.'}
+};
+Object.values(moods).forEach(function(m){const i=new Image();i.src=m.src;});
+document.querySelectorAll('[data-mood-choice]').forEach(function(button){
+ button.addEventListener('click',function(){
+  const key=button.dataset.moodChoice;
+  const item=moods[key];if(!item)return;
+  banner.dataset.mood=key;
+  moodPhoto.src=item.src;
+  moodHeadline.innerHTML=item.headline;
+  moodDescription.textContent=item.description;
+  document.querySelectorAll('[data-mood-choice]').forEach(function(b){b.setAttribute('aria-pressed',String(b===button));});
+ });
+});
+const tiles=Array.from(document.querySelectorAll('.gallery-item'));
+const dialog=document.getElementById('photoLightbox');
+const photo=document.getElementById('lightboxImage');
+const title=document.getElementById('lightboxTitle');
+const count=document.getElementById('lightboxCount');
+const save=document.getElementById('lightboxSave');
+let activeIndex=0;
+let trigger=null;
+let touchX=null;
+function activeTiles(){return tiles.filter(function(el){return !el.hidden;});}
+function currentTile(){const visible=activeTiles();return visible[activeIndex]||visible[0];}
+function showPhoto(index){
+ const list=activeTiles();if(!list.length)return;
+ activeIndex=(index+list.length)%list.length;
+ const tile=list[activeIndex];
+ const original=tile.querySelector('.photo');
+ const fav=tile.querySelector('[data-save]');
+ photo.src=original.currentSrc||original.src;
+ photo.alt=original.alt||'Nail inspiration full photo';
+ title.textContent=tile.querySelector('.gallery-caption h3')?.textContent||'Nail inspiration';
+ count.textContent=String(activeIndex+1).padStart(2,'0')+' / '+String(list.length).padStart(2,'0');
+ const saved=fav?.getAttribute('aria-pressed')==='true';
+ save.textContent=saved?'♥ Saved — tap to remove':'♡ Save this look';
+ save.setAttribute('aria-pressed',String(saved));
+}
+function openPhoto(tile,button){
+ const list=activeTiles();const i=list.indexOf(tile);if(i<0)return;
+ trigger=button||document.activeElement;
+ showPhoto(i);
+ if(!dialog.open)dialog.showModal();
+}
+tiles.forEach(function(tile){
+ const zoom=tile.querySelector('.photo-open');
+ const image=tile.querySelector('.photo');
+ const caption=tile.querySelector('.gallery-caption');
+ zoom.addEventListener('click',function(){openPhoto(tile,zoom);});
+ image.addEventListener('click',function(){openPhoto(tile,zoom);});
+ caption.addEventListener('click',function(){openPhoto(tile,zoom);});
+ image.style.cursor='zoom-in';
+});
+document.getElementById('lightboxClose').addEventListener('click',function(){dialog.close();});
+document.getElementById('lightboxPrev').addEventListener('click',function(){showPhoto(activeIndex-1);});
+document.getElementById('lightboxNext').addEventListener('click',function(){showPhoto(activeIndex+1);});
+save.addEventListener('click',function(){
+ const fav=currentTile()?.querySelector('[data-save]');
+ if(!fav)return;fav.click();
+ const on=fav.getAttribute('aria-pressed')==='true';
+ save.textContent=on?'♥ Saved — tap to remove':'♡ Save this look';
+ save.setAttribute('aria-pressed',String(on));
+});
+dialog.addEventListener('click',function(e){if(e.target===dialog)dialog.close();});
+dialog.addEventListener('close',function(){photo.removeAttribute('src');if(trigger&&trigger.isConnected)trigger.focus({preventScroll:true});});
+dialog.addEventListener('keydown',function(e){
+ if(e.key==='ArrowRight'){e.preventDefault();showPhoto(activeIndex+1);}
+ if(e.key==='ArrowLeft'){e.preventDefault();showPhoto(activeIndex-1);}
+});
+dialog.addEventListener('touchstart',function(e){touchX=e.touches[0]?.clientX??null;},{passive:true});
+dialog.addEventListener('touchend',function(e){if(touchX===null)return;const delta=(e.changedTouches[0]?.clientX??touchX)-touchX;touchX=null;if(Math.abs(delta)>50)showPhoto(activeIndex+(delta<0?1:-1));},{passive:true});
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+const revealTargets=[
+ ...document.querySelectorAll('.service,.gallery-item,.booking-intro,.booking-card,.about-text,.feature-band')
+].filter(Boolean);
+revealTargets.forEach(function(el){el.classList.add('motion-in');});
+if(reduce.matches||!('IntersectionObserver' in window)){revealTargets.forEach(el=>el.classList.add('motion-visible'));}
+else{
+ const observer=new IntersectionObserver(function(entries){
+   entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add('motion-visible');observer.unobserve(entry.target);}});
+ },{rootMargin:'0px 0px -6% 0px',threshold:0.06});
+ revealTargets.forEach(function(el){observer.observe(el);});
+}
 })();
 </script>
 </body>
