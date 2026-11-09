@@ -50,3 +50,19 @@ html[data-tle-one-motion="yummm"] .editorial-banner:focus-within .ribbon-track{
   html[data-tle-one-motion="yummm"] .hero .yummm-motion-video{display:none!important}
   html[data-tle-one-motion="yummm"] .editorial-banner .ribbon-track{animation:none!important}
 }
+
+/* iPhone framing refinement: step back slightly without changing the
+   approved MP4 or cropping the two subsequent photography slides.
+   The first-frame poster fills the perimeter to avoid empty bars. */
+@media(max-width:768px){
+  html[data-tle-one-motion="yummm"] .hero .hero-slide[data-slide="0"]>.yummm-motion-poster,
+  html[data-tle-one-motion="yummm"] .hero .hero-slide[data-slide="0"]>.yummm-motion-video{
+    object-position:50% 42%;
+    transform:scale(.92)!important;
+    transform-origin:50% 50%;
+  }
+  html[data-tle-one-motion="yummm"] .hero .hero-slide[data-slide="0"]>.yummm-motion-video{
+    -webkit-mask-image:radial-gradient(ellipse farthest-side at center,#000 90%,transparent 100%);
+    mask-image:radial-gradient(ellipse farthest-side at center,#000 90%,transparent 100%);
+  }
+}
