@@ -1,55 +1,34 @@
-/* YUMMM — full-bleed motion hero repair, 2026-11-08.
-   Removes source letterboxing and keeps the animated coffee visible across
-   iPad, desktop and mobile without changing the other two hero slides. */
-html[data-tle-one-motion="yummm"] .hero .hero-media .hero-slide[data-slide="1"] {
-  position: absolute !important;
-  inset: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  min-height: 100%;
-  overflow: hidden;
-  background: #493127 url("./media/hero-motion-poster-hq.webp?v=yummm-fullbleed-20261108-v2") center center / cover no-repeat !important;
+/* YUMMM: first scene is full-bleed video, followed by the two original
+   editorial photographs. Never hide the storefront or takeaway slides. */
+html[data-tle-one-motion="yummm"] .hero .hero-slide[data-slide="0"]{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#493127 url("./media/hero-motion-poster-hq.webp") center center / cover no-repeat;
 }
-html[data-tle-one-motion="yummm"] .hero .hero-slide[data-slide="1"] video[data-tle-cinematic-hero] {
-  position: absolute !important;
-  inset: 0 !important;
-  display: block;
-  width: 100% !important;
-  height: 100% !important;
-  object-fit: cover !important;
-  object-position: 50% 53% !important;
-  transform: none !important;
-  max-width: none !important;
-  pointer-events: none;
-}
-html[data-tle-one-motion="yummm"] .hero .hero-slide[data-slide="1"] > img {
-  opacity: 0 !important;
-}
-/* Only the video slide is full width. The other two editorial photo
-   slides keep their approved desktop 61% photographic layout. */
-@media (min-width: 1100px) {
-  html[data-tle-one-motion="yummm"] .hero:has(.hero-slide[data-slide="1"].is-current) .hero-media {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-width: none !important;
+@media(min-width:1100px){
+  html[data-tle-one-motion="yummm"] .hero:has(.hero-slide[data-slide="0"].is-current) .hero-media{
+    position:absolute!important;
+    inset:0!important;
+    width:100%!important;
+    height:100%!important;
+    max-width:none!important;
   }
-  html[data-tle-one-motion="yummm"] .hero:has(.hero-slide[data-slide="1"].is-current) .hero-shade {
-    background: linear-gradient(90deg,rgba(32,17,13,.87) 0%,rgba(32,17,13,.65) 37%,rgba(32,17,13,.08) 81%),
-                linear-gradient(0deg,rgba(24,13,10,.34),transparent 38%) !important;
+  html[data-tle-one-motion="yummm"] .hero:has(.hero-slide[data-slide="0"].is-current) .hero-shade{
+    background:linear-gradient(90deg,rgba(32,17,13,.87) 0%,rgba(32,17,13,.65) 37%,rgba(32,17,13,.08) 81%),linear-gradient(0deg,rgba(24,13,10,.34),transparent 38%)!important;
   }
 }
-@media (max-width: 760px) {
-  html[data-tle-one-motion="yummm"] .hero .hero-slide[data-slide="1"] video[data-tle-cinematic-hero] {
-    object-position: 50% 50% !important;
+@media(max-width:760px){
+  html[data-tle-one-motion="yummm"] .hero .yummm-motion-video,
+  html[data-tle-one-motion="yummm"] .hero .yummm-motion-poster{
+    object-position:50% 50%;
   }
-  html[data-tle-one-motion="yummm"] .hero:has(.hero-slide[data-slide="1"].is-current) .hero-shade {
-    background: linear-gradient(0deg,rgba(20,11,9,.88) 0%,rgba(20,11,9,.56) 43%,rgba(20,11,9,.07) 85%) !important;
+  html[data-tle-one-motion="yummm"] .hero:has(.hero-slide[data-slide="0"].is-current) .hero-shade{
+    background:linear-gradient(0deg,rgba(20,11,9,.88) 0%,rgba(20,11,9,.56) 43%,rgba(20,11,9,.07) 85%)!important;
   }
 }
-@media (prefers-reduced-motion: reduce) {
-  html[data-tle-one-motion="yummm"] .hero .hero-slide[data-slide="1"] > img {
-    opacity: 1 !important;
-  }
+@media(prefers-reduced-motion:reduce){
+  html[data-tle-one-motion="yummm"] .hero .yummm-motion-video{display:none!important}
 }

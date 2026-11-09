@@ -1,30 +1,52 @@
-/* Native inline hero video is independent of YUMMM's rotating text.
-   Keep it playing when the page is foregrounded, with a matching poster. */
+/* YUMMM hero: play the approved video only in the opening scene.
+   Slides 2 and 3 are the original static storefront and takeaway photography. */
 (()=>{"use strict";
  const video=document.querySelector(".yummm-motion-video");
  if(!video)return;
+ const opening=video.closest(".hero-slide");
+ if(!opening)return;
  const reduce=matchMedia("(prefers-reduced-motion: reduce)");
  const dataSaver=Boolean(navigator.connection?.saveData);
- const shouldPlay=()=>!document.hidden&&!reduce.matches&&!dataSaver;
+ const active=()=>opening.classList.contains("is-current");
+ const shouldPlay=()=>active()&&!document.hidden&&!reduce.matches&&!dataSaver;
+ let wasActive=active();
  function reveal(){
-  const ready=()=>{if(shouldPlay()&&!video.paused&&video.readyState>=2)video.classList.add("is-playing");};
+  const ready=()=>{
+   if(shouldPlay()&&!video.paused&&video.readyState>=2)video.classList.add("is-playing");
+  };
   if(typeof video.requestVideoFrameCallback==="function")video.requestVideoFrameCallback(ready);
   else requestAnimationFrame(()=>requestAnimationFrame(ready));
  }
- function resume(){
-  if(!shouldPlay()){video.pause();video.classList.remove("is-playing");return;}
-  video.muted=true;video.defaultMuted=true;video.loop=true;
-  const p=video.play();
-  if(p?.catch)p.catch(()=>video.classList.remove("is-playing"));
+ function sync(){
+  const nowActive=active();
+  if(!shouldPlay()){
+   video.pause();
+   video.classList.remove("is-playing");
+   wasActive=nowActive;
+   return;
+  }
+  if(nowActive&&!wasActive){
+   try{video.currentTime=0;}catch(_){}
+   video.classList.remove("is-playing");
+  }
+  wasActive=nowActive;
+  video.muted=true;
+  video.defaultMuted=true;
+  video.loop=true;
+  const result=video.play();
+  if(result?.then)result.then(reveal).catch(()=>video.classList.remove("is-playing"));
+  else reveal();
  }
+ // The existing carousel changes is-current on the three slides.
+ // Observe that state instead of allowing a permanent video overlay.
+ new MutationObserver(sync).observe(opening,{attributes:true,attributeFilter:["class"]});
  video.addEventListener("playing",reveal);
  video.addEventListener("loadeddata",reveal);
- video.addEventListener("canplay",()=>{if(shouldPlay()&&video.paused)resume();});
- video.addEventListener("ended",()=>{video.currentTime=0;resume();});
  video.addEventListener("error",()=>video.classList.remove("is-playing"));
- document.addEventListener("visibilitychange",resume);
- window.addEventListener("pageshow",resume);
- reduce.addEventListener?.("change",resume);
- if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",resume,{once:true});
- else resume();
+ document.addEventListener("visibilitychange",sync);
+ window.addEventListener("pageshow",sync);
+ window.addEventListener("pagehide",()=>video.pause());
+ reduce.addEventListener?.("change",sync);
+ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",sync,{once:true});
+ else sync();
 })();
