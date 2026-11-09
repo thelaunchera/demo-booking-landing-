@@ -30,10 +30,7 @@
   };
   dots.forEach(dot => dot.addEventListener('click', () => { showSlide(Number(dot.dataset.hero)); startSlides(); }));
   const hero = $('.hero');
-  hero.addEventListener('mouseenter', pauseSlides);
-  hero.addEventListener('mouseleave', startSlides);
-  hero.addEventListener('focusin', pauseSlides);
-  hero.addEventListener('focusout', startSlides);
+  // The hero message carousel never pauses on hover or focus; media remains independently looping.
   document.addEventListener('visibilitychange', () => document.hidden ? pauseSlides() : startSlides());
   let touchX = 0;
   hero.addEventListener('touchstart', event => { touchX = event.changedTouches[0]?.clientX || 0; }, { passive: true });
