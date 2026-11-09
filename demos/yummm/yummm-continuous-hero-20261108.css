@@ -1,0 +1,28 @@
+/* The approved coffee video is the continuous hero. Changing the copy
+   or hovering must not replace it with a frozen slide. */
+html[data-tle-one-motion="yummm"] .hero-media{isolation:isolate;pointer-events:none}
+html[data-tle-one-motion="yummm"] .hero .hero-media>.hero-slide{opacity:0!important;visibility:hidden!important;transition:none!important;animation:none!important}
+html[data-tle-one-motion="yummm"] .hero .hero-media>.yummm-motion-poster,
+html[data-tle-one-motion="yummm"] .hero .hero-media>.yummm-motion-video{
+ position:absolute;inset:0;display:block;width:100%;height:100%;
+ object-fit:cover;object-position:center center;max-width:none;
+ transform:none!important;filter:none!important;pointer-events:none;
+}
+html[data-tle-one-motion="yummm"] .hero .hero-media>.yummm-motion-poster{z-index:5}
+html[data-tle-one-motion="yummm"] .hero .hero-media>.yummm-motion-video{
+ z-index:6;opacity:0;transition:opacity .22s ease;
+}
+html[data-tle-one-motion="yummm"] .hero .hero-media>.yummm-motion-video.is-playing{opacity:1}
+html[data-tle-one-motion="yummm"] .hero .hero-shade{z-index:7;pointer-events:none}
+html[data-tle-one-motion="yummm"] .hero .hero-content{z-index:8}
+html[data-tle-one-motion="yummm"] .editorial-banner .ribbon-track,
+html[data-tle-one-motion="yummm"] .editorial-banner:hover .ribbon-track,
+html[data-tle-one-motion="yummm"] .editorial-banner:focus-within .ribbon-track{animation-play-state:running!important}
+@media(max-width:760px){
+ html[data-tle-one-motion="yummm"] .hero .hero-media>.yummm-motion-video,
+ html[data-tle-one-motion="yummm"] .hero .hero-media>.yummm-motion-poster{object-position:50% 50%}
+}
+@media(prefers-reduced-motion:reduce){
+ html[data-tle-one-motion="yummm"] .hero .hero-media>.yummm-motion-video{display:none!important}
+ html[data-tle-one-motion="yummm"] .editorial-banner .ribbon-track{animation:none!important}
+}
