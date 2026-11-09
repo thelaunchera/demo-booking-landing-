@@ -16,7 +16,7 @@
   'aftr':{name:'AFTR',en:'The night is just getting started.',es:'La noche apenas comienza.',menu:'#offers',kind:'experiences'},
   'lavender-edit':{name:'THE LAVENDER EDIT',en:'Make space for softness.',es:'Haz espacio para la calma.',menu:'#gallery',kind:'collection'},
   'experience-cleaning':{name:'CLEANING EXPERIENCE',en:'Come home to something better.',es:'Vuelve a sentirte en casa.',menu:'#experience',kind:'booking'},
-  'seasonal-brew':{name:'SEASONAL BREW',en:'A little more time for coffee.',es:'Un poquito más de café.',menu:'#flavors',kind:'menu'},
+  'seasonal-brew':{name:'SEASONAL BREW',en:'A little more time for coffee.',es:'Un poquito más de café.',menu:'#seasonal-menu',kind:'menu'},
   'soluna-yoga':{name:'SOLUNA',en:'Your space to begin again.',es:'Tu espacio para comenzar de nuevo.',menu:'#memberships',kind:'plans'},
   'wok-social':{name:'WOK SOCIAL',en:'One more round of good flavor.',es:'Otra ronda de buen sabor.',menu:'#menu',kind:'menu'},
   'yummm':{name:'YUMMM',en:'Make room for a little joy.',es:'Haz espacio para algo dulce.',menu:'#counter',kind:'menu'},
