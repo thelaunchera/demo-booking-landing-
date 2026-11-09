@@ -26,6 +26,7 @@ on:
       - demos/wok-social/**
       - demos/seasonal-brew/**
       - demos/nail-room/**
+      - demos/nail-room/**
   workflow_run:
     workflows:
       - Build Brand Board Studio
@@ -112,6 +113,9 @@ jobs:
           rm -rf _site/nail-room
           mkdir -p _site/nail-room
           cp -R demos/nail-room/. _site/nail-room/
+          rm -rf _site/nail-room
+          mkdir -p _site/nail-room
+          cp -R demos/nail-room/. _site/nail-room/
           # Shared The Launch Era footer/focus layer, kept separate from each demo's visual identity
           mkdir -p _site/assets
           cp assets/tle-company-system-20261106.css _site/assets/tle-company-system-20261106.css
@@ -182,6 +186,9 @@ jobs:
           grep -q 'The Lavender Edit' _site/lavender-edit/index.html
           test -s _site/wok-social/index.html
           test -s _site/seasonal-brew/index.html
+          test -s _site/nail-room/index.html
+          test -s _site/nail-room/media/pink-ombre-hero.png
+          grep -q 'NAIL ROOM' _site/nail-room/index.html
           test -s _site/nail-room/index.html
           test -s _site/nail-room/assets/hero-pink-ombre.png
           test -s _site/nail-room/assets/french-ivory.png
