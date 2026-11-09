@@ -12,6 +12,8 @@
   "marea-wigs-miami":".hero-visual",
   "sova":".hero-media"
  };
+ // YUMMM owns a permanent inline loop. Do not append a second competing player.
+ if(brand==="yummm"&&document.querySelector(".yummm-motion-video"))return;
  const selector=heroSlots[brand];
  if(!selector)return;
  const reduce=matchMedia("(prefers-reduced-motion: reduce)");
