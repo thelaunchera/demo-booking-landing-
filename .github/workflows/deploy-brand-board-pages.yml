@@ -186,15 +186,15 @@ jobs:
           grep -q 'The Lavender Edit' _site/lavender-edit/index.html
           test -s _site/wok-social/index.html
           test -s _site/seasonal-brew/index.html
+          # Nail Room current source of truth (November 2026): keep assertions in sync with its media and booking UI.
           test -s _site/nail-room/index.html
           test -s _site/nail-room/media/pink-ombre-hero.png
+          test -s _site/nail-room/media/french-ivory.png
+          test -s _site/nail-room/media/pink-floral-chrome.png
           grep -q 'NAIL ROOM' _site/nail-room/index.html
-          test -s _site/nail-room/index.html
-          test -s _site/nail-room/assets/hero-pink-ombre.png
-          test -s _site/nail-room/assets/french-ivory.png
-          test -s _site/nail-room/assets/pink-chrome.png
-          grep -q 'hero-pink-ombre.png' _site/nail-room/index.html
-          grep -q 'appointment-form' _site/nail-room/index.html
+          grep -q 'pink-ombre-hero.png' _site/nail-room/index.html
+          grep -q 'id="bookingForm"' _site/nail-room/index.html
+          grep -q 'NAIL ROOM GLASS V2' _site/nail-room/index.html
           test -s _site/seasonal-brew/styles.css
           test -s _site/seasonal-brew/app.js
           node --check _site/seasonal-brew/app.js
