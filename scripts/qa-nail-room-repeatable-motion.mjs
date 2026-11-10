@@ -21,6 +21,16 @@ for (const browserType of [chromium, webkit]) {
       await card.scrollIntoViewIfNeeded();
       await page.waitForFunction(el=>el?.classList.contains('motion-visible'),handle,{timeout:6000});
       assert.ok(await page.locator('#bookingForm').count(),'Sample booking form stays mounted');
+      assert.equal(await page.locator('.nail-design-card').count(),4,'One four-card visual service menu');
+      assert.equal(await page.locator('.nail-design-photo img').count(),4,'Every service price has an editorial photo');
+      assert.equal(await page.locator('.price-tag-grid').count(),0,'No duplicate booking price grid');
+      assert.equal(await page.locator('.filterbar').count(),0,'No third filter menu');
+      await page.locator('[data-service="art"]').click();
+      assert.equal(await page.locator('#service').inputValue(),'art','Selected photo card drives native form');
+      assert.match(await page.locator('#nailSelectedName').innerText(),/Nail Art Studio/,'Selected service summary updates');
+      assert.match(await page.locator('#nailSelectedMeta').innerText(),/\$74/,'One authentic starting price is displayed');
+      assert.equal(await page.locator('[data-service="art"]').getAttribute('aria-pressed'),'true','Photo selection announced');
+
       const month=await page.locator('#nailCalendarLabel').innerText();
       await page.locator('#nailCalendarNext').click();
       assert.notEqual(await page.locator('#nailCalendarLabel').innerText(),month,'Calendar advances to next month');
