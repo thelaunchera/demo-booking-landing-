@@ -1,12 +1,5 @@
 name: Demo Motion Video + Cursor QA
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/hero-cinematic-motion-qa.yml'
-      - 'assets/tle-hero-cinematic-20261108.js'
-      - 'scripts/qa-motion-videos-20261108.mjs'
-      - 'demos/**/media/hero-motion-20261108.mp4'
   workflow_run:
     workflows: ['Deploy Brand Board Studio, AFTR and Jaramillo to GitHub Pages']
     types: [completed]
@@ -15,7 +8,7 @@ permissions:
   contents: read
 jobs:
   verify-motion:
-    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
