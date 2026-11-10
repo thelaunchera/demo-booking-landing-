@@ -10,10 +10,26 @@ for(const type of [chromium,webkit]){
    page.on('pageerror',e=>errors.push(e.message));
    const response=await page.goto(root+'/yummm/',{waitUntil:'domcontentloaded'});
    assert.equal(response?.status(),200,'YUMMM must load');
+   // Regression: counter product buttons must actually add items without opening the box.
+   assert.equal(await page.locator('#boxCount').innerText(),'0','Cart initially empty');
+   const choose=page.locator('.product-card .choose-item');
+   assert.ok(await choose.count()>=2,'Catalog must have at least two buyable products');
+   await choose.nth(0).click();
+   assert.equal(await page.locator('#boxCount').innerText(),'1','First item is added');
+   assert.ok(!(await page.locator('#boxDrawer').evaluate(el=>el.classList.contains('open'))),'Add does not open box');
+   await choose.nth(1).click();
+   assert.equal(await page.locator('#boxCount').innerText(),'2','Second item is added');
+   await page.waitForFunction(()=>document.querySelector('#headerBoxCount')?.textContent==='2',null,{timeout:4000});
    await page.locator('#openBox').click();
    const panel=page.locator('#boxDrawer');
    await page.waitForTimeout(motion==='reduce'?80:560);
    assert.ok(await panel.evaluate(el=>el.classList.contains('open')),'Original box should open');
+   assert.equal(await page.locator('#boxItems .box-row').count(),2,'Both selections appear in the box');
+   assert.equal(await page.locator('#drawerSubtotal').innerText(),'$10.55','Subtotal reflects both menu prices');
+   assert.ok(await page.locator('#previewBox').isEnabled(),'Preview becomes available with products');
+   await page.locator('.drawer-product-add').first().click();
+   assert.equal(await page.locator('#boxCount').innerText(),'3','Drawer add button increments cart');
+   assert.equal(await page.locator('#drawerSubtotal').innerText(),'$17.05','Drawer addition updates subtotal');
    const rect=await panel.boundingBox();
    assert.ok(rect,'Box must be visible');
    if(width<=640){
