@@ -3,7 +3,7 @@ import {strict as assert} from 'node:assert';
 import fs from 'node:fs';
 
 const base='https://thelaunchera.github.io/demo-booking-landing-';
-const active=['seasonal-brew','wok-social','soluna-yoga','yummm'];
+const active=['wok-social','soluna-yoga','yummm'];
 fs.mkdirSync('qa-screenshots/motion-20261108',{recursive:true});
 const browser=await chromium.launch({headless:true});
 try {
@@ -38,9 +38,23 @@ try {
     console.log('PASS cinematic mobile '+brand,media.width);
     await context.close();
   }
+  // Seasonal Brew intentionally uses its original still storefront hero.
+  // Keep this photo rather than silently reintroducing a cinematic video.
+  const seasonalContext=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,reducedMotion:'no-preference'});
+  const seasonalPage=await seasonalContext.newPage();
+  await seasonalPage.goto(base+'/seasonal-brew/',{waitUntil:'domcontentloaded',timeout:40000});
+  await seasonalPage.locator('.hero-media img').first().waitFor({state:'visible',timeout:15000});
+  await seasonalPage.waitForFunction(()=>{
+    const img=document.querySelector('.hero-media img');
+    return !!img&&img.complete&&img.naturalWidth>0;
+  },null,{timeout:15000});
+  assert.equal(await seasonalPage.locator('video[data-tle-cinematic-hero="seasonal-brew"]').count(),0,'Seasonal Brew retains the approved still-image hero');
+  await seasonalPage.screenshot({path:'qa-screenshots/motion-20261108/seasonal-brew-static-390.png'});
+  await seasonalContext.close();
+  console.log('PASS static storefront mobile seasonal-brew');
   const context=await browser.newContext({viewport:{width:1440,height:900},reducedMotion:'no-preference'});
   const page=await context.newPage();
-  await page.goto(base+'/seasonal-brew/',{waitUntil:'domcontentloaded',timeout:40000});
+  await page.goto(base+'/wok-social/',{waitUntil:'domcontentloaded',timeout:40000});
   const hero=page.locator('[data-tle-reactive-hero]').first();
   await hero.waitFor({timeout:15000});
   const box=await hero.boundingBox();
