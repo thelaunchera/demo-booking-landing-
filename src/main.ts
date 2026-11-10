@@ -80,6 +80,143 @@ const DEMOS=[
 // Add Jaramillo as a curated, fully editable demo just like YUMMM.
 Object.assign(DEMOS.find(demo => demo.id === JARAMILLO_BOARD.id), JARAMILLO_BOARD);
 DEMOS.push(...ADDITIONAL_DEMO_BOARDS);
+// VELMORA: one canonical editable board; images stay in the original public demo.
+DEMOS.push({
+  "id": "velmora",
+  "name": "VELMORA",
+  "category": "Beauty · Demo",
+  "description": "Makeup After Dark: editorial ruby lipstick store with a crimson-and-black campaign and simulated wishlist and checkout.",
+  "tagline": "Red after dark.",
+  "monogram": "V",
+  "symbol": "V",
+  "titleFont": "Bodoni Moda",
+  "bodyFont": "DM Sans",
+  "tone": "Misteriosa · belleza editorial · lujo nocturno",
+  "style": "beauty",
+  "colors": [
+    "#10090B",
+    "#6B1025",
+    "#A9203B",
+    "#F29AA5",
+    "#FAE8DD",
+    "#1B1013"
+  ],
+  "heroPhoto": "https://thelaunchera.github.io/demo-booking-landing-/velmora/media/hero.webp",
+  "detailPhoto": "https://thelaunchera.github.io/demo-booking-landing-/velmora/media/campaign/film-ribbon.webp",
+  "site": "https://thelaunchera.github.io/demo-booking-landing-/velmora/",
+  "logoImage": "",
+  "patternImage": "",
+  "imageY": 50,
+  "imageX": 50,
+  "imageScale": 1,
+  "sectionPhotos": {
+    "hero": [
+      {
+        "id": "velmora-hero-1",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/velmora/media/hero.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "velmora-hero-2",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/velmora/media/campaign/after-dark.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      }
+    ],
+    "identity": [
+      {
+        "id": "velmora-identity-1",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/velmora/media/campaign/meet-ruby.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "velmora-identity-2",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/velmora/media/campaign/signature-red.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      }
+    ],
+    "palette": [
+      {
+        "id": "velmora-palette-1",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/velmora/media/campaign/red-uncut.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "velmora-palette-2",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/velmora/media/campaign/velvet-close.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      }
+    ],
+    "typography": [
+      {
+        "id": "velmora-typography-1",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/velmora/media/campaign/film-ribbon.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      }
+    ],
+    "pattern": [
+      {
+        "id": "velmora-pattern-1",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/velmora/media/campaign/long-shadow.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      }
+    ],
+    "applications": [
+      {
+        "id": "velmora-applications-1",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/velmora/media/campaign/in-the-clutch.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "velmora-applications-2",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/velmora/media/parcel.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      }
+    ],
+    "universe": [
+      {
+        "id": "velmora-universe-1",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/velmora/media/campaign/red-walks-in.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "velmora-universe-2",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/velmora/media/ruby-on-lips.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      },
+      {
+        "id": "velmora-universe-3",
+        "src": "https://thelaunchera.github.io/demo-booking-landing-/velmora/media/ruby-swatches.webp",
+        "fit": "cover",
+        "x": 50,
+        "y": 50
+      }
+    ]
+  }
+});
 // WOK SOCIAL — one canonical photo set, no cross-brand copies or separate Studio project.
 DEMOS.push({
   id:'wok-social',name:'WOK SOCIAL',category:'Restaurante · Demo',
