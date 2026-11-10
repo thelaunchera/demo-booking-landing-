@@ -4,23 +4,38 @@ on:
     workflows: ['Deploy Brand Board Studio, AFTR and Jaramillo to GitHub Pages']
     types: [completed]
   workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/hero-cinematic-motion-qa.yml'
+      - 'scripts/qa-motion-videos-20261108.mjs'
+      - 'assets/tle-hero-cinematic-20261108.js'
+      - 'demos/seasonal-brew/index.html'
+      - 'demos/wok-social/index.html'
+      - 'demos/soluna-yoga/index.html'
+      - 'demos/yummm/index.html'
 permissions:
   contents: read
 jobs:
   verify-motion:
-    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request' || github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: {node-version: '22'}
-      - name: Validate four demo binaries and HTML wiring
+      - name: Validate three cinematic heroes and Seasonal Brew original photo
         run: |
-          for name in seasonal-brew wok-social soluna-yoga yummm; do
+          for name in wok-social soluna-yoga yummm; do
             test -s "demos/$name/media/hero-motion-20261108.mp4"
             grep -q 'tle-hero-cinematic-20261108.js' "demos/$name/index.html"
           done
+          test -s demos/seasonal-brew/assets/storefront.webp
+          grep -q 'assets/storefront.webp' demos/seasonal-brew/index.html
+          if grep -q 'tle-hero-cinematic-20261108.js' demos/seasonal-brew/index.html; then
+            echo "Seasonal Brew still-image hero unexpectedly replaced with cinematic script"
+            exit 1
+          fi
           node --check assets/tle-hero-cinematic-20261108.js
           node --check scripts/qa-motion-videos-20261108.mjs
       - name: Install isolated browser
@@ -40,6 +55,6 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: motion-heroes-four-visual-proof
+          name: motion-heroes-three-video-one-photo-visual-proof
           path: qa-screenshots/motion-20261108/
           if-no-files-found: ignore
