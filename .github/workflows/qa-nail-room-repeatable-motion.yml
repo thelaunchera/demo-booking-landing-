@@ -1,0 +1,42 @@
+name: NAIL ROOM Repeatable Motion QA
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'demos/nail-room/index.html'
+      - 'scripts/qa-nail-room-repeatable-motion.mjs'
+      - '.github/workflows/qa-nail-room-repeatable-motion.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  nail-motion:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install headless Chromium and WebKit
+        run: |
+          mkdir -p /tmp/tle-nail-qa
+          npm install --prefix /tmp/tle-nail-qa --no-audit --no-fund playwright@1.57.0
+          /tmp/tle-nail-qa/node_modules/.bin/playwright install --with-deps chromium webkit
+          mkdir -p node_modules
+          ln -sfn /tmp/tle-nail-qa/node_modules/playwright node_modules/playwright
+          ln -sfn /tmp/tle-nail-qa/node_modules/playwright-core node_modules/playwright-core
+      - name: Verify reusable reveal on iPhone sizes in both browsers
+        run: |
+          node --check scripts/qa-nail-room-repeatable-motion.mjs
+          mkdir -p /tmp/tle-nail-pages/nail-room
+          cp -R demos/nail-room/. /tmp/tle-nail-pages/nail-room/
+          cp -R assets /tmp/tle-nail-pages/assets
+          python3 -m http.server 4195 --bind 127.0.0.1 --directory /tmp/tle-nail-pages >/tmp/tle-nail-server.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for n in $(seq 1 20); do
+            if curl -fsS http://127.0.0.1:4195/nail-room/ >/dev/null; then break; fi
+            sleep 1
+          done
+          QA_URL=http://127.0.0.1:4195 node scripts/qa-nail-room-repeatable-motion.mjs
