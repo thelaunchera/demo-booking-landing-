@@ -7,14 +7,15 @@
   <meta name="description" content="VELMORA. Discover Ruby 08 and the After Dark edit. An online makeup store concept with worldwide shipping.">
   <title>VELMORA — Makeup After Dark</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css">
-  <script src="store.js" defer></script>
+  <link rel="stylesheet" href="style.css?v=2">
+  <script src="store.js?v=2" defer></script>
+  <script type="module" src="campaign.js"></script>
 </head>
 <body data-page="shop">
   <a class="skip" href="#main">Skip to content</a>
   <div class="announcement">Online only <span aria-hidden="true">◆</span> Worldwide shipping</div>
   <header class="header">
-    <nav aria-label="Main navigation"><a href="#shop">Shop</a><a href="#shade" class="desktop-link">Shade Room</a></nav>
+    <nav aria-label="Main navigation"><a href="#shop">Shop</a><a href="#shade" class="desktop-link">Shade Room</a><a href="#campaign" class="desktop-link">Campaign</a></nav>
     <a class="brand" href="./" aria-label="VELMORA home">VELMORA</a>
     <div class="tools" data-tools></div>
   </header>
@@ -23,15 +24,19 @@
       <picture><img src="media/hero.webp" width="1672" height="941" fetchpriority="high" alt="Model wearing ruby lipstick in a black blazer under red studio light"></picture>
       <div class="hero-copy">
         <p class="eyebrow">The After Dark Edit</p>
-        <h1 id="hero-title">Red after <em>dark.</em></h1>
+        <h1 id="hero-title" aria-label="Red after dark."><span data-letters>Red after</span> <em data-letters>dark.</em></h1>
         <p class="hero-note">Velvet lips, smoked eyes, and the kind of red that stays on your mind.</p>
         <a class="button primary" href="#shop">Shop the edit</a>
       </div>
       <span class="hero-index" aria-hidden="true">01 / THE VELMORA EDIT</span>
     </section>
+    <div class="edition-bar">
+      <span>VELMORA BEAUTY / VOL. 01</span>
+      <a href="#campaign">View the campaign <span aria-hidden="true">↓</span></a>
+    </div>
     <section class="collection wrap" id="shop" aria-labelledby="shop-title">
       <div class="section-head">
-        <div><p class="eyebrow">01 / The Collection</p><h2 id="shop-title">The after-hours <em>lineup.</em></h2></div>
+        <div><p class="eyebrow">01 / The Collection</p><h2 id="shop-title" data-title-motion>The after-hours <em>lineup.</em></h2></div>
         <div class="filters" aria-label="Filter products">
           <button type="button" data-filter="all" aria-pressed="true">All</button>
           <button type="button" data-filter="lips" aria-pressed="false">Lips</button>
@@ -41,6 +46,18 @@
       </div>
       <div class="grid" data-products></div>
     </section>
+    <section class="feature wrap" aria-labelledby="feature-title">
+      <figure class="feature-still">
+        <img src="media/campaign/film-ribbon.webp" width="1000" height="1250" loading="lazy" alt="A deep red lipstick with a ribbon of red film curled around it">
+        <figcaption>THE AFTER DARK EDIT / OPENING FRAME</figcaption>
+      </figure>
+      <div class="feature-copy">
+        <p class="eyebrow">In the spotlight / Ruby 08</p>
+        <h2 id="feature-title" data-title-motion>One shade. <em>After hours.</em></h2>
+        <p>Deep ruby pigment with a velvet matte finish. Wear it on its own or trace it with Night Trace for a deeper edge.</p>
+        <button type="button" class="button primary" data-product="ruby-08">Shop Ruby 08</button>
+      </div>
+    </section>
     <section class="shade" id="shade" aria-labelledby="shade-title">
       <div class="shade-visual">
         <img id="shade-image" src="media/ruby-on-lips.webp" width="900" height="1125" loading="lazy" alt="Ruby 08 lipstick worn on deep brown skin">
@@ -48,7 +65,7 @@
       </div>
       <div class="shade-copy">
         <p class="eyebrow">02 / The Shade Room</p>
-        <h2 id="shade-title">See red <em>up close.</em></h2>
+        <h2 id="shade-title" data-title-motion>See red <em>up close.</em></h2>
         <p>Meet Ruby 08 in two views. See the velvet finish on lips or compare the same shade across three skin tones.</p>
         <div class="shade-switch" aria-label="Ruby 08 view">
           <button type="button" data-shade="model" aria-pressed="true">On lips</button>
@@ -57,11 +74,34 @@
         <button type="button" class="text-button" data-product="ruby-08">Explore Ruby 08 <span aria-hidden="true">+</span></button>
       </div>
     </section>
+    <section class="campaign wrap" id="campaign" aria-labelledby="campaign-title">
+      <div class="section-head">
+        <div><p class="eyebrow">03 / The Campaign</p><h2 id="campaign-title" data-title-motion>Red in <em>eight frames.</em></h2></div>
+        <div class="film-controls" aria-label="Campaign navigation">
+          <button class="icon" type="button" data-film-step="-1" aria-label="Previous frame" disabled>←</button>
+          <button class="icon" type="button" data-film-step="1" aria-label="Next frame">→</button>
+        </div>
+      </div>
+      <ol class="film-strip" tabindex="0" aria-label="After Dark campaign photos">
+        <li><button type="button" data-frame><img src="media/campaign/long-shadow.webp" width="1000" height="1250" loading="lazy" alt="Lipstick casting a long shadow across a red wall"><span><small>01</small> The Long Shadow</span></button></li>
+        <li><button type="button" data-frame><img src="media/campaign/meet-ruby.webp" width="1000" height="1250" loading="lazy" alt="Meet Ruby 08 poster with the red lipstick standing in a spotlight"><span><small>02</small> Meet Ruby 08</span></button></li>
+        <li><button type="button" data-frame><img src="media/campaign/after-dark.webp" width="1000" height="1250" loading="lazy" alt="After Dark poster with a model in a black blazer and ruby lipstick"><span><small>03</small> After Dark</span></button></li>
+        <li><button type="button" data-frame><img src="media/campaign/in-the-clutch.webp" width="1000" height="1250" loading="lazy" alt="In the Clutch poster with a lipstick, evening bag and gold hoop"><span><small>04</small> In the Clutch</span></button></li>
+        <li><button type="button" data-frame><img src="media/campaign/velvet-close.webp" width="1000" height="1250" loading="lazy" alt="Velvet Up Close poster showing the texture of matte red lipstick on lips"><span><small>05</small> Velvet Up Close</span></button></li>
+        <li><button type="button" data-frame><img src="media/campaign/red-uncut.webp" width="1000" height="1250" loading="lazy" alt="Red, Uncut poster with a textured swipe of red pigment"><span><small>06</small> Red, Uncut</span></button></li>
+        <li><button type="button" data-frame><img src="media/campaign/red-walks-in.webp" width="1000" height="1250" loading="lazy" alt="Red Walks In poster with a model wearing crimson satin and lipstick"><span><small>07</small> Red Walks In</span></button></li>
+        <li><button type="button" data-frame><img src="media/campaign/signature-red.webp" width="1000" height="1250" loading="lazy" alt="Make Red Your Signature poster with Ruby 08 lipstick and its carton"><span><small>08</small> Signature Red</span></button></li>
+      </ol>
+      <dialog class="film-dialog" aria-labelledby="frame-caption">
+        <form method="dialog"><button type="submit" class="icon close" aria-label="Close campaign photo">×</button></form>
+        <figure><img width="1000" height="1250" alt=""><figcaption id="frame-caption"></figcaption></figure>
+      </dialog>
+    </section>
     <section class="parcel wrap" id="shipping" aria-labelledby="shipping-title">
       <img src="media/parcel.webp" width="1200" height="800" loading="lazy" alt="VELMORA cosmetics wrapped in black tissue inside an open parcel">
       <div class="parcel-copy">
-        <p class="eyebrow">03 / From VELMORA</p>
-        <h2 id="shipping-title">A little drama. <em>Delivered.</em></h2>
+        <p class="eyebrow">04 / From VELMORA</p>
+        <h2 id="shipping-title" data-title-motion>A little drama. <em>Delivered.</em></h2>
         <p>Shop VELMORA exclusively online. We ship worldwide.</p>
         <a class="text-button" href="#shop">Back to the edit <span aria-hidden="true">+</span></a>
       </div>

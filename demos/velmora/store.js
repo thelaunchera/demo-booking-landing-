@@ -6,6 +6,12 @@ const products = {
   'eclipse-quad': {name:'Eclipse Quad', type:'Eyeshadow palette', group:'eyes', price:44, note:'Champagne shimmer, dusty rose, matte garnet, and charcoal for an eye look that gets deeper after dark.', images:[['eclipse-quad','Product','Open Eclipse Quad with four eyeshadow shades']]},
   'blood-rose': {name:'Blood Rose', type:'Pressed powder blush', group:'face', price:32, note:'A deep muted rose pressed powder for a soft flush across the cheekbones.', images:[['blood-rose','Product','Open Blood Rose compact with rose pressed powder']]}
 };
+const productDetails = {
+  'ruby-08': {facts:[['Shade','Deep ruby red'],['Finish','Velvet matte']], pair:'night-trace'},
+  'night-trace': {facts:[['Shade','Garnet'],['Format','Sharpenable pencil']], pair:'ruby-08'},
+  'eclipse-quad': {facts:[['Shades','Champagne, garnet, rose and charcoal'],['Finish','Matte, satin and shimmer']]},
+  'blood-rose': {facts:[['Shade','Muted rose'],['Format','Pressed powder']]}
+};
 const keys = Object.keys(products);
 const storageKey = 'velmora-store-v1';
 const wishlistPage = document.body.dataset.page === 'wishlist';
@@ -82,14 +88,21 @@ function renderGrid() {
 }
 function openProduct(id) {
   const p = products[id];
+  const {facts, pair} = productDetails[id];
+  const companion = products[pair];
   productBody.innerHTML = `<div class="detail">
     <div class="detail-media"><div data-detail-image>${image(p.images[0])}</div>
       ${p.images.length > 1 ? `<div class="thumbs" aria-label="Product gallery">${p.images.map(([,label],i) => `<button type="button" data-gallery="${i}" data-id="${id}" aria-pressed="${i === 0}">${label}</button>`).join('')}</div>` : ''}
     </div>
-    <div class="detail-copy"><p class="eyebrow">${p.type}</p><h2 id="product-title">${p.name}</h2><p>${p.note}</p><p>${currency.format(p.price)} USD</p>
-    <button class="button primary" type="button" data-add="${id}">Add to bag</button></div>
+    <div class="detail-copy"><p class="eyebrow">${p.type}</p><h2 id="product-title" tabindex="-1">${p.name}</h2><p>${p.note}</p><p class="detail-price">${currency.format(p.price)} USD</p>
+    <button class="button primary" type="button" data-add="${id}">Add to bag</button>
+    <dl class="detail-facts">${facts.map(([label,value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join('')}</dl>
+    ${companion ? `<div class="detail-pair">${image(companion.images[0])}<span><small>Complete the lip</small>${companion.name}</span><button class="button" type="button" data-product="${pair}" aria-label="Explore ${companion.name}">View</button></div>` : ''}
+    </div>
   </div>`;
-  productDialog.showModal();
+  if (!productDialog.open) productDialog.showModal();
+  productBody.querySelector('#product-title').focus({preventScroll:true});
+  productDialog.scrollTop = 0;
 }
 async function removeWish(id) {
   if (!wishes.delete(id)) return;
@@ -204,7 +217,11 @@ document.addEventListener('click', event => {
       updateWishCount();
     }
   }
-  if ('add' in d) addToBag(d.add,action);
+  if ('add' in d && addToBag(d.add,action) && productDialog.open) {
+    action.textContent = 'Added to bag';
+    clearTimeout(action.resetLabel);
+    action.resetLabel = setTimeout(() => { action.textContent = 'Add to bag'; }, 1500);
+  }
   if ('move' in d && addToBag(d.move,action)) removeWish(d.move);
   if (action === bagTrigger) {
     updateBagCount();
