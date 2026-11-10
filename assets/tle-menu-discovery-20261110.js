@@ -37,7 +37,7 @@ function update(){
 }
 if(brand==='seasonal-brew'){
  const moods=document.createElement('div');moods.className='tle-menu-moods';moods.setAttribute('role','group');moods.setAttribute('aria-label','Choose a flavor mood');
- ['All flavors',...Object.keys(moodMap)].forEach(text=>{const b=document.createElement('button');b.type='button';b.textContent=text;b.addEventListener('click',()=>{mood=text;update()});buttons.push(b);moods.append(b)});panel.append(moods);
+ ['All flavors',...Object.keys(moodMap)].forEach(text=>{const b=document.createElement('button');b.type='button';b.textContent=text;b.dataset.discoveryMood=text;b.addEventListener('click',()=>{mood=text;update()});buttons.push(b);moods.append(b)});panel.append(moods);
 }
 panel.append(status,reset);anchor.after(panel);
 input.addEventListener('input',update);reset.addEventListener('click',()=>{input.value='';mood='All flavors';update();input.focus()});
