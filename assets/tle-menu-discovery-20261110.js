@@ -44,8 +44,8 @@ input.addEventListener('input',update);reset.addEventListener('click',()=>{input
 document.querySelectorAll('.filter,[data-select-category]').forEach(b=>b.addEventListener('click',()=>queueMicrotask(update)));
 if(brand==='wok-social'){
  const target=document.querySelector('#dialogText');
- if(target){const photo=document.createElement('img');photo.className='tle-menu-detail-photo';photo.hidden=true;target.before(photo);
- cards.forEach(card=>card.querySelector('[data-dish]')?.addEventListener('click',()=>{const source=card.querySelector('img');if(source){photo.src=source.src;photo.alt=source.alt;photo.hidden=false}}));}
+ if(target){const photo=document.createElement('img');photo.className='tle-menu-detail-photo';photo.hidden=true;
+ cards.forEach(card=>card.querySelector('[data-dish]')?.addEventListener('click',()=>{const source=card.querySelector('img');if(source){photo.src=source.src;photo.alt=source.alt;photo.hidden=false;target.before(photo)}}));}
 }
 update();
 })();
