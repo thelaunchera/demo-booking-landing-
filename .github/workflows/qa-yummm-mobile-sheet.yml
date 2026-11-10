@@ -1,0 +1,44 @@
+name: YUMMM iPhone Bottom Sheet QA
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'demos/yummm/index.html'
+      - 'demos/yummm/yummm-mobile-bottom-sheet-20261110.css'
+      - 'scripts/qa-yummm-mobile-sheet-20261110.mjs'
+      - '.github/workflows/qa-yummm-mobile-sheet.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  sheet:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate JS
+        run: node --check scripts/qa-yummm-mobile-sheet-20261110.mjs
+      - name: Install Chromium and WebKit
+        run: |
+          mkdir -p /tmp/tle-yummm-qa
+          npm install --no-audit --no-fund --prefix /tmp/tle-yummm-qa playwright@1.57.0
+          /tmp/tle-yummm-qa/node_modules/.bin/playwright install --with-deps chromium webkit
+          mkdir -p node_modules
+          ln -sfn /tmp/tle-yummm-qa/node_modules/playwright node_modules/playwright
+          ln -sfn /tmp/tle-yummm-qa/node_modules/playwright-core node_modules/playwright-core
+      - name: Validate mobile bottom origin and original desktop behavior
+        run: |
+          mkdir -p /tmp/tle-yummm-site/yummm
+          cp -R demos/yummm/. /tmp/tle-yummm-site/yummm/
+          cp -R assets /tmp/tle-yummm-site/assets
+          python3 -m http.server 4199 --bind 127.0.0.1 --directory /tmp/tle-yummm-site >/tmp/tle-yummm-server.log 2>&1 &
+          server=$!
+          trap 'kill "$server" 2>/dev/null || true' EXIT
+          for i in $(seq 1 25); do
+            if curl -fsS http://127.0.0.1:4199/yummm/ >/dev/null; then break; fi
+            sleep 1
+          done
+          QA_URL=http://127.0.0.1:4199 node scripts/qa-yummm-mobile-sheet-20261110.mjs
