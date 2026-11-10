@@ -1,8 +1,16 @@
 name: YUMMM iPhone Bottom Sheet QA
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'demos/yummm/script.js'
+      - 'demos/yummm/index.html'
+      - 'scripts/qa-yummm-mobile-sheet-20261110.mjs'
+      - '.github/workflows/qa-yummm-mobile-sheet.yml'
   pull_request:
     branches: [main]
     paths:
+      - 'demos/yummm/script.js'
       - 'demos/yummm/index.html'
       - 'demos/yummm/yummm-mobile-bottom-sheet-20261110.css'
       - 'scripts/qa-yummm-mobile-sheet-20261110.mjs'
