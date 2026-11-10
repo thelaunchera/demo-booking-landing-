@@ -179,16 +179,23 @@
   $('#buildBox').addEventListener('click', openDrawer);
   $('#closeBox').addEventListener('click', closeDrawer);
   backdrop.addEventListener('click', closeDrawer);
-  function addProduct(name, image, showDrawer) {
+  function addProduct(name, image, trigger) {
+    const previous=$('#headerBoxCount').textContent;
     const existing = box.find(item => item.name === name);
     if (existing) existing.qty = Math.min(24, existing.qty + 1);
     else box.push({ name, image, qty: 1 });
     saveBox(); renderBox();
-    if (showDrawer) openDrawer();
+    // The product flies to the header badge. The box opens only on a separate tap.
+    $('#headerBoxCount').textContent=previous;
+    const motion=window.TLECartMotion?.flyDot(trigger,$('#headerBox'),{
+      badge:$('#headerBoxCount'),color:'#B7303B',
+      onLand:()=>{$('#headerBoxCount').textContent=String(countBox());}
+    });
+    if(!motion)$('#headerBoxCount').textContent=String(countBox());
   }
-  $$('.choose-item').forEach(button => button.addEventListener('click', () => {
+  $('.choose-item').forEach(button => button.addEventListener('click', () => {
     const card = button.closest('.product-card');
-    if (card) addProduct(card.dataset.product, card.dataset.image, true);
+    if (card) addProduct(card.dataset.product, card.dataset.image, button);
   }));
   renderBox();
   const preview = $('#previewDialog');
