@@ -24,6 +24,7 @@ on:
       - demos/yummm/**
       - demos/soluna-yoga/**
       - demos/lavender-edit/**
+      - demos/velmora/**
       - demos/wok-social/**
       - demos/seasonal-brew/**
       - demos/nail-room/**
@@ -117,6 +118,11 @@ jobs:
           rm -rf _site/nail-room
           mkdir -p _site/nail-room
           cp -R demos/nail-room/. _site/nail-room/
+          mkdir -p _site/velmora
+          cp -R demos/velmora/. _site/velmora/
+          test -s _site/velmora/index.html
+          test -s _site/velmora/wishlist.html
+          node --check _site/velmora/store.js
           # Shared The Launch Era footer/focus layer, kept separate from each demo's visual identity
           mkdir -p _site/assets
           cp assets/tle-menu-discovery-20261110.js _site/assets/

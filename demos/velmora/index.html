@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#10090b">
+  <meta name="description" content="VELMORA. Discover Ruby 08 and the After Dark edit. An online makeup store concept with worldwide shipping.">
+  <title>VELMORA — Makeup After Dark</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="store.js" defer></script>
+</head>
+<body data-page="shop">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="announcement">Online only <span aria-hidden="true">◆</span> Worldwide shipping</div>
+  <header class="header">
+    <nav aria-label="Main navigation"><a href="#shop">Shop</a><a href="#shade" class="desktop-link">Shade Room</a></nav>
+    <a class="brand" href="./" aria-label="VELMORA home">VELMORA</a>
+    <div class="tools" data-tools></div>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <picture><img src="media/hero.webp" width="1672" height="941" fetchpriority="high" alt="Model wearing ruby lipstick in a black blazer under red studio light"></picture>
+      <div class="hero-copy">
+        <p class="eyebrow">The After Dark Edit</p>
+        <h1 id="hero-title">Red after <em>dark.</em></h1>
+        <p class="hero-note">Velvet lips, smoked eyes, and the kind of red that stays on your mind.</p>
+        <a class="button primary" href="#shop">Shop the edit</a>
+      </div>
+      <span class="hero-index" aria-hidden="true">01 / THE VELMORA EDIT</span>
+    </section>
+    <section class="collection wrap" id="shop" aria-labelledby="shop-title">
+      <div class="section-head">
+        <div><p class="eyebrow">01 / The Collection</p><h2 id="shop-title">The after-hours <em>lineup.</em></h2></div>
+        <div class="filters" aria-label="Filter products">
+          <button type="button" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" data-filter="lips" aria-pressed="false">Lips</button>
+          <button type="button" data-filter="eyes" aria-pressed="false">Eyes</button>
+          <button type="button" data-filter="face" aria-pressed="false">Face</button>
+        </div>
+      </div>
+      <div class="grid" data-products></div>
+    </section>
+    <section class="shade" id="shade" aria-labelledby="shade-title">
+      <div class="shade-visual">
+        <img id="shade-image" src="media/ruby-on-lips.webp" width="900" height="1125" loading="lazy" alt="Ruby 08 lipstick worn on deep brown skin">
+        <span aria-hidden="true" class="image-index">RUBY / 08</span>
+      </div>
+      <div class="shade-copy">
+        <p class="eyebrow">02 / The Shade Room</p>
+        <h2 id="shade-title">See red <em>up close.</em></h2>
+        <p>Meet Ruby 08 in two views. See the velvet finish on lips or compare the same shade across three skin tones.</p>
+        <div class="shade-switch" aria-label="Ruby 08 view">
+          <button type="button" data-shade="model" aria-pressed="true">On lips</button>
+          <button type="button" data-shade="swatches" aria-pressed="false">On skin</button>
+        </div>
+        <button type="button" class="text-button" data-product="ruby-08">Explore Ruby 08 <span aria-hidden="true">+</span></button>
+      </div>
+    </section>
+    <section class="parcel wrap" id="shipping" aria-labelledby="shipping-title">
+      <img src="media/parcel.webp" width="1200" height="800" loading="lazy" alt="VELMORA cosmetics wrapped in black tissue inside an open parcel">
+      <div class="parcel-copy">
+        <p class="eyebrow">03 / From VELMORA</p>
+        <h2 id="shipping-title">A little drama. <em>Delivered.</em></h2>
+        <p>Shop VELMORA exclusively online. We ship worldwide.</p>
+        <a class="text-button" href="#shop">Back to the edit <span aria-hidden="true">+</span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="./">VELMORA</a><span>Online only · Worldwide shipping</span><a href="https://thelaunchera.com/">Powered by The Launch Era</a></footer>
+</body>
+</html>
