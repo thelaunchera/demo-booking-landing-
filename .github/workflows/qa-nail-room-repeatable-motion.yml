@@ -5,6 +5,7 @@ on:
     paths:
       - 'demos/nail-room/index.html'
       - 'scripts/qa-nail-room-repeatable-motion.mjs'
+      - 'scripts/qa-no-decorative-northeast-arrows-20261110.mjs'
       - '.github/workflows/qa-nail-room-repeatable-motion.yml'
   workflow_dispatch:
 permissions:
@@ -29,6 +30,7 @@ jobs:
       - name: Verify reusable reveal on iPhone sizes in both browsers
         run: |
           node --check scripts/qa-nail-room-repeatable-motion.mjs
+          node scripts/qa-no-decorative-northeast-arrows-20261110.mjs
           mkdir -p /tmp/tle-nail-pages/nail-room
           cp -R demos/nail-room/. /tmp/tle-nail-pages/nail-room/
           cp -R assets /tmp/tle-nail-pages/assets
