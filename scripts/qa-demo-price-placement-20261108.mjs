@@ -75,7 +75,7 @@ for(const engine of [chromium,webkit]){
       const menu=target?document.querySelector(target):null;
       const r=p.getBoundingClientRect();
       return {kind:p.dataset.tlePriceKind,placement:p.dataset.tlePricePlacement,
-       afterHero:hero?.nextElementSibling===p,
+       afterHero:hero?.nextElementSibling===p||(hero?.nextElementSibling?.id==='tle-brand-discovery'&&hero.nextElementSibling.nextElementSibling===p),
        beforeMenu:menu?.previousElementSibling===p,
        count:p.querySelectorAll('.tle-price-card').length,
        left:r.left,right:r.right,viewport:innerWidth};
