@@ -19,9 +19,20 @@
     button.addEventListener('click',()=>{
       const order=window.TLE_ORDER;
       const name=button.dataset.menuAdd;
+      const float=document.querySelector('.tle-order-float');
+      const prior=float?.querySelector('b')?.textContent;
       if(!order?.add||!order.add(name,1)){
         if(status)status.textContent='The order preview is temporarily unavailable.';
         return;
+      }
+      const badge=float?.querySelector('b');
+      const next=badge?.textContent;
+      if(badge&&prior!==undefined){
+        badge.textContent=prior;
+        const motion=window.TLECartMotion?.flyDot(button,float,{
+          badge,color:'#95663B',onLand:()=>{badge.textContent=next;}
+        });
+        if(!motion)badge.textContent=next;
       }
       const original=button.dataset.originalLabel||button.textContent;
       button.dataset.originalLabel=original;
