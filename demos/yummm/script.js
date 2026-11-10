@@ -193,7 +193,7 @@
     });
     if(!motion)$('#headerBoxCount').textContent=String(countBox());
   }
-  $('.choose-item').forEach(button => button.addEventListener('click', () => {
+  $$('.choose-item').forEach(button => button.addEventListener('click', () => {
     const card = button.closest('.product-card');
     if (card) addProduct(card.dataset.product, card.dataset.image, button);
   }));
