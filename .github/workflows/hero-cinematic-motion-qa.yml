@@ -24,12 +24,18 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: {node-version: '22'}
-      - name: Validate three cinematic heroes and Seasonal Brew original photo
+      - name: Validate two cinematic heroes and both original storefront photos
         run: |
-          for name in wok-social soluna-yoga yummm; do
+          for name in soluna-yoga yummm; do
             test -s "demos/$name/media/hero-motion-20261108.mp4"
             grep -q 'tle-hero-cinematic-20261108.js' "demos/$name/index.html"
           done
+          test -s demos/wok-social/assets/hero-storefront.webp
+          grep -q 'hero-storefront.webp' demos/wok-social/index.html
+          if grep -q '<script defer src="../assets/tle-hero-cinematic-20261108.js' demos/wok-social/index.html; then
+            echo "WOK SOCIAL storefront hero unexpectedly replaced with a cinematic script"
+            exit 1
+          fi
           test -s demos/seasonal-brew/assets/storefront.webp
           grep -q 'assets/storefront.webp' demos/seasonal-brew/index.html
           if grep -q 'tle-hero-cinematic-20261108.js' demos/seasonal-brew/index.html; then
