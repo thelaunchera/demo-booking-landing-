@@ -156,3 +156,8 @@ dialog{color:var(--paper);background:#1b1013;border:1px solid #74414e;padding:0;
   .film-controls {gap:4px}
   .film-controls .icon {min-width:44px}
 }
+
+/* Hero clarity review — 2026-11-10. Original media and actions retained. */
+html[data-tle-one-motion="velmora"] .hero .eyebrow{font-size:12px;line-height:1.5;letter-spacing:.12em}
+html[data-tle-one-motion="velmora"] .hero .hero-note{font-size:16px;line-height:1.65;max-width:39ch}
+html[data-tle-one-motion="velmora"] .hero .button{min-height:48px;font-size:14px}
