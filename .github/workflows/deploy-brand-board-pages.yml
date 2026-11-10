@@ -9,6 +9,7 @@ on:
     paths:
       - .github/workflows/deploy-brand-board-pages.yml
       - assets/tle-menu-discovery-20261110.js
+      - assets/tle-demo-discovery-20261110.js
       - assets/tle-demo-mobile-ux-20261107.css
       - assets/tle-demo-single-signature-20261108.css
       - assets/tle-demo-tactile-20261108.css
@@ -119,6 +120,8 @@ jobs:
           cp -R demos/nail-room/. _site/nail-room/
           # Shared The Launch Era footer/focus layer, kept separate from each demo's visual identity
           mkdir -p _site/assets
+          cp assets/tle-demo-discovery-20261110.js _site/assets/
+          node --check _site/assets/tle-demo-discovery-20261110.js
           cp assets/tle-menu-discovery-20261110.js _site/assets/
           node --check _site/assets/tle-menu-discovery-20261110.js
           cp assets/tle-company-system-20261106.css _site/assets/tle-company-system-20261106.css
