@@ -551,9 +551,18 @@ let index=0,visible=false,pausedUntil=0,timer=null,scrollRaf=0;
 function leftOf(slide){return slide.getBoundingClientRect().left-rail.getBoundingClientRect().left+rail.scrollLeft}
 function update(){count.textContent=String(index+1).padStart(2,"0")+" / "+String(slides.length).padStart(2,"0")}
 function go(n,manual){
-index=(n+slides.length)%slides.length;
 if(manual)pausedUntil=Date.now()+9000;
-rail.scrollTo({left:leftOf(slides[index]),behavior:reduce.matches?"auto":"smooth"});update();
+const maxScroll=Math.max(0,rail.scrollWidth-rail.clientWidth);
+// At wider viewport sizes several cards fit together. Wrap at the real
+// scroll boundary instead of repeatedly targeting an unreachable slide.
+if(n>index&&rail.scrollLeft>=maxScroll-6){
+ index=0;rail.scrollTo({left:0,behavior:"auto"});update();return;
+}
+if(n<index&&rail.scrollLeft<=6){
+ index=slides.length-1;rail.scrollTo({left:maxScroll,behavior:"auto"});update();return;
+}
+index=(n+slides.length)%slides.length;
+rail.scrollTo({left:Math.min(leftOf(slides[index]),maxScroll),behavior:reduce.matches?"auto":"smooth"});update();
 }
 function nearest(){
 let best=0,distance=Infinity;
@@ -574,7 +583,7 @@ if("IntersectionObserver" in window){
 new IntersectionObserver(function(entries){visible=entries.some(function(e){return e.isIntersecting})},{threshold:.25}).observe(rail);
 }else{visible=true}
 timer=setInterval(function(){
-if(!visible||document.hidden||reduce.matches||hovered.value||Date.now()<pausedUntil)return;
+if(!visible||document.hidden||reduce.matches||hovered.value||document.getElementById("photoLightbox")?.open||Date.now()<pausedUntil)return;
 go(index+1,false);
 },3900);
 window.addEventListener("pagehide",function(){clearInterval(timer)},{once:true});
