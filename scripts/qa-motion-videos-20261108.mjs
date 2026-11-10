@@ -3,7 +3,7 @@ import {strict as assert} from 'node:assert';
 import fs from 'node:fs';
 
 const base='https://thelaunchera.github.io/demo-booking-landing-';
-const active=['wok-social','soluna-yoga','yummm'];
+const active=['soluna-yoga','yummm'];
 fs.mkdirSync('qa-screenshots/motion-20261108',{recursive:true});
 const browser=await chromium.launch({headless:true});
 try {
@@ -52,6 +52,20 @@ try {
   await seasonalPage.screenshot({path:'qa-screenshots/motion-20261108/seasonal-brew-static-390.png'});
   await seasonalContext.close();
   console.log('PASS static storefront mobile seasonal-brew');
+  // WOK SOCIAL retains the original approved storefront photo, not the cinematic video.
+  const wokContext=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,reducedMotion:'no-preference'});
+  const wokPage=await wokContext.newPage();
+  await wokPage.goto(base+'/wok-social/',{waitUntil:'domcontentloaded',timeout:40000});
+  await wokPage.locator('.hero-photo-frame img.hero-photo').waitFor({state:'visible',timeout:15000});
+  await wokPage.waitForFunction(()=>{
+    const img=document.querySelector('.hero-photo-frame img.hero-photo');
+    return !!img&&img.complete&&img.naturalWidth>0;
+  },null,{timeout:15000});
+  assert.equal(await wokPage.locator('video[data-tle-cinematic-hero="wok-social"]').count(),0,'WOK SOCIAL must not insert a hero video');
+  assert.equal(await wokPage.locator('.hero-photo-frame img.hero-photo').getAttribute('src'),'./assets/hero-storefront.webp','WOK SOCIAL original storefront hero');
+  await wokPage.screenshot({path:'qa-screenshots/motion-20261108/wok-social-static-390.png'});
+  await wokContext.close();
+  console.log('PASS original static storefront mobile wok-social');
   const context=await browser.newContext({viewport:{width:1440,height:900},reducedMotion:'no-preference'});
   const page=await context.newPage();
   await page.goto(base+'/wok-social/',{waitUntil:'domcontentloaded',timeout:40000});
@@ -65,7 +79,8 @@ try {
   await page.waitForTimeout(350);
   const second=await hero.evaluate(el=>el.style.getPropertyValue('--tle-rh-px'));
   assert.notEqual(first,second,'desktop cursor parallax');
-  assert((await page.locator('video[data-tle-reactive-photo]').count())>0,'video responds to cursor');
+  assert((await page.locator('.hero-photo-frame img.hero-photo').count())>0,'original WOK storefront remains visible with cursor effects');
+  assert.equal(await page.locator('video[data-tle-cinematic-hero="wok-social"]').count(),0,'desktop WOK hero stays photo-only');
   await context.close();
   const reduced=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
   const still=await reduced.newPage();
