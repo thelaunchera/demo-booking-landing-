@@ -1,4 +1,4 @@
-/* TLE Motion Heroes · seven approved brand heroes only · 2026-11-08
+/* TLE Motion Heroes · approved brand heroes · 2026-11-08
    The video and initial poster share the SAME first frame to prevent scene switching.
    Never change forms, orders, galleries, or links. No video on CRUMB. */
 (()=>{"use strict";
@@ -10,7 +10,10 @@
   "aftr":".hero-image",
   "ivory-and-bloom":".hero .hero-photo",
   "marea-wigs-miami":".hero-visual",
-  "sova":".hero-media"
+  "sova":".hero-media",
+  "seasonal-brew":".hero-media",
+  "wok-social":".hero-photo-frame",
+  "soluna-yoga":".hero-visual"
  };
  // YUMMM owns a permanent inline loop. Do not append a second competing player.
  if(brand==="yummm"&&document.querySelector(".yummm-motion-video"))return;
