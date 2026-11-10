@@ -221,6 +221,50 @@ main{width:100%;max-width:100%;overflow-x:clip}
 @media(max-width:560px){.nail-design-grid{gap:12px}.nail-design-photo{height:clamp(150px,40vw,210px)}.nail-design-copy{padding:13px 11px;gap:6px}.nail-design-title{font-size:clamp(17px,4.3vw,20px)}.nail-design-desc{font-size:11px;min-height:48px}.nail-design-footer{gap:5px;flex-wrap:wrap}.nail-design-footer b{font-size:14px}.nail-selection-summary{padding:14px 12px}.nail-change-look{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.nail-design-grid .nail-design-card,.nail-design-photo img{transition:none!important;transform:none!important}}
 
+
+/* Nail Room: original imagery, horizontal inspiration reel and frosted pricing */
+.nail-carousel-head{display:flex;justify-content:space-between;align-items:center;gap:14px;margin:0 0 14px}
+.nail-carousel-hint{color:#855771;font-size:12px;letter-spacing:.025em}
+.nail-carousel-controls{display:flex;align-items:center;gap:9px}
+.nail-carousel-progress{color:#88526b;letter-spacing:.12em;font-size:11px;font-weight:800;min-width:56px;font-variant-numeric:tabular-nums}
+.nail-carousel-btn{width:42px;height:42px;display:grid;place-items:center;border:1px solid rgba(183,104,138,.36);background:rgba(255,250,252,.85);border-radius:50%;color:#8a4164;cursor:pointer;font-size:20px;box-shadow:0 4px 15px #a55d7d15;transition:transform .2s,background .2s}
+.nail-carousel-btn:hover{transform:translateY(-2px);background:#fff}
+#nailCarousel.gallery{display:flex!important;gap:16px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding-inline:4px;scrollbar-width:none;overscroll-behavior-x:contain;padding:8px 4px 22px;margin:0 -4px;align-items:stretch;-webkit-overflow-scrolling:touch}
+#nailCarousel.gallery::-webkit-scrollbar{display:none}
+#nailCarousel .gallery-item{flex:0 0 clamp(230px,27vw,326px);height:clamp(330px,40vw,410px);scroll-snap-align:start;scroll-snap-stop:always;box-shadow:0 12px 28px #99547028;border:1px solid #ffffffcc}
+#nailCarousel .gallery-item .photo{height:100%;width:100%;display:block;object-fit:cover;object-position:center}
+#nailCarousel .gallery-caption{bottom:12px;left:12px;right:12px;min-height:92px;position:absolute;z-index:2;border:1px solid #fff;background:linear-gradient(135deg,rgba(255,248,252,.9),rgba(255,227,238,.76));-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-radius:20px;padding:13px 14px;box-shadow:0 8px 28px #71354e22;cursor:zoom-in}
+#nailCarousel .gallery-caption h3{font:500 clamp(18px,2vw,23px)/1.1 'Playfair Display',Georgia,serif;color:#462d3e}
+#nailCarousel .gallery-caption p{font-size:11px;line-height:1.4;color:#7e566f}
+#nailCarousel .photo-open{z-index:4}
+#nailCarousel .heart{z-index:4}
+.nail-artist-section{padding:70px 0 90px;background:#fff8fa}
+.nail-artist-grid{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(30px,6vw,90px);align-items:center}
+.nail-artist-photo{position:relative;isolation:isolate;border-radius:42% 42% 26px 26px;overflow:hidden;background:#eed6df;min-height:340px}
+.nail-artist-photo img{width:100%;height:clamp(390px,51vw,580px);object-fit:cover;object-position:center 39%;display:block}
+.nail-artist-stamp{position:absolute;bottom:22px;left:22px;max-width:80%;padding:13px 17px;color:#7d4160;background:rgba(255,249,251,.85);border:1px solid rgba(255,255,255,.85);border-radius:18px;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);letter-spacing:.14em;font-weight:800;font-size:10px;box-shadow:0 10px 22px #6633472c}
+.nail-artist-story h2{font:800 clamp(39px,5vw,67px)/1.02 Manrope,sans-serif;letter-spacing:-.07em;margin:18px 0 23px;color:#422436}
+.nail-artist-story h2 em{font-family:'Playfair Display',Georgia,serif;color:#d74986;font-weight:500;letter-spacing:-.04em}
+.nail-artist-story p{font-size:15px;line-height:1.85;color:#775b69;max-width:455px;margin-bottom:28px}
+.nail-design-grid .nail-design-copy{position:relative;z-index:2;margin:-17px 9px 10px;padding:16px 13px;background:linear-gradient(135deg,rgba(255,253,254,.95),rgba(255,232,242,.88));border:1px solid rgba(255,255,255,.98);border-radius:19px;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 8px 25px #74415825;gap:7px}
+.nail-design-grid .nail-design-title{color:#4c2e42}
+.nail-design-grid .nail-design-footer b{color:#a53870}
+.nail-design-grid .nail-design-footer{border-top-color:#e8c9d7}
+#nailCarousel:focus-visible,.nail-carousel-btn:focus-visible{outline:3px solid #be3977;outline-offset:3px}
+@media(max-width:700px){
+.nail-carousel-hint{font-size:11px;max-width:165px;line-height:1.4}
+#nailCarousel .gallery-item{flex-basis:min(72vw,295px);height:370px}
+#nailCarousel .gallery-caption{padding:12px;min-height:92px}
+.nail-artist-section{padding:48px 0 65px}
+.nail-artist-grid{grid-template-columns:1fr;gap:27px}
+.nail-artist-photo{border-radius:39% 39% 22px 22px}
+.nail-artist-photo img{height:min(102vw,455px)}
+.nail-artist-story h2{font-size:clamp(38px,9vw,54px)}
+.nail-design-grid .nail-design-copy{margin:-14px 7px 8px;padding:12px 10px;border-radius:16px}
+.nail-design-grid .nail-design-footer b{font-size:13px}
+}
+@media(prefers-reduced-motion:reduce){#nailCarousel{scroll-behavior:auto!important}.nail-carousel-btn{transition:none}}
+
 </style>
 </head>
 <body>
@@ -243,16 +287,55 @@ main{width:100%;max-width:100%;overflow-x:clip}
   <span class="nail-design-copy"><span class="nail-design-overline">03 · THE ART</span><strong class="nail-design-title">Nail Art Studio</strong><span class="nail-design-desc">Creative details, made your own</span><span class="nail-design-footer"><span>75 MIN</span><b>From $74</b></span></span>
 </button>
 <button class="service nail-design-card" type="button" data-service="builder" aria-pressed="false" aria-label="Select Builder Gel, from $82">
-  <span class="nail-design-photo"><img loading="lazy" decoding="async" src="./media/studio-service.png" alt="Professional nail technician working on a manicure" width="900" height="1100"></span>
+  <span class="nail-design-photo"><img loading="lazy" decoding="async" src="./media/builder-rose-aura-20261110.png" alt="Glossy soft-pink gel manicure with subtle rosy ombré" width="900" height="1100"></span>
   <span class="nail-design-copy"><span class="nail-design-overline">04 · THE SHAPE</span><strong class="nail-design-title">Builder Gel</strong><span class="nail-design-desc">Structure, strength and shine</span><span class="nail-design-footer"><span>80 MIN</span><b>From $82</b></span></span>
 </button>
 </div><p class="nail-pricing-note">Prices start at the amounts shown and may vary with design, length and add-ons. This is an interactive concept preview.</p></div></section>
-<section class="inspo" id="inspo"><div class="wrap"><div class="section-heading"><div><span class="kicker">Find your next obsession / 02</span><h2>The inspo<br>wall. ♡</h2></div><p>Save the looks you love and bring your favorite ideas to your appointment.</p></div><div class="gallery">
-<article class="gallery-item" data-category="soft"><img class="photo" loading="lazy" src="./media/french-ivory.png" alt="Natural, glossy French manicure with nude and white tones"><button type="button" class="photo-open" aria-label="View nail photo full size"> View</button><button type="button" class="heart" data-save="French Glow" aria-pressed="false" aria-label="Save French Glow">♡</button><div class="gallery-caption"><div><h3>French Glow</h3><p>Clean, glossy, forever classic.</p></div><span class="pin">SOFT</span></div></article>
-<article class="gallery-item" data-category="art"><img class="photo" loading="lazy" src="./media/terracotta-art.png" alt="Terracotta geometric nail art with elegant rings"><button type="button" class="photo-open" aria-label="View nail photo full size"> View</button><button type="button" class="heart" data-save="The Art Set" aria-pressed="false" aria-label="Save The Art Set">♡</button><div class="gallery-caption"><div><h3>The Art Set</h3><p>A little more personality.</p></div><span class="pin">ART</span></div></article>
-<article class="gallery-item" data-category="soft art"><img class="photo" loading="lazy" src="./media/pink-floral-chrome.png" alt="Glossy pink chrome nails holding delicate flowers"><button type="button" class="photo-open" aria-label="View nail photo full size"> View</button><button type="button" class="heart" data-save="Pink Petal" aria-pressed="false" aria-label="Save Pink Petal">♡</button><div class="gallery-caption"><div><h3>Pink Petal</h3><p>Soft pink, high shine.</p></div><span class="pin">PINK</span></div></article>
-<article class="gallery-item" data-category="studio"><img class="photo" loading="lazy" src="./media/studio-service.png" alt="Nail technician working carefully on a client's manicure"><button type="button" class="photo-open" aria-label="View nail photo full size"> View</button><button type="button" class="heart" data-save="The Nail Date" aria-pressed="false" aria-label="Save The Nail Date">♡</button><div class="gallery-caption"><div><h3>The Nail Date</h3><p>Details from the studio.</p></div><span class="pin">STUDIO</span></div></article>
+<section class="inspo" id="inspo"><div class="wrap">
+<div class="section-heading"><div><span class="kicker">FIND YOUR NEXT OBSESSION / 02</span><h2>The inspo<br>wall. ♡</h2></div><p>Fresh sets worth saving. Swipe, explore, and find your next nail crush.</p></div>
+<div class="nail-carousel-head"><span class="nail-carousel-hint">Scroll through the looks you love</span><div class="nail-carousel-controls" aria-label="Inspiration gallery controls"><span class="nail-carousel-progress" id="nailCarouselProgress" aria-live="off">01 / 06</span><button class="nail-carousel-btn" id="nailCarouselPrev" type="button" aria-label="Previous nail look">←</button><button class="nail-carousel-btn" id="nailCarouselNext" type="button" aria-label="Next nail look">→</button></div></div>
+<div class="gallery" id="nailCarousel" role="region" aria-roledescription="carousel" aria-label="Nail inspiration photos" tabindex="0">
+<article class="gallery-item" data-category="art">
+<img class="photo" loading="eager" decoding="async" src="./media/inspo-chrome-peony-20261110.jpg" alt="Pearlescent pink chrome nails holding a soft pink peony" width="1122" height="1402">
+<button type="button" class="photo-open" aria-label="View Pink Chrome Bloom full size">View</button>
+<button type="button" class="heart" data-save="Pink Chrome Bloom" aria-pressed="false" aria-label="Save Pink Chrome Bloom">♡</button>
+<div class="gallery-caption"><div><h3>Pink Chrome Bloom</h3><p>Chrome shine, petal-soft energy.</p></div><span class="pin">CHROME</span></div>
+</article>
+<article class="gallery-item" data-category="soft">
+<img class="photo" loading="lazy" decoding="async" src="./media/inspo-pearl-ribbon-20261110.jpg" alt="Milky pearlescent manicure with pink satin ribbon" width="1122" height="1402">
+<button type="button" class="photo-open" aria-label="View Pearl Glaze full size">View</button>
+<button type="button" class="heart" data-save="Pearl Glaze" aria-pressed="false" aria-label="Save Pearl Glaze">♡</button>
+<div class="gallery-caption"><div><h3>Pearl Glaze</h3><p>Soft, luminous, effortlessly chic.</p></div><span class="pin">PEARL</span></div>
+</article>
+<article class="gallery-item" data-category="color">
+<img class="photo" loading="lazy" decoding="async" src="./media/inspo-lilac-perfume-20261110.jpg" alt="Glossy lilac nails arranged around a pink perfume bottle" width="1122" height="1402">
+<button type="button" class="photo-open" aria-label="View Lilac Gloss full size">View</button>
+<button type="button" class="heart" data-save="Lilac Gloss" aria-pressed="false" aria-label="Save Lilac Gloss">♡</button>
+<div class="gallery-caption"><div><h3>Lilac Gloss</h3><p>A little color, a lot of glow.</p></div><span class="pin">GLOSS</span></div>
+</article>
+<article class="gallery-item" data-category="soft">
+<img class="photo" loading="lazy" decoding="async" src="./media/inspo-french-cozy-20261110.png" alt="Shiny almond French nails with gold rings and an ivory knit cuff" width="1122" height="1402">
+<button type="button" class="photo-open" aria-label="View The French Muse full size">View</button>
+<button type="button" class="heart" data-save="The French Muse" aria-pressed="false" aria-label="Save The French Muse">♡</button>
+<div class="gallery-caption"><div><h3>The French Muse</h3><p>A classic with a fresh finish.</p></div><span class="pin">FRENCH</span></div>
+</article>
+<article class="gallery-item" data-category="art">
+<img class="photo" loading="lazy" decoding="async" src="./media/inspo-bridal-pearls-20261110.png" alt="Nude bridal manicure with tiny pearls over blush tulle" width="1122" height="1402">
+<button type="button" class="photo-open" aria-label="View Pearl Detail full size">View</button>
+<button type="button" class="heart" data-save="Pearl Detail" aria-pressed="false" aria-label="Save Pearl Detail">♡</button>
+<div class="gallery-caption"><div><h3>Pearl Detail</h3><p>Delicate touches that feel special.</p></div><span class="pin">DETAIL</span></div>
+</article>
+<article class="gallery-item" data-category="color">
+<img class="photo" loading="lazy" decoding="async" src="./media/inspo-berry-blossoms-20261110.png" alt="Berry rose glossy nails holding a bouquet of tiny flowers" width="1122" height="1402">
+<button type="button" class="photo-open" aria-label="View Berry Crush full size">View</button>
+<button type="button" class="heart" data-save="Berry Crush" aria-pressed="false" aria-label="Save Berry Crush">♡</button>
+<div class="gallery-caption"><div><h3>Berry Crush</h3><p>Deep rose, dreamy shine.</p></div><span class="pin">COLOR</span></div>
+</article>
 </div><p class="saved-note" id="savedNote" aria-live="polite"></p></div></section>
+<section class="nail-artist-section" aria-labelledby="nailArtistTitle"><div class="wrap nail-artist-grid">
+<div class="nail-artist-photo"><img src="./media/nail-artist-portrait-20261110.png" loading="lazy" decoding="async" width="1122" height="1402" alt="Nail stylist delicately painting a manicure at a softly lit salon"><span class="nail-artist-stamp">THE BEAUTY IS IN THE DETAILS</span></div>
+<div class="nail-artist-story"><span class="kicker">BEHIND THE GLOSS</span><h2 id="nailArtistTitle">Made with care.<br><em>Worn with confidence.</em></h2><p>From the first brushstroke to the final glossy finish, the little details are everything. Your next favorite set starts here.</p><a class="pill pink" href="#book">Plan your nail date</a></div>
+</div></section>
 <section class="feature-band motion-in" id="nailMood" data-mood="pink" aria-label="Explore nail moods">
  <img class="mood-photo" id="moodPhoto" src="./media/pink-ombre-hero.png" alt="" loading="lazy" decoding="async">
  <div class="mood-glass">
@@ -449,6 +532,53 @@ else{
  },{rootMargin:'0px',threshold:0.01});
  revealTargets.forEach(function(el){observer.observe(el);});
 }
+})();
+</script>
+
+<script>
+/* Accessible nail inspiration reel: auto-advance only while visible, never during interaction. */
+(function(){
+"use strict";
+const rail=document.getElementById("nailCarousel");
+const prev=document.getElementById("nailCarouselPrev");
+const next=document.getElementById("nailCarouselNext");
+const count=document.getElementById("nailCarouselProgress");
+if(!rail||!prev||!next||!count)return;
+const slides=Array.from(rail.querySelectorAll(".gallery-item"));
+if(!slides.length)return;
+const reduce=window.matchMedia("(prefers-reduced-motion: reduce)");
+let index=0,visible=false,pausedUntil=0,timer=null,scrollRaf=0;
+function leftOf(slide){return slide.getBoundingClientRect().left-rail.getBoundingClientRect().left+rail.scrollLeft}
+function update(){count.textContent=String(index+1).padStart(2,"0")+" / "+String(slides.length).padStart(2,"0")}
+function go(n,manual){
+index=(n+slides.length)%slides.length;
+if(manual)pausedUntil=Date.now()+9000;
+rail.scrollTo({left:leftOf(slides[index]),behavior:reduce.matches?"auto":"smooth"});update();
+}
+function nearest(){
+let best=0,distance=Infinity;
+slides.forEach(function(slide,i){const d=Math.abs(leftOf(slide)-rail.scrollLeft);if(d<distance){distance=d;best=i;}});
+index=best;update();
+}
+prev.addEventListener("click",function(){go(index-1,true)});
+next.addEventListener("click",function(){go(index+1,true)});
+rail.addEventListener("scroll",function(){if(scrollRaf)return;scrollRaf=requestAnimationFrame(function(){scrollRaf=0;nearest()})},{passive:true});
+rail.addEventListener("pointerdown",function(){pausedUntil=Date.now()+9000},{passive:true});
+rail.addEventListener("keydown",function(e){if(e.key==="ArrowRight"||e.key==="ArrowLeft"){e.preventDefault();go(index+(e.key==="ArrowRight"?1:-1),true)}});
+const hovered={value:false};
+rail.addEventListener("mouseenter",function(){hovered.value=true});
+rail.addEventListener("mouseleave",function(){hovered.value=false});
+rail.addEventListener("focusin",function(){hovered.value=true});
+rail.addEventListener("focusout",function(){hovered.value=rail.contains(document.activeElement)});
+if("IntersectionObserver" in window){
+new IntersectionObserver(function(entries){visible=entries.some(function(e){return e.isIntersecting})},{threshold:.25}).observe(rail);
+}else{visible=true}
+timer=setInterval(function(){
+if(!visible||document.hidden||reduce.matches||hovered.value||Date.now()<pausedUntil)return;
+go(index+1,false);
+},3900);
+window.addEventListener("pagehide",function(){clearInterval(timer)},{once:true});
+update();
 })();
 </script>
 <script defer src="../assets/tle-demo-discovery-20261110.js?v=1" data-discovery-brand="nail-room"></script>
