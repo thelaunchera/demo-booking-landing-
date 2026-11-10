@@ -16,11 +16,27 @@ on:
       - 'scripts/qa-demo-footer-menu-20261108.mjs'
       - 'scripts/qa-demo-price-placement-20261108.mjs'
       - '.github/workflows/qa-brand-scroll-motion.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'demos/seasonal-brew/**'
+      - 'demos/soluna-yoga/**'
+      - 'demos/wok-social/**'
+      - 'demos/yummm/**'
+      - 'assets/tle-demo-scroll-art-20261108.css'
+      - 'assets/tle-demo-scroll-art-20261108.js'
+      - 'scripts/qa-demo-scroll-art-20261108.mjs'
+      - 'scripts/qa-demo-reactive-hero-20261108.mjs'
+      - 'assets/tle-demo-footer-finale-20261108.css'
+      - 'assets/tle-demo-footer-finale-20261108.js'
+      - 'scripts/qa-demo-footer-menu-20261108.mjs'
+      - 'scripts/qa-demo-price-placement-20261108.mjs'
+      - '.github/workflows/qa-brand-scroll-motion.yml'
   workflow_dispatch:
 permissions:
   contents: read
 concurrency:
-  group: five-brand-scroll-mobile-qa
+  group: five-brand-scroll-mobile-qa-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   scroll-art:
