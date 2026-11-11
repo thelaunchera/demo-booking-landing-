@@ -302,3 +302,8 @@ img[loading="lazy"] { background:#25221e; }
  .hero.storefront-hero .hero-photo-frame{height:clamp(570px,45vw,740px);width:min(87%,790px);max-width:none}
  .hero.storefront-hero .hero-photo-frame img{width:100%;height:100%;object-fit:cover}
 }
+
+/* Hero clarity review — 2026-11-10. Original media and actions retained. */
+html[data-tle-one-motion="wok-social"] .hero .eyebrow{font-size:12px;line-height:1.5;letter-spacing:.1em}
+html[data-tle-one-motion="wok-social"] .hero .hero-copy>p{font-size:16px;line-height:1.65}
+html[data-tle-one-motion="wok-social"] .hero .hero-actions .btn{min-height:48px;font-size:14px}

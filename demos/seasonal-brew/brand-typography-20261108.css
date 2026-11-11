@@ -140,3 +140,8 @@
   .hero-actions .button,.hero-actions .text-link {font-size:15px}
 }
 /* Fallback fonts are defined explicitly; do not hide text while webfonts load. */
+
+/* Hero clarity review — 2026-11-10. Original media and actions retained. */
+html[data-tle-one-motion="seasonal-brew"] .hero .eyebrow{font-size:12px;line-height:1.5;letter-spacing:.1em}
+html[data-tle-one-motion="seasonal-brew"] .hero .hero-subtitle{font-size:16px;line-height:1.65;max-width:40ch}
+html[data-tle-one-motion="seasonal-brew"] .hero .hero-actions :is(a,button){display:inline-flex;align-items:center;min-height:48px;font-size:14px}

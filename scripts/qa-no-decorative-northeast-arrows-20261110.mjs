@@ -21,10 +21,16 @@ for(const file of source){
 }
 const nail=fs.readFileSync('demos/nail-room/index.html','utf8');
 assert.equal((nail.match(/class="service nail-design-card"/g)||[]).length,4,'Keep all service cards');
-assert.equal((nail.match(/class="photo-open"/g)||[]).length,4,'Keep all photo lightbox controls');
+const galleryItems=[...nail.matchAll(/<article class="gallery-item"[^>]*>[\s\S]*?<\/article>/g)].map(m=>m[0]);
+assert(galleryItems.length>0,'Keep the current inspiration gallery');
+assert.equal((nail.match(/class="photo-open"/g)||[]).length,galleryItems.length,'Every current photo needs one lightbox control');
+for(const item of galleryItems){
+ assert.match(item,/<img[^>]+src="[^"]+"/,'Keep each gallery photograph');
+ assert.match(item,/<button[^>]+class="photo-open"[^>]+aria-label="View [^"]+ full size"/,'Keep a named accessible photo control');
+}
 assert.ok(nail.includes('id="bookingForm"'),'Keep the existing sample booking form');
 assert.ok(nail.includes('id="dateGrid"'),'Keep date selection');
 assert.ok(nail.includes('id="timeGrid"'),'Keep time selection');
 assert.ok(nail.includes('id="photoLightbox"'),'Keep photo preview');
-assert.ok(nail.includes('aria-label="View nail photo full size"'),'Keep accessible photo controls');
+
 console.log('PASS: removed ↗ in '+source.length+' demo HTML/JS/CSS files; 4 cards, gallery and booking intact');
