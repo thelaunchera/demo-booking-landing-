@@ -265,3 +265,6 @@ html[data-tle-one-motion="velmora"] .hero .button{min-height:48px;font-size:14px
  .product-dialog .close{top:10px;right:11px}
 }
 @media(prefers-reduced-motion:reduce){.beauty-category,.category-photo img{transition:none!important}}
+
+/* Maintain readable tone labels in the dark wishlist layout. */
+.wishlist .product-tone{color:#e5c6c7}
