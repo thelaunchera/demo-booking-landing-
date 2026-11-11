@@ -6,6 +6,11 @@ on:
     paths:
       - 'demos/wok-social/**'
       - '.github/workflows/qa-wok-social.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'demos/wok-social/**'
+      - '.github/workflows/qa-wok-social.yml'
   workflow_dispatch:
 
 permissions:

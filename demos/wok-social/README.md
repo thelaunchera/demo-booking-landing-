@@ -76,3 +76,10 @@ The [WOK SOCIAL mobile and desktop QA workflow](https://github.com/thelaunchera/
 Static HTML/CSS/JS, local image assets, GitHub/GitHub Pages. No AppDeploy, Cloudflare, paid Figma Make, external live restaurant API, fabricated business facts or changes to other demo brands. For the original construction brief and complete file-by-file rebuild documentation, use the private Drive kit above.
 
 **Coordination:** [GitHub issue #16](https://github.com/thelaunchera/demo-booking-landing-/issues/16).
+
+## Sticky bag + slower guided add-to-bag flight — 2026-11-11
+
+- The original red WOK header stays visible while scrolling the menu, with a high-contrast yellow bag and count in the same top bar. At mobile widths its existing navigation dropdown anchors immediately below the sticky bar.
+- The shared TLE order journey now reads the WOK-only `data-tle-cart-flight-ms="2400"` opt-in, so adding a dish shows a 2.4-second product-to-bag animation. The bag count increments immediately; the bag remains closed until clicked. Other brands keep their existing motion.
+- HTML refreshes the remote cart and order helper cache keys; WOK is still deployed from `thelaunchera/demo-booking-landing-/demos/wok-social/`, not copied to the main website. No backend, real order, payment, customer data, email or other demos changed.
+- WOK responsive browser QA checks sticky header, visible bag, 320/390/820/1440 viewport layout, modal open/close, mobile menu beneath header, count and long-motion cleanup. GitHub Pages and real iPhone verification must be recorded separately.

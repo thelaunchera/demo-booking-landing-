@@ -103,7 +103,57 @@ const check=(condition,message)=>{ if(!condition){report.failures.push(message);
     check(!(await page.locator("#detailDialog").isVisible()),"dialog action button closes it");
     await page.locator(".filter[data-filter='all']").click();
     check(await page.locator(".dish:visible").count()===6,"all filter restores six cards");
-    report.interactions={mobileNav:true,filters:true,dialog:true,focusReturn:true};
+
+    // Sticky red WOK header and yellow bag must remain accessible from the menu.
+    for(const width of [320,390,820,1440]){
+      await page.setViewportSize({width,height:844});
+      await page.goto(base,{waitUntil:"domcontentloaded",timeout:45000});
+      const bag=page.locator(".site-header .tle-order-float");
+      await bag.waitFor({state:"visible",timeout:15000});
+      const start=await page.evaluate(()=>{
+        const header=document.querySelector(".site-header"),bag=header.querySelector(".tle-order-float");
+        const h=header.getBoundingClientRect(),b=bag.getBoundingClientRect();
+        return {sticky:getComputedStyle(header).position,bagColor:getComputedStyle(bag).backgroundColor,bagWidth:b.width,bagHeight:b.height,headerRight:h.right,bagRight:b.right,overflow:document.documentElement.scrollWidth-innerWidth};
+      });
+      check(start.sticky==="sticky",width+"px WOK header is sticky");
+      check(start.bagColor==="rgb(255, 228, 0)",width+"px bag contrasts with the red header");
+      check(start.bagHeight>=43&&start.bagWidth>=57&&start.bagRight<=width+2,width+"px bag remains tappable inside viewport");
+      check(start.overflow<=2,width+"px sticky header has no horizontal overflow");
+      await page.locator("#menu").scrollIntoViewIfNeeded();
+      await page.evaluate(()=>window.scrollBy(0,130));
+      await page.waitForTimeout(220);
+      const scrolled=await page.locator(".site-header").evaluate(header=>({top:header.getBoundingClientRect().top,position:getComputedStyle(header).position}));
+      check(Math.abs(scrolled.top)<=2,width+"px header stays at top after scrolling to menu");
+      await bag.click();
+      check(await page.locator("#tle-demo-order-dialog").evaluate(el=>el.open),width+"px sticky header bag opens sample-order dialog");
+      await page.locator("#tle-demo-order-dialog [data-action='close']").click();
+      check(!(await page.locator("#tle-demo-order-dialog").evaluate(el=>el.open)),width+"px closes sample-order dialog");
+      if(width<=900){
+        await page.locator("#menuToggle").click();
+        const nav=await page.locator("#mobileNav").evaluate(n=>({position:getComputedStyle(n).position,top:n.getBoundingClientRect().top,shown:!n.hidden}));
+        check(nav.shown&&nav.position==="fixed"&&Math.abs(nav.top-72)<=2,width+"px mobile navigation opens beneath sticky header");
+        await page.locator("#menuToggle").click();
+      }
+    }
+    // The longer product-to-header flight must not postpone the bag's actual count.
+    const motionContext=await browser.newContext({viewport:{width:390,height:844},reducedMotion:"no-preference"});
+    try{
+      const motionPage=await motionContext.newPage();
+      motionPage.on("pageerror",error=>report.failures.push("WOK cart browser error: "+error.message));
+      await motionPage.goto(base,{waitUntil:"domcontentloaded",timeout:45000});
+      const add=motionPage.locator(".menu-grid .tle-order-inline-add").first();
+      await add.waitFor({state:"visible",timeout:15000});
+      await add.click();
+      check((await motionPage.locator(".site-header .tle-order-float b").innerText()).trim()==="1","WOK bag count updates immediately");
+      check(!(await motionPage.locator("#tle-demo-order-dialog").evaluate(el=>el.open)),"Adding a WOK dish does not open the bag automatically");
+      await motionPage.waitForTimeout(1400);
+      check(await motionPage.locator('body > span[aria-hidden="true"][style*="position: fixed"]').count()>0,"WOK add-to-bag flight remains visible beyond 1.4 seconds");
+      await motionPage.waitForTimeout(1250);
+      check(await motionPage.locator('body > span[aria-hidden="true"][style*="position: fixed"]').count()===0,"WOK flight cleans itself up after 2.4 seconds");
+      await motionPage.locator(".site-header .tle-order-float").click();
+      check(await motionPage.locator("#tle-demo-order-dialog").evaluate(el=>el.open),"WOK bag still opens after adding a dish");
+    } finally { await motionContext.close(); }
+    report.interactions={mobileNav:true,filters:true,dialog:true,focusReturn:true,stickyBag:true,slowBagMotion:true};
     const brokenAnchors=await page.locator("a[href^='#']").evaluateAll(links=>links.filter(a=>a.getAttribute("href")!="#"&&!document.querySelector(a.getAttribute("href"))).map(a=>a.outerHTML));
     check(brokenAnchors.length===0,"All internal anchor targets exist");
   } finally {await browser.close();fs.writeFileSync(path.join(out,"results.json"),JSON.stringify(report,null,2));}

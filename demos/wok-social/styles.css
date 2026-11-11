@@ -307,3 +307,27 @@ img[loading="lazy"] { background:#25221e; }
 html[data-tle-one-motion="wok-social"] .hero .eyebrow{font-size:12px;line-height:1.5;letter-spacing:.1em}
 html[data-tle-one-motion="wok-social"] .hero .hero-copy>p{font-size:16px;line-height:1.65}
 html[data-tle-one-motion="wok-social"] .hero .hero-actions .btn{min-height:48px;font-size:14px}
+
+/* WOK SOCIAL: keep its real header basket within reach while browsing the menu. */
+html{scroll-padding-top:106px}
+.site-header{position:sticky;top:0;z-index:120;isolation:isolate;box-shadow:0 6px 18px rgba(23,22,21,.11)}
+.site-header .tle-order-float{
+  order:2;flex:0 0 auto;margin-left:auto;
+  --toc-accent:#FFE400;background:#FFE400;color:#171615;
+  border:1px solid #171615;border-radius:8px;min-height:46px;
+  box-shadow:3px 3px 0 rgba(23,22,21,.28);
+}
+.site-header .tle-order-float b{background:#171615;color:#FFE400}
+.site-header .tle-order-float:focus-visible{outline:3px solid #171615;outline-offset:3px}
+.site-header #menuToggle{order:3}
+@media(max-width:900px){
+  html{scroll-padding-top:85px}
+  .site-header{gap:10px;padding-inline:clamp(12px,3vw,21px)}
+  .site-header .tle-order-float{min-height:44px;min-width:63px;padding:8px 10px;gap:6px}
+  .mobile-nav{position:fixed;top:72px;left:0;right:0;z-index:115;max-height:calc(100dvh - 72px);overflow-y:auto;box-shadow:0 14px 18px rgba(23,22,21,.22)}
+}
+@media(max-width:360px){
+  .site-header{gap:6px}
+  .site-header .logo{font-size:17px}
+  .site-header .tle-order-float{padding:7px 8px;min-width:59px}
+}
