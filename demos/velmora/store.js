@@ -12,6 +12,12 @@ const productDetails = {
   'eclipse-quad': {facts:[['Shades','Champagne, garnet, rose and charcoal'],['Finish','Matte, satin and shimmer']]},
   'blood-rose': {facts:[['Shade','Muted rose'],['Format','Pressed powder']]}
 };
+const tones = {
+  'ruby-08': {color:'#8e1935', label:'Ruby 08 · Deep ruby'},
+  'night-trace': {color:'#61203a', label:'Garnet lip pencil'},
+  'eclipse-quad': {color:'#a16e79', label:'Four-shade eye palette'},
+  'blood-rose': {color:'#ae5c73', label:'Muted rose blush'}
+};
 const keys = Object.keys(products);
 const storageKey = 'velmora-store-v1';
 const wishlistPage = document.body.dataset.page === 'wishlist';
@@ -78,24 +84,31 @@ function renderGrid() {
   const ids = keys.filter(id => wishlistPage ? wishes.has(id) : filter === 'all' || products[id].group === filter);
   grid.innerHTML = ids.map(id => {
     const p = products[id];
+    const tone = tones[id];
     return `<article class="card" data-card="${id}">
       <button class="photo" type="button" data-product="${id}" aria-label="View ${p.name}">${image(p.images[0])}</button>
       <button class="icon save" type="button" data-save="${id}" aria-label="${wishlistPage ? 'Remove' : 'Save'} ${p.name}${wishlistPage ? ' from wishlist' : ' to wishlist'}" aria-pressed="${wishes.has(id)}">${svg(wishlistPage ? 'close' : 'heart')}</button>
       <div class="card-info"><p class="eyebrow">${p.type}</p><h3><button type="button" data-product="${id}">${p.name}</button></h3>
-      <p>${currency.format(p.price)}</p><button class="button" type="button" data-${wishlistPage ? 'move' : 'add'}="${id}">${wishlistPage ? 'Move to bag' : 'Add to bag'}</button></div>
+      <p>${currency.format(p.price)}</p><div class="product-tone"><span class="tone-dot" style="background:${tone.color}" aria-hidden="true"></span><span>${tone.label}</span></div><button class="button" type="button" data-${wishlistPage ? 'move' : 'add'}="${id}">${wishlistPage ? 'Move to bag' : 'Add to bag'}</button></div>
     </article>`;
   }).join('');
+  const results = document.querySelector('[data-results-count]');
+  if (results) results.textContent = filter === 'all' ? 'Showing all four essentials' : `Showing ${ids.length} ${filter === 'lips' ? 'lip essentials' : filter === 'eyes' ? 'eye essential' : 'face essential'}`;
 }
 function openProduct(id) {
   const p = products[id];
   const {facts, pair} = productDetails[id];
   const companion = products[pair];
+  const tone = tones[id];
   productBody.innerHTML = `<div class="detail">
     <div class="detail-media"><div data-detail-image>${image(p.images[0])}</div>
-      ${p.images.length > 1 ? `<div class="thumbs" aria-label="Product gallery">${p.images.map(([,label],i) => `<button type="button" data-gallery="${i}" data-id="${id}" aria-pressed="${i === 0}">${label}</button>`).join('')}</div>` : ''}
+      ${p.images.length > 1 ? `<div class="thumbs" aria-label="Product gallery">${p.images.map((img,i) => `<button type="button" data-gallery="${i}" data-id="${id}" aria-label="View ${img[1]} photo of ${p.name}" aria-pressed="${i === 0}">${image(img)}<span>${img[1]}</span></button>`).join('')}</div>` : ''}
     </div>
-    <div class="detail-copy"><p class="eyebrow">${p.type}</p><h2 id="product-title" tabindex="-1">${p.name}</h2><p>${p.note}</p><p class="detail-price">${currency.format(p.price)} USD</p>
+    <div class="detail-copy"><div class="detail-topline"><p class="eyebrow">${p.type} / The after dark edit</p>${wishlistPage ? '' : `<button type="button" class="detail-save" data-save="${id}" aria-label="${wishes.has(id) ? 'Remove from' : 'Save to'} wishlist" aria-pressed="${wishes.has(id)}">${svg('heart')} <span>${wishes.has(id) ? 'Saved' : 'Save'}</span></button>`}</div>
+    <h2 id="product-title" tabindex="-1">${p.name}</h2><p>${p.note}</p><p class="detail-price">${currency.format(p.price)} USD</p>
+    <div class="detail-tone"><span class="tone-dot" style="background:${tone.color}" aria-hidden="true"></span><span><strong>${tone.label}</strong> · ${facts[1][1]}</span></div>
     <button class="button primary" type="button" data-add="${id}">Add to bag</button>
+    <small class="detail-shipping">Available online · Worldwide shipping</small>
     <dl class="detail-facts">${facts.map(([label,value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join('')}</dl>
     ${companion ? `<div class="detail-pair">${image(companion.images[0])}<span><small>Complete the lip</small>${companion.name}</span><button class="button" type="button" data-product="${pair}" aria-label="Explore ${companion.name}">View</button></div>` : ''}
     </div>
@@ -185,14 +198,14 @@ function confirmOrder() {
 }
 
 document.addEventListener('click', event => {
-  const action = event.target.closest('button,[data-continue]');
+  const action = event.target.closest('button,[data-continue],[data-category]');
   if (!action) return;
   const d = action.dataset;
   if ('close' in d) action.closest('dialog').close();
   if ('continue' in d) bagDialog.close();
-  if ('filter' in d) {
-    filter = d.filter;
-    document.querySelectorAll('[data-filter]').forEach(button => button.setAttribute('aria-pressed', button === action));
+  if ('filter' in d || 'category' in d) {
+    filter = d.filter ?? d.category;
+    document.querySelectorAll('[data-filter]').forEach(button => button.setAttribute('aria-pressed', button.dataset.filter === filter));
     renderGrid();
   }
   if ('product' in d) openProduct(d.product);
@@ -213,7 +226,12 @@ document.addEventListener('click', event => {
       if (!wishes.delete(id)) wishes.add(id);
       persist();
       action.setAttribute('aria-pressed', wishes.has(id));
+      if (action.classList.contains('detail-save')) {
+        action.querySelector('span').textContent = wishes.has(id) ? 'Saved' : 'Save';
+        action.setAttribute('aria-label', wishes.has(id) ? 'Remove from wishlist' : 'Save to wishlist');
+      }
       status.textContent = `${products[id].name} ${wishes.has(id) ? 'saved to' : 'removed from'} your wishlist.`;
+      renderGrid();
       updateWishCount();
     }
   }
