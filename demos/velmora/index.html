@@ -7,8 +7,8 @@
   <meta name="description" content="VELMORA. Discover Ruby 08 and the After Dark edit. An online makeup store concept with worldwide shipping.">
   <title>VELMORA — Makeup After Dark</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="style.css?v=hero-clarity-20261110">
-  <script src="store.js?v=2" defer></script>
+  <link rel="stylesheet" href="style.css?v=beauty-counter-20261111">
+  <script src="store.js?v=beauty-counter-20261111" defer></script>
   <script type="module" src="campaign.js"></script>
 </head>
 <body data-page="shop">
@@ -34,9 +34,22 @@
       <span>VELMORA BEAUTY / VOL. 01</span>
       <a href="#campaign">View the campaign <span aria-hidden="true">↓</span></a>
     </div>
+    <section class="beauty-categories" aria-labelledby="category-title">
+      <div class="wrap">
+        <div class="beauty-categories-head">
+          <div><p class="eyebrow">Discover the edit</p><h2 id="category-title">Your after-dark <em>beauty counter.</em></h2></div>
+          <p>Find the finishing touch for your night out. Curated formulas, unforgettable color.</p>
+        </div>
+        <div class="beauty-category-grid">
+          <a class="beauty-category" href="#shop" data-category="lips"><span class="category-photo"><img src="media/ruby-08.webp" width="900" height="1125" loading="lazy" alt="Ruby 08 statement red lipstick"></span><span class="category-label"><small>01 / THE LIP EDIT</small><strong>Lips</strong><span aria-hidden="true">↗</span></span></a>
+          <a class="beauty-category" href="#shop" data-category="eyes"><span class="category-photo"><img src="media/eclipse-quad.webp" width="900" height="1125" loading="lazy" alt="Eclipse Quad eyeshadow palette"></span><span class="category-label"><small>02 / THE EYE EDIT</small><strong>Eyes</strong><span aria-hidden="true">↗</span></span></a>
+          <a class="beauty-category" href="#shop" data-category="face"><span class="category-photo"><img src="media/blood-rose.webp" width="900" height="1125" loading="lazy" alt="Blood Rose blush compact"></span><span class="category-label"><small>03 / THE FACE EDIT</small><strong>Face</strong><span aria-hidden="true">↗</span></span></a>
+        </div>
+      </div>
+    </section>
     <section class="collection wrap" id="shop" aria-labelledby="shop-title">
       <div class="section-head">
-        <div><p class="eyebrow">01 / The Collection</p><h2 id="shop-title" data-title-motion>The after-hours <em>lineup.</em></h2></div>
+        <div><p class="eyebrow">Shop the collection / 04 essentials</p><h2 id="shop-title" data-title-motion>The after-hours <em>lineup.</em></h2><p class="collection-intro">Four essentials, one signature look. Explore each formula before adding it to your bag.</p></div>
         <div class="filters" aria-label="Filter products">
           <button type="button" data-filter="all" aria-pressed="true">All</button>
           <button type="button" data-filter="lips" aria-pressed="false">Lips</button>
@@ -44,6 +57,7 @@
           <button type="button" data-filter="face" aria-pressed="false">Face</button>
         </div>
       </div>
+      <p class="results-count" data-results-count role="status" aria-live="polite">Showing all four essentials</p>
       <div class="grid" data-products></div>
     </section>
     <section class="feature wrap" aria-labelledby="feature-title">
