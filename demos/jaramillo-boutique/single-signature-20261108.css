@@ -1,0 +1,18 @@
+/* Jaramillo Boutique — one editorial signature, November 8 2026.
+   Retire competing decorative keyframes without changing product grids,
+   visual cart, navigation, original typography or approved photographs. */
+html[data-tle-one-motion] body *,
+html[data-tle-one-motion] body *::before,
+html[data-tle-one-motion] body *::after { animation:none !important; }
+html[data-tle-one-motion="jaramillo-boutique"] .hero #heroTitle {
+  animation:tleOneJaramillo 990ms cubic-bezier(.17,.82,.24,1) both !important;
+}
+@keyframes tleOneJaramillo {
+  from {clip-path:inset(100% 0 0 0);opacity:.6}
+  to   {clip-path:inset(0 0 0 0);opacity:1}
+}
+@media (prefers-reduced-motion:reduce) {
+  html[data-tle-one-motion] body *,
+  html[data-tle-one-motion] body *::before,
+  html[data-tle-one-motion] body *::after {animation:none !important;}
+}

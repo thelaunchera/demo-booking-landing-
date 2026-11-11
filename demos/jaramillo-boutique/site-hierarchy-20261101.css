@@ -1,0 +1,247 @@
+/* Jaramillo Boutique · editorial reading hierarchy, Nov 2026.
+   Visual refinements only; preserve the designer image, catalog and boutique UI. */
+.hero .hero-text {max-width:680px;min-width:0;}
+.hero .hero-text .eyebrow {letter-spacing:.12em;line-height:1.55;margin-bottom:clamp(12px,1.5vw,18px);}
+.hero .hero-text h1 {
+  max-width:15ch;
+  font-size:clamp(48px,5.5vw,89px);
+  line-height:1.075;
+  letter-spacing:-.043em;
+  text-wrap:balance;
+  overflow-wrap:break-word;
+}
+.hero .hero-text .hero-body {
+  max-width:45ch;
+  font-size:clamp(15px,1.27vw,17px);
+  line-height:1.6;
+}
+.hero .hero-text .button-ivory {
+  min-height:52px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 25px;
+  font-size:14px;
+  font-weight:700;
+  text-align:center;
+  white-space:normal;
+}
+.hero .hero-text .hero-footnote {margin-top:clamp(16px,2vw,25px);}
+.hero .hero-text .button-ivory:focus-visible {outline:3px solid #efdbc6;outline-offset:4px;}
+@media(max-width:760px){
+  .hero .hero-text .eyebrow {font-size:10px;margin-bottom:10px;}
+  .hero .hero-text h1 {font-size:clamp(37px,9vw,57px);line-height:1.1;max-width:100%;}
+  .hero .hero-text .hero-body {font-size:14px;line-height:1.54;max-width:36ch;}
+  .hero .hero-text .button-ivory {min-height:48px;padding:12px 19px;font-size:13px;max-width:100%;}
+}
+@media(prefers-reduced-motion:reduce){.hero .hero-text .button-ivory{transition:none;}}
+
+/* JARAMILLO / elegant but readable Bodoni Moda + DM Sans, 7 Nov 2026. */
+.site-head .wordmark{font-family:'Bodoni Moda',Georgia,serif;font-weight:500;letter-spacing:-.052em;line-height:1.05}
+.site-head .wordmark span{font:600 10px/1.45 'DM Sans',Arial,sans-serif;letter-spacing:.25em}
+.hero .hero-text h1,.collections-section .intro-row h2,
+.shop-guide #guideHeading,.shop-guide h2,.guide-steps h3,
+.designer-copy h2,.boutique-header h2,.boutique-help h2,
+.contact-inquiry-content h2,.story-break h2,.footer-wordmark{
+ font-family:'Bodoni Moda',Georgia,serif!important;font-weight:600!important;
+ letter-spacing:-.048em;line-height:1.09;text-wrap:balance;
+}
+.hero .hero-text h1 em,.collections-section .intro-row h2 i,
+.shop-guide #guideHeading i,.designer-copy h2 i,.story-break h2 em{
+ font-family:'Bodoni Moda',Georgia,serif!important;font-weight:500!important;font-style:italic;letter-spacing:-.04em;
+}
+.shop-guide-intro p,.guide-steps p,.collections-section .intro-row p,
+.designer-copy>p,.boutique-header>p{font-family:'DM Sans',Arial,sans-serif;font-weight:500;line-height:1.7;color:#5b4c50}
+.eyebrow,.announcement{font-family:'DM Sans',Arial,sans-serif;font-weight:700;letter-spacing:.13em}
+@media(max-width:700px){
+ .site-head .wordmark{font-size:clamp(25px,6.7vw,34px);letter-spacing:-.055em}
+ .site-head .wordmark span{font-size:9px;letter-spacing:.2em}
+ .shop-guide #guideHeading{font-size:clamp(49px,11.5vw,65px);line-height:1.08}
+ .guide-steps h3{font-size:clamp(30px,7.3vw,39px);line-height:1.14;padding:15px 16px 4px}
+ .guide-steps p{font-size:14px;line-height:1.62;color:#62565a}
+ .shop-guide-intro p{font-size:14px;line-height:1.65;color:#62565a}
+ .collections-section .intro-row h2,.designer-copy h2{line-height:1.09}
+ .shop-guide .eyebrow,.collections-section .eyebrow{font-size:11px}
+}
+
+
+/* 2026-11-07 desktop-only editorial split; maintain approved Jaramillo
+   model photo, hero photo composition, typography motion and phone layout. */
+@media (min-width:1100px){
+  .hero{display:grid;grid-template-columns:minmax(0,41fr) minmax(0,59fr);min-height:clamp(700px,58vw,850px);align-items:stretch}
+  .hero .hero-text{min-height:clamp(700px,58vw,850px);width:100%;min-width:0;padding:clamp(72px,6vw,112px) 6% 54px clamp(52px,6vw,106px);align-items:flex-start;justify-content:center}
+  .hero .hero-text h1{font-size:clamp(59px,5.3vw,98px);line-height:1;max-width:12ch;white-space:normal;text-wrap:balance;margin:25px 0 28px}
+  .hero .hero-text .hero-body{font-size:clamp(15px,1.18vw,18px);line-height:1.66;max-width:38ch}
+  .hero .hero-photo-scene{min-height:clamp(700px,58vw,850px);height:auto;width:100%;overflow:hidden!important}
+  .hero .hero-photo-scene .hero-editorial-image{width:100%;height:100%;object-fit:contain;object-position:center center}
+}
+
+
+/* Jaramillo boutique / 2026-11-07 hero clarity.
+   Preserve the approved photo and its built-in NEW OFFER typography.
+   On photo-first screens, the caption must run EDGE-TO-EDGE, not stop at 680px.
+   Remove duplicate microcopy rather than competing with the art or story tabs. */
+@media(min-width:701px) and (max-width:1199px){
+  main>.hero{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:stretch!important;
+    overflow:hidden!important;
+    background:#fff!important;
+  }
+  main>.hero .hero-photo-scene{
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    align-self:stretch!important;
+    flex:0 0 auto!important;
+  }
+  main>.hero .hero-text{
+    order:2!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    grid-template-rows:auto!important;
+    column-gap:clamp(16px,3vw,55px)!important;
+    row-gap:0!important;
+    align-items:center!important;
+    justify-content:space-between!important;
+    align-self:stretch!important;
+    flex:0 0 auto!important;
+    box-sizing:border-box!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:0!important;
+    min-height:0!important;
+    padding:clamp(20px,2.7vw,35px) clamp(25px,5vw,78px)!important;
+    background:#55192e!important;
+    color:#fff8f1!important;
+  }
+  main>.hero .hero-text .eyebrow,
+  main>.hero .hero-text .hero-body,
+  main>.hero .hero-text .hero-footnote{display:none!important}
+  main>.hero .hero-text h1{
+    grid-column:1!important;
+    grid-row:1!important;
+    width:auto!important;
+    max-width:100%!important;
+    margin:0!important;
+    font-size:clamp(31px,4.3vw,56px)!important;
+    line-height:1.06!important;
+    white-space:normal!important;
+    text-wrap:balance;
+  }
+  main>.hero .hero-text h1 em{
+    display:inline!important;
+    margin-left:.18em!important;
+    font-size:.72em!important;
+    line-height:1.06!important;
+  }
+  main>.hero .hero-text .button-ivory{
+    grid-column:2!important;
+    grid-row:1!important;
+    align-self:center!important;
+    justify-self:end!important;
+    margin:0!important;
+    min-width:154px!important;
+    min-height:46px!important;
+    padding:12px 16px!important;
+    white-space:nowrap!important;
+    font-size:10px!important;
+  }
+  /* The separate three-scene story banner keeps its clickable tabs, but
+     no longer stacks another heading, paragraph and CTA under the hero. */
+  #brandStoryBanner.jb-editorial-banner{
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    grid-template-columns:minmax(130px,27%) minmax(0,1fr) 124px!important;
+    grid-template-rows:154px!important;
+    min-height:154px!important;
+    height:154px!important;
+    max-height:154px!important;
+  }
+  #brandStoryBanner .jb-banner-art{
+    height:154px!important;
+    min-height:154px!important;
+  }
+  #brandStoryBanner .story-banner-copy{
+    justify-content:center!important;
+    padding:14px clamp(16px,2.5vw,31px)!important;
+    gap:0!important;
+  }
+  #brandStoryBanner .story-banner-overline,
+  #brandStoryBanner .jb-banner-description,
+  #brandStoryBanner .jb-banner-action,
+  #brandStoryBanner .jb-banner-watermark{display:none!important}
+  #brandStoryBanner .story-banner-title{
+    font-size:clamp(24px,2.8vw,35px)!important;
+    line-height:1.07!important;
+    max-width:100%!important;
+  }
+  #brandStoryBanner .story-banner-tabs{
+    padding:0!important;
+    gap:0!important;
+    height:154px!important;
+    min-height:0!important;
+  }
+  #brandStoryBanner .story-tab{
+    min-height:0!important;
+    padding:8px 11px!important;
+    gap:6px!important;
+    border-radius:0!important;
+  }
+}
+@media(max-width:700px){
+  main>.hero{
+    width:100%!important;
+    max-width:100%!important;
+    margin:0!important;
+    align-items:stretch!important;
+    overflow:hidden!important;
+  }
+  main>.hero .hero-photo-scene{width:100%!important;max-width:none!important;margin:0!important}
+  main>.hero .hero-text{
+    box-sizing:border-box!important;
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+    margin:0!important;
+    align-self:stretch!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:15px!important;
+    padding:24px 22px 27px!important;
+    background:#55192e!important;
+    color:#fff8f1!important;
+  }
+  main>.hero .hero-text .eyebrow,
+  main>.hero .hero-text .hero-body,
+  main>.hero .hero-text .hero-footnote{display:none!important}
+  main>.hero .hero-text h1{
+    max-width:100%!important;
+    margin:0!important;
+    font-size:clamp(35px,9.2vw,52px)!important;
+    line-height:1.08!important;
+  }
+  main>.hero .hero-text h1 em{display:inline!important;font-size:.73em!important}
+  main>.hero .hero-text .button-ivory{
+    width:auto!important;
+    margin:0!important;
+    min-height:46px!important;
+    padding:12px 18px!important;
+    font-size:11px!important;
+  }
+  #brandStoryBanner .story-banner-overline,
+  #brandStoryBanner .jb-banner-description,
+  #brandStoryBanner .jb-banner-action,
+  #brandStoryBanner .jb-banner-watermark{display:none!important}
+  #brandStoryBanner .story-banner-copy{
+    gap:0!important;
+    justify-content:center!important;
+  }
+}
