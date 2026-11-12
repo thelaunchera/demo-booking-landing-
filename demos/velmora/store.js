@@ -190,11 +190,27 @@ function renderCheckout() {
 }
 function confirmOrder() {
   const order = String(Date.now()).slice(-6);
+  const total = currency.format(subtotal());
+  const items = Object.entries(cart).map(([id, qty]) => {
+    const product = products[id];
+    return `<li data-receipt-line><span>${qty} × ${product.name}</span><strong>${currency.format(product.price * qty)}</strong></li>`;
+  }).join('');
   cart = {};
   persist();
   updateBagCount();
-  bagBody.innerHTML = bagHeading('Order confirmed') + `<p>Sample order <strong>VM-${order}</strong> is complete.</p><p>No payment was processed.</p><a class="button primary" href="./#shop" data-continue>Continue shopping</a>`;
-  bagBody.querySelector('a').focus();
+  bagBody.innerHTML = `<section data-demo-receipt="velmora">
+    <p data-receipt-caption>VELMORA / After Dark</p>
+    <h2 id="bag-title" data-receipt-title tabindex="-1">Your sample order is complete.</h2>
+    <p>Preview reference <strong>VM-${order}</strong></p>
+    <details data-receipt-disclosure>
+      <summary>Order details · ${total} USD</summary>
+      <ul class="tle-receipt-lines" data-receipt-items>${items}</ul>
+    </details>
+    <p>No order was placed, no payment was processed, and nothing will ship.</p>
+    <a class="button primary" href="./#shop" data-continue>Continue shopping</a>
+  </section>`;
+  bagBody.querySelector('#bag-title').focus({preventScroll:true});
+  window.TLEDemoConfirmation?.play(bagBody.querySelector('[data-demo-receipt]'));
 }
 
 document.addEventListener('click', event => {

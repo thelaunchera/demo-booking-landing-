@@ -403,6 +403,8 @@
 <link rel="stylesheet" href="../assets/tle-demo-tactile-20261108.css?v=2">
   <link rel="stylesheet" href="../assets/tle-demo-scroll-art-20261108.css?v=5">
   <link rel="stylesheet" href="../assets/tle-demo-footer-finale-20261108.css?v=1">
+<link rel="stylesheet" href="https://thelaunchera.com/assets/tle-demo-confirmation.css?v=1">
+<script defer src="https://thelaunchera.com/assets/tle-demo-confirmation.js?v=1"></script>
 </head>
 <body data-tle-company="demo" data-tle-demo-mobile="soluna-yoga">
   <a href="#main" class="skip">Skip to content</a>
@@ -457,7 +459,7 @@
         <div class="field"><label for="interest">What sounds good to you?</label><select id="interest" name="interest"><option value="Opening updates">Opening updates</option><option value="First class">Trying my first class</option><option value="Breathe — $10/month">Breathe — $10/month</option><option value="Flow — $15/month">Flow — $15/month</option><option value="Rise — $25/month">Rise — $25/month</option></select></div>
         <label class="check"><input type="checkbox" id="consent" required><span>I agree to receive launch updates from SOLUNA Yoga when the real sign-up service is connected. I understand this demo does not send my information to a business.</span></label>
         <button type="submit" class="btn" id="submitBtn">Join the early list </button>
-        <p class="demo-note">Explore how joining the early list would work. This example does not register you or send an email.</p><div class="notice" id="notice" role="status" aria-live="polite" hidden></div>
+        <p class="demo-note">Explore how joining the early list would work. This example does not register you or send an email.</p><div class="notice" id="notice" data-demo-receipt="soluna-yoga" role="status" aria-live="polite" hidden></div>
       </form>
     </div></section>
     <section class="faq wrap" id="faq"><span class="overline muted" style="display:block;text-align:center;margin-bottom:12px">GOOD TO KNOW</span><h2>Before we open.</h2><div class="faq-grid">
@@ -533,7 +535,8 @@
         }
         notice.hidden = false;
         form.reset();
-        notice.scrollIntoView({block:'nearest',behavior:'smooth'});
+        notice.scrollIntoView({block:'nearest',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+        window.TLEDemoConfirmation?.play(notice);
       });
     }());
   </script>

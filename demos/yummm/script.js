@@ -206,6 +206,7 @@
     $('#previewContents').textContent = `${selected} · ${list}`;
     $('#previewTotal').textContent = 'Estimated subtotal: ' + money(subtotalCents());
     closeDrawer(); preview.showModal();
+    window.TLEDemoConfirmation?.play(preview);
   });
   $('#closePreview').addEventListener('click', () => preview.close());
   $('#backToMenu').addEventListener('click', () => preview.close());

@@ -273,6 +273,9 @@ main{width:100%;max-width:100%;overflow-x:clip}
 .hero .hero-actions .pink{color:#24101b}
 .hero .hero-actions .outline{border-color:transparent;background:transparent;color:#70394b;text-decoration:underline;text-underline-offset:5px}
 </style>
+<link rel="stylesheet" href="https://thelaunchera.com/assets/tle-demo-confirmation.css?v=1">
+<script defer src="https://thelaunchera.com/assets/tle-demo-confirmation.js?v=1"></script>
+<link rel="stylesheet" href="./appointment-preview.css?v=1">
 </head>
 <body>
 <header class="nav"><nav class="nav-inner" aria-label="Main navigation"><a class="brand" href="#top" aria-label="NAIL ROOM home">nail<span>room.</span></a><div class="menu"><a href="#services">Services</a><a href="#inspo">The inspo wall</a><a href="#story">Our vibe</a></div><a class="pill" href="#book">Book your nails</a></nav></header>
@@ -361,7 +364,25 @@ main{width:100%;max-width:100%;overflow-x:clip}
 <section class="about" id="story"><div class="wrap about-grid"><img class="about-img" loading="lazy" src="./media/pink-editorial-model.png" alt="Expressive pink editorial beauty portrait"><div class="about-text"><span class="kicker">Nail room attitude</span><h2>Small details.<br>Big energy.</h2><p>We're here for that fresh-set feeling: the confidence boost, the playful colors, the tiny details that make the whole look yours.</p><p class="about-quote">Your nails called. They want something cute.</p><a class="pill" href="#book">Plan the next nail date</a></div></div></section>
 </main>
 <footer><div class="wrap"><div class="footer-top"><h3>NAIL ROOM <span style="color:#ff83b4">✦</span></h3><a class="pill pink" href="#top">Back to top ↑</a></div><div class="footer-bottom"><span>© <span id="year"></span> NAIL ROOM. All things pretty.</span><span>Concept website · Powered by <a href="https://thelaunchera.com/" rel="noopener noreferrer">The Launch Era</a></span></div></div></footer>
-<div class="modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true"><div class="modal-box"><button class="close-modal" id="closeModal" type="button" aria-label="Close appointment preview">×</button><div class="kicker">Your moment, all picked out ♡</div><h3 id="modalTitle">Nail date preview</h3><p>Here's what your appointment request would look like.</p><div class="receipt" id="receipt"></div><p><strong>This is a preview only.</strong> No appointment has been booked and no email or payment has been sent.</p><button class="submit" id="doneModal" type="button">Keep exploring</button></div></div>
+<dialog id="bookingModal" aria-labelledby="modalTitle" aria-describedby="nailPreviewNote" aria-hidden="true">
+ <div class="modal-box nail-date-card" data-demo-receipt="nail-room">
+  <button class="close-modal" id="closeModal" type="button" aria-label="Close appointment preview" autofocus>×</button>
+  <div class="nail-date-heading">
+   <img id="nailPreviewPhoto" alt="" width="80" height="88" decoding="async">
+   <div>
+    <p data-receipt-caption>Appointment preview</p>
+    <h3 id="modalTitle" data-receipt-title>Your nail date</h3>
+    <p id="nailPreviewService"></p>
+   </div>
+  </div>
+  <dl class="receipt" id="receipt"></dl>
+  <p id="nailPreviewNote"><strong>This is a preview only.</strong> No appointment has been booked, no email has been sent, and no payment has been made.</p>
+  <div class="nail-date-actions">
+   <button class="submit" id="doneModal" type="button">Keep exploring</button>
+   <button class="nail-date-edit" id="editModal" type="button">Edit appointment</button>
+  </div>
+ </div>
+</dialog>
 <dialog id="photoLightbox" class="photo-lightbox" aria-label="Nail photography detail">
  <div class="lightbox-shell">
   <div class="lightbox-top"><span class="lightbox-eyebrow">THE NAIL EDIT · FULL PHOTO</span><button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close full image">×</button></div>
@@ -375,7 +396,7 @@ main{width:100%;max-width:100%;overflow-x:clip}
 "use strict";
 const services={french:"The French Edit — from $48",gel:"Glossy Gel — from $58",art:"Nail Art Studio — from $74",builder:"Builder Gel — from $82"};
 const form=document.getElementById("bookingForm"),sel=document.getElementById("service"),dateGrid=document.getElementById("dateGrid"),timeGrid=document.getElementById("timeGrid"),error=document.getElementById("formError");
-let chosenDate="",chosenTime="",lastFocused=null;const saved=new Set();
+let chosenDate="",chosenTime="",lastFocused=null,previousOverflow="";const saved=new Set();
 document.getElementById("year").textContent=String(new Date().getFullYear());
 function pick(group,btn,selector){group.querySelectorAll(selector).forEach(function(b){b.setAttribute("aria-pressed",String(b===btn));});}
 // Three-month sample calendar; exact booking availability is not connected to this demo.
@@ -433,9 +454,56 @@ document.querySelectorAll("[data-service]").forEach(function(card){
 document.querySelectorAll("[data-filter]").forEach(function(b){b.addEventListener("click",function(){const key=b.dataset.filter;document.querySelectorAll("[data-filter]").forEach(function(x){x.classList.toggle("active",x===b);x.setAttribute("aria-pressed",String(x===b));});document.querySelectorAll(".gallery-item").forEach(function(x){x.hidden=key!=="all"&&!x.dataset.category.split(" ").includes(key);});});});
 document.querySelectorAll("[data-save]").forEach(function(b){b.addEventListener("click",function(){const item=b.dataset.save;if(saved.has(item)){saved.delete(item);}else{saved.add(item);}const yes=saved.has(item);b.textContent=yes?"♥":"♡";b.classList.toggle("saved",yes);b.setAttribute("aria-pressed",String(yes));b.setAttribute("aria-label",(yes?"Remove ":"Save ")+item);const note=document.getElementById("savedNote");note.textContent=saved.size?saved.size+" saved to your inspiration favorites: "+Array.from(saved).join(", "):"Your saved inspiration will appear here.";});});
 const modal=document.getElementById("bookingModal");
-function closeModal(){modal.classList.remove("is-open");modal.setAttribute("aria-hidden","true");document.body.style.overflow="";if(lastFocused)lastFocused.focus();}
-document.getElementById("closeModal").addEventListener("click",closeModal);document.getElementById("doneModal").addEventListener("click",closeModal);modal.addEventListener("click",function(e){if(e.target===modal)closeModal();});document.addEventListener("keydown",function(e){if(e.key==="Escape"&&modal.classList.contains("is-open"))closeModal();});
-form.addEventListener("submit",function(e){e.preventDefault();error.textContent="";if(!chosenDate){error.textContent="Choose your preferred date.";(dateGrid.querySelector("button:not(:disabled)")||nailCalendarLabel).focus?.();return;}if(!chosenTime){error.textContent="Choose your preferred time.";timeGrid.querySelector("button").focus();return;}const n=document.getElementById("guestName"),mail=document.getElementById("guestEmail");if(!n.value.trim()){error.textContent="Please add your name.";n.focus();return;}if(!mail.validity.valid||!mail.value.trim()){error.textContent="Please enter a valid email address.";mail.focus();return;}lastFocused=document.activeElement;const pairs=[["Service",services[sel.value]],["Preferred date",new Date(chosenDate+"T12:00:00").toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"})],["Preferred time",chosenTime],["Name",n.value.trim()],["Email",mail.value.trim()]];if(saved.size)pairs.push(["Saved inspiration",Array.from(saved).join(", ")]);const receipt=document.getElementById("receipt");receipt.replaceChildren();pairs.forEach(function(pair){const line=document.createElement("div");line.className="receipt-row";const key=document.createElement("span");key.textContent=pair[0];const value=document.createElement("strong");value.textContent=pair[1];line.append(key,value);receipt.append(line);});modal.classList.add("is-open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";document.getElementById("closeModal").focus();});
+const receipt=document.getElementById("receipt");
+function closeModal(focusTarget){
+ if(!modal.open)return;
+ modal.close();
+ modal.setAttribute("aria-hidden","true");
+ document.body.style.overflow=previousOverflow;
+ (focusTarget||lastFocused)?.focus({preventScroll:true});
+}
+document.getElementById("closeModal").addEventListener("click",()=>closeModal());
+document.getElementById("doneModal").addEventListener("click",()=>closeModal());
+document.getElementById("editModal").addEventListener("click",()=>{
+ const selected=timeGrid.querySelector('[aria-pressed="true"]');
+ closeModal(selected);
+ selected?.scrollIntoView({block:"nearest",behavior:"instant"});
+});
+modal.addEventListener("cancel",event=>{event.preventDefault();closeModal();});
+modal.addEventListener("click",event=>{if(event.target===modal)closeModal();});
+form.addEventListener("submit",event=>{
+ event.preventDefault();
+ error.textContent="";
+ if(!chosenDate){error.textContent="Choose your preferred date.";(dateGrid.querySelector("button:not(:disabled)")||nailCalendarLabel).focus();return;}
+ if(!chosenTime){error.textContent="Choose your preferred time.";timeGrid.querySelector("button").focus();return;}
+ const name=document.getElementById("guestName"),mail=document.getElementById("guestEmail");
+ if(!name.value.trim()){error.textContent="Please add your name.";name.focus();return;}
+ if(!mail.validity.valid||!mail.value.trim()){error.textContent="Please enter a valid email address.";mail.focus();return;}
+ lastFocused=event.submitter||document.activeElement;
+ const photo=document.querySelector('[data-service="'+sel.value+'"] img');
+ document.getElementById("nailPreviewPhoto").src=photo.src;
+ document.getElementById("nailPreviewService").textContent=services[sel.value];
+ const date=new Date(chosenDate+"T12:00:00").toLocaleDateString("en-US",{weekday:"long",month:"long",day:"numeric",year:"numeric"});
+ const pairs=[["Preferred date",date],["Preferred time",chosenTime],["Name",name.value.trim()],["Email",mail.value.trim()]];
+ const notes=document.getElementById("requestNotes").value.trim();
+ if(notes)pairs.push(["Your nail vision",notes]);
+ if(saved.size)pairs.push(["Saved inspiration",Array.from(saved).join(", ")]);
+ receipt.replaceChildren();
+ for(const [label,value] of pairs){
+  const line=document.createElement("div");
+  line.className="receipt-row";
+  line.dataset.receiptLine="";
+  const key=document.createElement("dt"),detail=document.createElement("dd");
+  key.textContent=label;detail.textContent=value;
+  line.append(key,detail);receipt.append(line);
+ }
+ modal.setAttribute("aria-hidden","false");
+ previousOverflow=document.body.style.overflow;
+ document.body.style.overflow="hidden";
+ modal.showModal();
+ modal.scrollTop=0;
+ window.TLEDemoConfirmation?.play(modal.querySelector("[data-demo-receipt]"));
+});
 })();
 </script>
 

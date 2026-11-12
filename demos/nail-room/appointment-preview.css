@@ -1,0 +1,75 @@
+#bookingModal {
+  width: min(490px, calc(100% - 24px));
+  max-width: none;
+  max-height: calc(100vh - 24px);
+  max-height: calc(100dvh - max(24px, env(safe-area-inset-top) + env(safe-area-inset-bottom)));
+  padding: 0;
+  border: 0;
+  border-radius: 26px;
+  background: #fff9fc;
+  color: #352332;
+  box-shadow: 0 24px 90px #35112659;
+  overscroll-behavior: contain;
+}
+
+#bookingModal::backdrop {
+  background: #301a2b99;
+  backdrop-filter: blur(3px);
+}
+
+#bookingModal .nail-date-card {
+  width: 100%;
+  padding: clamp(18px, 5vw, 28px);
+  box-shadow: none;
+}
+
+#bookingModal .close-modal {
+  top: 8px;
+  right: 8px;
+  width: 44px;
+  height: 44px;
+  color: #77284e;
+  cursor: pointer;
+}
+
+.nail-date-heading {
+  display: grid;
+  grid-template-columns: 68px minmax(0, 1fr);
+  align-items: center;
+  gap: 12px;
+  padding-right: 30px;
+}
+
+.nail-date-heading img {
+  display: block;
+  width: 68px;
+  height: 78px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+#bookingModal h3 { font-size: clamp(25px, 6vw, 36px); line-height: 1; margin: 0 0 6px; }
+#bookingModal p[data-receipt-caption] { color: #8a315c; margin: 0 0 5px; font-size: 10px; line-height: 1.4; }
+#nailPreviewService { margin: 0; font-weight: 750; }
+#bookingModal .receipt { padding: 12px; margin-block: 16px 12px; gap: 0; background: #fff8fb; }
+#bookingModal .receipt-row { display: grid; grid-template-columns: minmax(78px, .7fr) minmax(0, 1.3fr); gap: 8px; padding-block: 7px; }
+#bookingModal .receipt-row + .receipt-row { border-top: 1px solid #ead3df; }
+#bookingModal dd { margin: 0; text-align: right; font-weight: 750; overflow-wrap: anywhere; }
+#nailPreviewNote { margin: 0 0 12px; }
+
+.nail-date-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+#bookingModal .nail-date-actions button {
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  font: 750 13px Manrope, sans-serif;
+  cursor: pointer;
+}
+
+#bookingModal .submit { background: #8a315c; color: white; }
+.nail-date-edit { border: 1px solid #b07895; background: #fff8fb; color: #722b4d; }
