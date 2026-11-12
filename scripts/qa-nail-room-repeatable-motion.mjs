@@ -8,8 +8,9 @@ for (const browserType of [chromium, webkit]) {
   try {
     for (const width of [390, 375]) {
       const page=await browser.newPage({viewport:{width,height:800},reducedMotion:'no-preference'});
-      const errors=[];
+      const errors=[], writes=[];
       page.on('pageerror',e=>errors.push(e.message));
+      page.on('request', request => { if (!['GET','HEAD'].includes(request.method())) writes.push(request.url()); });
       const result=await page.goto(base,{waitUntil:'domcontentloaded'});
       assert.equal(result?.status(),200,'NAIL ROOM must load');
       const card=page.locator('.gallery-item').first();
@@ -46,8 +47,20 @@ for (const browserType of [chromium, webkit]) {
       assert.equal(await page.locator('#bookingModal').getAttribute('aria-hidden'),'false','Preview modal displays');
       assert.ok((await page.locator('#receipt').innerText()).includes('Demo Guest'),'Preview contains chosen sample details');
       assert.ok((await page.locator('#bookingModal').innerText()).includes('No appointment has been booked'),'Demo never claims a real booking');
-      await page.locator('#closeModal').click();
-      assert.equal(await page.locator('#bookingModal').getAttribute('aria-hidden'),'true','Preview closes');
+      assert.match(await page.locator('#nailPreviewPhoto').getAttribute('src'),/terracotta-art/);
+      const dialog=page.locator('#bookingModal');
+      assert.ok(await dialog.evaluate(el=>el.open&&el.clientWidth<=innerWidth),'Native preview fits the viewport');
+      await page.locator('#editModal').click();
+      assert.equal(await dialog.getAttribute('aria-hidden'),'true','Edit closes the preview');
+      assert.ok(await page.locator('#timeGrid .time-option').first().evaluate(el=>document.activeElement===el),'Edit restores focus to the selected time');
+      assert.equal(await day.getAttribute('aria-pressed'),'true','Edit preserves the date');
+      assert.equal(await page.locator('#guestName').inputValue(),'Demo Guest','Edit preserves the form');
+      await page.locator('#timeGrid .time-option').last().click();
+      await page.locator('#bookingForm button[type="submit"]').click();
+      assert.match(await page.locator('#receipt').innerText(),/3:30 PM/);
+      await page.keyboard.press('Escape');
+      assert.equal(await dialog.getAttribute('aria-hidden'),'true','Escape closes the preview');
+      assert.deepEqual(writes,[],'Preview and editing never submit data');
       const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);
       assert.ok(overflow<=3,'No horizontal overflow at '+width+' px: '+overflow);
       await card.locator('.photo-open').click();

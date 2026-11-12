@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'demos/nail-room/index.html'
+      - 'demos/nail-room/appointment-preview.css'
       - 'scripts/qa-nail-room-repeatable-motion.mjs'
       - 'scripts/qa-no-decorative-northeast-arrows-20261110.mjs'
       - '.github/workflows/qa-nail-room-repeatable-motion.yml'

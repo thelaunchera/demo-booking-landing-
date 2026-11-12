@@ -14,7 +14,7 @@
   <link rel="preload" as="image" href="./media/hero-motion-poster-hq.webp">
   <link rel="stylesheet" href="./styles.css?v=20261101-hierarchy-v4">
   <script defer src="https://thelaunchera.com/assets/tle-demo-cart-flight-20261110.js?v=3"></script>
-  <script src="./script.js?v=20261110-cart-bind-fix" defer></script>
+  <script src="./script.js?v=confirmation-20261112" defer></script>
 <link rel="stylesheet" href="../assets/tle-company-system-20261106.css?v=1"><link rel="stylesheet" href="../assets/tle-demo-mobile-ux-20261107.css?v=1">
 <link rel="stylesheet" href="../assets/tle-unique-galleries-20261107.css?v=1">
   <link rel="stylesheet" href="../assets/tle-demo-single-signature-20261108.css?v=2">
@@ -25,6 +25,8 @@
 <link rel="stylesheet" href="yummm-hero-fullbleed-20261108.css?v=3" />
   <link rel="stylesheet" href="./yummm-continuous-hero-20261108.css?v=3-mobile-framing">
 <link rel="stylesheet" href="./yummm-mobile-bottom-sheet-20261110.css?v=1">
+<link rel="stylesheet" href="https://thelaunchera.com/assets/tle-demo-confirmation.css?v=1">
+<script defer src="https://thelaunchera.com/assets/tle-demo-confirmation.js?v=1"></script>
 </head>
 <body data-tle-company="demo" data-tle-demo-mobile="yummm">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -123,12 +125,12 @@
     <fieldset class="packaging-options"><legend>How would you pack it?</legend><label><input type="radio" name="packaging" value="Just for me" checked><span>Just for me</span></label><label><input type="radio" name="packaging" value="Cookie box of 4"><span>Box of 4</span></label><label><input type="radio" name="packaging" value="Cookie box of 6"><span>Box of 6</span></label><label><input type="radio" name="packaging" value="Gift box"><span>Gift box</span></label></fieldset>
     <div class="drawer-footer"><span class="drawer-summary" id="drawerSummary">0 treats selected</span><div class="drawer-totals" aria-live="polite"><span>Estimated subtotal</span><strong id="drawerSubtotal">$0.00</strong></div><button type="button" class="button red" id="previewBox">Preview my box</button><p class="drawer-disclaimer">This is a product showcase demo, not a checkout.</p></div>
   </aside>
-  <dialog class="preview-dialog" id="previewDialog" aria-labelledby="previewTitle"><button type="button" id="closePreview" class="preview-close" aria-label="Close preview">×</button><img src="./images/12.webp" alt="YUMMM takeaway packaging"><p class="kicker">JUST A LITTLE PREVIEW</p><h2 id="previewTitle">Your box is looking YUMMM.</h2><p id="previewContents"></p><p class="preview-total" id="previewTotal">Estimated subtotal: $0.00</p><button type="button" class="button red" id="backToMenu">Keep exploring</button><small>Your selection is a preview. No order or payment has been submitted.</small></dialog>
+  <dialog class="preview-dialog" id="previewDialog" aria-labelledby="previewTitle" data-demo-receipt="yummm"><button type="button" id="closePreview" class="preview-close" aria-label="Close preview">×</button><img src="./images/12.webp" alt="YUMMM takeaway packaging"><p class="kicker">JUST A LITTLE PREVIEW</p><h2 id="previewTitle">Your box is looking YUMMM.</h2><p id="previewContents" data-receipt-line></p><p class="preview-total" id="previewTotal">Estimated subtotal: $0.00</p><button type="button" class="button red" id="backToMenu">Keep exploring</button><small>Your selection is a preview. No order or payment has been submitted.</small></dialog>
 <script defer src="../assets/tle-unique-galleries-20261107.js?v=1"></script>
 <script defer src="../assets/tle-demo-tactile-20261108.js?v=2"></script>
   <script defer src="../assets/tle-demo-scroll-art-20261108.js?v=5"></script>
   <script defer src="../assets/tle-demo-footer-finale-20261108.js?v=4"></script>
-<script defer src="https://thelaunchera.com/assets/tle-demo-order-journey-20261108.js?v=4" data-tle-order-slug="yummm"></script>
+<script defer src="https://thelaunchera.com/assets/tle-demo-order-journey-20261108.js?v=confirmation-20261112" data-tle-order-slug="yummm"></script>
 
 <script defer src="../assets/tle-hero-cinematic-20261108.js?v=9"></script>
 <script defer src="./yummm-continuous-hero-20261108.js?v=2"></script>
