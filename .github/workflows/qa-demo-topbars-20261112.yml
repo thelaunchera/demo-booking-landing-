@@ -1,0 +1,32 @@
+name: Demo topbar secondary source QA
+
+on:
+  pull_request:
+    paths:
+      - "demos/nail-room/index.html"
+      - "demos/seasonal-brew/index.html"
+      - "demos/soluna-yoga/index.html"
+      - "demos/velmora/index.html"
+      - "demos/wok-social/index.html"
+      - "demos/yummm/index.html"
+      - "scripts/qa-demo-header-controls-20261112.mjs"
+      - ".github/workflows/qa-demo-topbars-20261112.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  secondary-header-source:
+    name: secondary-header-source
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Validate six demo headers and script destinations
+        run: |
+          node --check scripts/qa-demo-header-controls-20261112.mjs
+          node scripts/qa-demo-header-controls-20261112.mjs
