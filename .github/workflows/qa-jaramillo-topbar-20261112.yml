@@ -1,0 +1,35 @@
+name: Jaramillo demo topbar source QA
+
+on:
+  pull_request:
+    paths:
+      - "demos/jaramillo-boutique/index.html"
+      - ".github/workflows/qa-jaramillo-topbar-20261112.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  jaramillo-header-source:
+    name: jaramillo-header-source
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Preserve one native locale selector with shared header enhancement
+        run: |
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          const html = fs.readFileSync('demos/jaramillo-boutique/index.html','utf8');
+          assert.match(html, /<header\b/i);
+          assert.match(html, /class=["'][^"']*language-btn/);
+          assert.match(html, /data-tle-demo-brand="jaramillo-boutique"/);
+          assert.match(html, /tle-demo-header-controls-20261112[.]js/);
+          assert.equal((html.match(/data-tle-demo-brand="jaramillo-boutique"/g)||[]).length,1,'Only one shared enhancer allowed');
+          console.log('Jaramillo header source: native EN/ES and single enhancer preserved');
+          JS
